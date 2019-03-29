@@ -42,6 +42,9 @@ var app = {
 			type:  store.PAID_SUBSCRIPTION
 		});
 			
+		store.when("product").updated(function (p) {
+			app.renderIAP(p);
+		});
 		store.when("subscription1").approved(function(p) {
 			log("verify subscription");
 			p.verify();
