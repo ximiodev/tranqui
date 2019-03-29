@@ -25,24 +25,37 @@ body {
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
+    text-transform:uppercase;
     width:100%;
 }
 
-.ios-only, .android-only{
-    display: none;
-}
-body.android .android-only,
-body.ios .ios-only{
-    display: block;
+/* Portrait layout (default) */
+.app {
+    width:100%;                   /* text area width */
+    text-align:center;
+    padding: 40px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
 }
 
-.app {
-    padding: 2em;
-    text-align:center;
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+    }
 }
 
 h1 {
@@ -54,36 +67,38 @@ h1 {
     text-align:center;
 }
 
-#log {
-    font-size: 0.7em;
-    font-family: monospace;
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
 }
 
-.button {
-    display:inline-block;
-    padding: 5px 20px;
-    border: 1px solid black;
-    margin: 10px 0;
-}
-.button:empty{
-    border: none !important;
+.event.waiting {
+    background-color:#333333;
+    display:block;
 }
 
-#subscriber-info {
-    margin: 10px 0;
-    font-weight: bold;
+.event.received {
+    background-color:#4B946A;
+    display:none;
 }
 
-#non-consumable-hosted-content-download,
-#non-consumable-non-hosted-content-download{
-    padding: 5px 20px;
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
 }
 
-#in-app-purchase-list div, .section{
-    border-bottom: 1px solid #000;
-    margin-bottom: 5px;
-    padding-bottom: 5px;
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
 }
-#in-app-purchase-list div:empty, .section:empty{
-    border: none !important;
+
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
 }
