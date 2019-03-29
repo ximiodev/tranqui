@@ -4,7 +4,18 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
     },
     "installed_plugins": {
         "cordova-plugin-statusbar": {
@@ -24,6 +35,9 @@
             "PACKAGE_NAME": "com.tranqui.app"
         },
         "cc.fovea.cordova.purchase": {
+            "PACKAGE_NAME": "com.tranqui.app"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.tranqui.app"
         }
     },
@@ -76,6 +90,20 @@
             "merges": [
                 "navigator.notification"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+            "id": "cordova-plugin-device.DeviceProxy",
+            "pluginId": "cordova-plugin-device",
+            "runs": true
         }
     ],
     "plugin_metadata": {
@@ -84,6 +112,7 @@
         "cordova-plugin-console": "1.0.7",
         "cordova-plugin-dialogs": "1.2.1",
         "cordova-plugin-whitelist": "1.2.2",
-        "cc.fovea.cordova.purchase": "6.0.0"
+        "cc.fovea.cordova.purchase": "6.0.0",
+        "cordova-plugin-device": "1.1.7"
     }
 }

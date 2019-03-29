@@ -25,6 +25,9 @@
         },
         "cc.fovea.cordova.purchase": {
             "PACKAGE_NAME": "com.tranqui.app"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.tranqui.app"
         }
     },
     "dependent_plugins": {}
