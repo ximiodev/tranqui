@@ -11,7 +11,6 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="19" />
-    <preference name='phonegap-version' value='cli-7.0.1' />
     <preference name="android-targetSdkVersion"   value="26" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ee6e73" />
@@ -33,7 +32,7 @@
         <param name="APP_NAME" value="Tranqui" />
         <preference name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
     </plugin>
-    <plugin name="cordova-plugin-googleplus" source="npm" spec="5.0.0">
+    <plugin name="cordova-plugin-googleplus" source="npm" spec="~3.0.0">
 		<variable name="REVERSED_CLIENT_ID" value="880013316777-nchtl6koquu93g2eqffthiqo98hlc5bg.apps.googleusercontent.com" />
 		<variable name="WEB_APPLICATION_CLIENT_ID" value="mywebapplicationclientid" />
 	</plugin>
