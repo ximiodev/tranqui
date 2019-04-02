@@ -9,6 +9,7 @@
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion"   value="26" />
     <preference name="StatusBarOverlaysWebView" value="false" />
@@ -20,6 +21,10 @@
     </plugin>
     <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
         <variable name="SENDER_ID" value="106600278326" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" source="npm" spec="~4.2.1" >
+        <param name="APP_ID" value="1237015556466819" />
+        <param name="APP_NAME" value="Tranqui" />
     </plugin>
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.1" />
@@ -77,6 +82,7 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
+    <allow-intent href="fb:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />

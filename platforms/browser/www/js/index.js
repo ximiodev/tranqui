@@ -24,6 +24,8 @@ var app = {
         console.log('calling setup push');
         app.setupPush();
         app.initStore();
+        try 
+        facebookConnectPlugin.login(['email'], alert("WERWE"), alert("NO"));
     },
     initStore: function() {
 		if (!window.store) {
