@@ -24,8 +24,15 @@ var app = {
         console.log('calling setup push');
         app.setupPush();
         app.initStore();
-        try 
-        facebookConnectPlugin.login(['email'], alert("WERWE"), alert("NO"));
+        
+        $('#facebooklogin').click(function(e) {
+			e.preventDefault();
+			facebookConnectPlugin.login(['email'], hacerlogin,
+			  function loginError (error) {
+				log(JSON.stringify(error))
+			  }
+			);
+		});
     },
     initStore: function() {
 		if (!window.store) {
@@ -122,6 +129,9 @@ var app = {
 				};
 			}
 		}
+	},
+    hacerlogin: function(datos) {
+		log(JSON.stringify(datos));
 	},
     setupPush: function() {
         console.log('calling push init');
