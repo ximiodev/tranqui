@@ -38,7 +38,7 @@
 		<variable name="REVERSED_CLIENT_ID" value="880013316777-nchtl6koquu93g2eqffthiqo98hlc5bg.apps.googleusercontent.com" />
 	</plugin>
 	<platform name="android">
-		<resource-file src="google-services.json" target="app/google-services.json" />
+		<resource-file src="google-services.json" target="google-services.json" />
 	</platform>
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
