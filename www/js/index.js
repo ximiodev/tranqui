@@ -36,17 +36,17 @@ var app = {
         
         $('#googlelogin').click(function(e) {
 			e.preventDefault();
-			window.plugins.googleplus.login({
-				  'scopes': 'email,profile', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
-				  'offline': true // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
-				},
-				function (obj) {
-				  log(JSON.stringify(obj)); // do something useful instead of alerting
-				},
-				function (msg) {
-				  log('error: ' + msg);
-				}
-			);
+			//~ window.plugins.googleplus.login({
+				  //~ 'scopes': 'email,profile', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
+				  //~ 'offline': true // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
+				//~ },
+				//~ function (obj) {
+				  //~ log(JSON.stringify(obj)); // do something useful instead of alerting
+				//~ },
+				//~ function (msg) {
+				  //~ log('error: ' + msg);
+				//~ }
+			//~ );
 		});
     },
     initStore: function() {

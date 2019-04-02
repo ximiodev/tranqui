@@ -56,13 +56,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "cordova-plugin-facebook4": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-facebook4@~4.2.1"
-        },
-        "is_top_level": true,
-        "variables": {}
     }
 }
