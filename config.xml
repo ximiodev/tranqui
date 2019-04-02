@@ -12,7 +12,6 @@
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="phonegap-version" value="cli-7.1.0" />
-    <preference name='pgb-builder-version' value='1' />
     <preference name="android-targetSdkVersion"   value="26" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ee6e73" />
@@ -38,7 +37,6 @@
 		<variable name="REVERSED_CLIENT_ID" value="880013316777-nchtl6koquu93g2eqffthiqo98hlc5bg.apps.googleusercontent.com" />
 		<variable name="WEB_APPLICATION_CLIENT_ID" value="mywebapplicationclientid" />
 	</plugin>
-     <engine name="android" spec="^7.0.0" />
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
