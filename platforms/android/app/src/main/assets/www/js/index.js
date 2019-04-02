@@ -27,7 +27,7 @@ var app = {
         
         $('#facebooklogin').click(function(e) {
 			e.preventDefault();
-			facebookConnectPlugin.login(['email'], hacerlogin,
+			facebookConnectPlugin.login(['email'], app.hacerlogin,
 			  function loginError (error) {
 				log(JSON.stringify(error))
 			  }
