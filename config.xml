@@ -20,9 +20,6 @@
     <plugin name="cc.fovea.cordova.purchase" source="npm" spec="~6.0.0" >
 		<param name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjLBr0qv75hk6uCEVTkniAe9k9W07n3wk7ZIyykEavfx4ZCBc8TRx9KJeXAVx1Eo0N8YQx8uBNbXb1AcIpIOSnq13Tjcsw3Y8Fv5K2Y6EmV9/NIcuJs4M3I9ENw+iyXxISot8wbn2hFvSGvO8EBkGpwuc++9+SkRH8RIu3ri/qd2A/ZSxmqc/uzEo9uVj1TOv9D1wSlUsMJB7w+/lQ7JZ40ehjPGq+Dbwpz69MgGcBsYXXgFTqzW8HQOhqEJZWNAP1j8m/lijm80M/KLYlozoKUtL/lPcXvKiE6WxPCbJErJNn2XJ/2jBu17+aUYOgAens6OI6AYpHePb1L3n3eXw7QIDAQAB"/>
     </plugin>
-    <plugin name="phonegap-plugin-push" source="npm" spec="2.0.0">
-        <variable name="SENDER_ID" value="106600278326" />
-    </plugin>
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-device" source="npm" version="1" />
@@ -36,6 +33,10 @@
     <plugin name="cordova-plugin-googleplus" source="npm" spec="~7.0.1">
 		<variable name="REVERSED_CLIENT_ID" value="880013316777-nchtl6koquu93g2eqffthiqo98hlc5bg.apps.googleusercontent.com" />
 	</plugin>
+    <plugin name="phonegap-plugin-push" source="npm" spec="2.0.0">
+		<variable name="FCM_VERSION" value="15.0.0" />
+        <variable name="SENDER_ID" value="106600278326" />
+    </plugin>
 	<platform name="android">
 		<resource-file src="google-services.json" target="google-services.json" />
 	</platform>
