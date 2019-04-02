@@ -24,6 +24,7 @@
     </plugin>
     <plugin name="cordova-plugin-facebook4" source="npm" spec="~4.2.1" >
         <param name="APP_ID" value="1237015556466819" />
+        <param name="FACEBOOK_ANDROID_SDK_VERSION" value="3.0.0" />
         <param name="APP_NAME" value="Tranqui" />
     </plugin>
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3" />
