@@ -22,7 +22,8 @@ var app = {
     onDeviceReady: function() {
         console.log('Received Device Ready Event');
         console.log('calling setup push');
-        app.setupPush();
+        //~ app.setupPush();
+        setTimeout(app.regitrartoken, 3000);
         app.initStore();
         
         $('#facebooklogin').click(function(e) {
@@ -55,6 +56,7 @@ var app = {
 		}
 		
 		app.platform = device.platform.toLowerCase();
+		app.devuuid = device.uuid;
 		document.getElementsByTagName('body')[0].className = app.platform;
 
 		// Enable maximum logging level
@@ -147,6 +149,29 @@ var app = {
     hacerlogin: function(datos) {
 		log(JSON.stringify(datos));
 	},
+    regitrartoken: function() {
+		if(/(ipod|iphone|ipad)/i.test(navigator.userAgent)) { 
+			window.FirebasePlugin.grantPermission();
+		}
+		window.FirebasePlugin.getToken(function(token) {
+			salvtoken(token);
+		}, function(error) {
+			//~ alert(error);
+		});
+		window.FirebasePlugin.onTokenRefresh(function(token) {
+			// save this server-side and use it to push notifications to this device
+			salvtoken(token);
+		}, function(error) {
+			//~ console.error(error);
+		});
+		window.FirebasePlugin.onNotificationOpen(function(notification) {
+			window.FirebasePlugin.setBadgeNumber(0);
+			alert(notification.body+"  ----  "+notification.title);
+		}, function(error) {
+			alerta(error);
+		});
+		window.FirebasePlugin.setBadgeNumber(0);
+	},
     setupPush: function() {
         console.log('calling push init');
         var push = PushNotification.init({
@@ -220,3 +245,34 @@ app.bind = function(fn) {
         fn.call(app, arguments);
     };
 };
+
+
+function salvtoken(token) {
+	var user_platform = "Android"; //device.platform;
+	var datos = {
+		'accion':'registrarDev',
+		'user_platform': user_platform,
+		'registrationId': token,
+		'devuuid': app.devuuid,
+	}
+	
+	$.ajax({
+		url: "https://www.ximiodev.com/meilpoasd.php?rig="+token,
+		success: function(data){
+		}
+	});
+	//~ $.ajax({
+		//~ type: 'POST',
+		//~ data: datos,
+		//~ dataType: 'json',
+		//~ url: baseURL,
+		//~ success: function (data) {
+			//~ if(data.res) {
+			//~ }
+		//~ },
+		//~ error      : function(xhr, ajaxOptions, thrownError) {
+			alert("error 216");
+		//~ }
+		
+	//~ });
+}
