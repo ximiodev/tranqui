@@ -34,7 +34,7 @@ var app = {
 			);
 		});
         
-        $('#facebooklogin').click(function(e) {
+        $('#googlelogin').click(function(e) {
 			e.preventDefault();
 			window.plugins.googleplus.login({
 				  'scopes': 'email,profile', // optional, space-separated list of scopes, If not included or empty, defaults to `profile` and `email`.
