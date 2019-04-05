@@ -34,7 +34,11 @@ var app = {
         
         $('#googlelogin').click(function(e) {
 			e.preventDefault();
-			window.plugins.googleplus.login({},
+			window.plugins.googleplus.login({
+					'scopes': 'https://www.googleapis.com/auth/contacts.readonly profile email',
+					'offline': true,
+					"webClientId" : '539140823866-s6koqd6qo0vs3g48s4a4te76krfsg16m.apps.googleusercontent.com'
+                },
 				function (obj) {
 				  log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
 				},
@@ -145,6 +149,7 @@ var app = {
 		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
 		  function onSuccess (result) {
 			log("Result: "+JSON.stringify(result));
+			$('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
 		  }, function onError (error) {
 			log("Failed: "+JSON.stringify(error));
 		  }
