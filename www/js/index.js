@@ -20,9 +20,7 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        console.log('Received Device Ready Event');
-        console.log('calling setup push');
-        app.setupPush();
+        //~ app.setupPush();
         app.initStore();
         
         $('#facebooklogin').click(function(e) {
@@ -36,14 +34,12 @@ var app = {
         
         $('#googlelogin').click(function(e) {
 			e.preventDefault();
-			window.plugins.googleplus.login({
-				  'offline': true // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
-				},
+			window.plugins.googleplus.login({},
 				function (obj) {
-				  log(JSON.stringify(obj)); // do something useful instead of alerting
+				  log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
 				},
 				function (msg) {
-				  log('error: ' + msg);
+				  log('error: ' + JSON.stringify(msg));
 				}
 			);
 		});
@@ -145,7 +141,14 @@ var app = {
 		}
 	},
     hacerlogin: function(datos) {
-		log(JSON.stringify(datos));
+		
+		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
+		  function onSuccess (result) {
+			log("Result: "+JSON.stringify(result));
+		  }, function onError (error) {
+			log("Failed: "+JSON.stringify(error));
+		  }
+		);
 	},
     setupPush: function() {
         console.log('calling push init');
@@ -153,13 +156,11 @@ var app = {
             "android": {
                 "senderID": "106600278326"
             },
-            "browser": {},
             "ios": {
                 "sound": true,
                 "vibration": true,
                 "badge": true
-            },
-            "windows": {}
+            }
         });
         console.log('after init');
 
