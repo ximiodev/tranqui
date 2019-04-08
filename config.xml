@@ -22,7 +22,9 @@
     </plugin>
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.1" />
-    <plugin spec="https://github.com/ximiodev/cordova-plugin-firebase-ximiodev.git#tranqui" source="git" />
+    <plugin name="phonegap-plugin-push" source="npm" spec="2.0.0" >
+		<param name="SENDER_ID" value="106600278326" />
+    </plugin>
     <plugin name="cordova-plugin-device" source="npm" version="1" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
