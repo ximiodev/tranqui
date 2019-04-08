@@ -20,12 +20,12 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        //~ app.setupPush();
+        app.setupPush();
         app.initStore();
         
         $('#facebooklogin').click(function(e) {
 			e.preventDefault();
-			facebookConnectPlugin.login(['email'], app.hacerlogin,
+			facebookConnectPlugin.login(['email'], app.hacerloginFace,
 			  function loginError (error) {
 				log(JSON.stringify(error))
 			  }
@@ -37,10 +37,7 @@ var app = {
 			window.plugins.googleplus.login({
 					'scopes': 'https://www.googleapis.com/auth/contacts.readonly profile email',
 					'offline': true
-                },
-				function (obj) {
-				  log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
-				},
+                }, app.hacerloginGoog,
 				function (msg) {
 				  log('error: ' + JSON.stringify(msg));
 				}
@@ -143,7 +140,11 @@ var app = {
 			}
 		}
 	},
-    hacerlogin: function(datos) {
+    hacerloginGoog: function(datos) {
+		log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
+		$('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
+	},
+    hacerloginFace: function(datos) {
 		
 		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
 		  function onSuccess (result) {
