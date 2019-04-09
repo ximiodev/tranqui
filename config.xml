@@ -21,7 +21,6 @@
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-device" source="npm" version="1" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-	<resource-file src="google-services.json" target="google-services.json" />
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
         <param name="APP_ID" value="1237015556466819" />
         <param name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
@@ -33,6 +32,9 @@
         <variable name="FCM_VERSION" value="15.0.1" />
 		<variable name="REVERSED_CLIENT_ID" value="539140823866-s6koqd6qo0vs3g48s4a4te76krfsg16m.apps.googleusercontent.com" />
 	</plugin>
+    <platform name="android">
+		<resource-file src="google-services.json" target="google-services.json" />
+	</platform>
     <plugin name="phonegap-plugin-push" source="npm" spec="^2.2.3">
         <variable name="FCM_VERSION" value="15.0.0" />
 		<param name="SENDER_ID" value="106600278326" />
