@@ -7,16 +7,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "phonegap-plugin-push": {
-        "source": {
-            "type": "registry",
-            "id": "phonegap-plugin-push@~1.8.0"
-        },
-        "is_top_level": true,
-        "variables": {
-            "SENDER_ID": "106600278326"
-        }
-    },
     "cordova-plugin-console": {
         "source": {
             "type": "registry",
@@ -64,15 +54,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "cordova-plugin-googleplus": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-googleplus@~7.0.1"
-        },
-        "is_top_level": true,
-        "variables": {
-            "REVERSED_CLIENT_ID": "880013316777-nchtl6koquu93g2eqffthiqo98hlc5bg.apps.googleusercontent.com"
-        }
     }
 }
