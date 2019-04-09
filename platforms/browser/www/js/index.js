@@ -20,14 +20,12 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        console.log('Received Device Ready Event');
-        console.log('calling setup push');
         app.setupPush();
         app.initStore();
         
         $('#facebooklogin').click(function(e) {
 			e.preventDefault();
-			facebookConnectPlugin.login(['email'], app.hacerlogin,
+			facebookConnectPlugin.login(['email'], app.hacerloginFace,
 			  function loginError (error) {
 				log(JSON.stringify(error))
 			  }
@@ -37,13 +35,11 @@ var app = {
         $('#googlelogin').click(function(e) {
 			e.preventDefault();
 			window.plugins.googleplus.login({
-				  'offline': true // optional, but requires the webClientId - if set to true the plugin will also return a serverAuthCode, which can be used to grant offline access to a non-Google server
-				},
-				function (obj) {
-				  log(JSON.stringify(obj)); // do something useful instead of alerting
-				},
+					'scopes': 'https://www.googleapis.com/auth/contacts.readonly profile email',
+					'offline': true
+                }, app.hacerloginGoog,
 				function (msg) {
-				  log('error: ' + msg);
+				  log('error: ' + JSON.stringify(msg));
 				}
 			);
 		});
@@ -144,8 +140,19 @@ var app = {
 			}
 		}
 	},
-    hacerlogin: function(datos) {
-		log(JSON.stringify(datos));
+    hacerloginGoog: function(datos) {
+		log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
+		$('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
+	},
+    hacerloginFace: function(datos) {
+		
+		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
+		  function onSuccess (result) {
+			$('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
+		  }, function onError (error) {
+			log("Failed: "+JSON.stringify(error));
+		  }
+		);
 	},
     setupPush: function() {
         console.log('calling push init');
@@ -153,13 +160,11 @@ var app = {
             "android": {
                 "senderID": "106600278326"
             },
-            "browser": {},
             "ios": {
                 "sound": true,
                 "vibration": true,
                 "badge": true
-            },
-            "windows": {}
+            }
         });
         console.log('after init');
 
