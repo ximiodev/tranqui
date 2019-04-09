@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "106600278326",
+    "firebase_url": "https://tranqui-b0988.firebaseio.com",
+    "project_id": "tranqui-b0988",
+    "storage_bucket": "tranqui-b0988.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106600278326:android:b676a95142d065ff",
+        "android_client_info": {
+          "package_name": "com.tranqui.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnqQ-5PIaGaQlZyX6jCgKG0BBYgnDy6_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106600278326-6pufu6dvvb9tr6u5uork921869tq2nf5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
