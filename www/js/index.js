@@ -32,7 +32,7 @@ var app = {
 					'offline': true
                 }, app.hacerloginGoog,
 				function (msg) {
-					log('error: ' + JSON.stringify(msg));
+					alerta('error: ' + JSON.stringify(msg));
 				}
 			);
 		});
