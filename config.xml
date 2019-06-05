@@ -40,8 +40,7 @@
 		<param name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjLBr0qv75hk6uCEVTkniAe9k9W07n3wk7ZIyykEavfx4ZCBc8TRx9KJeXAVx1Eo0N8YQx8uBNbXb1AcIpIOSnq13Tjcsw3Y8Fv5K2Y6EmV9/NIcuJs4M3I9ENw+iyXxISot8wbn2hFvSGvO8EBkGpwuc++9+SkRH8RIu3ri/qd2A/ZSxmqc/uzEo9uVj1TOv9D1wSlUsMJB7w+/lQ7JZ40ehjPGq+Dbwpz69MgGcBsYXXgFTqzW8HQOhqEJZWNAP1j8m/lijm80M/KLYlozoKUtL/lPcXvKiE6WxPCbJErJNn2XJ/2jBu17+aUYOgAens6OI6AYpHePb1L3n3eXw7QIDAQAB"/>
     </plugin>
     <platform name="android">
-		<resource-file src="www/google-services.json" target="google-services.json" />
-		<resource-file src="google-services.json" target="app/google-services.json" />
+		<resource-file src="google-services.json" target="google-services.json" />
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
