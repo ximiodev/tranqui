@@ -38,50 +38,98 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <title>Tranqui</title>
 </head>
 
 <body>
-    <div class="app">
-		<div class="hola">
-			Hola
+	<div class="container">
+		<div class="splashscreen">
+		   Tranqui
 		</div>
-        <div id="registration" class="blink">
-            <p class="event waiting">Requesting Registration ID</p>
-            <p class="event received">Registered</p>
-        </div>
-        
-        <!-- List of in-app purchases -->
-        <div class="app">
-            <h3 id="loading-indicator">Loading</h3>
-            <div id="in-app-purchase-list">
-                <div id="subscription1-purchase"></div>
-            </div>
-        </div>
-
-        <!-- Are we subscribers? -->
-        <div id="subscriber-info" class="section">Loading subscription status...</div>
-
-        <!-- Non-consumable non-(provider-)hosted content download -->
-        <div id="non-consumable-non-hosted-content-download" class="section" style="display:none"></div>
-
-        <!-- Non-consumable Apple-hosted content download -->
-        <div id="non-consumable-hosted-content-download" class="section ios-only" style="display:none"></div>
-
-        <div class="section">
-            <!-- Button to access the full version feature: initially hidden -->
-            <div id="access-full-version-button" class="button" style="display:none">Access the awesome Full Version feature</div>
-
-            <!-- Button to access the full version feature: initially hidden -->
-            <div id="refresh-button" class="button" style="display:none">Refresh purchases</div>
-
-        </div>
-		<button id="facebooklogin">Facebook login</button>
-		<button id="googlelogin">Google login</button>
-        <!-- app.log will add stuff in here -->
-        <div id="log" class="section" />
-        
+		<div class="contenidoApp hidden">
+			<div class="ventana activa" id="pantalla0">
+				<div class="contBotones">
+					<div class="tiotge">Ingresa a la app</div>
+					<div class="form-group">
+						<button id="facebooklogin" class="btn btn-default btnGenerico">Facebook login</button>
+					</div>
+					<div class="form-group">
+						<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
+					</div>
+					<div class="form-group">
+						<button id="login" class="btn btn-default btnGenerico">Ingresa con tu usuario</button>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla0a">
+				<div class="boxForm">
+					<div class="tiotge">Ingresa tu email y password</div>
+					<div class="form-group">
+						<input type="email" class="form-control" id="email" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" id="password" placeholder="Password">
+					</div>
+					<button class="btn btn-default btnGenerico" id="btnLogin">Ingresar</button>
+					<div class="links">
+						<a href="#" id="registro" class="minilinks">Registro</a><br>
+						<a href="#" class="minilinks">Olvide mi password</a>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla0b">
+				<div class="boxForm">
+					<div class="tiotge">Registrate</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="nombre2" placeholder="Nombre y Apellido">
+					</div>
+					<div class="form-group">
+						<input type="email" class="form-control" id="email2" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" id="password2" placeholder="Password">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
+					</div>
+					<button class="btn btn-default btnGenerico" id="btnRegistro">Registrarse</button>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla1">
+				<video class="videomin">
+					<source src="video/mindfulness.mp4" type="video/mp4">
+				</video>
+				<div class="playbutton"><i class="glyphicon glyphicon-play"></i></div>
+				<div class="saltarVid btnGenerico hidden">Saltar ></div>
+			</div>
+			<div class="ventana hidden" id="pantalla2">
+				<div class="nombreuser"></div>
+				<div class="cuetionario">
+					<div class="pregunta" id="pregunta"></div>
+					<div class="respuesta" id="resp_1"></div>
+					<div class="respuesta" id="resp_2"></div>
+					<div class="respuesta" id="resp_3"></div>
+					<div class="respuesta" id="resp_4"></div>
+					<div class="paso"></div>
+				</div>
+				<div class="saltar btnGenerico">Saltar ></div>
+			</div>
+			<div class="ventana hidden" id="pantalla3">
+				mediatcion gratuita
+			</div>
+		</div>
+    </div>
+    <div class="hidden" id="alerta">
+		<div class="erorCont">
+			<div class="erorMsj">
+				<div id="alertatxt">
+				</div>
+				<button id="login" class="btn btn-danger btnCerrarAlerta">Cerrar</button>
+			</div>
+		</div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>

@@ -11,7 +11,6 @@
         Ximiodev
     </author>
     <content src="index.html" />
-    <asset src="www/google-services.json" target="google-services.json" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

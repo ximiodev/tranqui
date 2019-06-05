@@ -1,27 +1,20 @@
-
 window.onerror = function(message, url, lineNumber) {
 	log("Error: "+message+" in "+url+" at line "+lineNumber);
 	alert("Error: "+message+" in "+url+" at line "+lineNumber);
 }
+var apiURL = "http://newcyclelabs.com.ar/Tranqui/apiTranqui.php";
+
 var app = {
-    // Application Constructor
     initialize: function() {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        app.setupPush();
-        app.initStore();
+        //~ app.setupPush();
+        //~ app.initStore();
+        setTimeout(sacarSplash, 1000);
         
         $('#facebooklogin').click(function(e) {
 			e.preventDefault();
@@ -39,10 +32,58 @@ var app = {
 					'offline': true
                 }, app.hacerloginGoog,
 				function (msg) {
-				  log('error: ' + JSON.stringify(msg));
+					log('error: ' + JSON.stringify(msg));
 				}
 			);
 		});
+		
+        $('.btnCerrarAlerta').click(function(e) {
+			e.preventDefault();
+			sacarAlerta();
+		});
+		
+        $('#login').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla0a');
+		});
+		
+        $('.respuesta').click(function(e) {
+			e.preventDefault();
+			console.log($(this).attr('id').substring(5));
+			preguntaAct++;
+			ponerSigPreg();
+		});
+		
+        $('#registro').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla0b');
+		});
+		
+        $('#btnLogin').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla1');
+			$('.nombreuser').html('Hola '+$('#email').val());
+		});
+		
+        $('#btnRegistro').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla1');
+			$('.nombreuser').html('Hola '+$('#nombre2').val());
+		});
+		
+        $('.playbutton').click(function(e) {
+			e.preventDefault();
+			$('.videomin')[0].play();
+	        $('.playbutton').hide();
+	        $('.saltarVid').removeClass('hidden');
+		});
+		
+		 $('.saltarVid').click(function(e) {
+			e.preventDefault();
+			$('.videomin')[0].pause();
+			ponerPantalla('pantalla2');
+		});
+		app.getCuestionario();
     },
     initStore: function() {
 		if (!window.store) {
@@ -141,18 +182,40 @@ var app = {
 		}
 	},
     hacerloginGoog: function(datos) {
-		log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
-		$('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
+		//~ log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
+		//~ $('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
+		$('.nombreuser').html('Hola '+datos.displayname);
+		ponerPantalla('pantalla1');
 	},
     hacerloginFace: function(datos) {
 		
 		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
 		  function onSuccess (result) {
-			$('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
+			//~ $('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
+		$('.nombreuser').html('Hola '+result.name);
+			ponerPantalla('pantalla1');
 		  }, function onError (error) {
 			log("Failed: "+JSON.stringify(error));
 		  }
 		);
+	},
+    getCuestionario: function() {
+		var datos = {};
+		datos.action = 'getPreguntas';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					preguntas = data.datos;
+					ponerPregunta();
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
 	},
     setupPush: function() {
         console.log('calling push init');
@@ -206,7 +269,8 @@ var app = {
        });
     }
 };
-
+var preguntas;
+var preguntaAct = 0;
 function log(arg) { app.log(arg); }
 
 // log both in the console and in the HTML #log element.
@@ -225,3 +289,62 @@ app.bind = function(fn) {
         fn.call(app, arguments);
     };
 };
+
+function ponerSigPreg() {
+	if(preguntaAct<preguntas.length) {
+		ponerPregunta();
+	} else {
+		ponerPantalla('pantalla3');
+	}
+}
+
+function ponerPregunta() {
+	console.log(preguntas[preguntaAct]);
+	$('#pregunta').html(preguntas[preguntaAct].pregunta);
+	$('#resp_1').html(preguntas[preguntaAct].respuesta1);
+	$('#resp_2').html(preguntas[preguntaAct].respuesta2);
+	if(preguntas[preguntaAct].respuesta3=="") {
+		$('#resp_3').hide();
+	} else {
+		$('#resp_3').show();
+	}
+	$('#resp_3').html(preguntas[preguntaAct].respuesta3);
+	if(preguntas[preguntaAct].respuesta4=="") {
+		$('#resp_4').hide();
+	} else {
+		$('#resp_4').show();
+	}
+	$('#resp_4').html(preguntas[preguntaAct].respuesta4);
+	$('.paso').html((preguntaAct+1)+' / '+preguntas.length);
+}
+
+function sacarSplash() {
+	$('.splashscreen').fadeOut( 600, function() {
+		$('.splashscreen').remove();
+		$('.contenidoApp').removeClass('hidden');
+		$('.contenidoApp').fadeIn(600);
+	});
+}
+
+function alerta(msj) {
+	$('#alerta').fadeOut(1);
+	$('#alertatxt').html(msj);
+	$('#alerta').fadeIn( 600);
+	$('#alerta').removeClass('hidden');
+}
+
+function ponerPantalla(cual) {
+	$('.ventana.activa').fadeOut( 600, function() {
+		$('.ventana.activa').removeClass('activa');
+		$('.ventana.activa').addClass('hidden');
+		$('#'+cual).removeClass('hidden');
+		$('#'+cual).addClass('activa');
+		$('#'+cual).fadeIn(600);
+	});
+}
+
+function sacarAlerta() {
+	$('#alerta').fadeOut( 600, function() {
+		$('#alerta').addClass('hidden');
+	});
+}

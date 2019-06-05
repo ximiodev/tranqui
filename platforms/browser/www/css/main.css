@@ -1,0 +1,207 @@
+@charset "utf-8";
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,sub,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {	margin:0;	padding:0;	border:0;	outline:0;	font-weight:inherit;	font-style:inherit;	font-size:100%;	font-family:inherit; }/* remember to define focus styles! */:focus {	outline:0;}body {	color:black;	background:white;}ol,ul {	list-style: none;}/* tables still need 'cellspacing="0"' in the markup */table {	border-collapse:separate;	border-spacing:0;}caption,th,td {	text-align:left;	font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after {	content:"";}blockquote,q {	quotes: "" "";}a:link,a:visited {	text-decoration: none; border: 0px solid;}a:hover,a:active {	text-decoration: underline;}
+
+
+@font-face {
+    font-family: 'PoppinsBold';
+    src: url('../fonts/PoppinsBold.eot');
+    src: url('../fonts/PoppinsBold.eot') format('embedded-opentype'),
+         url('../fonts/PoppinsBold.woff2') format('woff2'),
+         url('../fonts/PoppinsBold.woff') format('woff'),
+         url('../fonts/PoppinsBold.ttf') format('truetype'),
+         url('../fonts/PoppinsBold.svg#PoppinsBold') format('svg');
+}
+
+@font-face {
+    font-family: 'PoppinsMedium';
+    src: url('../fonts/PoppinsMedium.eot');
+    src: url('../fonts/PoppinsMedium.eot') format('embedded-opentype'),
+         url('../fonts/PoppinsMedium.woff2') format('woff2'),
+         url('../fonts/PoppinsMedium.woff') format('woff'),
+         url('../fonts/PoppinsMedium.ttf') format('truetype'),
+         url('../fonts/PoppinsMedium.svg#PoppinsMedium') format('svg');
+}
+
+@font-face {
+    font-family: 'PoppinsRegular';
+    src: url('../fonts/PoppinsRegular.eot');
+    src: url('../fonts/PoppinsRegular.eot') format('embedded-opentype'),
+         url('../fonts/PoppinsRegular.woff2') format('woff2'),
+         url('../fonts/PoppinsRegular.woff') format('woff'),
+         url('../fonts/PoppinsRegular.ttf') format('truetype'),
+         url('../fonts/PoppinsRegular.svg#PoppinsRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'PoppinsSemiBold';
+    src: url('../fonts/PoppinsSemiBold.eot');
+    src: url('../fonts/PoppinsSemiBold.eot') format('embedded-opentype'),
+         url('../fonts/PoppinsSemiBold.woff2') format('woff2'),
+         url('../fonts/PoppinsSemiBold.woff') format('woff'),
+         url('../fonts/PoppinsSemiBold.ttf') format('truetype'),
+         url('../fonts/PoppinsSemiBold.svg#PoppinsSemiBold') format('svg');
+}
+
+body {
+	color: #333;
+    font-family: 'PoppinsRegular';
+}
+
+a {
+	color: #2c9b4b;
+	text-decoration: none;
+}
+
+.container {
+    padding: 0;
+    height: 100vh;
+}
+
+.splashscreen {
+	height: 100vh;
+	width: 100%;
+	text-align: center;
+	font-size: 46px;
+	color: #2c9b4b;
+	background: no-repeat center center url(../img/logo.png); 
+	
+}
+
+.contenidoApp {
+    height: 100vh;
+}
+
+.ventana {
+    height: 100vh;
+    overflow: auto;
+}
+
+video.videomin {
+    width: 100%;
+    height: 100vh;
+}
+
+.playbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+	color: #2c9b4b;
+}
+
+.saltarVid {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    font-size: 20px;
+	width: 100px;
+    margin-left: -50px;
+	
+}
+
+.saltar {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    font-size: 20px;
+	width: 100px;
+    margin-left: -50px;
+	
+}
+
+.tiotge {
+	font-size: 22px;
+	margin-bottom: 15px;
+}
+
+.contBotones {
+    width: 190px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 150px 0;
+}
+
+.btnGenerico {
+	background: #FFF;
+	color: #2c9b4b;
+	text-align: center;
+	border: 2px solid #2c9b4b;
+	width: 100%;
+	border-radius: 4px;
+}
+
+.boxForm {
+    padding: 60px 15px;
+    text-align: center;
+}
+
+.links {
+    padding: 10px;
+    font-size: 12px;
+}
+
+div#alerta {
+    position: absolute;
+    z-index: 999999;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+	display: table!important;
+}
+
+div#alerta.hidden {
+	display: none!important;
+}
+
+.erorCont {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.alertatxt {
+	margin-bottom: 15px;
+}
+
+.erorMsj {
+    width: 80%;
+    margin: 0 auto;
+    background: #FFF;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.nombreuser {
+    padding: 15px;
+    text-align: center;
+    font-size: 26px;
+}
+
+.cuetionario {
+    padding: 65px 15px 15px;
+    text-align: center;
+}
+
+.pregunta {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 auto 35px;
+}
+
+.respuesta {
+    border: 1px solid #2c9b4b;
+    padding: 3px 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.paso {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px;
+}

@@ -11,7 +11,6 @@
         Ximiodev
     </author>
     <content src="index.html" />
-    <asset src="www/google-services.json" target="google-services.json" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -20,7 +19,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <resource-file src="google-services.json" target="www/google-services.json" />
+    <resource-file src="www/google-services.json" target="google-services.json" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
