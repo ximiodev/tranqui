@@ -20,7 +20,7 @@ var app = {
 			e.preventDefault();
 			facebookConnectPlugin.login(['email'], app.hacerloginFace,
 			  function loginError (error) {
-				log(JSON.stringify(error))
+				alerta(JSON.stringify(error))
 			  }
 			);
 		});
@@ -192,10 +192,10 @@ var app = {
 		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
 		  function onSuccess (result) {
 			//~ $('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
-		$('.nombreuser').html('Hola '+result.name);
+			$('.nombreuser').html('Hola '+result.name);
 			ponerPantalla('pantalla1');
 		  }, function onError (error) {
-			log("Failed: "+JSON.stringify(error));
+			alerta("Failed: "+JSON.stringify(error));
 		  }
 		);
 	},
