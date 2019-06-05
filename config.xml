@@ -32,7 +32,7 @@
         <variable name="FCM_VERSION" value="15.0.1" />
 		<variable name="REVERSED_CLIENT_ID" value="539140823866-s6koqd6qo0vs3g48s4a4te76krfsg16m.apps.googleusercontent.com" />
 	</plugin>
-    <plugin name="phonegap-plugin-push" source="npm" spec="^2.2.3">
+    <plugin name="phonegap-plugin-push" source="npm">
         <variable name="FCM_VERSION" value="15.0.0" />
 		<param name="SENDER_ID" value="106600278326" />
     </plugin>
