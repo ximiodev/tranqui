@@ -101,13 +101,27 @@ video.videomin {
 	
 }
 
+.contenidoGen {
+	padding: 15px;
+}
+
+#med_ini {
+	margin: 20px auto;
+	width: 80%;
+	display: block;
+}
+
 .saltar {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
     font-size: 20px;
 	width: 100px;
-    margin-left: -50px;
+	margin: auto;
+	
+}
+
+.btnSaltarMedIn {
+    font-size: 20px;
+	width: 100px;
+	margin: auto;
 	
 }
 
@@ -204,4 +218,49 @@ div#alerta.hidden {
     font-size: 14px;
     font-weight: bold;
     padding: 15px;
+}
+
+
+.bloquehor {
+    font-size: 34px;
+    text-align: center;
+    display: block;
+    height: 100%;
+    position: relative;
+    top: 0;
+    float: left;
+}
+
+.internum {
+    padding: 48px 5px;
+}
+
+.contConfNot {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    text-align: center;
+    margin: 20px auto;
+    width: max-content;
+}
+
+.contConfNot.activo {
+    height: 140px;
+}
+
+.interna .btnGenerico {
+    height: 60px;
+    margin: 10px auto 0;
+    padding: 7px;
+}
+
+.home .btnGenerico {
+    height: 60px;
+    margin: 10px auto 0;
+    padding: 7px;
+}
+
+.btn50 {
+	width: 49%;
+	float: left;
 }

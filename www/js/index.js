@@ -3,6 +3,7 @@ window.onerror = function(message, url, lineNumber) {
 	alert("Error: "+message+" in "+url+" at line "+lineNumber);
 }
 var apiURL = "http://newcyclelabs.com.ar/Tranqui/apiTranqui.php";
+var baseURL = "http://newcyclelabs.com.ar/Tranqui/";
 
 var app = {
     initialize: function() {
@@ -83,7 +84,77 @@ var app = {
 			$('.videomin')[0].pause();
 			ponerPantalla('pantalla2');
 		});
+		
+		 $('.suphor').click(function(e) {
+			e.preventDefault();
+			var cont = $(this).parent().find('.notinumber');
+			var hor = parseInt(cont.html());
+			var max = cont.data('max');
+			if(hor<max) {
+				hor++;
+			}
+			if(hor<10) {
+				hor = '0'+hor;
+			}
+			cont.html(hor);
+		});
+		
+		 $('.infhor').click(function(e) {
+			e.preventDefault();
+			var cont = $(this).parent().find('.notinumber');
+			var hor = parseInt(cont.html());
+			if(hor>0) {
+				hor--;
+			}
+			if(hor<10) {
+				hor = '0'+hor;
+			}
+			cont.html(hor);
+		});
+		
+		 $('#confNotResp').click(function(e) {
+			e.preventDefault();
+			$('#notRespB').addClass('activo');
+		});
+		
+		 $('#confNotMed').click(function(e) {
+			e.preventDefault();
+			$('#notRespM').addClass('activo');
+		});
+		
+		 $('.saltar').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla3');
+		});
+		
+		 $('.btnFinalizarConf').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla5');
+		});
+		
+		 $('.btnVolverHome').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla5');
+		});
+		
+		 $('.btnTimers').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla6');
+		});
+		
+		 $('.btnEsfera').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla7');
+		});
+		
+		 $('.btnSaltarMedIn').click(function(e) {
+			e.preventDefault();
+			$('#med_ini')[0].pause();
+			ponerPantalla('pantalla4');
+		});
 		app.getCuestionario();
+		app.getMedIni();
+		app.getEsfera();
     },
     initStore: function() {
 		if (!window.store) {
@@ -211,6 +282,42 @@ var app = {
 				if(data.res) {
 					preguntas = data.datos;
 					ponerPregunta();
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getMedIni: function() {
+		var datos = {};
+		datos.action = 'getMedIni';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					console.log(data.datos.archivo);
+					$('#med_ini').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getEsfera: function() {
+		var datos = {};
+		datos.action = 'getEsfera';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					console.log(data.datos.archivo);
+					$('#audEsfera').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
 					alerta(data.msg);
 				}
