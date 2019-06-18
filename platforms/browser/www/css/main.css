@@ -264,3 +264,59 @@ div#alerta.hidden {
 	width: 49%;
 	float: left;
 }
+
+.bototneraBottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #666;
+    left: 0;
+    padding: 10px;
+    color: #FFF;
+}
+
+.btotonbotom {
+    display: inline-block;
+    width: 18%;
+    text-align: center;
+}
+
+.ultimopodcast {
+    border: 1px solid;
+    padding: 15px;
+    font-size: 22px;
+}
+
+.todospods {
+    padding: 35px 0;
+}
+
+.boxcast {
+    font-size: 16px;
+    border: 1px solid;
+    padding: 15px;
+}
+
+.categoriascur {
+    height: 83vh;
+    border: 1px solid;
+    padding: 5px;
+    margin: 10px auto;
+    border-radius: 5px;
+}
+
+.boxcate {
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+    border: 1px solid #999;
+    margin-top: 5px;
+}
+
+.boxEstadisticas {
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+    border: 1px solid #999;
+    margin-top: 5px;
+}

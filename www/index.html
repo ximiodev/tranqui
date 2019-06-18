@@ -100,7 +100,7 @@
 			</div>
 			<div class="ventana hidden" id="pantalla1">
 				<video class="videomin">
-					<source src="video/mindfulness.mp4" type="video/mp4">
+					<source src="video/mindfunless-5.mp4" type="video/mp4">
 				</video>
 				<div class="playbutton"><i class="glyphicon glyphicon-play"></i></div>
 				<div class="saltarVid btnGenerico">Saltar ></div>
@@ -179,12 +179,19 @@
 				<div class="contenidoGen home">
 					<div class="nombreuser"></div>
 					<div class="btnGenerico boxCursoAct">Cursro X<br>estado: 3</div>
-					<div class="btnGenerico">Meditacion Diraria</div>
+					<div class="btnGenerico btnMedDiaria">Meditacion Diaria</div>
 					<div class="btnGenerico">Proximo Curso</div>
 					<div class="btnGenerico">Convertirse en premium</div>
 					<div class="contbton">
 						<div class="btnGenerico btn50 btnTimers">Timers</div>
 						<div class="btnGenerico btn50 btnEsfera">Esfera de meditación</div>
+					</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom"><i class="glyphicon glyphicon-user"></i></div>
 					</div>
 				</div>
 			</div>
@@ -204,7 +211,7 @@
 			<div class="ventana hidden" id="pantalla6b">
 				<div class="contenidoGen">
 					<h4>Timers</h4>
-					<audio controls id="audEsfera">
+					<audio controls id="audTim">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -213,12 +220,113 @@
 			</div>
 			<div class="ventana hidden" id="pantalla7">
 				<div class="contenidoGen">
-					<h4>Meditación incial</h4>
+					<h4>Esfera de Meditación</h4>
 					<audio controls id="audEsfera">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
 					<div class="btnGenerico btnVolverHome">< Volver</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla8">
+				<div class="contenidoGen">
+					<div class="ultimopodcast">
+						<div class="titPod"></div>
+						<div class="durPod"></div>
+					</div>
+					<div class="todospods">
+					</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom btnMSBR">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla8b">
+				<div class="contenidoGen">
+					<h4 id="nomrepod"></h4>
+					<audio controls id="audPod">
+						<source id="podsour" src="" type="audio/mpeg">
+						Su navegador no sorporta audio HTML5
+					</audio>
+					<div class="btnGenerico btnVolverPods">< Volver</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom btnMSBR">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla9">
+				<div class="contenidoGen">
+					<div class="busador">						
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Buscar">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<div class="categoriascur">
+					</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom btnMSBR">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla10">
+				<div class="contenidoGen">
+					<h4>Meditación Diaria: <span id="diameddia"></span></h4>
+					<audio controls id="audMedDiaria">
+						<source src="" type="audio/mpeg">
+						Su navegador no sorporta audio HTML5
+					</audio>
+					<div class="btnGenerico btnVolverHome">< Volver</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla11">
+				<div class="contenidoGen">
+					<h4><i class="glyphicon glyphicon-user"></i> <span id="nombreuser"></span></h4>
+					<div class="boxcupon">
+						¿TENÉS UN CUPON?
+						<input type="text" class="form-control" placeholder="Ingresa tu cupon">
+						<div class="btnGenerico btnGetCupon">ENVIAR</div>
+					</div>
+					<div class="contclases"></div>
+					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom btnMSBR">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla12">
+				<div class="contenidoGen">
+					<h4>MBSR</h4>
+					<div class="boxuser">
+						<div class="btnGenerico">Mis cursos</div>
+						<div class="boxEstadisticas">Estadísticas</div>
+					</div>
+					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom btnMSBR">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					</div>
 				</div>
 			</div>
 		</div>

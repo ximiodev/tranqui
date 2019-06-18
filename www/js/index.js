@@ -45,6 +45,7 @@ var app = {
 		
         $('#login').click(function(e) {
 			e.preventDefault();
+			$('#glyphicon glyphicon-user').html($('#email').val());
 			ponerPantalla('pantalla0a');
 		});
 		
@@ -57,6 +58,7 @@ var app = {
 		
         $('#registro').click(function(e) {
 			e.preventDefault();
+			$('#glyphicon glyphicon-user').html($('#email2').val());
 			ponerPantalla('pantalla0b');
 		});
 		
@@ -137,6 +139,16 @@ var app = {
 			ponerPantalla('pantalla5');
 		});
 		
+		 $('#pantalla10 .btnVolverHome').click(function(e) {
+			e.preventDefault();
+			$('#audMedDiaria')[0].pause();
+		});
+		
+		 $('.btnHome').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla5');
+		});
+		
 		 $('.btnTimers').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla6');
@@ -147,6 +159,52 @@ var app = {
 			ponerPantalla('pantalla7');
 		});
 		
+		 $('.btnPodcasts').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla8');
+		});
+		
+		 $('.btnLibreria').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla9');
+		});
+		
+		 $('.btnMedDiaria').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla10');
+		});
+		
+		 $('.btnUser').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla11');
+		});
+		
+		 $('.btnMSBR').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla12');
+		});
+		
+		 $('.btnVolverPods').click(function(e) {
+			e.preventDefault();
+			$('#audPod').html('');
+			$('#audPod')[0].pause();
+			ponerPantalla('pantalla8');
+		});
+		
+		 $('.todospods').on('click', '.boxcast',function(e) {
+			e.preventDefault();
+			$('#audPod').html('');
+			$('#audPod')[0].pause();
+			ponerPod($(this).data('pod'));
+		});
+		
+		 $('.ultimopodcast').click(function(e) {
+			e.preventDefault();
+			$('#audPod')[0].pause();
+			$('#audPod').html('');
+			ponerPod(0);
+		});
+		
 		 $('.btnSaltarMedIn').click(function(e) {
 			e.preventDefault();
 			$('#med_ini')[0].pause();
@@ -154,6 +212,9 @@ var app = {
 		});
 		app.getCuestionario();
 		app.getMedIni();
+		app.getMedDiaria();
+		app.getPodcasts();
+		app.getCaegorias();
 		app.getEsfera();
     },
     initStore: function() {
@@ -256,6 +317,7 @@ var app = {
 		//~ log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
 		//~ $('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
 		$('.nombreuser').html('Hola '+datos.displayname);
+		$('#glyphicon glyphicon-user').html(datos.displayname);
 		ponerPantalla('pantalla1');
 	},
     hacerloginFace: function(datos) {
@@ -264,6 +326,7 @@ var app = {
 		  function onSuccess (result) {
 			//~ $('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
 			$('.nombreuser').html('Hola '+result.name);
+			$('#glyphicon glyphicon-user').html(result.name);
 			ponerPantalla('pantalla1');
 		  }, function onError (error) {
 			alerta("Failed: "+JSON.stringify(error));
@@ -288,6 +351,62 @@ var app = {
 			}
 		});
 	},
+    getPodcasts: function() {
+		var datos = {};
+		datos.action = 'getPodcasts';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					podcasts = data.datos;
+					var podac;
+					for(var i=0;i<podcasts.length;i++) {
+						if(i==0) {
+							$('.ultimopodcast .titPod').html(podcasts[i].nombre);
+							$('.ultimopodcast .durPod').html(podcasts[i].duration);
+						} else {
+							podac = ''+
+							'<div class="boxcast" data-pod="'+i+'">'+
+							'	<div class="titPod">'+podcasts[i].nombre+'</div>'+
+							'	<div class="durPod">'+podcasts[i].duration+'</div>'+
+							'</div>';
+							$('.todospods').append(podac);
+						}	
+					}
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getCaegorias: function() {
+		var datos = {};
+		datos.action = 'getCaegorias';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					podcasts = data.datos;
+					var podac;
+					for(var i=0;i<podcasts.length;i++) {
+						podac = ''+
+						'<div class="boxcate" data-cate="'+i+'">'+
+						'	<div class="titCate">'+podcasts[i].nombre+'</div>'+
+						'</div>';
+						$('.categoriascur').append(podac);
+					}
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
     getMedIni: function() {
 		var datos = {};
 		datos.action = 'getMedIni';
@@ -298,8 +417,42 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
-					console.log(data.datos.archivo);
 					$('#med_ini').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getMedIni: function() {
+		var datos = {};
+		datos.action = 'getMedIni';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					$('#med_ini').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getMedDiaria: function() {
+		var datos = {};
+		datos.action = 'getMedDiaria';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					$('#diameddia').html(data.datos.dia);
+					$('#audMedDiaria').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
 					alerta(data.msg);
 				}
@@ -316,7 +469,6 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
-					console.log(data.datos.archivo);
 					$('#audEsfera').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
 					alerta(data.msg);
@@ -377,7 +529,9 @@ var app = {
     }
 };
 var preguntas;
+var podcasts;
 var preguntaAct = 0;
+var meditacionediarias;
 function log(arg) { app.log(arg); }
 
 // log both in the console and in the HTML #log element.
@@ -406,7 +560,6 @@ function ponerSigPreg() {
 }
 
 function ponerPregunta() {
-	console.log(preguntas[preguntaAct]);
 	$('#pregunta').html(preguntas[preguntaAct].pregunta);
 	$('#resp_1').html(preguntas[preguntaAct].respuesta1);
 	$('#resp_2').html(preguntas[preguntaAct].respuesta2);
@@ -431,6 +584,18 @@ function sacarSplash() {
 		$('.contenidoApp').removeClass('hidden');
 		$('.contenidoApp').fadeIn(600);
 	});
+}
+
+function ponerPod(num) {
+	$('#nomrepod').html(podcasts[num].nombre);
+	 var audio = $("#audPod");      
+    $("#podsour").attr("src", baseURL+podcasts[num].archivo);
+    audio[0].pause();
+    audio[0].load();
+    //audio[0].play(); changed based on Sprachprofi's comment below
+    audio[0].oncanplaythrough = audio[0].play();
+	$('#audPod').html('<source src="'+baseURL+podcasts[num].archivo+'"  id="podsour" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+	ponerPantalla('pantalla8b');
 }
 
 function alerta(msj) {
