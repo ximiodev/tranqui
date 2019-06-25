@@ -81,6 +81,15 @@ var app = {
 	        $('.saltarVid').removeClass('hidden');
 		});
 		
+		 $('.btnVolverapa').click(function(e) {
+			e.preventDefault();
+			var donde = $(this).data('apa');
+			if(donde=='pantalla15') {
+				$('#audClaseP')[0].pause();
+			}
+			ponerPantalla(donde);
+		});
+		
 		 $('.saltarVid').click(function(e) {
 			e.preventDefault();
 			$('.videomin')[0].pause();
@@ -214,7 +223,7 @@ var app = {
 		app.getMedIni();
 		app.getMedDiaria();
 		app.getPodcasts();
-		app.getCaegorias();
+		app.getCategorias();
 		app.getEsfera();
     },
     initStore: function() {
@@ -382,9 +391,9 @@ var app = {
 			}
 		});
 	},
-    getCaegorias: function() {
+    getCategorias: function() {
 		var datos = {};
-		datos.action = 'getCaegorias';
+		datos.action = 'getCategorias';
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
@@ -392,12 +401,12 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
-					podcasts = data.datos;
+					categorias = data.datos;
 					var podac;
-					for(var i=0;i<podcasts.length;i++) {
+					for(var i=0;i<categorias.length;i++) {
 						podac = ''+
-						'<div class="boxcate" data-cate="'+i+'">'+
-						'	<div class="titCate">'+podcasts[i].nombre+'</div>'+
+						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
+						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
 						'</div>';
 						$('.categoriascur').append(podac);
 					}
@@ -406,6 +415,96 @@ var app = {
 				}
 			}
 		});
+	},
+    ponerCursos: function(posc, catid) {
+		var datos = {};
+		datos.action = 'getCursos';
+		datos.catid = catid;
+		$('.tituloCat').html(categorias[posc].nombre);
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					ponerPantalla('pantalla13');
+					cursos = data.cursos;
+					var podac;
+					$('.listcursos').html('');
+					for(var i=0;i<cursos.length;i++) {
+						podac = ''+
+						'<div class="boxcate" onclick="app.ponerCurso('+i+','+cursos[i].ID+');" data-cur="'+i+'">'+
+						'	<div class="titCate">'+cursos[i].nombre+'</div>'+
+						'</div>';
+						$('.listcursos').append(podac);
+					}
+					clases = data.clases;
+					var podac;
+					$('.listclasesind').html('');
+					for(var i=0;i<clases.length;i++) {
+						podac = ''+
+						'<div class="boxcate" onclick="app.ponerClaseInd('+i+','+clases[i].ID+');" data-cur="'+i+'">'+
+						'	<div class="titCate">'+clases[i].nombre+'</div>'+
+						'</div>';
+						$('.listclasesind').append(podac);
+					}
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    ponerCurso: function(posc, curid) {
+		var datos = {};
+		datos.action = 'getCurso';
+		datos.curid = curid;
+		$('.tituloCurso').html(cursos[posc].nombre);
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					ponerPantalla('pantalla14');
+					etapas = data.etapas;
+					var podac;
+					$('.listetapas').html('');
+					for(var i=0;i<etapas.length;i++) {
+						podac = ''+
+						'<div class="boxcate" onclick="app.ponerEtapa('+i+','+etapas[i].ID+');" data-cur="'+i+'">'+
+						'	<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
+						'	<div class="clasesEtapa">Clases: '+etapas[i].cantCla+'</div>'+
+						'</div>';
+						$('.listetapas').append(podac);
+					}
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    ponerEtapa: function(posc, curid) {
+		var datos = {};
+		
+		$('.tituloEtapa').html(etapas[posc].nombre_etapa);
+		
+		ponerPantalla('pantalla15');
+		var podac;
+		$('.listclases').html('');
+		for(var i=0;i<etapas[posc].clases.length;i++) {
+			podac = ''+
+			'<div class="boxcate" onclick="app.ponerClase('+i+','+posc+','+etapas[posc].clases[i].ID+');" data-clase="'+i+'">'+
+			'	<div class="titClase">'+etapas[posc].clases[i].nombre_clase+'</div>'+
+			'</div>';
+			$('.listclases').append(podac);
+		}
+	},
+    ponerClase: function(i, posc, curid) {
+		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
+		ponerPantalla('pantalla16');
+		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 	},
     getMedIni: function() {
 		var datos = {};
@@ -530,6 +629,10 @@ var app = {
 };
 var preguntas;
 var podcasts;
+var categorias;
+var cursos;
+var clases;
+var etapas;
 var preguntaAct = 0;
 var meditacionediarias;
 function log(arg) { app.log(arg); }
