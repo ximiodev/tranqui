@@ -47,7 +47,7 @@
 <body>
 	<div class="container">
 		<div class="splashscreen">
-		   Tranqui
+		   
 		</div>
 		<div class="contenidoApp hidden">
 			<div class="ventana activa" id="pantalla0">
@@ -150,6 +150,7 @@
 								<div class="bloquehor">
 									<div class="internum">hs</div>
 								</div>
+								<div class="btnGenerico btnConfirmar1">Confirmar</div>
 							</div>
 							<button class="btnGenerico" id="confNotMed">Para poder meditar</button>
 							<div class="contConfNot" id="notRespM">
@@ -169,6 +170,7 @@
 								<div class="bloquehor">
 									<div class="internum">hs</div>
 								</div>
+								<div class="btnGenerico btnConfirmar2">Confirmar</div>
 							</div>
 						</div>
 					</div>
@@ -299,7 +301,11 @@
 					<h4><i class="glyphicon glyphicon-user"></i> <span id="nombreuser"></span></h4>
 					<div class="boxuser">
 						<div class="btnGenerico">Mis cursos</div>
-						<div class="boxEstadisticas">Estadísticas</div>
+						<div class="boxEstadisticas">
+							Estadísticas
+							<div class="boxEstadisticas">
+							</div>
+						</div>
 					</div>
 					<div class="btnGenerico btnVolverHome">< Volver</div>
 					<div class="bototneraBottom">
@@ -384,11 +390,26 @@
 			<div class="ventana hidden" id="pantalla16">
 				<div class="contenidoGen">
 					<h4 class="tituloClase"></h4>
+					<div class="contClases" id="audiosclase">
+					</div>
+					<div class="btnGenerico btnVolverapa" data-apa="pantalla15">< Volver</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome">Home</div>
+						<div class="btotonbotom btnLibreria">Libreria</div>
+						<div class="btotonbotom btnMSBR">MSBR</div>
+						<div class="btotonbotom btnPodcasts">Podcast</div>
+						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla17">
+				<div class="contenidoGen">
+					<h4 class="tituloClase"></h4>
 					<audio controls id="audClaseP">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolverapa" data-apa="pantalla15">< Volver</div>
+					<div class="btnGenerico btnVolverapa" data-apa="pantalla16">< Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome">Home</div>
 						<div class="btotonbotom btnLibreria">Libreria</div>

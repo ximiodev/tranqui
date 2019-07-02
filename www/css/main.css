@@ -63,8 +63,8 @@ a {
 	text-align: center;
 	font-size: 46px;
 	color: #2c9b4b;
-	background: no-repeat center center url(../img/logo.png); 
-	
+	background: no-repeat center center url(../img/splash.jpg); 
+	background-size: cover;
 }
 
 .contenidoApp {
@@ -74,6 +74,8 @@ a {
 .ventana {
     height: 100vh;
     overflow: auto;
+	background: no-repeat center center url(../img/fondo.jpg); 
+	background-size: cover;
 }
 
 video.videomin {
@@ -226,6 +228,7 @@ div#alerta.hidden {
     text-align: center;
     display: block;
     height: 100%;
+    max-height: 140px;
     position: relative;
     top: 0;
     float: left;
@@ -319,4 +322,9 @@ div#alerta.hidden {
     text-align: center;
     border: 1px solid #999;
     margin-top: 5px;
+}
+
+.btnGenerico.btnConfirmar1, .btnGenerico.btnConfirmar2 {
+    display: block;
+    clear: both;
 }

@@ -64,14 +64,55 @@ var app = {
 		
         $('#btnLogin').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla1');
-			$('.nombreuser').html('Hola '+$('#email').val());
+			var datos = {};
+			datos.action = 'doLogin';
+			datos.tipo = 'user';
+			datos.email = $('#email').val();
+			datos.password = $('#password').val();
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					if(data.res) {
+						ponerPantalla('pantalla1');
+						estadisticas = data.estadisticas;
+						ponerEstadisticas();
+						$('.nombreuser').html('Hola '+data.datos.nombre);
+					} else {
+						alerta(data.message);
+					}
+				}
+			});
 		});
 		
         $('#btnRegistro').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla1');
-			$('.nombreuser').html('Hola '+$('#nombre2').val());
+			if($('#nombre2').val()!='' && validateEmail($('#email2').val()) && $('#password2').val()!='' && $('#password2').val()==$('#password2b').val()) {
+				var datos = {};
+				datos.action = 'doRegistro';
+				datos.tipo = 'user';
+				datos.nombre = $('#nombre2').val();
+				datos.email = $('#email2').val();
+				datos.password = $('#password2').val();
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						if(data.res) {
+							ponerPantalla('pantalla1');
+							$('.nombreuser').html('Hola '+data.datos.nombre);
+						} else {
+							alerta(data.message);
+						}
+					}
+				});
+			} else {
+				alerta("debes completar todos los campos");
+			}
 		});
 		
         $('.playbutton').click(function(e) {
@@ -504,7 +545,16 @@ var app = {
     ponerClase: function(i, posc, curid) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		ponerPantalla('pantalla16');
-		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#audiosclase').html('');
+		for(var k=0;k<etapas[posc].clases[i].archivos.length;k++) {
+			$('#audiosclase').append('<div class="btnGenerico" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
+		}
+	},
+    ponerClaseAudio: function(k,i, posc, curid) {
+		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
+		ponerPantalla('pantalla17');
+		datosClase.audio_ID = etapas[posc].clases[i].archivos[k].ID;
+		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 	},
     getMedIni: function() {
 		var datos = {};
@@ -551,6 +601,7 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					$('#diameddia').html(data.datos.dia);
+					meditadiraria = data.datos.ID;
 					$('#audMedDiaria').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
 					alerta(data.msg);
@@ -633,6 +684,8 @@ var categorias;
 var cursos;
 var clases;
 var etapas;
+var meditadiraria;
+var estadisticas;
 var preguntaAct = 0;
 var meditacionediarias;
 function log(arg) { app.log(arg); }
@@ -660,6 +713,10 @@ function ponerSigPreg() {
 	} else {
 		ponerPantalla('pantalla3');
 	}
+}
+
+function ponerEstadisticas() {
+	$('.boxEstadisticas').html('<div class="estdis"><b>Clases tomadas:</b> '+estadisticas.clases+'</div><div class="estdis"><b>Meditaciones diarias:</b> '+estadisticas.meditaciones+'</div>');
 }
 
 function ponerPregunta() {
@@ -723,3 +780,41 @@ function sacarAlerta() {
 		$('#alerta').addClass('hidden');
 	});
 }
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+var meddiaria = document.getElementById("audMedDiaria");
+meddiaria.onplaying = function() {
+	var datos = {};
+	datos.action = 'saveMeditacion';
+	datos.meditacion_ID = meditadiraria;
+	$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url: apiURL,
+		data: datos,
+		success: function (data) {
+			estadisticas = data.estadisticas;
+			ponerEstadisticas();
+		}
+	});
+};
+var audClaseP = document.getElementById("audClaseP");
+audClaseP.onplaying = function() {
+	var datos = {};
+	datos.action = 'saveClase';
+	datos.clase_ID = datosClase.audio_ID;
+	$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url: apiURL,
+		data: datos,
+		success: function (data) {
+			estadisticas = data.estadisticas;
+			ponerEstadisticas();
+		}
+	});
+};
+var datosClase = {};
