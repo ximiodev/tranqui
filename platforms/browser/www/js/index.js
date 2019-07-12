@@ -167,11 +167,13 @@ var app = {
 		 $('#confNotResp').click(function(e) {
 			e.preventDefault();
 			$('#notRespB').addClass('activo');
+			$('#notRespM').removeClass('activo');
 		});
 		
 		 $('#confNotMed').click(function(e) {
 			e.preventDefault();
 			$('#notRespM').addClass('activo');
+			$('#notRespB').removeClass('activo');
 		});
 		
 		 $('.saltar').click(function(e) {
@@ -253,6 +255,17 @@ var app = {
 			$('#audPod')[0].pause();
 			$('#audPod').html('');
 			ponerPod(0);
+		});
+		
+		 $('.btnPlayMed').click(function(e) {
+			e.preventDefault();
+			if(isplay) {
+				$('#med_ini')[0].pause();
+				isplay = false;
+			} else {
+				$('#med_ini')[0].play();
+				isplay = true;
+			}
 		});
 		
 		 $('.btnSaltarMedIn').click(function(e) {
@@ -818,3 +831,4 @@ audClaseP.onplaying = function() {
 	});
 };
 var datosClase = {};
+var isplay = false;

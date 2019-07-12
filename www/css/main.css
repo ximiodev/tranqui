@@ -1,50 +1,72 @@
 @charset "utf-8";
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,sub,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {	margin:0;	padding:0;	border:0;	outline:0;	font-weight:inherit;	font-style:inherit;	font-size:100%;	font-family:inherit; }/* remember to define focus styles! */:focus {	outline:0;}body {	color:black;	background:white;}ol,ul {	list-style: none;}/* tables still need 'cellspacing="0"' in the markup */table {	border-collapse:separate;	border-spacing:0;}caption,th,td {	text-align:left;	font-weight:normal;}blockquote:before,blockquote:after,q:before,q:after {	content:"";}blockquote,q {	quotes: "" "";}a:link,a:visited {	text-decoration: none; border: 0px solid;}a:hover,a:active {	text-decoration: underline;}
 
-
 @font-face {
-    font-family: 'PoppinsBold';
-    src: url('../fonts/PoppinsBold.eot');
-    src: url('../fonts/PoppinsBold.eot') format('embedded-opentype'),
-         url('../fonts/PoppinsBold.woff2') format('woff2'),
-         url('../fonts/PoppinsBold.woff') format('woff'),
-         url('../fonts/PoppinsBold.ttf') format('truetype'),
-         url('../fonts/PoppinsBold.svg#PoppinsBold') format('svg');
+    font-family: 'MontserratBold';
+    src: url('../fonts/MontserratBold.eot');
+    src: url('../fonts/MontserratBold.eot') format('embedded-opentype'),
+         url('../fonts/MontserratBold.woff2') format('woff2'),
+         url('../fonts/MontserratBold.woff') format('woff'),
+         url('../fonts/MontserratBold.ttf') format('truetype'),
+         url('../fonts/MontserratBold.svg#MontserratBold') format('svg');
 }
 
 @font-face {
-    font-family: 'PoppinsMedium';
-    src: url('../fonts/PoppinsMedium.eot');
-    src: url('../fonts/PoppinsMedium.eot') format('embedded-opentype'),
-         url('../fonts/PoppinsMedium.woff2') format('woff2'),
-         url('../fonts/PoppinsMedium.woff') format('woff'),
-         url('../fonts/PoppinsMedium.ttf') format('truetype'),
-         url('../fonts/PoppinsMedium.svg#PoppinsMedium') format('svg');
+    font-family: 'MontserratMedium';
+    src: url('../fonts/MontserratMedium.eot');
+    src: url('../fonts/MontserratMedium.eot') format('embedded-opentype'),
+         url('../fonts/MontserratMedium.woff2') format('woff2'),
+         url('../fonts/MontserratMedium.woff') format('woff'),
+         url('../fonts/MontserratMedium.ttf') format('truetype'),
+         url('../fonts/MontserratMedium.svg#MontserratMedium') format('svg');
+}
+@font-face {
+    font-family: 'MontserratRegular';
+    src: url('../fonts/MontserratRegular.eot');
+    src: url('../fonts/MontserratRegular.eot') format('embedded-opentype'),
+         url('../fonts/MontserratRegular.woff2') format('woff2'),
+         url('../fonts/MontserratRegular.woff') format('woff'),
+         url('../fonts/MontserratRegular.ttf') format('truetype'),
+         url('../fonts/MontserratRegular.svg#MontserratRegular') format('svg');
+}
+@font-face {
+    font-family: 'MontserratSemiBold';
+    src: url('../fonts/MontserratSemiBold.eot');
+    src: url('../fonts/MontserratSemiBold.eot') format('embedded-opentype'),
+         url('../fonts/MontserratSemiBold.woff2') format('woff2'),
+         url('../fonts/MontserratSemiBold.woff') format('woff'),
+         url('../fonts/MontserratSemiBold.ttf') format('truetype'),
+         url('../fonts/MontserratSemiBold.svg#MontserratSemiBold') format('svg');
+}
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?m5cfon');
+  src:  url('../fonts/icomoon.eot?m5cfon#iefix') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?m5cfon') format('truetype'),
+		url('../fonts/icomoon.woff?m5cfon') format('woff'),
+		url('../fonts/icomoon.svg?m5cfon#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
-@font-face {
-    font-family: 'PoppinsRegular';
-    src: url('../fonts/PoppinsRegular.eot');
-    src: url('../fonts/PoppinsRegular.eot') format('embedded-opentype'),
-         url('../fonts/PoppinsRegular.woff2') format('woff2'),
-         url('../fonts/PoppinsRegular.woff') format('woff'),
-         url('../fonts/PoppinsRegular.ttf') format('truetype'),
-         url('../fonts/PoppinsRegular.svg#PoppinsRegular') format('svg');
-}
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-@font-face {
-    font-family: 'PoppinsSemiBold';
-    src: url('../fonts/PoppinsSemiBold.eot');
-    src: url('../fonts/PoppinsSemiBold.eot') format('embedded-opentype'),
-         url('../fonts/PoppinsSemiBold.woff2') format('woff2'),
-         url('../fonts/PoppinsSemiBold.woff') format('woff'),
-         url('../fonts/PoppinsSemiBold.ttf') format('truetype'),
-         url('../fonts/PoppinsSemiBold.svg#PoppinsSemiBold') format('svg');
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
 	color: #333;
-    font-family: 'PoppinsRegular';
+    font-family: 'MontserratRegular';
 }
 
 a {
@@ -74,8 +96,37 @@ a {
 .ventana {
     height: 100vh;
     overflow: auto;
-	background: no-repeat center center url(../img/fondo.jpg); 
+	background: no-repeat center center url(../img/fondo_0_a.jpg); 
 	background-size: cover;
+}
+
+#pantalla0a, #pantalla0b {
+	background-image: url(../img/fondo_0_a.jpg);
+}
+
+#pantalla1 {
+	background-image: url(../img/fondo_0_b.jpg);
+}
+
+#pantalla2 {
+	background-image: url(../img/fondo_0_c.jpg);
+}
+
+#pantalla3 {
+	background-image: url(../img/fondo_0_d.jpg);
+}
+
+#pantalla4 {
+	background-image: url(../img/fondo_0_e.jpg);
+}
+
+#pantalla5 {
+	background-image: url(../img/fondoHome.jpg);
+}
+
+.titsec {
+    text-align: center;
+    padding: 80px 10px 0;
 }
 
 video.videomin {
@@ -87,10 +138,26 @@ video.videomin {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 60px;
-    margin-left: -30px;
-    margin-top: -30px;
+	width: 120px;
+    height: 120px;
+    margin-left: -60px;
+    margin-top: -60px;
 	color: #2c9b4b;
+	background: no-repeat center center url(../img/btnPlay.png); 
+	background-size: cover;
+}
+
+.btnPlayMed {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+	width: 120px;
+    height: 120px;
+    margin-left: -60px;
+    margin-top: -60px;
+	color: #2c9b4b;
+	background: no-repeat center center url(../img/pausa.png); 
+	background-size: cover;
 }
 
 .saltarVid {
@@ -99,12 +166,21 @@ video.videomin {
     left: 50%;
     font-size: 20px;
 	width: 100px!important;
-    margin-left: -50px;
-	
+    margin-left: -50px!important;
+}
+
+.saltarVid2 {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    font-size: 20px;
+	width: 100px!important;
+    margin-left: -50px!important;
 }
 
 .contenidoGen {
 	padding: 15px;
+	padding-bottom: 64px;
 }
 
 #med_ini {
@@ -128,12 +204,60 @@ video.videomin {
 }
 
 .tiotge {
+    font-family: 'MontserratMedium';
+    color: #FFF;
 	font-size: 22px;
 	margin-bottom: 15px;
 }
 
+#med_ini {
+	opacity:0;
+}
+
+.titSeccion {
+    text-align: center;
+    color: #FFF;
+    font-size: 26px;
+    font-family: 'MontserratBold';
+    margin: 80px auto 30px;
+}
+
+.btnGenerico.btnViole {
+	background: rgba(255,172,255,1);
+	background: -moz-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,172,255,1)), color-stop(100%, rgba(127,36,255,1)));
+	background: -webkit-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
+	background: linear-gradient(to right, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffacff', endColorstr='#7f24ff', GradientType=1 );
+	color: #FFF;
+	border: 0;
+	border-radius: 20px;
+    font-family: 'MontserratBold';
+    padding: 10px;
+}
+
+#facebooklogin {
+	background: #3b5998;
+	color: #FFF;
+	border: 0;
+	border-radius: 20px;
+    font-family: 'MontserratBold';
+    padding: 10px;
+}
+
+#googlelogin {
+	background: #FFF;
+	color: #3b5998;
+	border: 0;
+	border-radius: 20px;
+    font-family: 'MontserratBold';
+    padding: 10px;
+}
+
 .contBotones {
-    width: 190px;
+    width: 220px;
     margin: 0 auto;
     text-align: center;
     padding: 150px 0;
@@ -146,6 +270,23 @@ video.videomin {
 	border: 2px solid #2c9b4b;
 	width: 100%;
 	border-radius: 4px;
+}
+
+.martop60 {
+	margin-top: 60px!important;
+}
+
+.btnSinborde, a.btnSinborde {
+    font-family: 'MontserratMedium';
+    color: #FFF;
+	font-size: 11px;
+	border: 1px solid #FFF;
+	border-radius: 15px;
+	padding: 5px 15px;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+    clear: both;
 }
 
 .boxForm {
@@ -191,11 +332,22 @@ div#alerta.hidden {
     text-align: center;
 }
 
-
 .nombreuser {
+    font-family: 'MontserratMedium';
     padding: 15px;
+    font-size: 40px;
+    margin-top: 160px;
+    color: #FFF;
     text-align: center;
-    font-size: 26px;
+}
+
+.bienvenido {
+    font-family: 'MontserratMedium';
+    padding: 15px;
+    font-size: 40px;
+    margin-top: 160px;
+    color: #ff2b8b;
+    text-align: center;
 }
 
 .cuetionario {
@@ -204,9 +356,11 @@ div#alerta.hidden {
 }
 
 .pregunta {
-    font-size: 16px;
+    font-family: 'MontserratSemiBold';
+    font-size: 20px;
     font-weight: bold;
     margin: 0 auto 35px;
+    color: #FFF;
 }
 
 .respuesta {
@@ -217,9 +371,11 @@ div#alerta.hidden {
 }
 
 .paso {
+    font-family: 'MontserratMedium';
     font-size: 14px;
     font-weight: bold;
     padding: 15px;
+    color: #FFF;
 }
 
 
@@ -231,6 +387,7 @@ div#alerta.hidden {
     max-height: 140px;
     position: relative;
     top: 0;
+    color: #FFF;
     float: left;
 }
 
@@ -248,7 +405,7 @@ div#alerta.hidden {
 }
 
 .contConfNot.activo {
-    height: 140px;
+    height: 190px;
 }
 
 .interna .btnGenerico {
@@ -264,15 +421,15 @@ div#alerta.hidden {
 }
 
 .btn50 {
-	width: 49%;
-	float: left;
+    width: 46%;
+    float: left;
+    margin: 10px 2%!important;
 }
 
 .bototneraBottom {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background: #666;
     left: 0;
     padding: 10px;
     color: #FFF;
@@ -282,6 +439,67 @@ div#alerta.hidden {
     display: inline-block;
     width: 18%;
     text-align: center;
+    font-family: 'MontserratBold';
+    font-size: 12px;
+}
+
+.btotonbotom {
+    font-size: 12px;
+}
+
+.btotonbotom i {
+    font-size: 14px;
+    display: block;
+	line-height: 22px;
+}
+
+.fz22 {
+    font-size: 22px!important;
+}
+
+.icon-iconHome:before {
+  content: "\e900";
+}
+.icon-iconLibreria:before {
+  content: "\e901";
+}
+.icon-iconMBSR:before {
+  content: "\e902";
+}
+.icon-iconPodcast:before {
+  content: "\e903";
+}
+.icon-iconUSer:before {
+  content: "\e904";
+}
+
+.botoneraHome {
+	color: #ff2b8b;
+	background: #fefae7;
+}
+
+.botronesHoem .sub {
+    font-family: 'MontserratRegular';
+    border-top: 1px solid #FFF;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.botronesHoem {
+	background: rgba(245,198,59,1);
+	background: -moz-linear-gradient(left, rgba(245,198,59,1) 0%, rgba(255,43,138,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(245,198,59,1)), color-stop(100%, rgba(255,43,138,1)));
+	background: -webkit-linear-gradient(left, rgba(245,198,59,1) 0%, rgba(255,43,138,1) 100%);
+	background: -o-linear-gradient(left, rgba(245,198,59,1) 0%, rgba(255,43,138,1) 100%);
+	background: -ms-linear-gradient(left, rgba(245,198,59,1) 0%, rgba(255,43,138,1) 100%);
+	background: linear-gradient(to right, rgba(245,198,59,1) 0%, rgba(255,43,138,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5c63b', endColorstr='#ff2b8a', GradientType=1 );
+	color: #FFF;
+    font-family: 'MontserratSemiBold';
+    padding: 15px;
+    text-align: center;
+    margin: 10px auto;
+    border-radius: 50px;
 }
 
 .ultimopodcast {
@@ -292,6 +510,23 @@ div#alerta.hidden {
 
 .todospods {
     padding: 35px 0;
+}
+
+.tituCurAct img {
+    width: 100%;
+    margin: 15px auto;
+}
+
+.boxprem img {
+    width: 100%;
+}
+
+.tituloHome {
+    color: #ff2b8b;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 24px;
+    margin: 20px auto;
 }
 
 .boxcast {

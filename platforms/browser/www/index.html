@@ -1,24 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
 
 <head>
@@ -52,16 +32,18 @@
 		<div class="contenidoApp hidden">
 			<div class="ventana activa" id="pantalla0">
 				<div class="contBotones">
-					<div class="tiotge">Ingresa a la app</div>
+					<div class="tiotge">Ingresa</div>
+					<div class="form-group">
+						<button id="login" class="btn btn-default btnGenerico btnViole">Ingresa con tu usuario</button>
+					</div>
 					<div class="form-group">
 						<button id="facebooklogin" class="btn btn-default btnGenerico">Facebook login</button>
 					</div>
 					<div class="form-group">
 						<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
 					</div>
-					<div class="form-group">
-						<button id="login" class="btn btn-default btnGenerico">Ingresa con tu usuario</button>
-					</div>
+					
+					<a href="#" class="btnSinborde martop60">Términos & condiciones »</a>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla0a">
@@ -73,10 +55,10 @@
 					<div class="form-group">
 						<input type="password" class="form-control" id="password" placeholder="Password">
 					</div>
-					<button class="btn btn-default btnGenerico" id="btnLogin">Ingresar</button>
+					<button class="btn btn-default btnGenerico btnViole" id="btnLogin">Ingresar</button>
 					<div class="links">
-						<a href="#" id="registro" class="minilinks">Registro</a><br>
-						<a href="#" class="minilinks">Olvide mi password</a>
+						<a href="#" id="registro" class="btnSinborde minilinks">Registro</a><br>
+						<a href="#" class="btnSinborde minilinks">Olvide mi password</a>
 					</div>
 				</div>
 			</div>
@@ -95,44 +77,46 @@
 					<div class="form-group">
 						<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
 					</div>
-					<button class="btn btn-default btnGenerico" id="btnRegistro">Registrarse</button>
+					<button class="btn btn-default btnGenerico btnViole" id="btnRegistro">Registrarse</button>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla1">
+				<div class="titsec tiotge">¿QUÉ ES<br>MINDFULNESS?</div>
 				<video class="videomin">
 					<source src="video/mindfunless-5.mp4" type="video/mp4">
 				</video>
-				<div class="playbutton"><i class="glyphicon glyphicon-play"></i></div>
-				<div class="saltarVid btnGenerico">Saltar ></div>
+				<div class="playbutton"></div>
+				<div class="saltarVid btnSinborde">Saltar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla2">
 				<div class="nombreuser"></div>
 				<div class="cuetionario">
 					<div class="pregunta" id="pregunta"></div>
-					<div class="respuesta" id="resp_1"></div>
-					<div class="respuesta" id="resp_2"></div>
-					<div class="respuesta" id="resp_3"></div>
-					<div class="respuesta" id="resp_4"></div>
+					<div class="respuesta btnGenerico btnViole" id="resp_1"></div>
+					<div class="respuesta btnGenerico btnViole" id="resp_2"></div>
+					<div class="respuesta btnGenerico btnViole" id="resp_3"></div>
+					<div class="respuesta btnGenerico btnViole" id="resp_4"></div>
 					<div class="paso"></div>
 				</div>
-				<div class="saltar btnGenerico">Saltar ></div>
+				<div class="saltar btnSinborde">Saltar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla3">
 				<div class="contenidoGen">
-					<h4>Meditación incial</h4>
+					<h4 class="titSeccion">Meditación incial</h4>
+					<div class="btnPlayMed"></div>
 					<audio controls id="med_ini">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnSaltarMedIn">Saltar ></div>
+					<div class="saltarVid2 btnSaltarMedIn btnSinborde">Saltar »</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla4">
 				<div class="contenidoGen">
-					<h4>Notificaciones	</h4>
+					<h4 class="titSeccion">Notificaciones</h4>
 					<div class="bloqueselMin">
 						<div class="bloqueConf">
-							<button class="btnGenerico" id="confNotResp">Para poder respirar</button>
+							<button class="btnGenerico btnViole" id="confNotResp">Para poder respirar</button>
 							<div class="contConfNot" id="notRespB">
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
@@ -150,9 +134,9 @@
 								<div class="bloquehor">
 									<div class="internum">hs</div>
 								</div>
-								<div class="btnGenerico btnConfirmar1">Confirmar</div>
+								<div class="btnSinborde btnConfirmar1">Confirmar</div>
 							</div>
-							<button class="btnGenerico" id="confNotMed">Para poder meditar</button>
+							<button class="btnGenerico btnViole" id="confNotMed">Para poder meditar</button>
 							<div class="contConfNot" id="notRespM">
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
@@ -170,30 +154,40 @@
 								<div class="bloquehor">
 									<div class="internum">hs</div>
 								</div>
-								<div class="btnGenerico btnConfirmar2">Confirmar</div>
+								<div class="btnSinborde btnConfirmar2">Confirmar</div>
 							</div>
 						</div>
 					</div>
-					<div class="btnGenerico btnFinalizarConf">Finalizar ></div>
+					<div class="saltarVid2 btnSinborde btnFinalizarConf">Finalizar ></div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla5">
 				<div class="contenidoGen home">
-					<div class="nombreuser"></div>
-					<div class="btnGenerico boxCursoAct">Cursro X<br>estado: 3</div>
-					<div class="btnGenerico btnMedDiaria">Meditacion Diaria</div>
-					<div class="btnGenerico">Proximo Curso</div>
-					<div class="btnGenerico">Convertirse en premium</div>
-					<div class="contbton">
-						<div class="btnGenerico btn50 btnTimers">Timers</div>
-						<div class="btnGenerico btn50 btnEsfera">Esfera de meditación</div>
+					<div class="tituloHome">BIENVENIDO</div>
+					<div class="boxCursoAct">
+						<div class="tituCurAct">
+							<img src="img/boxcap.png" class="">
+						</div>
 					</div>
-					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+					<div class="botronesHoem btnMedDiaria">
+						Meditacion Diaria
+						<div class="sub">Regalate un momento hoy</div>
+					</div>
+					<div class="botronesHoem">
+						Proximo Curso
+						<div class="sub">Explorá otra práctica</div>
+					</div>
+					<div class="contbton">
+						<div class="botronesHoem btn50 btnTimers">TIMER</div>
+						<div class="botronesHoem btn50 btnEsfera">RESPIRAR</div>
+					</div>
+					<div class="boxprem"><img src="img/boxpremium.png"></div>
+					<div class="bototneraBottom botoneraHome">
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -239,11 +233,11 @@
 					<div class="todospods">
 					</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -256,11 +250,11 @@
 					</audio>
 					<div class="btnGenerico btnVolverPods">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -278,11 +272,11 @@
 					</div>
 					<div class="btnGenerico btnVolverHome">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -309,11 +303,11 @@
 					</div>
 					<div class="btnGenerico btnVolverHome">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -328,11 +322,11 @@
 					<div class="contclases"></div>
 					<div class="btnGenerico btnVolverHome">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -346,11 +340,11 @@
 					</div>
 					<div class="btnGenerico btnVolverapa" data-apa="pantalla9">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -362,11 +356,11 @@
 					</div>
 					<div class="btnGenerico btnVolverapa" data-apa="pantalla13">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -379,11 +373,11 @@
 					</div>
 					<div class="btnGenerico btnVolverapa" data-apa="pantalla14">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -394,11 +388,11 @@
 					</div>
 					<div class="btnGenerico btnVolverapa" data-apa="pantalla15">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -411,11 +405,11 @@
 					</audio>
 					<div class="btnGenerico btnVolverapa" data-apa="pantalla16">< Volver</div>
 					<div class="bototneraBottom">
-						<div class="btotonbotom btnHome">Home</div>
-						<div class="btotonbotom btnLibreria">Libreria</div>
-						<div class="btotonbotom btnMSBR">MSBR</div>
-						<div class="btotonbotom btnPodcasts">Podcast</div>
-						<div class="btotonbotom btnUser"><i class="glyphicon glyphicon-user"></i></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
