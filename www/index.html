@@ -82,7 +82,7 @@
 			</div>
 			<div class="ventana hidden" id="pantalla1">
 				<div class="titsec tiotge">¿QUÉ ES<br>MINDFULNESS?</div>
-				<video class="videomin">
+				<video class="videomin" style="display:none;">
 					<source src="video/mindfunless-5.mp4" type="video/mp4">
 				</video>
 				<div class="playbutton"></div>
@@ -103,8 +103,9 @@
 			<div class="ventana hidden" id="pantalla3">
 				<div class="contenidoGen">
 					<h4 class="titSeccion">Meditación incial</h4>
-					<div class="btnPlayMed"></div>
-					<audio controls id="med_ini">
+					<div class="btnPlayMed" onclick="togglePlaying()"><i class="glyphicon glyphicon-play"></i></div>
+					<div class="circle audioBorde"></div>
+					<audio ontimeupdate="updateBar()" id="med_ini">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -181,8 +182,8 @@
 						<div class="botronesHoem btn50 btnTimers">TIMER</div>
 						<div class="botronesHoem btn50 btnEsfera">RESPIRAR</div>
 					</div>
-					<div class="boxprem"><img src="img/boxpremium.png"></div>
-					<div class="bototneraBottom botoneraHome">
+					<div class="bototneraBottom botoneraHome conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -426,6 +427,7 @@
     </div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/circle-progress.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

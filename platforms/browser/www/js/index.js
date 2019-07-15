@@ -120,6 +120,14 @@ var app = {
 			$('.videomin')[0].play();
 	        $('.playbutton').hide();
 	        $('.saltarVid').removeClass('hidden');
+	        $('.videomin').show();
+		});
+		
+        $('.videomin').click(function(e) {
+			e.preventDefault();
+			$('.videomin')[0].pause();
+	        $('.playbutton').show();
+	        $('.videomin').hide();
 		});
 		
 		 $('.btnVolverapa').click(function(e) {
@@ -832,3 +840,58 @@ audClaseP.onplaying = function() {
 };
 var datosClase = {};
 var isplay = false;
+
+var med_ini = document.getElementById("med_ini")
+var estaplay = false
+
+med_ini.addEventListener('loadedmetadata', function() {
+  var duration = med_ini.duration
+  var currentTime = med_ini.currentTime
+});
+
+function togglePlaying() {
+  var method
+
+  if (!estaplay) {
+	  $('.btnPlayMed').html('<i class="glyphicon glyphicon-pause"></i>');
+    estaplay = true
+    method = 'play'
+  } else {
+	  $('.btnPlayMed').html('<i class="glyphicon glyphicon-play"></i>');
+    estaplay = false
+    method = 'pause'
+  }
+
+  med_ini[method]()
+
+}
+
+function updateBar() {
+  
+  var currentTime = med_ini.currentTime
+  var duration = med_ini.duration
+  
+  if (currentTime === duration) {
+	  estaplay = true
+  }
+  var percentage = currentTime / duration
+  $('.audioBorde.circle').circleProgress({
+    value: (percentage).toFixed(2),
+    animation: false,
+    size: 120,
+    thickness: 1,
+    fill: {color: "#FFFFFF"}
+  });
+  
+  //~ document.getElementById("current-time").innerHTML = convertElapsedTime(currentTime)
+  
+}
+
+function convertElapsedTime(inputSeconds) {
+  var seconds = Math.floor(inputSeconds % 60)
+  if (seconds < 10) {
+    seconds = "0" + seconds
+  }
+  var minutes = Math.floor(inputSeconds / 60)
+  return minutes + ":" + seconds
+}

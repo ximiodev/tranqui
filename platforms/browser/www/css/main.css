@@ -131,7 +131,7 @@ a {
 
 video.videomin {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
 }
 
 .playbutton {
@@ -148,16 +148,38 @@ video.videomin {
 }
 
 .btnPlayMed {
-    position: absolute;
+	position: absolute;
     top: 50%;
     left: 50%;
-	width: 120px;
+    width: 120px;
     height: 120px;
     margin-left: -60px;
     margin-top: -60px;
-	color: #2c9b4b;
-	background: no-repeat center center url(../img/pausa.png); 
-	background-size: cover;
+    color: #ffffff;
+    background: no-repeat center center url(../img/fondoaudio.png);
+    background-size: cover;
+    line-height: 120px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    margin: 6px 6px 20px;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    line-height: 1.2;
+    left: 50%;
+    margin-left: -60px;
+    top: 270px;
+    pointer-events: none;
+}
+
+.btnPlayMed i.glyphicon {
+    top: 3px;
+    left: 2px;
 }
 
 .saltarVid {
@@ -180,7 +202,7 @@ video.videomin {
 
 .contenidoGen {
 	padding: 15px;
-	padding-bottom: 64px;
+	padding-bottom: 175px;
 }
 
 #med_ini {
@@ -210,6 +232,14 @@ video.videomin {
 	margin-bottom: 15px;
 }
 
+.boxprem {
+    margin-bottom: 15px;
+}
+
+.bototneraBottom.conpub {
+    padding-top: 0;
+}
+
 #med_ini {
 	opacity:0;
 }
@@ -232,10 +262,14 @@ video.videomin {
 	background: linear-gradient(to right, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffacff', endColorstr='#7f24ff', GradientType=1 );
 	color: #FFF;
+	outline: none!important;
 	border: 0;
 	border-radius: 20px;
     font-family: 'MontserratBold';
     padding: 10px;
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+	-moz-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+	box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
 }
 
 #facebooklogin {
@@ -245,6 +279,9 @@ video.videomin {
 	border-radius: 20px;
     font-family: 'MontserratBold';
     padding: 10px;
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+	-moz-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+	box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
 }
 
 #googlelogin {
@@ -254,6 +291,9 @@ video.videomin {
 	border-radius: 20px;
     font-family: 'MontserratBold';
     padding: 10px;
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+	-moz-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+	box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
 }
 
 .contBotones {
@@ -261,6 +301,21 @@ video.videomin {
     margin: 0 auto;
     text-align: center;
     padding: 150px 0;
+}
+
+.tituCurAct {
+  background: #fdfae7;
+  padding: 2rem;
+  border-radius: 18px;
+}
+
+.boxCursoAct {
+  max-width: 100%;
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, #ff2b8b, #ffc752);
+  padding: 3px;
+  border-radius: 20px;
 }
 
 .btnGenerico {
