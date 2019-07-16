@@ -124,6 +124,38 @@ a {
 	background-image: url(../img/fondoHome.jpg);
 }
 
+#pantalla6 {
+	background-image: url(../img/fndCele-80.jpg);
+}
+
+#pantalla7 {
+	background-image: url(../img/fndCele-80.jpg);
+}
+
+#pantalla8 {
+	background-image: url(../img/fndPods-80.jpg);
+}
+
+#pantalla8b {
+	background-image: url(../img/fndPods2-80.jpg);
+}
+
+#pantalla9 {
+	background: #FFF;
+}
+
+#pantalla10 {
+	background-image: url(../img/fndMEditacion-80.jpg);
+}
+
+#pantalla11 {
+	background-image: url(../img/fndUser-80.jpg);
+}
+
+#pantalla12 {
+	background-image: url(../img/fndMBSR-80.jpg);
+}
+
 .titsec {
     text-align: center;
     padding: 80px 10px 0;
@@ -132,6 +164,78 @@ a {
 video.videomin {
     width: 100%;
     height: 50vh;
+}
+
+.listcursos {
+    background: #FFF;
+    padding: 15px;
+}
+
+.listcursos:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+.inputfant {
+	border: 0!important;
+	background: none!important;
+	text-align: center;
+	color: #FFF;
+	box-shadow: none;
+}
+
+.inputfant::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #FFF;
+  opacity: 1; /* Firefox */
+}
+
+.inputfant:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #FFF;
+}
+
+.inputfant::-ms-input-placeholder { /* Microsoft Edge */
+  color: #FFF;
+}
+
+.boxcupon {
+    font-family: 'MontserratMedium';
+    text-align: center;
+    color: #FFF;
+	padding: 100px 10px;
+}
+
+.listcursos .titCate {
+    font-family: 'MontserratMedium';
+    text-align: center;
+    color: #FFF;
+	box-shadow: 4px 4px 6px rgba(0,0,0,0.2);
+	padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.listcursos .descCate {
+    font-family: 'MontserratMedium';
+    text-align: center;
+    font-size: 12px;
+	color: #7740a2;
+}
+
+.listcursos .boxcatex {
+    width: 48%;
+    float: left;
+}
+
+
+.boxcatex {
+    padding: 10px;
+    font-size: 22px;
+    text-align: center;
+    border: 0;
+    margin-top: 5px;
+    color: #FFF;
 }
 
 .playbutton {
@@ -151,16 +255,34 @@ video.videomin {
 	position: absolute;
     top: 50%;
     left: 50%;
-    width: 120px;
-    height: 120px;
-    margin-left: -60px;
-    margin-top: -60px;
+    width: 100px;
+    height: 100px;
+    margin-left: -50px;
+    margin-top: -50px;
     color: #ffffff;
     background: no-repeat center center url(../img/fondoaudio.png);
     background-size: cover;
-    line-height: 120px;
+    line-height: 30px;
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
+    border-radius: 50%;
+	padding: 30px;
+	box-shadow: 4px 4px 6px rgba(0,0,0,0.2);
+}
+
+.circmed {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 5px;
+    transform: rotate(180deg);
+}
+
+.circsma {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(180deg);
 }
 
 .circle {
@@ -177,9 +299,66 @@ video.videomin {
     pointer-events: none;
 }
 
+.btnPlayMed.viole, .circmed.viole, .circsma.viole {
+	background: rgba(127,36,255,1);
+	background: -moz-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(127,36,255,1)), color-stop(100%, rgba(255,172,255,1)));
+	background: -webkit-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
+}
+
+.btnPlayMed.azul, .circmed.azul, .circsma.azul {
+    background: rgba(39,35,102,1);
+    background: -moz-linear-gradient(left, rgba(39,35,102,1) 0%, rgba(63,81,212,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(39,35,102,1)), color-stop(100%, rgba(63,81,212,1)));
+    background: -webkit-linear-gradient(left, rgba(39,35,102,1) 0%, rgba(63,81,212,1) 100%);
+    background: -o-linear-gradient(left, rgba(39,35,102,1) 0%, rgba(63,81,212,1) 100%);
+    background: -ms-linear-gradient(left, rgba(39,35,102,1) 0%, rgba(63,81,212,1) 100%);
+    background: linear-gradient(to right, rgba(39,35,102,1) 0%, rgba(63,81,212,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#272366', endColorstr='#3f51d4', GradientType=1 );
+}
+
+.btnPlayMed.cele, .circmed.cele, .circsma.cele {
+	background: rgba(128,151,252,1);
+	background: -moz-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(128,151,252,1)), color-stop(100%, rgba(27,251,199,1)));
+	background: -webkit-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: -o-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: -ms-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: linear-gradient(to right, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8097fc', endColorstr='#1bfbc7', GradientType=1 );
+}
+
+.btnPlayMed.rosa, .circmed.rosa, .circsma.rosa {
+    background: rgba(255,142,108,1);
+	background: -moz-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,142,108,1)), color-stop(100%, rgba(255,45,138,1)));
+	background: -webkit-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: linear-gradient(to right, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
+}
+
 .btnPlayMed i.glyphicon {
     top: 3px;
     left: 2px;
+}
+
+.sinbor input.form-control {
+	border: 1px solid #7740a2;
+    border-radius: 15px;
+    border-right: 0;
+}
+
+.sinbor button.btn.btn-default {
+    border: 1px solid #7740a2;
+    border-radius: 0 15px 15px 0;
+    border-left: 0;
+    color: #7740a2;
 }
 
 .saltarVid {
@@ -200,9 +379,25 @@ video.videomin {
     margin-left: -50px!important;
 }
 
+.volverint {
+    font-size: 20px;
+	width: 100px!important;
+    margin: 10px auto!important;
+}
+
 .contenidoGen {
 	padding: 15px;
-	padding-bottom: 175px;
+	padding-bottom: 110px;
+}
+
+.contenidoGen.conpub {
+	padding: 15px;
+	padding-bottom: 150px;
+}
+
+.contbton {
+    position: relative;
+    height: 120px;
 }
 
 #med_ini {
@@ -225,11 +420,71 @@ video.videomin {
 	
 }
 
+.btnSinborde.violeta, a.btnSinborde.violeta {
+    color: #7740a2;
+    border: 1px solid #7740a2;
+}
+
 .tiotge {
     font-family: 'MontserratMedium';
     color: #FFF;
 	font-size: 22px;
 	margin-bottom: 15px;
+}
+
+.curItemComp {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    color: rgba(231,98,57,1);
+    display: inline-block;
+	margin: 5px 10px;
+}
+
+.circItemA {
+    background: rgba(231,98,57,1);
+    background: -moz-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231,98,57,1)), color-stop(100%, rgba(255,222,103,1)));
+    background: -webkit-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: -o-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: -ms-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: linear-gradient(to right, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e76239', endColorstr='#ffde67', GradientType=1 );
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+	padding: 5px;
+}
+
+.circItemB {
+    background: rgba(231,98,57,1);
+    background: -moz-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231,98,57,1)), color-stop(100%, rgba(255,222,103,1)));
+    background: -webkit-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: -o-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: -ms-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    background: linear-gradient(to right, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e76239', endColorstr='#ffde67', GradientType=1 );
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(180deg);
+}
+
+.circItemB img {
+    width: 60%;
+    transform: rotate(180deg);
+    margin: 20%;
+}
+
+.activo .circItemA {
+	background: transparent;
+	border: 2px solid rgba(231,98,57,1);
+}
+
+.activo .circItemB {
+	display:none;
 }
 
 .boxprem {
@@ -238,6 +493,37 @@ video.videomin {
 
 .bototneraBottom.conpub {
     padding-top: 0;
+}
+
+.ultimoCursosTit {
+    font-family: 'MontserratBold';
+    text-align: center;
+    font-size: 14px;
+    color: #ff2b8b;
+    border-bottom: 1px solid #e76239;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+}
+
+.titLibreria {
+    font-family: 'MontserratBold';
+    text-align: center;
+    font-size: 24px;
+    color: #7740a2;
+    padding: 15px 0;
+    margin-bottom: 5px;
+}
+
+.ultimoCursosTit span{
+    font-family: 'MontserratRegular';
+}
+
+.ultimoCursosSubTit {
+    color: #e86b43;
+    font-family: 'MontserratRegular';
+    text-align: center;
+    font-size: 11px;
+    padding-bottom: 10px;
 }
 
 #med_ini {
@@ -250,6 +536,17 @@ video.videomin {
     font-size: 26px;
     font-family: 'MontserratBold';
     margin: 80px auto 30px;
+}
+
+.titSeccionSub {
+    text-align: center;
+    color: #FFF;
+    font-size: 20px;
+    font-family: 'MontserratSemiBold';
+    margin: 80px auto 30px;
+	width: 80%;
+    border-bottom: 1px solid #FFF;
+    padding-bottom: 5px;
 }
 
 .btnGenerico.btnViole {
@@ -270,6 +567,26 @@ video.videomin {
     -webkit-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
 	-moz-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
 	box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+}
+
+.btnGenerico.btnCele {
+	background: rgba(128,151,252,1);
+	background: -moz-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(128,151,252,1)), color-stop(100%, rgba(27,251,199,1)));
+	background: -webkit-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: -o-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: -ms-linear-gradient(left, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	background: linear-gradient(to right, rgba(128,151,252,1) 0%, rgba(27,251,199,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8097fc', endColorstr='#1bfbc7', GradientType=1 );
+	color: #FFF;
+	outline: none!important;
+	border: 0;
+	border-radius: 20px;
+    font-family: 'MontserratBold';
+    padding: 10px;
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.2);
+	box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.2);
 }
 
 #facebooklogin {
@@ -464,7 +781,6 @@ div#alerta.hidden {
 }
 
 .interna .btnGenerico {
-    height: 60px;
     margin: 10px auto 0;
     padding: 7px;
 }
@@ -533,6 +849,11 @@ div#alerta.hidden {
 	background: #fefae7;
 }
 
+.botoneraLib {
+	color: #7740a2;
+	background: #FFF;
+}
+
 .botronesHoem .sub {
     font-family: 'MontserratRegular';
     border-top: 1px solid #FFF;
@@ -558,19 +879,45 @@ div#alerta.hidden {
 }
 
 .ultimopodcast {
-    border: 1px solid;
+    font-family: 'MontserratSemiBold';
+    color: #FFF;
     padding: 15px;
-    font-size: 22px;
+    font-size: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+    background: rgba(255,142,108,1);
+	background: -moz-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,142,108,1)), color-stop(100%, rgba(255,45,138,1)));
+	background: -webkit-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: linear-gradient(to right, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
+}
+
+.btnNaranja {
+    font-family: 'MontserratSemiBold';
+    color: #FFF;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+    background: rgba(255,142,108,1);
+	background: -moz-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,142,108,1)), color-stop(100%, rgba(255,45,138,1)));
+	background: -webkit-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: linear-gradient(to right, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
 }
 
 .todospods {
     padding: 35px 0;
 }
 
-.tituCurAct img {
-    width: 100%;
-    margin: 15px auto;
-}
 
 .boxprem img {
     width: 100%;
@@ -584,15 +931,36 @@ div#alerta.hidden {
     margin: 20px auto;
 }
 
+.tituloCat {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 24px;
+    margin: 20px auto;
+}
+
 .boxcast {
-    font-size: 16px;
-    border: 1px solid;
+    font-size: 13px;
+    border-radius: 15px;
     padding: 15px;
+    font-family: 'MontserratSemiBold';
+    color: #FFF;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
+}
+
+.todospods .boxcast {
+    font-size: 16px;
+    padding: 15px;
+    background: rgba(255,221,165,0.2);
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    border: 0;
+    border-radius: 20px;
 }
 
 .categoriascur {
     height: 73vh;
-    border: 1px solid;
     padding: 5px;
     margin: 10px auto;
     border-radius: 5px;
@@ -602,8 +970,11 @@ div#alerta.hidden {
     padding: 10px;
     font-size: 22px;
     text-align: center;
-    border: 1px solid #999;
+    border: 0;
     margin-top: 5px;
+    color: #FFF;
+    border-radius: 25px;
+    background: #7740a2;
 }
 
 .boxEstadisticas {

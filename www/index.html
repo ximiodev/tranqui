@@ -103,9 +103,15 @@
 			<div class="ventana hidden" id="pantalla3">
 				<div class="contenidoGen">
 					<h4 class="titSeccion">Meditación incial</h4>
-					<div class="btnPlayMed" onclick="togglePlaying()"><i class="glyphicon glyphicon-play"></i></div>
-					<div class="circle audioBorde"></div>
-					<audio ontimeupdate="updateBar()" id="med_ini">
+					<div class="btnPlayMed ct_med_ini viole" onclick="togglePlaying('med_ini')">
+						<div class="circmed viole">
+							<div class="circsma viole">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
+					</div>
+					<div class="circle audioBorde ab_med_ini"></div>
+					<audio ontimeupdate="updateBar('med_ini')" id="med_ini">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -167,7 +173,26 @@
 					<div class="tituloHome">BIENVENIDO</div>
 					<div class="boxCursoAct">
 						<div class="tituCurAct">
-							<img src="img/boxcap.png" class="">
+							<div class="ultimoCursosTit">No tienes ningún curso activo</div>
+							<div class="ultimoCursosSubTit">Última práctica</div>
+							<div class="curItemComp">
+								<div class="circItemA">
+									<div class="circItemB"><img src="img/check.png"></div>
+								</div>
+								<div class="numIteCu">1</div>
+							</div>
+							<div class="curItemComp">
+								<div class="circItemA">
+									<div class="circItemB"><img src="img/check.png"></div>
+								</div>
+								<div class="numIteCu">2</div>
+							</div>
+							<div class="curItemComp activo">
+								<div class="circItemA">
+									<div class="circItemB"><img src="img/check.png"></div>
+								</div>
+								<div class="numIteCu">3</div>
+							</div>
 						</div>
 					</div>
 					<div class="botronesHoem btnMedDiaria">
@@ -194,15 +219,15 @@
 			</div>
 			<div class="ventana hidden" id="pantalla6">
 				<div class="contenidoGen">
-					<h4>Timers</h4>
+					<h4 class="titSeccionSub">Timers</h4>
 					
 					<div class="interna">
-						<div class="btnGenerico btnGuiada">GUIADA</div>
-						<div class="btnGenerico btnNoGuiada">NO GUIADA</div>
-						<div class="btnGenerico btnGratuita">GRATUITA</div>
+						<div class="btnGenerico btnCele btnGuiada">GUIADA</div>
+						<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA</div>
+						<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
 					</div>
 					
-					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="saltarVid2 btnSinborde btnVolverHome">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla6b">
@@ -212,21 +237,30 @@
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolver6">< Volver</div>
+					<div class="btnGenerico btnVolver6">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla7">
 				<div class="contenidoGen">
-					<h4>Esfera de Meditación</h4>
-					<audio controls id="audEsfera">
+					<h4 class="titSeccionSub">Esfera de Meditación</h4>
+					<div class="btnPlayMed ct_audEsfera cele" onclick="togglePlaying('audEsfera')">
+						<div class="circmed cele">
+							<div class="circsma cele">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
+					</div>
+					<div class="circle audioBorde ab_audEsfera"></div>
+					<audio ontimeupdate="updateBar('audEsfera')" id="audEsfera">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="saltarVid2 btnSinborde btnVolverHome">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla8">
 				<div class="contenidoGen">
+					<h4 class="titSeccionSub">PODCAST</h4>
 					<div class="ultimopodcast">
 						<div class="titPod"></div>
 						<div class="durPod"></div>
@@ -244,12 +278,20 @@
 			</div>
 			<div class="ventana hidden" id="pantalla8b">
 				<div class="contenidoGen">
-					<h4 id="nomrepod"></h4>
-					<audio controls id="audPod">
+					<h4 class="titSeccionSub" id="nomrepod"></h4>
+					<div class="btnPlayMed ct_audPod rosa" onclick="togglePlaying('audPod')">
+						<div class="circmed rosa">
+							<div class="circsma rosa">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
+					</div>
+					<div class="circle audioBorde ab_audPod"></div>
+					<audio ontimeupdate="updateBar('audPod')" id="audPod">
 						<source id="podsour" src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolverPods">< Volver</div>
+					<div class="volverint btnSinborde  btnVolverPods">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -260,19 +302,21 @@
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla9">
-				<div class="contenidoGen">
+				<div class="contenidoGen conpub">
 					<div class="busador">						
-						<div class="input-group">
+						<div class="input-group sinbor">
 							<input type="text" class="form-control" placeholder="Buscar">
 							<span class="input-group-btn">
 								<button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
 							</span>
 						</div>
 					</div>
+					<div class="titLibreria">LIBRERÍA</div>
 					<div class="categoriascur">
 					</div>
-					<div class="btnGenerico btnVolverHome">< Volver</div>
-					<div class="bototneraBottom">
+					<div class="volverint violeta btnSinborde btnVolverHome">Volver</div>
+					<div class="bototneraBottom botoneraLib conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -283,27 +327,36 @@
 			</div>
 			<div class="ventana hidden" id="pantalla10">
 				<div class="contenidoGen">
-					<h4>Meditación Diaria: <span id="diameddia"></span></h4>
-					<audio controls id="audMedDiaria">
+					<h4 class="titSeccionSub">Meditación Diaria: <span id="diameddia"></span></h4>
+					<div class="btnPlayMed ct_audMedDiaria azul" onclick="togglePlaying('audMedDiaria')">
+						<div class="circmed azul">
+							<div class="circsma azul">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
+					</div>
+					<div class="circle audioBorde ab_audMedDiaria"></div>
+					<audio ontimeupdate="updateBar('audMedDiaria')" id="audMedDiaria">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="saltarVid2 btnSinborde btnVolverHome">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla11">
 				<div class="contenidoGen">
-					<h4><i class="glyphicon glyphicon-user"></i> <span id="nombreuser"></span></h4>
+					<h4 class="titSeccionSub">USUARIO</h4>
 					<div class="boxuser">
-						<div class="btnGenerico">Mis cursos</div>
+						<div class="btnNaranja">Mis cursos</div>
 						<div class="boxEstadisticas">
 							Estadísticas
 							<div class="boxEstadisticas">
 							</div>
 						</div>
 					</div>
-					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="volverint btnSinborde btnVolverHome">Volver</div>
 					<div class="bototneraBottom">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -314,15 +367,16 @@
 			</div>
 			<div class="ventana hidden" id="pantalla12">
 				<div class="contenidoGen">
-					<h4>MBSR</h4>
+					<h4 class="titSeccionSub">MBSR</h4>
 					<div class="boxcupon">
 						¿TENÉS UN CUPON?
-						<input type="text" class="form-control" placeholder="Ingresa tu cupon">
-						<div class="btnGenerico btnGetCupon">ENVIAR</div>
+						<input type="text" class="form-control inputfant" placeholder="Ingresa tu cupon">
+						<div class="btnSinborde btnGetCupon">ENVIAR</div>
 					</div>
 					<div class="contclases"></div>
-					<div class="btnGenerico btnVolverHome">< Volver</div>
+					<div class="volverint btnSinborde btnVolverHome">Volver</div>
 					<div class="bototneraBottom">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -336,11 +390,11 @@
 					<div class="tituloCat"></div>
 					<div class="listcursos">
 					</div>
-					<div class="titclases">Clases individuales</div>
 					<div class="listclasesind">
 					</div>
-					<div class="btnGenerico btnVolverapa" data-apa="pantalla9">< Volver</div>
-					<div class="bototneraBottom">
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla9">Volver</div>
+					<div class="bototneraBottom botoneraLib conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -355,8 +409,9 @@
 					<div class="tituloCurso"></div>
 					<div class="listetapas">
 					</div>
-					<div class="btnGenerico btnVolverapa" data-apa="pantalla13">< Volver</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -372,7 +427,7 @@
 					<div class="tituloEtapa"></div>
 					<div class="listclases">
 					</div>
-					<div class="btnGenerico btnVolverapa" data-apa="pantalla14">< Volver</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -387,7 +442,7 @@
 					<h4 class="tituloClase"></h4>
 					<div class="contClases" id="audiosclase">
 					</div>
-					<div class="btnGenerico btnVolverapa" data-apa="pantalla15">< Volver</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla15">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -404,7 +459,7 @@
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolverapa" data-apa="pantalla16">< Volver</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla16">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>

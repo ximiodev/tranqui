@@ -265,17 +265,6 @@ var app = {
 			ponerPod(0);
 		});
 		
-		 $('.btnPlayMed').click(function(e) {
-			e.preventDefault();
-			if(isplay) {
-				$('#med_ini')[0].pause();
-				isplay = false;
-			} else {
-				$('#med_ini')[0].play();
-				isplay = true;
-			}
-		});
-		
 		 $('.btnSaltarMedIn').click(function(e) {
 			e.preventDefault();
 			$('#med_ini')[0].pause();
@@ -491,13 +480,16 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					ponerPantalla('pantalla13');
+					$('#pantalla13').attr('style',categorias[posc].codigo);
+					$('#pantalla14').attr('style',categorias[posc].codigo);
 					cursos = data.cursos;
 					var podac;
 					$('.listcursos').html('');
 					for(var i=0;i<cursos.length;i++) {
 						podac = ''+
-						'<div class="boxcate" onclick="app.ponerCurso('+i+','+cursos[i].ID+');" data-cur="'+i+'">'+
+						'<div class="boxcatex" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+');" data-cur="'+i+'">'+
 						'	<div class="titCate">'+cursos[i].nombre+'</div>'+
+						'	<div class="descCate">'+cursos[i].descripcion+'</div>'+
 						'</div>';
 						$('.listcursos').append(podac);
 					}
@@ -506,18 +498,21 @@ var app = {
 					$('.listclasesind').html('');
 					for(var i=0;i<clases.length;i++) {
 						podac = ''+
-						'<div class="boxcate" onclick="app.ponerClaseInd('+i+','+clases[i].ID+');" data-cur="'+i+'">'+
+						'<div class="boxcate" onclick="app.ponerClaseInd('+i+','+posc+','+clases[i].ID+');" data-cur="'+i+'">'+
 						'	<div class="titCate">'+clases[i].nombre+'</div>'+
 						'</div>';
 						$('.listclasesind').append(podac);
 					}
+					$('#pantalla13 .boxcatex .titCate').attr('style',categorias[posc].codigo);
+					$('#pantalla13 .listclasesind .boxcate').attr('style',categorias[posc].codigo);
+					$('#pantalla14 .boxcatex').attr('style',categorias[posc].codigo);
 				} else {
 					alerta(data.msg);
 				}
 			}
 		});
 	},
-    ponerCurso: function(posc, curid) {
+    ponerCurso: function(posc, posci, curid) {
 		var datos = {};
 		datos.action = 'getCurso';
 		datos.curid = curid;
@@ -771,12 +766,12 @@ function ponerPod(num) {
 	$('#nomrepod').html(podcasts[num].nombre);
 	 var audio = $("#audPod");      
     $("#podsour").attr("src", baseURL+podcasts[num].archivo);
+	$('#audPod').html('<source src="'+baseURL+podcasts[num].archivo+'"  id="podsour" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+	ponerPantalla('pantalla8b');
     audio[0].pause();
     audio[0].load();
     //audio[0].play(); changed based on Sprachprofi's comment below
-    audio[0].oncanplaythrough = audio[0].play();
-	$('#audPod').html('<source src="'+baseURL+podcasts[num].archivo+'"  id="podsour" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-	ponerPantalla('pantalla8b');
+    //~ audio[0].oncanplaythrough = audio[0].play();
 }
 
 function alerta(msj) {
@@ -793,6 +788,12 @@ function ponerPantalla(cual) {
 		$('#'+cual).removeClass('hidden');
 		$('#'+cual).addClass('activa');
 		$('#'+cual).fadeIn(600);
+		
+		$("#audPod")[0].pause();   
+		$('#med_ini')[0].pause();
+		$('#audMedDiaria')[0].pause();
+		$('#audClaseP')[0].pause();
+		$('#audPod')[0].pause();
 	});
 }
 
@@ -842,6 +843,7 @@ var datosClase = {};
 var isplay = false;
 
 var med_ini = document.getElementById("med_ini")
+var audMedDiaria = document.getElementById("audMedDiaria")
 var estaplay = false
 
 med_ini.addEventListener('loadedmetadata', function() {
@@ -849,33 +851,34 @@ med_ini.addEventListener('loadedmetadata', function() {
   var currentTime = med_ini.currentTime
 });
 
-function togglePlaying() {
+function togglePlaying(cual) {
   var method
+  var audi = document.getElementById(cual)
+  
+	if (!estaplay) {
+		$('.btnPlayMed.ct_'+cual+' .circsma').html('<i class="glyphicon glyphicon-pause"></i>');
+		estaplay = true
+		method = 'play'
+	} else {
+		$('.btnPlayMed.ct_'+cual+' .circsma').html('<i class="glyphicon glyphicon-play"></i>');
+		estaplay = false
+		method = 'pause'
+	}
 
-  if (!estaplay) {
-	  $('.btnPlayMed').html('<i class="glyphicon glyphicon-pause"></i>');
-    estaplay = true
-    method = 'play'
-  } else {
-	  $('.btnPlayMed').html('<i class="glyphicon glyphicon-play"></i>');
-    estaplay = false
-    method = 'pause'
-  }
-
-  med_ini[method]()
+	audi[method]()
 
 }
 
-function updateBar() {
-  
-  var currentTime = med_ini.currentTime
-  var duration = med_ini.duration
+function updateBar(cual) {
+  var audi = document.getElementById(cual)
+  var currentTime = audi.currentTime
+  var duration = audi.duration
   
   if (currentTime === duration) {
 	  estaplay = true
   }
   var percentage = currentTime / duration
-  $('.audioBorde.circle').circleProgress({
+  $('.audioBorde.circle.ab_'+cual).circleProgress({
     value: (percentage).toFixed(2),
     animation: false,
     size: 120,
