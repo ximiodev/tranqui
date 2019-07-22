@@ -537,7 +537,7 @@ var app = {
 						'	<div class="clasesEtapa">'+
 						'		<div class="listclases">';
 						for(var j=0;j<etapas[i].clases.length;j++) {
-							var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c)?' activo':'';
+							var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
 							podac += ''+
 							'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
 							'			<div class="circItemA">'+
