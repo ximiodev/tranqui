@@ -133,7 +133,7 @@ var app = {
 		 $('.btnVolverapa').click(function(e) {
 			e.preventDefault();
 			var donde = $(this).data('apa');
-			if(donde=='pantalla15') {
+			if(donde=='pantalla16') {
 				$('#audClaseP')[0].pause();
 			}
 			ponerPantalla(donde);
@@ -489,7 +489,7 @@ var app = {
 						podac = ''+
 						'<div class="boxcatex" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+');" data-cur="'+i+'">'+
 						'	<div class="titCate">'+cursos[i].nombre+'</div>'+
-						'	<div class="descCate">'+cursos[i].descripcion+'</div>'+
+						'	<div class="descCate" style="color:#'+categorias[posc].color+'">'+cursos[i].descripcion+'</div>'+
 						'</div>';
 						$('.listcursos').append(podac);
 					}
@@ -506,6 +506,7 @@ var app = {
 					$('#pantalla13 .boxcatex .titCate').attr('style',categorias[posc].codigo);
 					$('#pantalla13 .listclasesind .boxcate').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .boxcatex').attr('style',categorias[posc].codigo);
+					$('#pantalla14 .tituloCurso').attr('style',categorias[posc].codigo);
 				} else {
 					alerta(data.msg);
 				}
@@ -516,7 +517,8 @@ var app = {
 		var datos = {};
 		datos.action = 'getCurso';
 		datos.curid = curid;
-		$('.tituloCurso').html(cursos[posc].nombre);
+		$('.tituloCurso .titcur').html(cursos[posc].nombre);
+		$('.tituloCurso .descur').html(cursos[posc].descripcion);
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
@@ -527,14 +529,32 @@ var app = {
 					ponerPantalla('pantalla14');
 					etapas = data.etapas;
 					var podac;
-					$('.listetapas').html('');
+					$('.listetapas .contesli').html('');
 					for(var i=0;i<etapas.length;i++) {
 						podac = ''+
-						'<div class="boxcate" onclick="app.ponerEtapa('+i+','+etapas[i].ID+');" data-cur="'+i+'">'+
+						'<div class="boxcate">'+
 						'	<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
-						'	<div class="clasesEtapa">Clases: '+etapas[i].cantCla+'</div>'+
+						'	<div class="clasesEtapa">'+
+						'		<div class="listclases">';
+						for(var j=0;j<etapas[i].clases.length;j++) {
+							var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c)?' activo':'';
+							podac += ''+
+							'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+							'			<div class="circItemA">'+
+							'				<div class="circItemB"><img src="img/check.png"></div>'+
+							'			</div>'+
+							'			<div class="numIteCu">'+(j+1)+'</div>'+
+							'		</div>';
+						}
+						podac += ''+
+						'		</div>'+
+						'	</div>'+
+						'</div>'+
 						'</div>';
-						$('.listetapas').append(podac);
+						$('.listetapas .contesli').append(podac);
+						$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
+						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
+						$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
 					}
 				} else {
 					alerta(data.msg);
@@ -558,19 +578,26 @@ var app = {
 			$('.listclases').append(podac);
 		}
 	},
-    ponerClase: function(i, posc, curid) {
+    ponerClase: function(i, posc, curid, posci) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		ponerPantalla('pantalla16');
 		$('#audiosclase').html('');
 		for(var k=0;k<etapas[posc].clases[i].archivos.length;k++) {
-			$('#audiosclase').append('<div class="btnGenerico" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
+			$('#audiosclase').append('<div class="btnGenerico btnViole" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
 		}
+		$('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
+		$('#pantalla17').attr('style',$('#pantalla17').attr('style')+categorias[posci].codigo);
+		$('#pantalla17 .viole').attr('style', categorias[posci].codigo);
+		$('#audiosclase .btnGenerico').attr('style',categorias[posci].codigo);
 	},
     ponerClaseAudio: function(k,i, posc, curid) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		ponerPantalla('pantalla17');
 		datosClase.audio_ID = etapas[posc].clases[i].archivos[k].ID;
+		registroClase = false;
 		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#audClaseP')[0].pause();
+		$('#audClaseP')[0].load();
 	},
     getMedIni: function() {
 		var datos = {};
@@ -823,11 +850,7 @@ meddiaria.onplaying = function() {
 		}
 	});
 };
-var audClaseP = document.getElementById("audClaseP");
-audClaseP.onplaying = function() {
-	var datos = {};
-	datos.action = 'saveClase';
-	datos.clase_ID = datosClase.audio_ID;
+function registrarAudioComp(datos) {
 	$.ajax({
 		type: 'POST',
 		dataType: 'json',
@@ -869,15 +892,27 @@ function togglePlaying(cual) {
 
 }
 
+var registroClase = false;
 function updateBar(cual) {
-  var audi = document.getElementById(cual)
-  var currentTime = audi.currentTime
-  var duration = audi.duration
-  
-  if (currentTime === duration) {
-	  estaplay = true
+	var audi = document.getElementById(cual)
+	var currentTime = audi.currentTime
+	var duration = audi.duration
+
+	if (currentTime === duration) {
+		estaplay = true
+	}
+	var percentage = currentTime / duration;
+	if(percentage>0.95) {
+		var datos = {};
+		if(cual=="audClaseP") {
+			if(!registroClase) {
+				datos.action = 'saveClase';
+				datos.clase_ID = datosClase.audio_ID;
+				registrarAudioComp(datos);
+				registroClase = true;
+			}
+		}
   }
-  var percentage = currentTime / duration
   $('.audioBorde.circle.ab_'+cual).circleProgress({
     value: (percentage).toFixed(2),
     animation: false,
@@ -897,4 +932,12 @@ function convertElapsedTime(inputSeconds) {
   }
   var minutes = Math.floor(inputSeconds / 60)
   return minutes + ":" + seconds
+}
+
+function inArray(needle, haystack) {
+    var length = haystack.length;
+    for(var i = 0; i < length; i++) {
+        if(haystack[i] == needle) return true;
+    }
+    return false;
 }

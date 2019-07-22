@@ -295,7 +295,8 @@ video.videomin {
     line-height: 1.2;
     left: 50%;
     margin-left: -60px;
-    top: 270px;
+	top: 50%;
+	margin-top: -60px;
     pointer-events: none;
 }
 
@@ -526,7 +527,7 @@ video.videomin {
     padding-bottom: 10px;
 }
 
-#med_ini {
+#med_ini, #audClaseP {
 	opacity:0;
 }
 
@@ -536,6 +537,63 @@ video.videomin {
     font-size: 26px;
     font-family: 'MontserratBold';
     margin: 80px auto 30px;
+}
+
+.tituloCurso {
+    width: 160px;
+    margin: 0 auto;
+    text-align: center;
+    background: #FFF;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-family: 'MontserratSemiBold';
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	z-index: 89;
+    position: relative;
+}
+
+.listetapas {
+	overflow-x: auto;
+    z-index: 90;
+	margin: -30px -15px 0;
+    padding: 0 0 30px;
+}
+
+#pantalla14 .activo .circItemA {
+    background: transparent!important;
+    border: 2px solid #FFF;
+}
+
+.contesli {
+    width: max-content;
+}
+
+.numIteCu {
+    color: #FFF;
+}
+
+.titEtapa {
+    font-size: 16px;
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+.listetapas .boxcate {
+    border-radius: 15px;
+    padding: 15px;
+    padding-top: 35px;
+    margin: 0 5vw;
+	width: 90vw;
+    display: inline-block;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+}
+
+.descur {
+    font-family: 'MontserratRegular';
+    font-size: 12px;
 }
 
 .titSeccionSub {
@@ -932,6 +990,14 @@ div#alerta.hidden {
 }
 
 .tituloCat {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 24px;
+    margin: 20px auto;
+}
+
+.tituloClase {
     color: #FFF;
     text-align: center;
     font-family: 'MontserratMedium';

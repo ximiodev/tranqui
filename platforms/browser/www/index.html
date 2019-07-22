@@ -174,6 +174,7 @@
 					<div class="boxCursoAct">
 						<div class="tituCurAct">
 							<div class="ultimoCursosTit">No tienes ningún curso activo</div>
+<!--
 							<div class="ultimoCursosSubTit">Última práctica</div>
 							<div class="curItemComp">
 								<div class="circItemA">
@@ -193,6 +194,7 @@
 								</div>
 								<div class="numIteCu">3</div>
 							</div>
+-->
 						</div>
 					</div>
 					<div class="botronesHoem btnMedDiaria">
@@ -267,7 +269,8 @@
 					</div>
 					<div class="todospods">
 					</div>
-					<div class="bototneraBottom">
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -292,7 +295,8 @@
 						Su navegador no sorporta audio HTML5
 					</audio>
 					<div class="volverint btnSinborde  btnVolverPods">Volver</div>
-					<div class="bototneraBottom">
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -406,8 +410,12 @@
 			<div class="ventana hidden" id="pantalla14">
 				<div class="contenidoGen">
 					<div class="tituloCat"></div>
-					<div class="tituloCurso"></div>
+					<div class="tituloCurso">
+						<div class="titcur"></div>
+						<div class="descur"></div>
+					</div>
 					<div class="listetapas">
+						<div class="contesli"></div>
 					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom">
@@ -425,10 +433,10 @@
 					<div class="tituloCat"></div>
 					<div class="tituloCurso"></div>
 					<div class="tituloEtapa"></div>
-					<div class="listclases">
-					</div>
+					<div class="listclases"></div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
-					<div class="bototneraBottom">
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -442,8 +450,9 @@
 					<h4 class="tituloClase"></h4>
 					<div class="contClases" id="audiosclase">
 					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla15">Volver</div>
-					<div class="bototneraBottom">
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -455,12 +464,21 @@
 			<div class="ventana hidden" id="pantalla17">
 				<div class="contenidoGen">
 					<h4 class="tituloClase"></h4>
-					<audio controls id="audClaseP">
+					<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
+						<div class="circmed viole">
+							<div class="circsma viole">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
+					</div>
+					<div class="circle audioBorde ab_audClaseP"></div>
+					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla16">Volver</div>
-					<div class="bototneraBottom">
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
