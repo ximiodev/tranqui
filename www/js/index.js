@@ -270,6 +270,28 @@ var app = {
 			$('#med_ini')[0].pause();
 			ponerPantalla('pantalla4');
 		});
+		
+		$("#med_ini_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#med_ini')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+
 		app.getCuestionario();
 		app.getMedIni();
 		app.getMedDiaria();
@@ -913,10 +935,14 @@ function updateBar(cual) {
 			}
 		}
   }
+	if(!estadrag) {
+		$("#"+cual+"_control").roundSlider("setValue", (Math.round(percentage*100)), 1);
+	}
   $('.audioBorde.circle.ab_'+cual).circleProgress({
     value: (percentage).toFixed(2),
     animation: false,
     size: 120,
+    startAngle: -Math.PI/2,
     thickness: 1,
     fill: {color: "#FFFFFF"}
   });
@@ -924,6 +950,8 @@ function updateBar(cual) {
   //~ document.getElementById("current-time").innerHTML = convertElapsedTime(currentTime)
   
 }
+
+var estadrag = false;
 
 function convertElapsedTime(inputSeconds) {
   var seconds = Math.floor(inputSeconds % 60)

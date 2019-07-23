@@ -1055,3 +1055,44 @@ div#alerta.hidden {
     display: block;
     clear: both;
 }
+
+.circuloN .rs-range-color  {
+    background-color: transparent;
+}
+.rs-bg-color {
+    background-color: transparent;
+}
+.circuloN .rs-path-color  {
+    background-color: transparent;
+    border: 0;
+}
+.circuloN .rs-handle  {
+    background-color: #FFF;
+    padding: 0;
+    border: 0;
+    pointer-events: all;
+}
+.circuloN .rs-handle:after  {
+    border-color: #FFF;
+    background-color: transparent;
+}
+.circuloN .rs-border  {
+    border: 0;
+}
+
+div#med_ini_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
+span.rs-tooltip.rs-tooltip-text.edit {
+    display: none;
+}
+
+.circuloN .rs-block.rs-outer.rs-border.rs-split {
+    border: 1px dotted #FFF;
+}
