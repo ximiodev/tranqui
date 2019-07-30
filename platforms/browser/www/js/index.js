@@ -186,6 +186,11 @@ var app = {
 		
 		 $('.saltar').click(function(e) {
 			e.preventDefault();
+			ponerPantalla('pantalla3b');
+		});
+		
+		 $('.iniciarmedini').click(function(e) {
+			e.preventDefault();
 			ponerPantalla('pantalla3');
 		});
 		
@@ -291,6 +296,111 @@ var app = {
 				audio.currentTime = tototime; 
 			}
 		});
+		
+		$("#audClaseP_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audClaseP')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
+		$("#audEsfera_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audEsfera')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
+		$("#audPod_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audPod')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
+		$("#audTim_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audTim')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
+		$("#audMedDiaria_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audMedDiaria')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
 
 		app.getCuestionario();
 		app.getMedIni();
@@ -298,6 +408,7 @@ var app = {
 		app.getPodcasts();
 		app.getCategorias();
 		app.getEsfera();
+		app.getMensajes();
     },
     initStore: function() {
 		if (!window.store) {
@@ -426,7 +537,7 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					preguntas = data.datos;
-					ponerPregunta();
+					//~ ponerPregunta();
 				} else {
 					alerta(data.msg);
 				}
@@ -638,23 +749,6 @@ var app = {
 			}
 		});
 	},
-    getMedIni: function() {
-		var datos = {};
-		datos.action = 'getMedIni';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					$('#med_ini').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-				} else {
-					alerta(data.msg);
-				}
-			}
-		});
-	},
     getMedDiaria: function() {
 		var datos = {};
 		datos.action = 'getMedDiaria';
@@ -685,6 +779,25 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					$('#audEsfera').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getMensajes: function() {
+		var datos = {};
+		datos.action = 'getMensajes';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					mensajes_app = data.datos;
+					$('#mensajeFinenc').html(getTexto('final_encuesta'));
+					$('#mensajeInimed').html(getTexto('meditacion_inicial'));
 				} else {
 					alerta(data.msg);
 				}
@@ -750,6 +863,7 @@ var cursos;
 var clases;
 var etapas;
 var meditadiraria;
+var mensajes_app;
 var estadisticas;
 var preguntaAct = 0;
 var meditacionediarias;
@@ -776,7 +890,7 @@ function ponerSigPreg() {
 	if(preguntaAct<preguntas.length) {
 		ponerPregunta();
 	} else {
-		ponerPantalla('pantalla3');
+		ponerPantalla('pantalla2b');
 	}
 }
 
@@ -785,21 +899,45 @@ function ponerEstadisticas() {
 }
 
 function ponerPregunta() {
-	$('#pregunta').html(preguntas[preguntaAct].pregunta);
-	$('#resp_1').html(preguntas[preguntaAct].respuesta1);
-	$('#resp_2').html(preguntas[preguntaAct].respuesta2);
+	$('#pregunta').html(preguntas[preguntaAct].pregunta).css({'opacity':0});
+	$('#resp_1').html(preguntas[preguntaAct].respuesta1).css({'opacity':0});
+	$('#resp_2').html(preguntas[preguntaAct].respuesta2).css({'opacity':0});
+		
 	if(preguntas[preguntaAct].respuesta3=="") {
 		$('#resp_3').hide();
 	} else {
 		$('#resp_3').show();
 	}
-	$('#resp_3').html(preguntas[preguntaAct].respuesta3);
 	if(preguntas[preguntaAct].respuesta4=="") {
 		$('#resp_4').hide();
 	} else {
 		$('#resp_4').show();
 	}
-	$('#resp_4').html(preguntas[preguntaAct].respuesta4);
+	$('#resp_3').html(preguntas[preguntaAct].respuesta3).css({'opacity':0});
+	$('#resp_4').html(preguntas[preguntaAct].respuesta4).css({'opacity':0});
+	$('#pregunta').delay(300).animate({
+		opacity: 1
+		}, 300, function() {
+			$('#resp_1').animate({
+				opacity: 1
+				}, 300, function() {
+					$('#resp_2').animate({
+						opacity: 1
+						}, 300, function() {
+							if(preguntas[preguntaAct].respuesta3=="") {
+								$('#resp_3').animate({
+									opacity: 1
+									}, 300, function() {
+										if(preguntas[preguntaAct].respuesta4=="") {
+											$('#resp_4').animate({
+												opacity: 1
+											}, 300);
+										}
+								});
+							}
+					});
+			});
+	});
 	$('.paso').html((preguntaAct+1)+' / '+preguntas.length);
 }
 
@@ -837,9 +975,14 @@ function ponerPantalla(cual) {
 		$('#'+cual).removeClass('hidden');
 		$('#'+cual).addClass('activa');
 		$('#'+cual).fadeIn(600);
+		if(cual=='pantalla2') {
+			ponerPregunta();
+		}
 		
 		$("#audPod")[0].pause();   
 		$('#med_ini')[0].pause();
+		$('#audTim')[0].pause();
+		$('#audEsfera')[0].pause();
 		$('#audMedDiaria')[0].pause();
 		$('#audClaseP')[0].pause();
 		$('#audPod')[0].pause();
@@ -888,12 +1031,36 @@ var datosClase = {};
 var isplay = false;
 
 var med_ini = document.getElementById("med_ini")
+var audEsfera = document.getElementById("audEsfera")
+var audTim = document.getElementById("audTim")
+var audPod = document.getElementById("audPod")
+var audClaseP = document.getElementById("audClaseP")
 var audMedDiaria = document.getElementById("audMedDiaria")
 var estaplay = false
 
 med_ini.addEventListener('loadedmetadata', function() {
   var duration = med_ini.duration
   var currentTime = med_ini.currentTime
+});
+
+audEsfera.addEventListener('loadedmetadata', function() {
+  var duration = audEsfera.duration
+  var currentTime = audEsfera.currentTime
+});
+
+audTim.addEventListener('loadedmetadata', function() {
+  var duration = audTim.duration
+  var currentTime = audTim.currentTime
+});
+
+audPod.addEventListener('loadedmetadata', function() {
+  var duration = audPod.duration
+  var currentTime = audPod.currentTime
+});
+
+audClaseP.addEventListener('loadedmetadata', function() {
+  var duration = audClaseP.duration
+  var currentTime = audClaseP.currentTime
 });
 
 function togglePlaying(cual) {
@@ -962,6 +1129,16 @@ function convertElapsedTime(inputSeconds) {
   return minutes + ":" + seconds
 }
 
+function getTexto(clave) {
+	var resu = '';
+	for(var i=0;i<mensajes_app.length;i++) {
+		if(mensajes_app[i].clave==clave) {
+			resu = mensajes_app[i].texto;
+		}
+	}
+	return resu;
+}
+
 function inArray(needle, haystack) {
     var length = haystack.length;
     for(var i = 0; i < length; i++) {
@@ -969,3 +1146,13 @@ function inArray(needle, haystack) {
     }
     return false;
 }
+
+document.addEventListener("backbutton", function(e){
+	e.preventDefault();
+    //~ if($.mobile.activePage.is('#homepage')){
+        //~ navigator.app.exitApp();
+    //~ } else {
+        //~ navigator.app.backHistory()
+    //~ }
+    ponerPantalla('pantalla5');
+}, false);

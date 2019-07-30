@@ -113,7 +113,7 @@ a {
 }
 
 #pantalla3 {
-	background-image: url(../img/fondo_0_d.jpg);
+	background-image: url(../img/fondo_0_b.jpg);
 }
 
 #pantalla4 {
@@ -411,7 +411,12 @@ video.videomin {
     font-size: 20px;
 	width: 100px;
 	margin: auto;
-	
+}
+
+.iniciarmedini {
+    font-size: 20px;
+	width: 100px;
+	margin: auto;
 }
 
 .btnSaltarMedIn {
@@ -527,7 +532,7 @@ video.videomin {
     padding-bottom: 10px;
 }
 
-#med_ini, #audClaseP {
+#med_ini, #audClaseP, #audEsfera, #audTim, #audMedDiaria {
 	opacity:0;
 }
 
@@ -1089,10 +1094,59 @@ div#med_ini_control {
 	pointer-events: none;
 }
 
+div#audEsfera_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
+div#audTim_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
+div#audPod_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
+div#audClaseP_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
+div#audMedDiaria_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
 span.rs-tooltip.rs-tooltip-text.edit {
     display: none;
 }
 
 .circuloN .rs-block.rs-outer.rs-border.rs-split {
     border: 1px dotted #FFF;
+}
+
+.mensajeapp {
+    color: #FFF;
 }

@@ -101,6 +101,16 @@
 				</div>
 				<div class="saltar btnSinborde">Saltar »</div>
 			</div>
+			<div class="ventana hidden" id="pantalla2b">
+				<div class="nombreuser"></div>
+				<div class="cuetionario mensajeapp" id="mensajeFinenc"></div>
+				<div class="saltar btnSinborde">Continuar »</div>
+			</div>
+			<div class="ventana hidden" id="pantalla3b">
+				<div class="nombreuser"></div>
+				<div class="cuetionario mensajeapp" id="mensajeInimed"></div>
+				<div class="iniciarmedini btnSinborde">Continuar »</div>
+			</div>
 			<div class="ventana hidden" id="pantalla3">
 				<div class="contenidoGen">
 					<h4 class="titSeccion">Meditación incial</h4>
@@ -237,11 +247,20 @@
 			<div class="ventana hidden" id="pantalla6b">
 				<div class="contenidoGen">
 					<h4>Timers</h4>
-					<audio controls id="audTim">
+					<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
+						<div class="circmed cele">
+							<div class="circsma cele">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
+					</div>
+					<div class="circle audioBorde ab_audTim"></div>
+					<div id="audTim_control" class="circuloN"></div>
+					<audio ontimeupdate="updateBar('audTim')" id="audTim">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="btnGenerico btnVolver6">Volver</div>
+					<div class="btnGenerico btnVolver6 btnVolverHome">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla7">
@@ -255,6 +274,7 @@
 						</div>
 					</div>
 					<div class="circle audioBorde ab_audEsfera"></div>
+					<div id="audEsfera_control" class="circuloN"></div>
 					<audio ontimeupdate="updateBar('audEsfera')" id="audEsfera">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
@@ -292,6 +312,7 @@
 						</div>
 					</div>
 					<div class="circle audioBorde ab_audPod"></div>
+					<div id="audPod_control" class="circuloN"></div>
 					<audio ontimeupdate="updateBar('audPod')" id="audPod">
 						<source id="podsour" src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
@@ -342,6 +363,7 @@
 						</div>
 					</div>
 					<div class="circle audioBorde ab_audMedDiaria"></div>
+					<div id="audMedDiaria_control" class="circuloN"></div>
 					<audio ontimeupdate="updateBar('audMedDiaria')" id="audMedDiaria">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
@@ -474,6 +496,7 @@
 						</div>
 					</div>
 					<div class="circle audioBorde ab_audClaseP"></div>
+					<div id="audClaseP_control" class="circuloN"></div>
 					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
