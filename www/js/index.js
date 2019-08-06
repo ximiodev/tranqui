@@ -77,6 +77,7 @@ var app = {
 				success: function (data) {
 					if(data.res) {
 						ponerPantalla('pantalla1');
+						isLogin = true;
 						estadisticas = data.estadisticas;
 						ponerEstadisticas();
 						$('.nombreuser').html('Hola '+data.datos.nombre);
@@ -104,6 +105,7 @@ var app = {
 					success: function (data) {
 						if(data.res) {
 							ponerPantalla('pantalla1');
+							isLogin = true;
 							$('.nombreuser').html('Hola '+data.datos.nombre);
 						} else {
 							alerta(data.message);
@@ -194,6 +196,40 @@ var app = {
 			ponerPantalla('pantalla3');
 		});
 		
+		 $('.btnConfirmar').click(function(e) {
+			e.preventDefault();
+			$('#notRespB').removeClass('activo');
+			$('#notRespM').removeClass('activo');
+			$('#msjconf').style({'opacity':0});
+			$('#msjconf').html('Configurado');
+			$('#msjconf').animate({opacity: 1}, 300, 
+				function() {
+					$('#msjconf').delay(2000).animate({opacity: 0}, 300, 
+						function() {
+							$('#msjconf').html('');
+						}
+					);
+				}
+			);
+		});
+		
+		 $('.btnConfirmar2').click(function(e) {
+			e.preventDefault();
+			$('#notRespB').removeClass('activo');
+			$('#notRespM').removeClass('activo');
+			$('#msjconf').style({'opacity':0});
+			$('#msjconf').html('Configurado');
+			$('#msjconf').animate({opacity: 1}, 300, 
+				function() {
+					$('#msjconf').delay(2000).animate({opacity: 0}, 300, 
+						function() {
+							$('#msjconf').html('');
+						}
+					);
+				}
+			);
+		});
+		
 		 $('.btnFinalizarConf').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla5');
@@ -246,7 +282,7 @@ var app = {
 		
 		 $('.btnMSBR').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla12');
+			//~ ponerPantalla('pantalla12');
 		});
 		
 		 $('.btnVolverPods').click(function(e) {
@@ -512,6 +548,7 @@ var app = {
 		$('.nombreuser').html('Hola '+datos.displayname);
 		$('#glyphicon glyphicon-user').html(datos.displayname);
 		ponerPantalla('pantalla1');
+		isLogin = true;
 	},
     hacerloginFace: function(datos) {
 		
@@ -521,6 +558,7 @@ var app = {
 			$('.nombreuser').html('Hola '+result.name);
 			$('#glyphicon glyphicon-user').html(result.name);
 			ponerPantalla('pantalla1');
+			isLogin = true;
 		  }, function onError (error) {
 			alerta("Failed: "+JSON.stringify(error));
 		  }
@@ -1029,7 +1067,7 @@ function registrarAudioComp(datos) {
 };
 var datosClase = {};
 var isplay = false;
-
+var isLogin = false;
 var med_ini = document.getElementById("med_ini")
 var audEsfera = document.getElementById("audEsfera")
 var audTim = document.getElementById("audTim")
@@ -1154,5 +1192,7 @@ document.addEventListener("backbutton", function(e){
     //~ } else {
         //~ navigator.app.backHistory()
     //~ }
-    ponerPantalla('pantalla5');
+    if(isLogin) {
+	    ponerPantalla('pantalla5');
+	}
 }, false);
