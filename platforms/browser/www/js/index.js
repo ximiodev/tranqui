@@ -353,6 +353,7 @@ var app = {
 					data: datos,
 					success: function (data) {
 						if(data.res) {
+							ponerPantalla('pantalla12c');
 						} else {
 							alerta("El código ingresado no es válido.");
 						}
