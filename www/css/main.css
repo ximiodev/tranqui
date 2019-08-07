@@ -141,7 +141,7 @@ a {
 }
 
 #pantalla9 {
-	background: #FFF;
+	background: #fefff1;
 }
 
 #pantalla10 {
@@ -152,7 +152,7 @@ a {
 	background-image: url(../img/fndUser-80.jpg);
 }
 
-#pantalla12, #pantalla12b {
+#pantalla12, #pantalla12b, #pantalla12c, #pantalla12d {
 	background-image: url(../img/fndMBSR-80.jpg);
 }
 
@@ -353,6 +353,17 @@ video.videomin {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
 }
 
+.btnPlayMed.vercel, .circmed.vercel, .circsma.vercel {
+	background: rgba(22,202,130,1);
+	background: -moz-linear-gradient(left, rgba(22,202,130,1) 0%, rgba(23,128,203,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(22,202,130,1)), color-stop(100%, rgba(23,128,203,1)));
+	background: -webkit-linear-gradient(left, rgba(22,202,130,1) 0%, rgba(23,128,203,1) 100%);
+	background: -o-linear-gradient(left, rgba(22,202,130,1) 0%, rgba(23,128,203,1) 100%);
+	background: -ms-linear-gradient(left, rgba(22,202,130,1) 0%, rgba(23,128,203,1) 100%);
+	background: linear-gradient(to right, rgba(22,202,130,1) 0%, rgba(23,128,203,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#16ca82', endColorstr='#1780cb', GradientType=1 );
+}
+
 .btnPlayMed i.glyphicon {
     top: 3px;
     left: 2px;
@@ -398,6 +409,8 @@ video.videomin {
 .contenidoGen {
 	padding: 15px;
 	padding-bottom: 110px;
+	height: fit-content;
+    min-height: -webkit-fill-available;
 }
 
 .contenidoGen.conpub {
@@ -433,6 +446,13 @@ video.videomin {
 	width: 100px;
 	margin: auto;
 	
+}
+
+.toabajo {
+    position: absolute;
+    width: 100%;
+    bottom: 80px;
+    left: 0;
 }
 
 .btnSinborde.violeta, a.btnSinborde.violeta {
@@ -584,6 +604,34 @@ video.videomin {
     width: max-content;
 }
 
+.contesli2 {
+    width: 100%;
+}
+
+.listetapas .contesli2 .boxcate {
+    margin: 10px auto;
+    display: block;
+    background: transparent;
+    border: 1px solid #FFF;
+}
+
+.contesli2 .circItemB {
+    background: #FFF;
+}
+
+.contesli2 .circItemA {
+    background: #FFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.contesli2 .activo .circItemA {
+    background: transparent;
+    border: 2px solid #FFF;
+}
+
 .numIteCu {
     color: #FFF;
 }
@@ -615,7 +663,7 @@ video.videomin {
     color: #FFF;
     font-size: 20px;
     font-family: 'MontserratSemiBold';
-    margin: 80px auto 30px;
+    margin: 40px auto 30px;
 	width: 80%;
     border-bottom: 1px solid #FFF;
     padding-bottom: 5px;
@@ -807,7 +855,7 @@ div#msjconf {
 }
 
 .cuetionario {
-    padding: 65px 15px 15px;
+    padding: 15px 15px;
     text-align: center;
 }
 
@@ -1023,7 +1071,7 @@ div#msjconf {
     margin: 20px auto;
 }
 
-.tituloClase {
+.tituloClase, .tituloClase2 {
     color: #FFF;
     text-align: center;
     font-family: 'MontserratMedium';
@@ -1052,7 +1100,9 @@ div#msjconf {
 }
 
 .categoriascur {
+/*
     height: 73vh;
+*/
     padding: 5px;
     margin: 10px auto;
     border-radius: 5px;
@@ -1143,6 +1193,15 @@ div#audPod_control {
 }
 
 div#audClaseP_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
+div#uad_MBSR_control {
     position: absolute;
     top: 50%;
     margin-top: -60px;

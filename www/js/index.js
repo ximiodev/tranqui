@@ -4,7 +4,10 @@ window.onerror = function(message, url, lineNumber) {
 }
 var apiURL = "http://newcyclelabs.com.ar/Tranqui/apiTranqui.php";
 var baseURL = "http://newcyclelabs.com.ar/Tranqui/";
-
+var isLoginSave = false;
+var userLogId = false;
+var sinintrombsr = false;
+var loginData_nombre = '';
 var app = {
     initialize: function() {
         this.bindEvents();
@@ -16,6 +19,26 @@ var app = {
         //~ app.setupPush();
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
+		loginData_nombre = '';
+        
+        isLoginSave = localStorage.getItem('isLogin');
+        loginData_nombre = localStorage.getItem('loginData_nombre');
+        if(!loginData_nombre) {
+			loginData_nombre  = '';
+		}
+        userLogId = localStorage.getItem('userLogId');
+        if(!userLogId) {
+			userLogId  = '';
+		}
+        
+        if(isLoginSave) {
+			$('#pantalla0').removeClass('activa');
+			$('#pantalla0').addClass('hidden');
+			$('#pantalla1').removeClass('hidden');
+			$('#pantalla1').addClass('activa');
+			$('.nombreuser').html('Hola '+loginData_nombre);
+			app.loadEstadisticas();
+		}
         
         $('#facebooklogin').click(function(e) {
 			e.preventDefault();
@@ -78,6 +101,12 @@ var app = {
 					if(data.res) {
 						ponerPantalla('pantalla1');
 						isLogin = true;
+						localStorage.setItem('isLogin', isLogin);
+						loginData_nombre = data.datos.nombre;
+						localStorage.setItem('loginData_nombre', loginData_nombre);
+						userLogId = data.datos.ID;
+						localStorage.setItem('userLogId', userLogId);
+						
 						estadisticas = data.estadisticas;
 						ponerEstadisticas();
 						$('.nombreuser').html('Hola '+data.datos.nombre);
@@ -106,6 +135,11 @@ var app = {
 						if(data.res) {
 							ponerPantalla('pantalla1');
 							isLogin = true;
+							localStorage.setItem('isLogin', isLogin);
+							loginData_nombre = data.datos.nombre;
+							localStorage.setItem('loginData_nombre', loginData_nombre);
+							userLogId = data.datos.ID;
+							localStorage.setItem('userLogId', userLogId);
 							$('.nombreuser').html('Hola '+data.datos.nombre);
 						} else {
 							alerta(data.message);
@@ -137,6 +171,9 @@ var app = {
 			var donde = $(this).data('apa');
 			if(donde=='pantalla16') {
 				$('#audClaseP')[0].pause();
+			}
+			if(donde=='pantalla12d') {
+				$('#uad_MBSR')[0].pause();
 			}
 			ponerPantalla(donde);
 		});
@@ -282,11 +319,23 @@ var app = {
 		
 		 $('.btnMSBR').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla12');
+			var muestroono = localStorage.getItem('sinintrombsr');
+			if(muestroono || sinintrombsr) {
+				ponerPantalla('pantalla12b');
+			} else {
+				$('#elotro').removeClass('activo');
+				$('.text_mb_2').css({opacity:0});
+				$('.text_mb_1').css({opacity:1});
+				ponerPantalla('pantalla12');
+			}
 		});
 		
 		 $('.btnSigPantMBSR').click(function(e) {
 			e.preventDefault();
+			if($('#nomostrarmbsrintro').prop("checked")) {
+				localStorage.setItem('sinintrombsr', true);
+				sinintrombsr = true;
+			}
 			ponerPantalla('pantalla12b');
 		});
 		
@@ -294,7 +343,21 @@ var app = {
 			e.preventDefault();
 			var codval = $('#codigombsr').val();
 			if(codval!='') {
-				alerta("El código ingresado no es válido.");
+				var datos = {};
+				datos.action = 'validateMBSRCode';
+				datos.code = codval;
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						if(data.res) {
+						} else {
+							alerta("El código ingresado no es válido.");
+						}
+					}
+				});
 			} else {
 				alerta("Debes ingresar un codigo.");
 			}
@@ -364,6 +427,27 @@ var app = {
 				estadrag = false;
 				var porc = e.value;
 				var audio = $('#audClaseP')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
+		$("#uad_MBSR_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			endAngle: "+450",
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#uad_MBSR')[0];
 				var tototime = (porc*audio.duration)/100;
 				audio.currentTime = tototime; 
 			}
@@ -567,6 +651,9 @@ var app = {
 		$('#glyphicon glyphicon-user').html(datos.displayname);
 		ponerPantalla('pantalla1');
 		isLogin = true;
+		loginData_nombre = datos.displayname;
+		localStorage.setItem('loginData_nombre', loginData_nombre);
+		localStorage.setItem('isLogin', isLogin);
 	},
     hacerloginFace: function(datos) {
 		
@@ -577,10 +664,32 @@ var app = {
 			$('#glyphicon glyphicon-user').html(result.name);
 			ponerPantalla('pantalla1');
 			isLogin = true;
+			loginData_nombre = result.name;
+			localStorage.setItem('loginData_nombre', loginData_nombre);
+			localStorage.setItem('isLogin', isLogin);
 		  }, function onError (error) {
 			alerta("Failed: "+JSON.stringify(error));
 		  }
 		);
+	},
+    loadEstadisticas: function() {
+		var datos = {};
+		datos.action = 'loadEstadisticas';
+		datos.userID = userLogId;
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					estadisticas = data.estadisticas;
+					ponerEstadisticas();
+				} else {
+					alerta(data.message);
+				}
+			}
+		});
 	},
     getCuestionario: function() {
 		var datos = {};
@@ -779,6 +888,15 @@ var app = {
 		$('#pantalla17 .viole').attr('style', categorias[posci].codigo);
 		$('#audiosclase .btnGenerico').attr('style',categorias[posci].codigo);
 	},
+    ponerClase2: function(j, i, claid, i2) {
+		$('.tituloClase2').html(mbsr_cont.semanas[i].clases[j].nombre_clase);
+		ponerPantalla('pantalla12d');
+		datosClase.audio_ID = mbsr_cont.semanas[i].clases[j].ID;
+		registroClase = false;
+		$('#uad_MBSR').html('<source src="'+baseURL+mbsr_cont.semanas[i].clases[j].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#uad_MBSR')[0].pause();
+		$('#uad_MBSR')[0].load();
+	},
     ponerClaseAudio: function(k,i, posc, curid) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		ponerPantalla('pantalla17');
@@ -874,6 +992,33 @@ var app = {
 					var splitted = mbsr_cont['descripcion'].split("\n");
 					$('.text_mb_1').html(splitted[0]);
 					$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
+					
+					var podac;
+					$('.listetapas .contesli2').html('');
+					for(var i=0;i<mbsr_cont.semanas.length;i++) {
+						podac = ''+
+						'<div class="boxcate">'+
+						'	<div class="titEtapa">'+mbsr_cont.semanas[i].nombre_etapa+'</div>'+
+						'	<div class="clasesEtapa">'+
+						'		<div class="listclases">';
+						for(var j=0;j<mbsr_cont.semanas[i].clases.length;j++) {
+							var claseTom = ' activo';
+							//~ var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+							podac += ''+
+							'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase2('+j+','+i+','+mbsr_cont.semanas[i].clases[j].ID+', '+i+');" data-clase="'+j+'">'+
+							'			<div class="circItemA">'+
+							'				<div class="circItemB"><img src="img/check.png"></div>'+
+							'			</div>'+
+							'			<div class="numIteCu">'+(j+1)+'</div>'+
+							'		</div>';
+						}
+						podac += ''+
+						'		</div>'+
+						'	</div>'+
+						'</div>'+
+						'</div>';
+						$('.listetapas .contesli2').append(podac);
+					}
 				} else {
 					alerta(data.msg);
 				}
@@ -1037,6 +1182,9 @@ function alerta(msj) {
 
 function ponerPantalla(cual) {
 	$('.ventana.activa').fadeOut( 600, function() {
+		if(cual!='pantalla14') {
+			$('#pantalla14').addClass('hidden');
+		}
 		$('.ventana.activa').removeClass('activa');
 		$('.ventana.activa').addClass('hidden');
 		$('#'+cual).removeClass('hidden');
@@ -1052,6 +1200,7 @@ function ponerPantalla(cual) {
 		$('#audEsfera')[0].pause();
 		$('#audMedDiaria')[0].pause();
 		$('#audClaseP')[0].pause();
+		$('#uad_MBSR')[0].pause();
 		$('#audPod')[0].pause();
 	});
 }
@@ -1102,6 +1251,7 @@ var audEsfera = document.getElementById("audEsfera")
 var audTim = document.getElementById("audTim")
 var audPod = document.getElementById("audPod")
 var audClaseP = document.getElementById("audClaseP")
+var uad_MBSR = document.getElementById("uad_MBSR")
 var audMedDiaria = document.getElementById("audMedDiaria")
 var estaplay = false
 
@@ -1128,6 +1278,11 @@ audPod.addEventListener('loadedmetadata', function() {
 audClaseP.addEventListener('loadedmetadata', function() {
   var duration = audClaseP.duration
   var currentTime = audClaseP.currentTime
+});
+
+uad_MBSR.addEventListener('loadedmetadata', function() {
+  var duration = uad_MBSR.duration
+  var currentTime = uad_MBSR.currentTime
 });
 
 function togglePlaying(cual) {
@@ -1163,6 +1318,14 @@ function updateBar(cual) {
 		if(cual=="audClaseP") {
 			if(!registroClase) {
 				datos.action = 'saveClase';
+				datos.clase_ID = datosClase.audio_ID;
+				registrarAudioComp(datos);
+				registroClase = true;
+			}
+		}
+		if(cual=="uad_MBSR") {
+			if(!registroClase) {
+				datos.action = 'saveClase2';
 				datos.clase_ID = datosClase.audio_ID;
 				registrarAudioComp(datos);
 				registroClase = true;
@@ -1270,6 +1433,10 @@ function swipeEnd(e) {
 					});
 				});
 			} else {
+				if($('#nomostrarmbsrintro').prop("checked")) {
+					localStorage.setItem('sinintrombsr', true);
+					sinintrombsr = true;
+				}
 				ponerPantalla('pantalla12b');
 			}
           break;
