@@ -396,14 +396,37 @@
 			</div>
 			<div class="ventana hidden" id="pantalla12">
 				<div class="contenidoGen">
+					<div class="trespuntos">
+						<div class="puntob activo"></div>
+						<div class="puntob" id="elotro"></div>
+					</div>
+					<h4 class="titSeccionSub">MBSR</h4>
+					<div id="boxcuponre" class="boxcuponre">
+						<div class="text_mb_1"></div>
+						<div class="text_mb_2"></div>
+					</div>
+					<div class="volverint btnSinborde btnSigPantMBSR">Saltar »</div>
+					<div class="checkB"><input type="checkbox" id="nomostrarmbsrintro"> no volver a mostrar</div>
+					<div class="bototneraBottom">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla12b">
+				<div class="contenidoGen">
 					<h4 class="titSeccionSub">MBSR</h4>
 					<div class="boxcupon">
-						¿TENÉS UN CUPON?
-						<input type="text" class="form-control inputfant" placeholder="Ingresa tu cupon">
-						<div class="btnSinborde btnGetCupon">ENVIAR</div>
+						¿TENÉS CUPON?
+						<input type="text" class="form-control inputfant" id="codigombsr" placeholder="Escribí tu código">
+						<div class="volverint btnSinborde btnGetCupon">enviar »</div>
 					</div>
 					<div class="contclases"></div>
-					<div class="volverint btnSinborde btnVolverHome">Volver</div>
+					<div class="volverint btnSinborde linkdeboton"><a href="#" onclick="window.open('https://www.mindfulnessbuenosaires.com/programas-mbsr', '_system'); return false;" target="_blank">Cursos presenciales</a></div>
 					<div class="bototneraBottom">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>

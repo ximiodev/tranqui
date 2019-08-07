@@ -23,6 +23,7 @@
     <preference name="android-minSdkVersion" value="19" />
     <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name="pgb-builder-version" value="1" />
+    <preference name="orientation" value="portrait" />
     <preference name="android-targetSdkVersion" value="27" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ee6e73" />

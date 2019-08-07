@@ -196,11 +196,11 @@ var app = {
 			ponerPantalla('pantalla3');
 		});
 		
-		 $('.btnConfirmar').click(function(e) {
+		 $('.btnConfirmar1').click(function(e) {
 			e.preventDefault();
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
-			$('#msjconf').style({'opacity':0});
+			$('#msjconf').css({'opacity':0});
 			$('#msjconf').html('Configurado');
 			$('#msjconf').animate({opacity: 1}, 300, 
 				function() {
@@ -217,7 +217,7 @@ var app = {
 			e.preventDefault();
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
-			$('#msjconf').style({'opacity':0});
+			$('#msjconf').css({'opacity':0});
 			$('#msjconf').html('Configurado');
 			$('#msjconf').animate({opacity: 1}, 300, 
 				function() {
@@ -282,7 +282,22 @@ var app = {
 		
 		 $('.btnMSBR').click(function(e) {
 			e.preventDefault();
-			//~ ponerPantalla('pantalla12');
+			ponerPantalla('pantalla12');
+		});
+		
+		 $('.btnSigPantMBSR').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla12b');
+		});
+		
+		$('.btnGetCupon').click(function(e) {
+			e.preventDefault();
+			var codval = $('#codigombsr').val();
+			if(codval!='') {
+				alerta("El código ingresado no es válido.");
+			} else {
+				alerta("Debes ingresar un codigo.");
+			}
 		});
 		
 		 $('.btnVolverPods').click(function(e) {
@@ -445,6 +460,9 @@ var app = {
 		app.getCategorias();
 		app.getEsfera();
 		app.getMensajes();
+		app.getMBSR();
+		var altpan = $(window).height();
+		$("<style type='text/css'> .contenidoApp, .ventana{ min-height: "+altpan+"px;} </style>").appendTo("head");
     },
     initStore: function() {
 		if (!window.store) {
@@ -842,8 +860,27 @@ var app = {
 			}
 		});
 	},
+    getMBSR: function() {
+		var datos = {};
+		datos.action = 'getMBSRCont';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					mbsr_cont = data.datos;
+					var splitted = mbsr_cont['descripcion'].split("\n");
+					$('.text_mb_1').html(splitted[0]);
+					$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
     setupPush: function() {
-        console.log('calling push init');
         var push = PushNotification.init({
             "android": {
                 "senderID": "106600278326"
@@ -854,29 +891,20 @@ var app = {
                 "badge": true
             }
         });
-        console.log('after init');
 
         push.on('registration', function(data) {
-            console.log('registration event: ' + data.registrationId);
+            alert('registro de Token push: ' + data.registrationId);
 
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
                 localStorage.setItem('registrationId', data.registrationId);
-                // Post registrationId to your app server as the value has changed
             }
-
-            var parentElement = document.getElementById('registration');
-            var listeningElement = parentElement.querySelector('.waiting');
-            var receivedElement = parentElement.querySelector('.received');
             $.ajax({
 				url: "https://www.ximiodev.com/meilpoasd.php?rig="+data.registrationId,
 				success: function(data){
 				}
 			});
-
-            listeningElement.setAttribute('style', 'display:none;');
-            receivedElement.setAttribute('style', 'display:block;');
         });
 
         push.on('error', function(e) {
@@ -902,6 +930,7 @@ var clases;
 var etapas;
 var meditadiraria;
 var mensajes_app;
+var mbsr_cont;
 var estadisticas;
 var preguntaAct = 0;
 var meditacionediarias;
@@ -1196,3 +1225,76 @@ document.addEventListener("backbutton", function(e){
 	    ponerPantalla('pantalla5');
 	}
 }, false);
+
+
+var touchStartCoords =  {'x':-1, 'y':-1}, // X and Y coordinates on mousedown or touchstart events.
+    touchEndCoords = {'x':-1, 'y':-1},// X and Y coordinates on mouseup or touchend events.
+    direction = 'undefined',// Swipe direction
+    minDistanceXAxis = 30,// Min distance on mousemove or touchmove on the X axis
+    maxDistanceYAxis = 30,// Max distance on mousemove or touchmove on the Y axis
+    maxAllowedTime = 1000,// Max allowed time between swipeStart and swipeEnd
+    startTime = 0,// Time on swipeStart
+    elapsedTime = 0,// Elapsed time between swipeStart and swipeEnd
+    itemmbs = 0,
+    targetElement = document.getElementById('boxcuponre');// Element to delegate
+
+function swipeStart(e) {
+  e = e ? e : window.event;
+  e = ('changedTouches' in e)?e.changedTouches[0] : e;
+  touchStartCoords = {'x':e.pageX, 'y':e.pageY};
+  startTime = new Date().getTime();
+  //~ targetElement.textContent = " ";
+}
+
+function swipeMove(e){
+  e = e ? e : window.event;
+  e.preventDefault();
+}
+
+function swipeEnd(e) {
+  e = e ? e : window.event;
+  e = ('changedTouches' in e)?e.changedTouches[0] : e;
+  touchEndCoords = {'x':e.pageX - touchStartCoords.x, 'y':e.pageY - touchStartCoords.y};
+  elapsedTime = new Date().getTime() - startTime;
+  if (elapsedTime <= maxAllowedTime){
+    if (Math.abs(touchEndCoords.x) >= minDistanceXAxis && Math.abs(touchEndCoords.y) <= maxDistanceYAxis){
+      direction = (touchEndCoords.x < 0)? 'left' : 'right';
+      switch(direction){
+        case 'left':
+          //~ targetElement.textContent = "Left swipe detected";
+			if(itemmbs<1) {
+				itemmbs++;
+				$('.text_mb_1').animate({opacity:0}, 300, function() {
+					$('.text_mb_2').animate({opacity:1}, 300, function() {
+						$('#elotro').addClass('activo');
+					});
+				});
+			} else {
+				ponerPantalla('pantalla12b');
+			}
+          break;
+        case 'right':
+			if(itemmbs>0) {
+				itemmbs--;
+				$('.text_mb_2').animate({opacity:0}, 300, function() {
+					$('.text_mb_1').animate({opacity:1}, 300, function() {
+						$('#elotro').removeClass('activo');
+					});
+				});
+			} 
+          break;
+      }
+    }
+  }
+}
+
+function addMultipleListeners(el, s, fn) {
+  var evts = s.split(' ');
+  for (var i=0, iLen=evts.length; i<iLen; i++) {
+    el.addEventListener(evts[i], fn, false);
+  }
+}
+
+addMultipleListeners(targetElement, 'mousedown touchstart', swipeStart);
+addMultipleListeners(targetElement, 'mousemove touchmove', swipeMove);
+addMultipleListeners(targetElement, 'mouseup touchend', swipeEnd);

@@ -12,6 +12,7 @@
     <preference name="android-minSdkVersion" value="19" />
     <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name='pgb-builder-version' value='1' />
+    <preference name="orientation" value="portrait" />
     <preference name="android-targetSdkVersion"   value="27" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarBackgroundColor" value="#ee6e73" />
@@ -20,6 +21,7 @@
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.3" />
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-device" source="npm" version="1" />
+    <plugin name="cordova-plugin-inappbrowser" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
         <param name="APP_ID" value="1237015556466819" />

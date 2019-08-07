@@ -152,7 +152,7 @@ a {
 	background-image: url(../img/fndUser-80.jpg);
 }
 
-#pantalla12 {
+#pantalla12, #pantalla12b {
 	background-image: url(../img/fndMBSR-80.jpg);
 }
 
@@ -202,7 +202,16 @@ video.videomin {
     font-family: 'MontserratMedium';
     text-align: center;
     color: #FFF;
-	padding: 100px 10px;
+	padding: 60px 10px;
+}
+
+.volverint.linkdeboton {
+    width: max-content!important;
+}
+
+.linkdeboton a {
+	color: #FFF;
+	text-decoration: none;
 }
 
 .listcursos .titCate {
@@ -776,6 +785,18 @@ div#alerta.hidden {
     text-align: center;
 }
 
+div#msjconf {
+    width: fit-content;
+    padding: 5px 10px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 6px;
+    color: #FFF;
+    font-family: 'MontserratRegular';
+    font-size: 12px;
+    margin: 0 auto;
+    opacity: 0;
+}
+
 .bienvenido {
     font-family: 'MontserratMedium';
     padding: 15px;
@@ -1149,4 +1170,51 @@ span.rs-tooltip.rs-tooltip-text.edit {
 
 .mensajeapp {
     color: #FFF;
+}
+
+.trespuntos {
+    text-align: center;
+}
+
+.puntob.activo {
+	background: #FFF;
+}
+
+.puntob {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #FFF;
+    border-radius: 50px;
+}
+
+.checkB {
+    font-family: 'MontserratRegular';
+    color: #FFF;
+    text-align: center;
+}
+
+.boxcuponre {
+    font-family: 'MontserratMedium';
+    text-align: center;
+    color: #FFF;
+    padding: 0 10px;
+	height: 120px;
+    position: relative;
+    width: 100%;
+}
+
+.text_mb_1, .text_mb_2 {
+    width: 100%;
+    position: absolute;
+    height: 120px;
+    top: 0;
+    left: 0;
+}
+
+#codigombsr {
+    border: 1px solid #FFF!important;
+    border-radius: 20px;
+    margin-bottom: 40px;
 }
