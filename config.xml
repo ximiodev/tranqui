@@ -24,7 +24,9 @@
     <plugin name="cordova-plugin-inappbrowser" source="npm" />
     <plugin name="cordova-plugin-vibration" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="cordova-plugin-firebase-extended-notification" source="npm" />
+    <plugin name="phonegap-plugin-push" source="npm" spec="~1.8.0">
+		<variable name="SENDER_ID" value="106600278326" />
+	</plugin>
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
         <param name="APP_ID" value="1237015556466819" />
         <param name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
