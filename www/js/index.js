@@ -38,6 +38,7 @@ var app = {
 			$('#pantalla1').addClass('activa');
 			$('.nombreuser').html('Hola '+loginData_nombre);
 			app.loadEstadisticas();
+			app.savePushToken();
 		}
         
         $('#facebooklogin').click(function(e) {
@@ -108,6 +109,7 @@ var app = {
 						localStorage.setItem('userLogId', userLogId);
 						
 						estadisticas = data.estadisticas;
+						app.savePushToken();
 						ponerEstadisticas();
 						$('.nombreuser').html('Hola '+data.datos.nombre);
 					} else {
@@ -140,6 +142,7 @@ var app = {
 							localStorage.setItem('loginData_nombre', loginData_nombre);
 							userLogId = data.datos.ID;
 							localStorage.setItem('userLogId', userLogId);
+							app.savePushToken();
 							$('.nombreuser').html('Hola '+data.datos.nombre);
 						} else {
 							alerta(data.message);
@@ -1061,7 +1064,7 @@ var app = {
         });
 
         push.on('registration', function(data) {
-            //~ alert('registro de Token push: ' + data.registrationId);
+            alert('registro de Token push: ' + data.registrationId);
 
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
