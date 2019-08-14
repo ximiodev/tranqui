@@ -24,6 +24,7 @@
     <plugin name="cordova-plugin-inappbrowser" source="npm" />
     <plugin name="cordova-plugin-vibration" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+    <plugin name="cordova-plugin-firebase-extended-notification" source="npm" />
 	<plugin name="phonegap-plugin-push" source="npm">
 		<variable value="15.0.0" name="FCM_VERSION"/>
 		<param value="106600278326" name="SENDER_ID"/>

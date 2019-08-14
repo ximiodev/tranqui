@@ -16,7 +16,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
-        app.setupPush();
+        //~ app.setupPush();
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
@@ -1484,3 +1484,39 @@ function addMultipleListeners(el, s, fn) {
 addMultipleListeners(targetElement, 'mousedown touchstart', swipeStart);
 addMultipleListeners(targetElement, 'mousemove touchmove', swipeMove);
 addMultipleListeners(targetElement, 'mouseup touchend', swipeEnd);
+
+
+document.addEventListener(
+  "deviceready",
+  function() {
+    tries = 100;
+    var interval = setInterval(function() {
+      if (--tries < 0) {
+        clearInterval(interval);
+        app.alerta("Firebase Token could not be acquired!");
+      }
+      FCMPlugin.getToken(
+        function(token) {
+          if (token !== null && token !== "") {
+            app.alerta("Firebase Token: " + token);
+            clearInterval(interval);
+          }
+        },
+        function(e) {
+          app.alerta(JSON.stringify(e));
+        }
+      );
+    }, 100);
+
+    FCMPlugin.onNotification(function(data) {
+      if (data.wasTapped) {
+        //Notification was received on device tray and tapped by the user.
+        app.alerta(JSON.stringify(data));
+      } else {
+        //Notification was received in foreground. Maybe the user needs to be notified.
+        // alert(JSON.stringify(data));
+      }
+    });
+  },
+  false
+);
