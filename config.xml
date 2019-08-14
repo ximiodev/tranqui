@@ -10,7 +10,7 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="19" />
-    <preference name="phonegap-version" value="cli-7.1.0" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name='pgb-builder-version' value='1' />
     <preference name="orientation" value="portrait" />
     <preference name="android-targetSdkVersion"   value="27" />
@@ -24,6 +24,10 @@
     <plugin name="cordova-plugin-inappbrowser" source="npm" />
     <plugin name="cordova-plugin-vibration" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+	<plugin name="phonegap-plugin-push" source="npm">
+		<variable value="15.0.0" name="FCM_VERSION"/>
+		<param value="106600278326" name="SENDER_ID"/>
+	</plugin>
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
         <param name="APP_ID" value="1237015556466819" />
         <param name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
@@ -39,10 +43,6 @@
 		<variable value="15.0.1" name="PLAY_SERVICES_VERSION"/>
 		<variable value="15.0.1" name="FCM_VERSION"/>
 		<variable value="539140823866-s6koqd6qo0vs3g48s4a4te76krfsg16m.apps.googleusercontent.com" name="REVERSED_CLIENT_ID"/>
-	</plugin>
-	<plugin name="phonegap-plugin-push" source="npm">
-		<variable value="15.0.0" name="FCM_VERSION"/>
-		<param value="106600278326" name="SENDER_ID"/>
 	</plugin>
     <plugin name="cc.fovea.cordova.purchase" source="npm"  >
 		<param name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjLBr0qv75hk6uCEVTkniAe9k9W07n3wk7ZIyykEavfx4ZCBc8TRx9KJeXAVx1Eo0N8YQx8uBNbXb1AcIpIOSnq13Tjcsw3Y8Fv5K2Y6EmV9/NIcuJs4M3I9ENw+iyXxISot8wbn2hFvSGvO8EBkGpwuc++9+SkRH8RIu3ri/qd2A/ZSxmqc/uzEo9uVj1TOv9D1wSlUsMJB7w+/lQ7JZ40ehjPGq+Dbwpz69MgGcBsYXXgFTqzW8HQOhqEJZWNAP1j8m/lijm80M/KLYlozoKUtL/lPcXvKiE6WxPCbJErJNn2XJ/2jBu17+aUYOgAens6OI6AYpHePb1L3n3eXw7QIDAQAB"/>
