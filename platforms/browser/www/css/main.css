@@ -124,7 +124,7 @@ a {
 	background-image: url(../img/fondoHome.jpg);
 }
 
-#pantalla6 {
+#pantalla6, #pantalla6a, #pantalla6b {
 	background-image: url(../img/fndCele-80.jpg);
 }
 
@@ -226,6 +226,7 @@ video.videomin {
     border-radius: 10px;
     font-size: 14px;
     margin-bottom: 10px;
+	background: #ccc;
 }
 
 .listcursos .descCate {
@@ -588,6 +589,7 @@ video.videomin {
     font-family: 'MontserratSemiBold';
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
 	z-index: 89;
+	    background: #ccc;
     position: relative;
 }
 
@@ -670,6 +672,15 @@ video.videomin {
 	width: 80%;
     border-bottom: 1px solid #FFF;
     padding-bottom: 5px;
+}
+
+.titSeccionSubT {
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
+    font-family: 'MontserratSemiBold';
+    margin: 10px auto 10px;
+	width: 80%;
 }
 
 .btnGenerico.btnViole {
@@ -1040,18 +1051,26 @@ div#msjconf {
     font-family: 'MontserratSemiBold';
     color: #FFF;
     padding: 15px;
-    font-size: 15px;
-    border-radius: 15px;
+    font-size: 18px;
+    border-radius: 40px;
     text-align: center;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
-    background: rgba(255,142,108,1);
-	background: -moz-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,142,108,1)), color-stop(100%, rgba(255,45,138,1)));
-	background: -webkit-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
-	background: -o-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
-	background: -ms-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
-	background: linear-gradient(to right, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+    background: rgba(254, 195, 69,1);
+	background: -moz-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(254, 195, 69,1)), color-stop(100%, rgba(255,45,138,1)));
+	background: -webkit-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+	background: -o-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+	background: -ms-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+	background: linear-gradient(to right, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
+}
+
+.btnNaranja.verSmall {
+    padding: 5px 30px;
+    font-size: 12px;
+    width: fit-content;
+    margin: 0 auto;
+    letter-spacing: 2px;
 }
 
 .todospods {
@@ -1127,12 +1146,27 @@ div#msjconf {
     background: #7740a2;
 }
 
-.boxEstadisticas {
-    padding: 10px;
+.titEsta {
     font-size: 22px;
+    color: #fb2d88;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ff995b;
+}
+
+.numgig {
+    font-size: 22px;
+}
+
+.boxEstadisticasCont {
+	padding: 10px;
+    font-size: 14px;
     text-align: center;
-    border: 1px solid #999;
-    margin-top: 5px;
+    margin: 25px auto;
+    width: 275px;
+    background: #fefff1;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+    color: #fb2d88;
 }
 
 .btnGenerico.btnConfirmar1, .btnGenerico.btnConfirmar2 {
@@ -1273,8 +1307,8 @@ span.rs-tooltip.rs-tooltip-text.edit {
 	
 .checkB label:before {  
 	content: "";
-	width: 15px;
-	height: 15px;
+	width: 30px;
+	height: 30px;
 	position: absolute;  
 	left: 0;
 }
@@ -1284,13 +1318,14 @@ span.rs-tooltip.rs-tooltip-text.edit {
 }
 	
 .checkB label:before {
-	background: url('img/checkbox-tilde.png') left center no-repeat;
+	background: url('../img/checkbox-tilde.png') center center no-repeat;
 	background-size: cover;
     margin-top: 2px;
 }
 	
 .checkB input[type=checkbox]:checked + label:before {  
-	background: url('img/checkbox.png') left center no-repeat;  
+	background: url('../img/checkbox.png') center center no-repeat;  
+	background-size: cover;
 } 
 	
 

@@ -6,6 +6,7 @@ var apiURL = "http://newcyclelabs.com.ar/Tranqui/apiTranqui.php";
 var baseURL = "http://newcyclelabs.com.ar/Tranqui/";
 var isLoginSave = false;
 var userLogId = false;
+var timerac = '';
 var sinintrombsr = false;
 var loginData_nombre = '';
 var app = {
@@ -16,7 +17,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
-        app.setupPush();
+        //~ app.setupPush();
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
@@ -37,6 +38,7 @@ var app = {
 			$('#pantalla1').removeClass('hidden');
 			$('#pantalla1').addClass('activa');
 			$('.nombreuser').html('Hola '+loginData_nombre);
+			app.setSession();
 			app.loadEstadisticas();
 			app.savePushToken();
 		}
@@ -291,6 +293,24 @@ var app = {
 			ponerPantalla('pantalla5');
 		});
 		
+		 $('.btnGuiada').click(function(e) {
+			e.preventDefault();
+			timerac = 'GUIADA';
+			ponerPantalla('pantalla6a');
+		});
+		
+		 $('.btnNoGuiada').click(function(e) {
+			e.preventDefault();
+			timerac = 'NO GUIADA';
+			ponerPantalla('pantalla6a');
+		});
+		
+		 $('.btnGratuita').click(function(e) {
+			e.preventDefault();
+			timerac = 'GRATUITA';
+			ponerPantalla('pantalla6a');
+		});
+		
 		 $('.btnTimers').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla6');
@@ -311,6 +331,11 @@ var app = {
 			e.preventDefault();
 			navigator.vibrate(100);
 			ponerPantalla('pantalla9');
+		});
+		
+		 $('.btnMedDiaria').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla10');
 		});
 		
 		 $('.btnMedDiaria').click(function(e) {
@@ -550,6 +575,8 @@ var app = {
 		app.getMedIni();
 		app.getMedDiaria();
 		app.getPodcasts();
+		app.getPodcasts();
+		app.getTimers();
 		app.getCategorias();
 		app.getEsfera();
 		app.getMensajes();
@@ -681,6 +708,23 @@ var app = {
 		  }
 		);
 	},
+    setSession: function() {
+		var datos = {};
+		datos.action = 'setSession';
+		datos.userid = userLogId;
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+				} else {
+					alerta(data.message);
+				}
+			}
+		});
+	},
     loadEstadisticas: function() {
 		var datos = {};
 		datos.action = 'loadEstadisticas';
@@ -743,6 +787,23 @@ var app = {
 							$('.todospods').append(podac);
 						}	
 					}
+				} else {
+					alerta(data.msg);
+				}
+			}
+		});
+	},
+    getTimers: function() {
+		var datos = {};
+		datos.action = 'getTimers';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					timers = data.datos;
 				} else {
 					alerta(data.msg);
 				}
@@ -915,6 +976,20 @@ var app = {
 		$('#audClaseP')[0].pause();
 		$('#audClaseP')[0].load();
 	},
+    ponerTimer: function(dura) {
+		var length = timers.length;
+		for(var i = 0; i < length; i++) {
+			if(timers[i]['tipo'] == dura && timers[i]['nombre']==timerac) {
+				console.log(dura);
+				console.log(timerac);
+				ponerPantalla('pantalla6b');
+				$('.titSeccionSubT').html(timerac+' - '+dura+' minutos');
+				$('#audTim').html('<source src="'+baseURL+timers[i]['archivo']+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+				$('#audTim')[0].pause();
+				$('#audTim')[0].load();
+			}
+		}
+	},
     getMedIni: function() {
 		var datos = {};
 		datos.action = 'getMedIni';
@@ -925,7 +1000,8 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
-					$('#med_ini').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+					
+					$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
 					alerta(data.msg);
 				}
@@ -1012,7 +1088,7 @@ var app = {
 						'		<div class="listclases">';
 						for(var j=0;j<mbsr_cont.semanas[i].clases.length;j++) {
 							var claseTom = ' activo';
-							//~ var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+							var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.mbsr_c))?'':' activo';
 							podac += ''+
 							'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase2('+j+','+i+','+mbsr_cont.semanas[i].clases[j].ID+', '+i+');" data-clase="'+j+'">'+
 							'			<div class="circItemA">'+
@@ -1064,7 +1140,7 @@ var app = {
         });
 
         push.on('registration', function(data) {
-            alert('registro de Token push: ' + data.registrationId);
+            //~ alert('registro de Token push: ' + data.registrationId);
 
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
@@ -1091,6 +1167,7 @@ var app = {
 };
 var preguntas;
 var podcasts;
+var timers;
 var categorias;
 var cursos;
 var clases;
@@ -1129,7 +1206,7 @@ function ponerSigPreg() {
 }
 
 function ponerEstadisticas() {
-	$('.boxEstadisticas').html('<div class="estdis"><b>Clases tomadas:</b> '+estadisticas.clases+'</div><div class="estdis"><b>Meditaciones diarias:</b> '+estadisticas.meditaciones+'</div>');
+	$('.boxEstadisticas').html('<div class="estdis"><b>Clases tomadas:</b> <span class="numgig">'+estadisticas.clases+'</span></div><div class="estdis"><b>Meditaciones diarias:</b> <span class="numgig">'+estadisticas.meditaciones+'</span></div>');
 }
 
 function ponerPregunta() {
@@ -1139,13 +1216,9 @@ function ponerPregunta() {
 		
 	if(preguntas[preguntaAct].respuesta3=="") {
 		$('#resp_3').hide();
-	} else {
-		$('#resp_3').show();
 	}
 	if(preguntas[preguntaAct].respuesta4=="") {
 		$('#resp_4').hide();
-	} else {
-		$('#resp_4').show();
 	}
 	$('#resp_3').html(preguntas[preguntaAct].respuesta3).css({'opacity':0});
 	$('#resp_4').html(preguntas[preguntaAct].respuesta4).css({'opacity':0});
@@ -1158,11 +1231,11 @@ function ponerPregunta() {
 					$('#resp_2').animate({
 						opacity: 1
 						}, 300, function() {
-							if(preguntas[preguntaAct].respuesta3=="") {
+							if(preguntas[preguntaAct].respuesta3!="") {
 								$('#resp_3').animate({
 									opacity: 1
 									}, 300, function() {
-										if(preguntas[preguntaAct].respuesta4=="") {
+										if(preguntas[preguntaAct].respuesta4!="") {
 											$('#resp_4').animate({
 												opacity: 1
 											}, 300);
@@ -1353,6 +1426,14 @@ function updateBar(cual) {
 				registroClase = true;
 			}
 		}
+		if(cual=="med_ini") {
+			if(!registroClase) {
+				datos.action = 'saveClase';
+				datos.clase_ID = 84; //claase 1 de iniciales
+				registrarAudioComp(datos);
+				registroClase = true;
+			}
+		}
   }
 	if(!estadrag) {
 		$("#"+cual+"_control").roundSlider("setValue", (Math.round(percentage*100)), 1);
@@ -1487,3 +1568,23 @@ function addMultipleListeners(el, s, fn) {
 addMultipleListeners(targetElement, 'mousedown touchstart', swipeStart);
 addMultipleListeners(targetElement, 'mousemove touchmove', swipeMove);
 addMultipleListeners(targetElement, 'mouseup touchend', swipeEnd);
+
+
+var onSuccess = function(result) {
+  console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+  console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+}
+
+var onError = function(msg) {
+  console.log("Sharing failed with message: " + msg);
+}
+
+function compartirEnlace() {
+	var options = {
+	  message: 'Tranqui', // not supported on some apps (Facebook, Instagram)
+	  subject: 'Tranqui', // fi. for email
+	  url: 'https://www.tranqui.com/',
+	  chooserTitle: 'Tranqui' // Android only, you can override the default share sheet title
+	}
+	window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+}
