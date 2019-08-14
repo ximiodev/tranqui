@@ -10,7 +10,7 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="19" />
-    <preference name="phonegap-version" value="cli-7.1.0" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name='pgb-builder-version' value='1' />
     <preference name="orientation" value="portrait" />
     <preference name="android-targetSdkVersion"   value="27" />
@@ -25,10 +25,6 @@
     <plugin name="cordova-plugin-vibration" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-firebase-extended-notification" source="npm" />
-	<plugin name="phonegap-plugin-push" source="npm">
-		<variable value="15.0.0" name="FCM_VERSION"/>
-		<param value="106600278326" name="SENDER_ID"/>
-	</plugin>
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
         <param name="APP_ID" value="1237015556466819" />
         <param name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
