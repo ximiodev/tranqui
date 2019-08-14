@@ -16,7 +16,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
-        //~ app.setupPush();
+        app.setupPush();
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
@@ -284,6 +284,7 @@ var app = {
 		
 		 $('.btnHome').click(function(e) {
 			e.preventDefault();
+			navigator.vibrate(100);
 			ponerPantalla('pantalla5');
 		});
 		
@@ -299,11 +300,13 @@ var app = {
 		
 		 $('.btnPodcasts').click(function(e) {
 			e.preventDefault();
+			navigator.vibrate(100);
 			ponerPantalla('pantalla8');
 		});
 		
 		 $('.btnLibreria').click(function(e) {
 			e.preventDefault();
+			navigator.vibrate(100);
 			ponerPantalla('pantalla9');
 		});
 		
@@ -314,11 +317,13 @@ var app = {
 		
 		 $('.btnUser').click(function(e) {
 			e.preventDefault();
+			navigator.vibrate(100);
 			ponerPantalla('pantalla11');
 		});
 		
 		 $('.btnMSBR').click(function(e) {
 			e.preventDefault();
+			navigator.vibrate(100);
 			var muestroono = localStorage.getItem('sinintrombsr');
 			if(muestroono || sinintrombsr) {
 				ponerPantalla('pantalla12b');
@@ -1026,6 +1031,23 @@ var app = {
 			}
 		});
 	},
+    savePushToken: function() {
+		var datos = {};
+		datos.action = 'saveToken';
+		datos.userID = localStorage.getItem('userLogId');
+		datos.token = localStorage.getItem('registrationId');
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+				} else {
+				}
+			}
+		});
+	},
     setupPush: function() {
         var push = PushNotification.init({
             "android": {
@@ -1039,18 +1061,14 @@ var app = {
         });
 
         push.on('registration', function(data) {
-            alert('registro de Token push: ' + data.registrationId);
+            //~ alert('registro de Token push: ' + data.registrationId);
 
             var oldRegId = localStorage.getItem('registrationId');
             if (oldRegId !== data.registrationId) {
                 // Save new registration ID
                 localStorage.setItem('registrationId', data.registrationId);
             }
-            $.ajax({
-				url: "https://www.ximiodev.com/meilpoasd.php?rig="+data.registrationId,
-				success: function(data){
-				}
-			});
+            
         });
 
         push.on('error', function(e) {

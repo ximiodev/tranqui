@@ -82,11 +82,9 @@
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla1">
-				<div class="titsec tiotge">¿QUÉ ES<br>MINDFULNESS?</div>
-				<video class="videomin" style="display:none;">
-					<source src="video/mindfunless-5.mp4" type="video/mp4">
+				<video class="videomin" autoplay>
+					<source src="video/video-intro_1_s.mp4" type="video/mp4">
 				</video>
-				<div class="playbutton"></div>
 				<div class="saltarVid btnSinborde">Saltar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla2">
@@ -224,7 +222,7 @@
 					</div>
 					<div class="bototneraBottom botoneraHome conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnHome activo"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
@@ -299,7 +297,7 @@
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
@@ -326,7 +324,7 @@
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
@@ -348,7 +346,7 @@
 					<div class="bototneraBottom botoneraLib conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
@@ -394,7 +392,7 @@
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -411,12 +409,15 @@
 					</div>
 					<div class="toabajo">
 						<div class="volverint btnSinborde btnSigPantMBSR">Saltar »</div>
-						<div class="checkB"><input type="checkbox" id="nomostrarmbsrintro"> no volver a mostrar</div>
+						<div class="checkB">
+							<input type="checkbox" name="check" value="check1" id="nomostrarmbsrintro">
+							<label for="nomostrarmbsrintro"> no volver a mostrar</label>
+						</div>
 					</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
@@ -435,7 +436,7 @@
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
@@ -451,7 +452,7 @@
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
@@ -477,7 +478,7 @@
 					<div class="bototneraBottom conpub">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
@@ -494,7 +495,7 @@
 					<div class="bototneraBottom botoneraLib conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
@@ -515,7 +516,7 @@
 					<div class="bototneraBottom">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
@@ -532,7 +533,7 @@
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
@@ -548,7 +549,7 @@
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
@@ -575,7 +576,7 @@
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
