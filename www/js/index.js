@@ -16,7 +16,7 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     onDeviceReady: function() {
-        //~ app.setupPush();
+        app.setupPush();
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
