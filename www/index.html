@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
     <link href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/roundslider.css" />
+	<link rel="stylesheet" href="css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="css/owl.theme.default.min.css" />
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>Tranqui</title>
 </head>
@@ -82,7 +84,7 @@
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla1">
-				<video class="videomin" autoplay>
+				<video class="videomin" >
 					<source src="video/video-intro_1_s.mp4" type="video/mp4">
 				</video>
 				<div class="saltarVid btnSinborde">Saltar »</div>
@@ -185,34 +187,13 @@
 					<div class="boxCursoAct">
 						<div class="tituCurAct">
 							<div class="ultimoCursosTit">No tienes ningún curso activo</div>
-<!--
-							<div class="ultimoCursosSubTit">Última práctica</div>
-							<div class="curItemComp">
-								<div class="circItemA">
-									<div class="circItemB"><img src="img/check.png"></div>
-								</div>
-								<div class="numIteCu">1</div>
-							</div>
-							<div class="curItemComp">
-								<div class="circItemA">
-									<div class="circItemB"><img src="img/check.png"></div>
-								</div>
-								<div class="numIteCu">2</div>
-							</div>
-							<div class="curItemComp activo">
-								<div class="circItemA">
-									<div class="circItemB"><img src="img/check.png"></div>
-								</div>
-								<div class="numIteCu">3</div>
-							</div>
--->
 						</div>
 					</div>
 					<div class="botronesHoem btnMedDiaria">
 						Meditacion Diaria
 						<div class="sub">Regalate un momento hoy</div>
 					</div>
-					<div class="botronesHoem">
+					<div class="botronesHoem btnProximoCurso">
 						Proximo Curso
 						<div class="sub">Explorá otra práctica</div>
 					</div>
@@ -547,7 +528,7 @@
 						<div class="descur"></div>
 					</div>
 					<div class="listetapas">
-						<div class="contesli"></div>
+						<div class="contesli owl-carousel1"></div>
 					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom">
@@ -635,6 +616,7 @@
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/circle-progress.min.js"></script>
     <script type="text/javascript" src="js/roundslider.js"></script>
+    <script type="text/javascript" src="js/owl.carousel.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

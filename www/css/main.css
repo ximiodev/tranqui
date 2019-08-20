@@ -163,10 +163,9 @@ a {
 
 video.videomin {
   position: fixed;
-  right: 0;
-  bottom: 0;
   min-width: 100%; 
   min-height: 100%;
+      width: 100%;
 }
 
 .listcursos {
@@ -593,6 +592,10 @@ video.videomin {
     position: relative;
 }
 
+#pantalla12c .listetapas {
+    height: 65vh;
+}
+
 .listetapas {
 	overflow-x: auto;
     z-index: 90;
@@ -607,6 +610,20 @@ video.videomin {
 
 .contesli {
     width: max-content;
+}
+
+.contesli::after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+.owl-item {
+    float: left;
+}
+
+.owl-nav.disabled {
+    display: none;
 }
 
 .contesli2 {
@@ -656,6 +673,7 @@ video.videomin {
 	width: 90vw;
     display: inline-block;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+    float: left;
 }
 
 .descur {
@@ -756,7 +774,7 @@ video.videomin {
 
 .tituCurAct {
   background: #fdfae7;
-  padding: 2rem;
+  padding: 10px;
   border-radius: 18px;
 }
 
@@ -776,6 +794,10 @@ video.videomin {
 	border: 2px solid #2c9b4b;
 	width: 100%;
 	border-radius: 4px;
+}
+
+.tituCurAct .numIteCu {
+    color: #e86b43;
 }
 
 .martop60 {
@@ -842,7 +864,7 @@ div#alerta.hidden {
     font-family: 'MontserratMedium';
     padding: 15px;
     font-size: 40px;
-    margin-top: 160px;
+    margin-top: 110px;
     color: #FFF;
     text-align: center;
 }

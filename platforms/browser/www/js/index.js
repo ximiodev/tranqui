@@ -41,6 +41,7 @@ var app = {
 			app.setSession();
 			app.loadEstadisticas();
 			app.savePushToken();
+			app.iniciarCont();
 		}
         
         $('#facebooklogin').click(function(e) {
@@ -90,6 +91,7 @@ var app = {
 		
         $('#btnLogin').click(function(e) {
 			e.preventDefault();
+			$(':focus').blur();
 			var datos = {};
 			datos.action = 'doLogin';
 			datos.tipo = 'user';
@@ -103,6 +105,8 @@ var app = {
 				success: function (data) {
 					if(data.res) {
 						ponerPantalla('pantalla1');
+						app.iniciarCont();
+						$('.videomin')[0].play();
 						isLogin = true;
 						localStorage.setItem('isLogin', isLogin);
 						loginData_nombre = data.datos.nombre;
@@ -123,6 +127,7 @@ var app = {
 		
         $('#btnRegistro').click(function(e) {
 			e.preventDefault();
+			$(':focus').blur();
 			if($('#nombre2').val()!='' && validateEmail($('#email2').val()) && $('#password2').val()!='' && $('#password2').val()==$('#password2b').val()) {
 				var datos = {};
 				datos.action = 'doRegistro';
@@ -138,6 +143,8 @@ var app = {
 					success: function (data) {
 						if(data.res) {
 							ponerPantalla('pantalla1');
+							app.iniciarCont();
+							$('.videomin')[0].play();
 							isLogin = true;
 							localStorage.setItem('isLogin', isLogin);
 							loginData_nombre = data.datos.nombre;
@@ -156,20 +163,20 @@ var app = {
 			}
 		});
 		
-        $('.playbutton').click(function(e) {
-			e.preventDefault();
-			$('.videomin')[0].play();
-	        $('.playbutton').hide();
-	        $('.saltarVid').removeClass('hidden');
-	        $('.videomin').show();
-		});
+        //~ $('.playbutton').click(function(e) {
+			//~ e.preventDefault();
+			//~ $('.videomin')[0].play();
+	        //~ $('.playbutton').hide();
+	        //~ $('.saltarVid').removeClass('hidden');
+	        //~ $('.videomin').show();
+		//~ });
 		
-        $('.videomin').click(function(e) {
-			e.preventDefault();
-			$('.videomin')[0].pause();
-	        $('.playbutton').show();
-	        $('.videomin').hide();
-		});
+        //~ $('.videomin').click(function(e) {
+			//~ e.preventDefault();
+			//~ $('.videomin')[0].pause();
+	        //~ $('.playbutton').show();
+	        //~ $('.videomin').hide();
+		//~ });
 		
 		 $('.btnVolverapa').click(function(e) {
 			e.preventDefault();
@@ -418,10 +425,25 @@ var app = {
 			ponerPod(0);
 		});
 		
-		 $('.btnSaltarMedIn').click(function(e) {
+		$('.btnSaltarMedIn').click(function(e) {
 			e.preventDefault();
 			$('#med_ini')[0].pause();
 			ponerPantalla('pantalla4');
+		});
+		
+		$('.btnProximoCurso').click(function(e) {
+			e.preventDefault();
+			//posc es indide dentro de categorias
+			var posci=0;
+			var curpos=0;
+			for(var k=0;k<allcursos.length;k++) {
+				if(allcursos[k].ID==curoreco) {
+					curpos = k;
+					posci = allcursos[k].categoria_ID
+				}
+			}
+			//i posicion del cuso
+			app.ponerCurso(curpos,posci,curoreco);
 		});
 		
 		$("#med_ini_control").roundSlider({
@@ -570,19 +592,20 @@ var app = {
 				audio.currentTime = tototime; 
 			}
 		});
-
+		var altpan = $(window).height();
+		$("<style type='text/css'> .contenidoApp, .ventana{ min-height: "+altpan+"px;} </style>").appendTo("head");
+    },
+    iniciarCont: function() {
+		app.ponerAllCursos();
 		app.getCuestionario();
 		app.getMedIni();
 		app.getMedDiaria();
-		app.getPodcasts();
 		app.getPodcasts();
 		app.getTimers();
 		app.getCategorias();
 		app.getEsfera();
 		app.getMensajes();
 		app.getMBSR();
-		var altpan = $(window).height();
-		$("<style type='text/css'> .contenidoApp, .ventana{ min-height: "+altpan+"px;} </style>").appendTo("head");
     },
     initStore: function() {
 		if (!window.store) {
@@ -686,10 +709,12 @@ var app = {
 		$('.nombreuser').html('Hola '+datos.displayname);
 		$('#glyphicon glyphicon-user').html(datos.displayname);
 		ponerPantalla('pantalla1');
+		app.iniciarCont();
 		isLogin = true;
 		loginData_nombre = datos.displayname;
 		localStorage.setItem('loginData_nombre', loginData_nombre);
 		localStorage.setItem('isLogin', isLogin);
+		$('.videomin')[0].play();
 	},
     hacerloginFace: function(datos) {
 		
@@ -699,10 +724,12 @@ var app = {
 			$('.nombreuser').html('Hola '+result.name);
 			$('#glyphicon glyphicon-user').html(result.name);
 			ponerPantalla('pantalla1');
+			app.iniciarCont();
 			isLogin = true;
 			loginData_nombre = result.name;
 			localStorage.setItem('loginData_nombre', loginData_nombre);
 			localStorage.setItem('isLogin', isLogin);
+		$('.videomin')[0].play();
 		  }, function onError (error) {
 			alerta("Failed: "+JSON.stringify(error));
 		  }
@@ -744,6 +771,25 @@ var app = {
 			}
 		});
 	},
+    ponerInfoHome: function() {
+		var datos = {};
+		datos.action = 'getInfoHome';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					n_estadisticas = data.estadisticas;
+					app.ponerCursoHome(data.cursohome.nombre, data.cursohome.etapa, data.cursohome.curso, data.cursohome.catei);
+					curoreco = data.cursorecomendado.ID;
+				} else {
+					alerta(data.message);
+				}
+			}
+		});
+	},
     getCuestionario: function() {
 		var datos = {};
 		datos.action = 'getPreguntas';
@@ -757,7 +803,7 @@ var app = {
 					preguntas = data.datos;
 					//~ ponerPregunta();
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -788,7 +834,7 @@ var app = {
 						}	
 					}
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -805,7 +851,7 @@ var app = {
 				if(data.res) {
 					timers = data.datos;
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -821,6 +867,7 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					categorias = data.datos;
+					app.ponerInfoHome();
 					var podac;
 					for(var i=0;i<categorias.length;i++) {
 						podac = ''+
@@ -830,7 +877,26 @@ var app = {
 						$('.categoriascur').append(podac);
 					}
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
+				}
+			}
+		});
+	},
+    ponerAllCursos: function() {
+		var datos = {};
+		datos.action = 'getCursos';
+		datos.catid = 0;
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					allcursos = data.cursos;
+					cursos = data.cursos;
+				} else {
+					alerta(data.message);
 				}
 			}
 		});
@@ -876,7 +942,7 @@ var app = {
 					$('#pantalla14 .boxcatex').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .tituloCurso').attr('style',categorias[posc].codigo);
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -900,7 +966,7 @@ var app = {
 					$('.listetapas .contesli').html('');
 					for(var i=0;i<etapas.length;i++) {
 						podac = ''+
-						'<div class="boxcate">'+
+						'<div class="boxcate item">'+
 						'	<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
 						'	<div class="clasesEtapa">'+
 						'		<div class="listclases">';
@@ -924,8 +990,81 @@ var app = {
 						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
 						$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
 					}
+					
+						
+					//~ owl1 = $('.owl-carousel1');
+					//~ owl1.owlCarousel({
+						//~ loop:true,
+						//~ margin:0,
+						//~ responsiveClass:true,
+						//~ pagination: false,dots: false,
+						//~ responsive:{
+							//~ 0:{
+								//~ items:1,
+								//~ nav:false,
+								//~ false:false
+							//~ },
+							//~ 600:{
+								//~ items:2,
+								//~ nav:false,
+								//~ false:false
+							//~ }
+						//~ }
+					//~ });
+					console.log("SAD");
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
+				}
+			}
+		});
+	},
+    ponerCursoHome: function(nonmbrecur, etapa, curid, catei) {
+		var datos = {};
+		datos.action = 'getCurso';
+		datos.curid = curid;
+		var posci=0;
+		for(var k=0;k<categorias.length;k++) {
+			if(categorias[k].ID==catei) {
+				posci = k;
+			}
+		}
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					var n_etapas = data.etapas;
+					etapas = data.etapas;
+					var podac;
+					$('.listetapas .contesli').html('');
+					for(var i=0;i<n_etapas.length;i++) {
+						if(n_etapas[i].ID==etapa) {
+							podac = ''+
+							'	<div class="ultimoCursosTit">'+nonmbrecur+' • '+n_etapas[i].nombre_etapa+'</div>'+
+							'	<div class="ultimoCursosSubTit">Última práctica</div>'+
+							'	<div class="clasesEtapa">'+
+							'		<div class="listclases">';
+							for(var j=0;j<n_etapas[i].clases.length;j++) {
+								var claseTom = (inArray(n_etapas[i].clases[j].ID, n_estadisticas.clases_c))?'':' activo';
+								console.log(n_etapas[i].clases);
+								podac += ''+
+								'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+								'			<div class="circItemA">'+
+								'				<div class="circItemB"><img src="img/check.png"></div>'+
+								'			</div>'+
+								'			<div class="numIteCu">'+(j+1)+'</div>'+
+								'		</div>';
+							}
+							podac += ''+
+							'		</div>'+
+							'	</div>';
+							$('.tituCurAct').html(podac);
+						}
+					}
+				} else {
+					alerta(data.message);
 				}
 			}
 		});
@@ -1003,7 +1142,7 @@ var app = {
 					
 					$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -1022,7 +1161,7 @@ var app = {
 					meditadiraria = data.datos.ID;
 					$('#audMedDiaria').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -1039,7 +1178,7 @@ var app = {
 				if(data.res) {
 					$('#audEsfera').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -1058,7 +1197,7 @@ var app = {
 					$('#mensajeFinenc').html(getTexto('final_encuesta'));
 					$('#mensajeInimed').html(getTexto('meditacion_inicial'));
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -1105,7 +1244,7 @@ var app = {
 						$('.listetapas .contesli2').append(podac);
 					}
 				} else {
-					alerta(data.msg);
+					alerta(data.message);
 				}
 			}
 		});
@@ -1170,6 +1309,7 @@ var podcasts;
 var timers;
 var categorias;
 var cursos;
+var allcursos;
 var clases;
 var etapas;
 var meditadiraria;
@@ -1178,6 +1318,9 @@ var mbsr_cont;
 var estadisticas;
 var preguntaAct = 0;
 var meditacionediarias;
+var n_estadisticas;
+var curoreco;
+var owl1;
 function log(arg) { app.log(arg); }
 
 // log both in the console and in the HTML #log element.
@@ -1206,7 +1349,24 @@ function ponerSigPreg() {
 }
 
 function ponerEstadisticas() {
-	$('.boxEstadisticas').html('<div class="estdis"><b>Clases tomadas:</b> <span class="numgig">'+estadisticas.clases+'</span></div><div class="estdis"><b>Meditaciones diarias:</b> <span class="numgig">'+estadisticas.meditaciones+'</span></div>');
+	var conte = ''+
+	'<div class="estdis"><b>Tiempo meditado:</b> <span class="numgig">'+secondsToHms(estadisticas.duracion*60)+' </span></div>'+
+	'<div class="estdis"><b>Días desde que no meditas:</b> <span class="numgig">'+estadisticas.dias+' </span></div>'+
+	'<div class="estdis"><b>Clases tomadas:</b> <span class="numgig">'+estadisticas.clases+'</span></div>'+
+	'<div class="estdis"><b>Meditaciones diarias:</b> <span class="numgig">'+estadisticas.meditaciones+'</span></div>'+
+	'<div class="estdis"><b>Cursos completados:</b> <span class="numgig">0</span></div>';
+	$('.boxEstadisticas').html(conte);
+}
+function secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    var hDisplay = h > 0 ? h + (h == 1 ? "" : "") : "00";
+    var mDisplay = m > 0 ? m + (m == 1 ? "" : "") : "00";
+    var sDisplay = s > 0 ? s + (s == 1 ? "" : "") : "00";
+    return hDisplay+':'+mDisplay; 
 }
 
 function ponerPregunta() {
@@ -1250,6 +1410,9 @@ function ponerPregunta() {
 
 function sacarSplash() {
 	$('.splashscreen').fadeOut( 600, function() {
+        if(isLoginSave) {
+			$('.videomin')[0].play();
+		}
 		$('.splashscreen').remove();
 		$('.contenidoApp').removeClass('hidden');
 		$('.contenidoApp').fadeIn(600);
