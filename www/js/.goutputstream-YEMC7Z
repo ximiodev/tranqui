@@ -249,7 +249,7 @@ var app = {
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
 			$('#msjconf').css({'opacity':0});
-			$('#msjconf').html(getTexto('confirm_notificaciones_meditar'));
+			$('#msjconf').html('Configurado');
 			$('#msjconf').animate({opacity: 1}, 300, 
 				function() {
 					$('#msjconf').delay(2000).animate({opacity: 0}, 300, 
@@ -266,7 +266,7 @@ var app = {
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
 			$('#msjconf').css({'opacity':0});
-			$('#msjconf').html(getTexto('confirm_notificaciones_respirar'));
+			$('#msjconf').html('Configurado');
 			$('#msjconf').animate({opacity: 1}, 300, 
 				function() {
 					$('#msjconf').delay(2000).animate({opacity: 0}, 300, 
@@ -465,7 +465,7 @@ var app = {
 				$(this).removeClass('glyphicon-eye');
 				$(this).addClass('glyphicon-eye-close');
 			} else {
-				$('#password2b').prop('type', 'password');
+				$('#passwordb').prop('type', 'password');
 				$(this).removeClass('glyphicon-eye-close');
 				$(this).addClass('glyphicon-eye');
 			}
@@ -1197,18 +1197,6 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
-					var podnaco = '';
-					for(var j=0;j<data.clases;j++) {
-						var claseTom = (j==0)?'':' activo';
-						podnaco += ''+
-						'		<div class="curItemComp'+claseTom+'" >'+
-						'			<div class="circItemA violet">'+
-						'				<div class="circItemB violet"><img src="img/check.png"></div>'+
-						'			</div>'+
-						'			<div class="numIteCu violet">'+(j+1)+'</div>'+
-						'		</div>';
-					}
-					$('.contClasesmedini').html(podnaco);
 					
 					$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
@@ -1266,8 +1254,6 @@ var app = {
 					mensajes_app = data.datos;
 					$('#mensajeFinenc').html(getTexto('final_encuesta'));
 					$('#mensajeInimed').html(getTexto('meditacion_inicial'));
-					$('#sub_boton_resp').html(getTexto('sub_boton_resp'));
-					$('#sub_boton_med').html(getTexto('sub_boton_med'));
 				} else {
 					alerta(data.message);
 				}
@@ -1485,7 +1471,7 @@ function sacarSplash() {
         if(isLoginSave) {
 			setTimeout(function() {
 				$('.videomin')[0].play();
-			}, 700);
+			}, 500);
 		}
 		$('.splashscreen').remove();
 		$('.contenidoApp').removeClass('hidden');

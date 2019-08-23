@@ -78,7 +78,6 @@ var app = {
 		
         $('.respuesta').click(function(e) {
 			e.preventDefault();
-			console.log($(this).attr('id').substring(5));
 			preguntaAct++;
 			ponerSigPreg();
 		});
@@ -250,7 +249,7 @@ var app = {
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
 			$('#msjconf').css({'opacity':0});
-			$('#msjconf').html('Configurado');
+			$('#msjconf').html(getTexto('confirm_notificaciones_meditar'));
 			$('#msjconf').animate({opacity: 1}, 300, 
 				function() {
 					$('#msjconf').delay(2000).animate({opacity: 0}, 300, 
@@ -267,7 +266,7 @@ var app = {
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
 			$('#msjconf').css({'opacity':0});
-			$('#msjconf').html('Configurado');
+			$('#msjconf').html(getTexto('confirm_notificaciones_respirar'));
 			$('#msjconf').animate({opacity: 1}, 300, 
 				function() {
 					$('#msjconf').delay(2000).animate({opacity: 0}, 300, 
@@ -282,6 +281,11 @@ var app = {
 		 $('.btnFinalizarConf').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla5');
+		});
+		
+		 $('#btnRepetirMEdIni').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla3');
 		});
 		
 		 $('.btnVolverHome').click(function(e) {
@@ -429,6 +433,42 @@ var app = {
 			e.preventDefault();
 			$('#med_ini')[0].pause();
 			ponerPantalla('pantalla4');
+		});
+		
+		$("#changeTypePass").click(function(){
+			if($('#password').prop('type')=='password') {
+				$('#password').prop('type', 'text');
+				$(this).removeClass('glyphicon-eye');
+				$(this).addClass('glyphicon-eye-close');
+			} else {
+				$('#password').prop('type', 'password');
+				$(this).removeClass('glyphicon-eye-close');
+				$(this).addClass('glyphicon-eye');
+			}
+		});
+		
+		$("#changeTypePass2").click(function(){
+			if($('#password2').prop('type')=='password') {
+				$('#password2').prop('type', 'text');
+				$(this).removeClass('glyphicon-eye');
+				$(this).addClass('glyphicon-eye-close');
+			} else {
+				$('#password2').prop('type', 'password');
+				$(this).removeClass('glyphicon-eye-close');
+				$(this).addClass('glyphicon-eye');
+			}
+		});
+		
+		$("#changeTypePass3").click(function(){
+			if($('#password2b').prop('type')=='password') {
+				$('#password2b').prop('type', 'text');
+				$(this).removeClass('glyphicon-eye');
+				$(this).addClass('glyphicon-eye-close');
+			} else {
+				$('#password2b').prop('type', 'password');
+				$(this).removeClass('glyphicon-eye-close');
+				$(this).addClass('glyphicon-eye');
+			}
 		});
 		
 		$('.btnProximoCurso').click(function(e) {
@@ -720,15 +760,37 @@ var app = {
 		
 		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
 		  function onSuccess (result) {
+			var datos = {};
+			datos.action = 'doFacebook';
+			datos.tipo = 'face';
+			datos.nombre = result.name;
+			datos.email = result.email;
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					if(data.res) {
+						
+						$('.nombreuser').html('Hola '+result.name);
+						$('#glyphicon glyphicon-user').html(result.name);
+						ponerPantalla('pantalla1');
+						app.iniciarCont();
+						isLogin = true;
+						loginData_nombre = result.name;
+						localStorage.setItem('loginData_nombre', loginData_nombre);
+						localStorage.setItem('isLogin', isLogin);
+						userLogId = data.datos.ID;
+						localStorage.setItem('userLogId', userLogId);
+						$('.videomin')[0].play();
+					} else {
+						alerta(data.message);
+					}
+				}
+			});
+			  
 			//~ $('.hola').html('<img src="'+result.picture.data.url+'"> Hola '+result.name+' <div class="emailjun">('+result.email+')</div>');
-			$('.nombreuser').html('Hola '+result.name);
-			$('#glyphicon glyphicon-user').html(result.name);
-			ponerPantalla('pantalla1');
-			app.iniciarCont();
-			isLogin = true;
-			loginData_nombre = result.name;
-			localStorage.setItem('loginData_nombre', loginData_nombre);
-			localStorage.setItem('isLogin', isLogin);
 		$('.videomin')[0].play();
 		  }, function onError (error) {
 			alerta("Failed: "+JSON.stringify(error));
@@ -1011,7 +1073,6 @@ var app = {
 							//~ }
 						//~ }
 					//~ });
-					console.log("SAD");
 				} else {
 					alerta(data.message);
 				}
@@ -1048,7 +1109,6 @@ var app = {
 							'		<div class="listclases">';
 							for(var j=0;j<n_etapas[i].clases.length;j++) {
 								var claseTom = (inArray(n_etapas[i].clases[j].ID, n_estadisticas.clases_c))?'':' activo';
-								console.log(n_etapas[i].clases);
 								podac += ''+
 								'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
 								'			<div class="circItemA">'+
@@ -1119,8 +1179,6 @@ var app = {
 		var length = timers.length;
 		for(var i = 0; i < length; i++) {
 			if(timers[i]['tipo'] == dura && timers[i]['nombre']==timerac) {
-				console.log(dura);
-				console.log(timerac);
 				ponerPantalla('pantalla6b');
 				$('.titSeccionSubT').html(timerac+' - '+dura+' minutos');
 				$('#audTim').html('<source src="'+baseURL+timers[i]['archivo']+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
@@ -1139,6 +1197,18 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
+					var podnaco = '';
+					for(var j=0;j<data.clases;j++) {
+						var claseTom = (j==0)?'':' activo';
+						podnaco += ''+
+						'		<div class="curItemComp'+claseTom+'" >'+
+						'			<div class="circItemA violet">'+
+						'				<div class="circItemB violet"><img src="img/check.png"></div>'+
+						'			</div>'+
+						'			<div class="numIteCu violet">'+(j+1)+'</div>'+
+						'		</div>';
+					}
+					$('.contClasesmedini').html(podnaco);
 					
 					$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
@@ -1196,6 +1266,8 @@ var app = {
 					mensajes_app = data.datos;
 					$('#mensajeFinenc').html(getTexto('final_encuesta'));
 					$('#mensajeInimed').html(getTexto('meditacion_inicial'));
+					$('#sub_boton_resp').html(getTexto('sub_boton_resp'));
+					$('#sub_boton_med').html(getTexto('sub_boton_med'));
 				} else {
 					alerta(data.message);
 				}
@@ -1411,7 +1483,9 @@ function ponerPregunta() {
 function sacarSplash() {
 	$('.splashscreen').fadeOut( 600, function() {
         if(isLoginSave) {
-			$('.videomin')[0].play();
+			setTimeout(function() {
+				$('.videomin')[0].play();
+			}, 700);
 		}
 		$('.splashscreen').remove();
 		$('.contenidoApp').removeClass('hidden');
@@ -1597,7 +1671,12 @@ function updateBar(cual) {
 				registroClase = true;
 			}
 		}
-  }
+		if(percentage>0.99) {
+			if(cual=="med_ini") {
+				ponerPantalla('pantalla3b');
+			}
+		}
+	}
 	if(!estadrag) {
 		$("#"+cual+"_control").roundSlider("setValue", (Math.round(percentage*100)), 1);
 	}

@@ -162,10 +162,15 @@ a {
 }
 
 video.videomin {
-  position: fixed;
-  min-width: 100%; 
-  min-height: 100%;
-      width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+	height: auto;
+	transform: translateX(-50%) translateY(-50%);
+	max-height: -webkit-fill-available;
 }
 
 .listcursos {
@@ -399,7 +404,7 @@ video.videomin {
     bottom: 15px;
     left: 50%;
     font-size: 20px;
-	width: 100px!important;
+	width: auto!important;
     margin-left: -50px!important;
 }
 
@@ -440,8 +445,10 @@ video.videomin {
 
 .iniciarmedini {
     font-size: 20px;
-	width: 100px;
-	margin: auto;
+    width: fit-content;
+    margin: auto;
+    color: #0f0f0f!important;
+    background: #FFF!important;
 }
 
 .btnSaltarMedIn {
@@ -467,7 +474,7 @@ video.videomin {
     font-family: 'MontserratMedium';
     color: #FFF;
 	font-size: 22px;
-	margin-bottom: 15px;
+	margin-bottom: 55px;
 }
 
 .curItemComp {
@@ -478,6 +485,16 @@ video.videomin {
     color: rgba(231,98,57,1);
     display: inline-block;
 	margin: 5px 10px;
+}
+
+.contClasesmedini {
+    width: 320px;
+    margin: 0 auto;
+}
+
+.listclases {
+    width: 320px;
+    margin: 0 auto;
 }
 
 .circItemA {
@@ -508,6 +525,43 @@ video.videomin {
     height: 30px;
     border-radius: 50%;
     transform: rotate(180deg);
+}
+
+
+
+.circItemA.violet {
+	background: rgba(127,36,255,1);
+    background: -moz-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(127,36,255,1)), color-stop(100%, rgba(255,172,255,1)));
+    background: -webkit-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: -o-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+	padding: 5px;
+}
+
+.circItemB.violet {
+	background: rgba(127,36,255,1);
+    background: -moz-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(127,36,255,1)), color-stop(100%, rgba(255,172,255,1)));
+    background: -webkit-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: -o-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transform: rotate(180deg);
+}
+
+.activo .circItemA.violet {
+    background: transparent;
+    border: 2px solid rgba(255,172,255,1);
 }
 
 .circItemB img {
@@ -815,6 +869,7 @@ video.videomin {
 	margin: 0 auto;
 	text-align: center;
     clear: both;
+	letter-spacing: .8pt;
 }
 
 .boxForm {
@@ -1374,3 +1429,97 @@ span.rs-tooltip.rs-tooltip-text.edit {
     border-radius: 20px;
     margin-bottom: 40px;
 }
+
+.blopas {
+	position: relative;
+}
+
+i.glyphicon.glyphicon-eye-open {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #8227ff;
+}
+
+button.close {
+    opacity: 1;
+    margin-top: -20px;
+    margin-right: -15px;
+    font-size: 32px;
+}
+
+.subtituconfig {
+    text-align: center;
+    color: #FFF;
+    font-size: 12px;
+    width: 70%;
+    margin: 15px auto 0;
+}
+
+.circ_resp {
+    width: 120px;
+    height: 120px;
+    margin: 6px 6px 20px;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    line-height: 1.2;
+    left: 50%;
+    margin-left: -60px;
+    top: 50%;
+    margin-top: -60px;
+    pointer-events: none;
+    border: 2px solid #FFF;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.circ_resp_1 {
+	animation-delay: .1s;
+    -webkit-animation: fadein_1 2s ease-in  alternate-reverse infinite;
+    -moz-animation: fadein_1 2s ease-in  alternate-reverse infinite;
+    animation: fadein_1 2s ease-in  alternate-reverse infinite;
+}
+
+.circ_resp_2 {
+	animation-delay: .2s;
+    -webkit-animation: fadein_2 2s ease-in  alternate-reverse infinite;
+    -moz-animation: fadein_2 2s ease-in  alternate-reverse infinite;
+    animation: fadein_2 2s ease-in  alternate-reverse infinite;
+}
+
+.circ_resp_3 {
+	animation-delay: .3s;
+    -webkit-animation: fadein_3 2s ease-in  alternate-reverse infinite;
+    -moz-animation: fadein_3 2s ease-in  alternate-reverse infinite;
+    animation: fadein_3 2s ease-in  alternate-reverse infinite;
+}
+
+.circ_resp_4 {
+	animation-delay: .4s;
+    -webkit-animation: fadein_4 2s ease-in  alternate-reverse infinite;
+    -moz-animation: fadein_4 2s ease-in  alternate-reverse infinite;
+    animation: fadein_4 2s ease-in  alternate-reverse infinite;
+}
+
+.circ_resp_5 {
+	animation-delay: .5s;
+    -webkit-animation: fadein_5 2s ease-in  alternate-reverse infinite;
+    -moz-animation: fadein_5 2s ease-in  alternate-reverse infinite;
+    animation: fadein_5 2s ease-in  alternate-reverse infinite;
+}
+
+.circ_resp_6 {
+	animation-delay: .6s;
+    -webkit-animation: fadein_6 2s ease-in  alternate-reverse infinite;
+    -moz-animation: fadein_6 2s ease-in  alternate-reverse infinite;
+    animation: fadein_6 2s ease-in  alternate-reverse infinite;
+}
+
+@keyframes fadein_1 { from { opacity: 0; transform: scale(1, 1);} to { opacity: 1;transform: scale(1.6, 1.6); }}
+@keyframes fadein_2 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .8;transform: scale(1.5, 1.5); }}
+@keyframes fadein_3 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .6;transform: scale(1.4, 1.4); }}
+@keyframes fadein_4 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .4;transform: scale(1.3, 1.3); }}
+@keyframes fadein_5 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .2;transform: scale(1.2, 1.2); }}
+@keyframes fadein_6 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .1;transform: scale(1.1, 1.1); }}
+

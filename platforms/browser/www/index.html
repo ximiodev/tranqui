@@ -46,7 +46,7 @@
 						<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
 					</div>
 					
-					<a href="#" class="btnSinborde martop60">Términos & condiciones »</a>
+					<a href="#" class="btnSinborde martop60" data-toggle="modal" data-target="#terminos_condiciones">términos & condiciones &nbsp; »</a>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla0a">
@@ -55,8 +55,9 @@
 					<div class="form-group">
 						<input type="email" class="form-control" id="email" placeholder="Email">
 					</div>
-					<div class="form-group">
+					<div class="form-group blopas">
 						<input type="password" class="form-control" id="password" placeholder="Password">
+						<i class="glyphicon glyphicon-eye-open" id="changeTypePass"></i>
 					</div>
 					<button class="btn btn-default btnGenerico btnViole" id="btnLogin">Ingresar</button>
 					<div class="links">
@@ -74,11 +75,13 @@
 					<div class="form-group">
 						<input type="email" class="form-control" id="email2" placeholder="Email">
 					</div>
-					<div class="form-group">
+					<div class="form-group blopas">
 						<input type="password" class="form-control" id="password2" placeholder="Password">
+						<i class="glyphicon glyphicon-eye-open" id="changeTypePass2"></i>
 					</div>
-					<div class="form-group">
+					<div class="form-group blopas">
 						<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
+						<i class="glyphicon glyphicon-eye-open" id="changeTypePass3"></i>
 					</div>
 					<button class="btn btn-default btnGenerico btnViole" id="btnRegistro">Registrarse</button>
 				</div>
@@ -113,6 +116,8 @@
 			</div>
 			<div class="ventana hidden" id="pantalla3">
 				<div class="contenidoGen">
+					<div class="contClasesmedini">
+					</div>
 					<h4 class="titSeccion">Meditación incial</h4>
 					<div class="btnPlayMed ct_med_ini viole" onclick="togglePlaying('med_ini')">
 						<div class="circmed viole">
@@ -130,12 +135,22 @@
 					<div class="saltarVid2 btnSaltarMedIn btnSinborde">Saltar »</div>
 				</div>
 			</div>
+			<div class="ventana hidden" id="pantalla3b">
+				<div class="contenidoGen">
+					<div class="contClasesmedini">
+					</div>
+					<h4 class="titSeccion">Meditación incial</h4>
+					<button class="btnGenerico btnViole" id="btnRepetirMEdIni">Repetir</button>
+					<button class="btnGenerico btnViole btnSaltarMedIn" id="btnContinuarmedini">Continuar</button>
+				</div>
+			</div>
 			<div class="ventana hidden" id="pantalla4">
 				<div class="contenidoGen">
 					<h4 class="titSeccion">Notificaciones</h4>
 					<div class="bloqueselMin">
 						<div class="bloqueConf">
 							<button class="btnGenerico btnViole" id="confNotResp">Para poder respirar</button>
+							<div class="subtituconfig" id="sub_boton_resp"></div>
 							<div class="contConfNot" id="notRespB">
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
@@ -156,6 +171,7 @@
 								<div class="btnSinborde btnConfirmar1">Confirmar</div>
 							</div>
 							<button class="btnGenerico btnViole" id="confNotMed">Para poder meditar</button>
+							<div class="subtituconfig" id="sub_boton_med"></div>
 							<div class="contConfNot" id="notRespM">
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
@@ -280,6 +296,7 @@
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla7">
+				<!--	respiracion  -->
 				<div class="contenidoGen">
 					<h4 class="titSeccionSub">Esfera de Meditación</h4>
 					<div class="btnPlayMed ct_audEsfera cele" onclick="togglePlaying('audEsfera')">
@@ -289,6 +306,12 @@
 							</div>
 						</div>
 					</div>
+					<div class="circ_resp circ_resp_1"></div>
+					<div class="circ_resp circ_resp_2"></div>
+					<div class="circ_resp circ_resp_3"></div>
+					<div class="circ_resp circ_resp_4"></div>
+					<div class="circ_resp circ_resp_5"></div>
+					<div class="circ_resp circ_resp_6"></div>
 					<div class="circle audioBorde ab_audEsfera"></div>
 					<div id="audEsfera_control" class="circuloN"></div>
 					<audio ontimeupdate="updateBar('audEsfera')" id="audEsfera">
@@ -612,8 +635,24 @@
 			</div>
 		</div>
     </div>
+    
+
+	<!-- Modal -->
+	<div class="modal fade" id="terminos_condiciones" tabindex="-1" role="dialog" aria-labelledby="terminos_condiciones">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-body">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+				</div>
+			</div>
+		</div>
+	</div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/circle-progress.min.js"></script>
     <script type="text/javascript" src="js/roundslider.js"></script>
     <script type="text/javascript" src="js/owl.carousel.js"></script>
