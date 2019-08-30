@@ -1205,6 +1205,7 @@ var app = {
 			//~ $('#audiosclase').append('<div class="btnGenerico btnViole" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
 			$('#tiempoclase').append('<option value="'+k+'">'+etapas[posc].clases[i].archivos[k].duracion+'</option>');
 		}
+		app.ponerClaseAudio(0,i,posc,curid);
 		$('#tiempoclase').mobiscroll().select({
             display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
             showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
