@@ -7,7 +7,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" />
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="css/roundslider.css" />
 	<link rel="stylesheet" href="css/owl.carousel.min.css" />
 	<link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>Tranqui</title>
 </head>
@@ -149,8 +150,8 @@
 					<h4 class="titSeccion">Notificaciones</h4>
 					<div class="bloqueselMin">
 						<div class="bloqueConf">
-							<button class="btnGenerico btnViole" id="confNotResp">Para poder respirar</button>
 							<div class="subtituconfig" id="sub_boton_resp"></div>
+							<button class="btnGenerico btnViole" id="confNotResp">Para poder respirar</button>
 							<div class="contConfNot" id="notRespB">
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
@@ -170,8 +171,8 @@
 								</div>
 								<div class="btnSinborde btnConfirmar1">Confirmar</div>
 							</div>
-							<button class="btnGenerico btnViole" id="confNotMed">Para poder meditar</button>
 							<div class="subtituconfig" id="sub_boton_med"></div>
+							<button class="btnGenerico btnViole" id="confNotMed">Para poder meditar</button>
 							<div class="contConfNot" id="notRespM">
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
@@ -584,8 +585,28 @@
 			<div class="ventana hidden" id="pantalla16">
 				<div class="contenidoGen">
 					<h4 class="tituloClase"></h4>
-					<div class="contClases" id="audiosclase">
+					<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
+						<div class="circmed viole">
+							<div class="circsma viole">
+								<i class="glyphicon glyphicon-play"></i>
+							</div>
+						</div>
 					</div>
+					<div class="circle audioBorde ab_audClaseP"></div>
+					<div id="audClaseP_control" class="circuloN"></div>
+					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
+						<source src="" type="audio/mpeg">
+						Su navegador no sorporta audio HTML5
+					</audio>
+					<div class="selectorTiempo">
+						<div class="titiempo">Tiempo</div>
+						<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
+							<option value="1">5 min</option>
+							<option value="2">10 min</option>
+							<option value="3">15 min</option>
+						</select>
+					</div>
+					<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita"></div></div></div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
@@ -600,6 +621,7 @@
 			<div class="ventana hidden" id="pantalla17">
 				<div class="contenidoGen">
 					<h4 class="tituloClase"></h4>
+<!--
 					<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
 						<div class="circmed viole">
 							<div class="circsma viole">
@@ -612,6 +634,7 @@
 					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
+-->
 					</audio>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla16">Volver</div>
 					<div class="bototneraBottom conpub">
@@ -656,6 +679,7 @@
     <script type="text/javascript" src="js/circle-progress.min.js"></script>
     <script type="text/javascript" src="js/roundslider.js"></script>
     <script type="text/javascript" src="js/owl.carousel.js"></script>
+    <script type="text/javascript" src="js/mobiscroll.jquery.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

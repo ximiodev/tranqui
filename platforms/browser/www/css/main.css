@@ -67,6 +67,14 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 body {
 	color: #333;
     font-family: 'MontserratRegular';
+	background: rgba(127,36,255,1);
+	background: -moz-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(127,36,255,1)), color-stop(100%, rgba(255,172,255,1)));
+	background: -webkit-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
 }
 
 a {
@@ -1453,7 +1461,7 @@ button.close {
     color: #FFF;
     font-size: 12px;
     width: 70%;
-    margin: 15px auto 0;
+    margin: 0 auto 15px;
 }
 
 .circ_resp {
@@ -1523,3 +1531,90 @@ button.close {
 @keyframes fadein_5 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .2;transform: scale(1.2, 1.2); }}
 @keyframes fadein_6 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .1;transform: scale(1.1, 1.1); }}
 
+
+
+.mbsc-ios.mbsc-fr.mbsc-fr-inline .mbsc-sc-whl-o {
+	background: transparent;
+}
+
+.mbsc-ios.mbsc-fr-inline .mbsc-fr-c {
+	background: transparent;
+    border-bottom: 0;
+}
+
+.mbsc-ios.mbsc-fr-inline .mbsc-fr-w {
+	background: transparent;
+	border: 0;
+}
+
+.mbsc-ios .mbsc-sc-itm-sel, .mbsc-ios .mbsc-sc-whl-gr-3d .mbsc-sc-itm {
+    color: #FFF;
+}
+
+.selectorTiempo {
+    width: 200px;
+    margin: 15px auto;
+	margin-top: 200px;
+}
+
+.ab_audClaseP {
+    top: 140px;
+    margin-top: 0;
+}
+
+div#audClaseP_control {
+    top: 140px;
+    margin-top: 0;
+}
+
+.btnPlayMed.ct_audClaseP {
+    margin-top: 0;
+    top: 150px;
+}
+
+.mbsc-sc-whl-l {
+    border: 1px solid #FFF;
+    width: 120px;
+    margin-left: -60px!important;
+    left: 50%;
+    border-radius: 20px;
+}
+
+.btnDescargaFile {
+    width: fit-content!important;
+}
+
+.marcloca {
+    display: inline-block;
+    width: 30px;
+    height: 14px;
+    background: #FFF;
+    border-radius: 20px;
+    margin-bottom: -3px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.bolita {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    margin: 2px;
+    left: 0;
+    transition: .5s;
+    position: absolute;
+}
+
+.bolita.bolitaOn {
+    left: auto;
+    right: 0;
+}
+
+.titiempo {
+    text-align: center;
+    color: #FFF;
+    margin-bottom: -10px;
+    padding-top: 25px;
+    font-size: 12px;
+    text-transform: uppercase;
+}

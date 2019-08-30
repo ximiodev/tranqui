@@ -2,13 +2,16 @@ window.onerror = function(message, url, lineNumber) {
 	log("Error: "+message+" in "+url+" at line "+lineNumber);
 	alert("Error: "+message+" in "+url+" at line "+lineNumber);
 }
-var apiURL = "http://newcyclelabs.com.ar/Tranqui/apiTranqui.php";
-var baseURL = "http://newcyclelabs.com.ar/Tranqui/";
+var apiURL = "http://tranquiapp.net/apiTranqui.php";
+var baseURL = "http://tranquiapp.net/";
 var isLoginSave = false;
 var userLogId = false;
 var timerac = '';
 var sinintrombsr = false;
 var loginData_nombre = '';
+var cur_i;
+var cur_posc;
+var cur_curid;
 var app = {
     initialize: function() {
         this.bindEvents();
@@ -471,6 +474,16 @@ var app = {
 			}
 		});
 		
+		$('.btnDescargaFile').click(function(e) {
+			e.preventDefault();
+			var quien = $(this).find('.bolita');
+			if(quien.hasClass('bolitaOn')) {
+				quien.removeClass('bolitaOn');
+			} else {
+				quien.addClass('bolitaOn');
+			}
+		});
+		
 		$('.btnProximoCurso').click(function(e) {
 			e.preventDefault();
 			//posc es indide dentro de categorias
@@ -494,7 +507,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -515,7 +527,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -536,7 +547,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -557,7 +567,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -578,7 +587,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -599,7 +607,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -620,7 +627,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: "+450",
 			start: function(e) {
 				estadrag = true;
 			},
@@ -634,6 +640,13 @@ var app = {
 		});
 		var altpan = $(window).height();
 		$("<style type='text/css'> .contenidoApp, .ventana{ min-height: "+altpan+"px;} </style>").appendTo("head");
+		
+		mobiscroll.settings = {
+			
+			lang: 'es',   // Specify language like: lang: 'pl' or omit setting to use default
+			theme: 'ios'            // Specify theme like: theme: 'ios' or omit setting to use default
+		};
+
     },
     iniciarCont: function() {
 		app.ponerAllCursos();
@@ -1149,12 +1162,23 @@ var app = {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		ponerPantalla('pantalla16');
 		$('#audiosclase').html('');
+		$('#tiempoclase').html('');
+		
+		cur_i=i;
+		cur_posc=posc;
+		cur_curid=curid;
 		for(var k=0;k<etapas[posc].clases[i].archivos.length;k++) {
-			$('#audiosclase').append('<div class="btnGenerico btnViole" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
+			//~ $('#audiosclase').append('<div class="btnGenerico btnViole" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
+			$('#tiempoclase').append('<option value="'+k+'">'+etapas[posc].clases[i].archivos[k].duracion+'</option>');
 		}
+		$('#tiempoclase').mobiscroll().select({
+            display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
+            showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
+        });
 		$('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
-		$('#pantalla17').attr('style',$('#pantalla17').attr('style')+categorias[posci].codigo);
-		$('#pantalla17 .viole').attr('style', categorias[posci].codigo);
+		$('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
+		$('#pantalla16 .viole').attr('style', categorias[posci].codigo);
+		$('#pantalla16 .bolita').attr('style', categorias[posci].codigo);
 		$('#audiosclase .btnGenerico').attr('style',categorias[posci].codigo);
 	},
     ponerClase2: function(j, i, claid, i2) {
@@ -1166,9 +1190,12 @@ var app = {
 		$('#uad_MBSR')[0].pause();
 		$('#uad_MBSR')[0].load();
 	},
+    ponerAudioFile: function(k) {
+		app.ponerClaseAudio(k,cur_i,cur_posc,cur_curid);
+	},
     ponerClaseAudio: function(k,i, posc, curid) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
-		ponerPantalla('pantalla17');
+		//~ ponerPantalla('pantalla17');
 		datosClase.audio_ID = etapas[posc].clases[i].archivos[k].ID;
 		registroClase = false;
 		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
@@ -1830,3 +1857,4 @@ function compartirEnlace() {
 	}
 	window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
 }
+
