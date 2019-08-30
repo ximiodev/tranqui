@@ -1634,3 +1634,7 @@ div#audClaseP_control {
     font-size: 12px;
     text-transform: uppercase;
 }
+
+.mbsc-ios.mbsc-fr.mbsc-fr-inline .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c {
+    background: transparent;
+}

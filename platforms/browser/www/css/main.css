@@ -1183,6 +1183,22 @@ div#msjconf {
     margin: 20px auto;
 }
 
+.descripcionCat {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 14px;
+    margin: 20px auto;
+}
+
+.descripcionClase {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 14px;
+    margin: 20px auto;
+}
+
 .tituloClase, .tituloClase2 {
     color: #FFF;
     text-align: center;
@@ -1617,4 +1633,8 @@ div#audClaseP_control {
     padding-top: 25px;
     font-size: 12px;
     text-transform: uppercase;
+}
+
+.mbsc-ios.mbsc-fr.mbsc-fr-inline .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c {
+    background: transparent;
 }

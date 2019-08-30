@@ -474,6 +474,38 @@ var app = {
 			}
 		});
 		
+		$('#btnBuscar').click(function(e) {
+			e.preventDefault();
+			var wts = $('#buscarCate').val();
+			$('.categoriascur').html('');
+			var podac;
+			
+			for(var i=0;i<categorias.length;i++) {
+				if(wts!='') {
+					var keywords = categorias[i].keywords.split(',');
+					var encontro1 = false;
+					for(var t=0;t<keywords.length;t++) {
+						if(keywords[t].search(wts)!=-1) {
+							encontro1 = true;
+						}
+					}
+					if(encontro1 || categorias[i].nombre.search(wts)!=-1) {
+						podac = ''+
+						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
+						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+						'</div>';
+						$('.categoriascur').append(podac);
+					}
+				} else {
+					podac = ''+
+					'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
+					'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+					'</div>';
+					$('.categoriascur').append(podac);
+				}
+			}
+		});
+		
 		$('.btnDescargaFile').click(function(e) {
 			e.preventDefault();
 			var quien = $(this).find('.bolita');
@@ -981,6 +1013,7 @@ var app = {
 		datos.action = 'getCursos';
 		datos.catid = catid;
 		$('.tituloCat').html(categorias[posc].nombre);
+		$('.descripcionCat').html(categorias[posc].descripcion);
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
@@ -1160,6 +1193,7 @@ var app = {
 	},
     ponerClase: function(i, posc, curid, posci) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
+		$('.descripcionClase').html(etapas[posc].clases[i].descripcion);
 		ponerPantalla('pantalla16');
 		$('#audiosclase').html('');
 		$('#tiempoclase').html('');
@@ -1171,6 +1205,7 @@ var app = {
 			//~ $('#audiosclase').append('<div class="btnGenerico btnViole" onclick="app.ponerClaseAudio('+k+','+i+','+posc+','+curid+');" data-cur="'+i+'">'+etapas[posc].clases[i].archivos[k].duracion+'</div>');
 			$('#tiempoclase').append('<option value="'+k+'">'+etapas[posc].clases[i].archivos[k].duracion+'</option>');
 		}
+		app.ponerClaseAudio(0,i,posc,curid);
 		$('#tiempoclase').mobiscroll().select({
             display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
             showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
