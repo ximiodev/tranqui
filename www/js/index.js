@@ -19,6 +19,16 @@ var app = {
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
+    logOff: function() {
+        isLoginSave = false;
+        loginData_nombre  = '';
+        userLogId = false;
+        localStorage.getItem('isLogin', isLogin);
+        localStorage.getItem('loginData_nombre', loginData_nombre);
+        localStorage.getItem('userLogId', userLogId);
+        $('.ventana').addClass('hidden');
+        ponerPantalla('pantalla0');
+    },
     onDeviceReady: function() {
         //~ app.setupPush();
         //~ app.initStore();
@@ -42,7 +52,6 @@ var app = {
 			$('#pantalla1').addClass('activa');
 			$('.nombreuser').html('Hola '+loginData_nombre);
 			app.setSession();
-			app.loadEstadisticas();
 			app.savePushToken();
 			app.iniciarCont();
 		}
@@ -474,6 +483,21 @@ var app = {
 			}
 		});
 		
+		$('.btnUserOptions').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla11b');
+		});
+		
+		$('.btnMiscursos').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla11c');
+		});
+		
+		$('.btnCerrarSession').click(function(e) {
+			e.preventDefault();
+			app.logOff();
+		});
+		
 		$('#btnBuscar').click(function(e) {
 			e.preventDefault();
 			var wts = $('#buscarCate').val();
@@ -681,6 +705,7 @@ var app = {
 
     },
     iniciarCont: function() {
+		app.getMBSR();
 		app.ponerAllCursos();
 		app.getCuestionario();
 		app.getMedIni();
@@ -690,7 +715,10 @@ var app = {
 		app.getCategorias();
 		app.getEsfera();
 		app.getMensajes();
-		app.getMBSR();
+		
+		setTimeout(function() {
+			app.loadEstadisticas();
+		}, 900);
     },
     initStore: function() {
 		if (!window.store) {
@@ -889,7 +917,9 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					n_estadisticas = data.estadisticas;
-					app.ponerCursoHome(data.cursohome.nombre, data.cursohome.etapa, data.cursohome.curso, data.cursohome.catei);
+					if(data.cursohome.nombre!=undefined) {
+						app.ponerCursoHome(data.cursohome.nombre, data.cursohome.etapa, data.cursohome.curso, data.cursohome.catei);
+					}
 					curoreco = data.cursorecomendado.ID;
 				} else {
 					alerta(data.message);
@@ -1271,6 +1301,18 @@ var app = {
 						'		</div>';
 					}
 					$('.contClasesmedini').html(podnaco);
+					console.log(data);
+					if(data.fondo!='') {
+						$('#pantalla3b').attr('style',data.fondo);
+						$('#pantalla3c').attr('style',data.fondo);
+						$('#pantalla3').attr('style',data.fondo);
+						$('#pantalla3 .btnPlayMed').attr('style',data.fondo);
+						$('#pantalla3 .circmed').attr('style',data.fondo);
+						$('#pantalla3 .circsma').attr('style',data.fondo);
+						$('#pantalla3 .contClasesmedini .circItemA').attr('style',data.fondo);
+						$('#pantalla3 .contClasesmedini .circItemB').attr('style',data.fondo);
+						$('#pantalla3 .activo .circItemA').attr('style','border-color: #'+data.color+';');
+					}
 					
 					$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				} else {
@@ -1350,33 +1392,6 @@ var app = {
 					var splitted = mbsr_cont['descripcion'].split("\n");
 					$('.text_mb_1').html(splitted[0]);
 					$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
-					
-					var podac;
-					$('.listetapas .contesli2').html('');
-					for(var i=0;i<mbsr_cont.semanas.length;i++) {
-						podac = ''+
-						'<div class="boxcate">'+
-						'	<div class="titEtapa">'+mbsr_cont.semanas[i].nombre_etapa+'</div>'+
-						'	<div class="clasesEtapa">'+
-						'		<div class="listclases">';
-						for(var j=0;j<mbsr_cont.semanas[i].clases.length;j++) {
-							var claseTom = ' activo';
-							var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.mbsr_c))?'':' activo';
-							podac += ''+
-							'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase2('+j+','+i+','+mbsr_cont.semanas[i].clases[j].ID+', '+i+');" data-clase="'+j+'">'+
-							'			<div class="circItemA">'+
-							'				<div class="circItemB"><img src="img/check.png"></div>'+
-							'			</div>'+
-							'			<div class="numIteCu">'+(j+1)+'</div>'+
-							'		</div>';
-						}
-						podac += ''+
-						'		</div>'+
-						'	</div>'+
-						'</div>'+
-						'</div>';
-						$('.listetapas .contesli2').append(podac);
-					}
 				} else {
 					alerta(data.message);
 				}
@@ -1490,6 +1505,56 @@ function ponerEstadisticas() {
 	'<div class="estdis"><b>Meditaciones diarias:</b> <span class="numgig">'+estadisticas.meditaciones+'</span></div>'+
 	'<div class="estdis"><b>Cursos completados:</b> <span class="numgig">0</span></div>';
 	$('.boxEstadisticas').html(conte);
+	$('#miscursoscont').append('');
+	allcursos = estadisticas.cursosAll;
+	cursos = estadisticas.cursosAll;
+	for(var i=0;i<estadisticas.cursos.length;i++) {
+		var posci=0;
+		var curpos=0;
+		for(var k=0;k<allcursos.length;k++) {
+			if(allcursos[k].ID==estadisticas.cursos[i].ID) {
+				curpos = k;
+				posci = allcursos[k].categoria_ID
+			}
+		}
+		//i posicion del cuso
+		var item = '<div class="btnNaranja" onclick="app.ponerCurso('+curpos+','+posci+','+estadisticas.cursos[i].ID+')">'+estadisticas.cursos[i].nombre+'</div>';
+		$('#miscursoscont').append(item);
+	}
+	
+	
+	
+	//poner mbsr
+	
+	
+	mbsr_cont = estadisticas.mbsr_cont.datos;
+	//poner cursos
+	var podac;
+	$('.listetapas .contesli2').html('');
+	for(var i=0;i<mbsr_cont.semanas.length;i++) {
+		podac = ''+
+		'<div class="boxcate">'+
+		'	<div class="titEtapa">'+mbsr_cont.semanas[i].nombre_etapa+'</div>'+
+		'	<div class="clasesEtapa">'+
+		'		<div class="listclases">';
+		for(var j=0;j<mbsr_cont.semanas[i].clases.length;j++) {
+			var claseTom = ' activo';
+			var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.mbsr_c))?'':' activo';
+			podac += ''+
+			'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase2('+j+','+i+','+mbsr_cont.semanas[i].clases[j].ID+', '+i+');" data-clase="'+j+'">'+
+			'			<div class="circItemA">'+
+			'				<div class="circItemB"><img src="img/check.png"></div>'+
+			'			</div>'+
+			'			<div class="numIteCu">'+(j+1)+'</div>'+
+			'		</div>';
+		}
+		podac += ''+
+		'		</div>'+
+		'	</div>'+
+		'</div>'+
+		'</div>';
+		$('.listetapas .contesli2').append(podac);
+	}
 }
 function secondsToHms(d) {
     d = Number(d);
@@ -1545,9 +1610,9 @@ function ponerPregunta() {
 function sacarSplash() {
 	$('.splashscreen').fadeOut( 600, function() {
         if(isLoginSave) {
-			setTimeout(function() {
-				$('.videomin')[0].play();
-			}, 700);
+			//~ setTimeout(function() {
+				//~ videoIni.play();
+			//~ }, 900);
 		}
 		$('.splashscreen').remove();
 		$('.contenidoApp').removeClass('hidden');
@@ -1735,7 +1800,7 @@ function updateBar(cual) {
 		}
 		if(percentage>0.99) {
 			if(cual=="med_ini") {
-				ponerPantalla('pantalla3b');
+				ponerPantalla('pantalla3c');
 			}
 		}
 	}

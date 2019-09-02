@@ -156,7 +156,7 @@ a {
 	background-image: url(../img/fndMEditacion-80.jpg);
 }
 
-#pantalla11 {
+#pantalla11, #pantalla11b, #pantalla11c {
 	background-image: url(../img/fndUser-80.jpg);
 }
 
@@ -498,6 +498,7 @@ video.videomin {
 .contClasesmedini {
     width: 320px;
     margin: 0 auto;
+	text-align: center;
 }
 
 .listclases {
@@ -1600,6 +1601,15 @@ div#audClaseP_control {
     width: fit-content!important;
 }
 
+.btn50P {
+    width: 50%!important;
+}
+
+.saltarVid.btn50P, .saltarVid2.btn50P {
+    width: 50%!important;
+    margin-left: -25%!important;
+}
+
 .marcloca {
     display: inline-block;
     width: 30px;
@@ -1637,4 +1647,57 @@ div#audClaseP_control {
 
 .mbsc-ios.mbsc-fr.mbsc-fr-inline .mbsc-sc-whl-gr-3d .mbsc-sc-whl-c {
     background: transparent;
+}
+
+
+.contClasesmedini .circItemA {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+}
+
+.contClasesmedini .circItemB {
+    width: 15px;
+    height: 15px;
+}
+
+.contClasesmedini .curItemComp {
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+}
+
+.contClasesmedini img {
+    margin: 0px auto;
+    margin-top: 0px;
+    display: block;
+    position: relative;
+    top: 4px;
+}
+
+.contClasesmedini .numIteCu {
+    font-size: 12px;
+}
+
+
+.btnUserOptions {
+    color: #FFF;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+	z-index: 999;
+}
+
+.btnUserMenu {
+    color: #FFF;
+    text-align: center;
+}
+
+
+#miscursoscont .btnNaranja {
+    margin-bottom: 15px;
+    padding: 5px;
 }

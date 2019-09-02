@@ -19,7 +19,7 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/fontawesome.css" />
     <link rel="stylesheet" type="text/css" href="css/roundslider.css" />
 	<link rel="stylesheet" href="css/owl.carousel.min.css" />
 	<link rel="stylesheet" href="css/owl.theme.default.min.css" />
@@ -88,10 +88,10 @@
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla1">
-				<video class="videomin" >
+				<video class="videomin" id="videoIni" autoplay>
 					<source src="video/video-intro_1_s.mp4" type="video/mp4">
 				</video>
-				<div class="saltarVid btnSinborde">Saltar »</div>
+				<div class="saltarVid btnSinborde btn50P">Saltar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla2">
 				<div class="nombreuser"></div>
@@ -103,17 +103,17 @@
 					<div class="respuesta btnGenerico btnViole" id="resp_4"></div>
 					<div class="paso"></div>
 				</div>
-				<div class="saltar btnSinborde">Saltar »</div>
+				<div class="saltar btnSinborde btn50P">Saltar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla2b">
 				<div class="nombreuser"></div>
 				<div class="cuetionario mensajeapp" id="mensajeFinenc"></div>
-				<div class="saltar btnSinborde">Continuar »</div>
+				<div class="saltar btnSinborde btn50P">Continuar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla3b">
 				<div class="nombreuser"></div>
 				<div class="cuetionario mensajeapp" id="mensajeInimed"></div>
-				<div class="iniciarmedini btnSinborde">Continuar »</div>
+				<div class="iniciarmedini btnSinborde btn50P">Continuar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla3">
 				<div class="contenidoGen">
@@ -133,16 +133,16 @@
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="saltarVid2 btnSaltarMedIn btnSinborde">Saltar »</div>
+					<div class="saltarVid2 btnSaltarMedIn btnSinborde btn50P">Saltar »</div>
 				</div>
 			</div>
-			<div class="ventana hidden" id="pantalla3b">
+			<div class="ventana hidden" id="pantalla3c">
 				<div class="contenidoGen">
 					<div class="contClasesmedini">
 					</div>
 					<h4 class="titSeccion">Meditación incial</h4>
 					<button class="btnGenerico btnViole" id="btnRepetirMEdIni">Repetir</button>
-					<button class="btnGenerico btnViole btnSaltarMedIn" id="btnContinuarmedini">Continuar</button>
+					<button class="btnGenerico btnViole btnSaltarMedIn btn50P" id="btnContinuarmedini">Continuar</button>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla4">
@@ -195,7 +195,7 @@
 						</div>
 					</div>
 					<div class="mensajesutil" id="msjconf"></div>
-					<div class="saltarVid2 btnSinborde btnFinalizarConf">Finalizar ></div>
+					<div class="saltarVid2 btnSinborde btnFinalizarConf btn50P">Finalizar ></div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla5">
@@ -207,11 +207,11 @@
 						</div>
 					</div>
 					<div class="botronesHoem btnMedDiaria">
-						Meditacion Diaria
+						Meditación Diaria
 						<div class="sub">Regalate un momento hoy</div>
 					</div>
 					<div class="botronesHoem btnProximoCurso">
-						Proximo Curso
+						Próximo Curso
 						<div class="sub">Explorá otra práctica</div>
 					</div>
 					<div class="contbton">
@@ -415,9 +415,10 @@
 			</div>
 			<div class="ventana hidden" id="pantalla11">
 				<div class="contenidoGen">
+					<div class="btnUserOptions"><i class="fa fa-cog"></i></div>
 					<h4 class="titSeccionSub">USUARIO</h4>
 					<div class="boxuser">
-						<div class="btnNaranja">Mis cursos</div>
+						<div class="btnNaranja btnMiscursos">Mis cursos</div>
 						<div class="boxEstadisticasCont">
 							<div class="titEsta">Estadísticas</div>
 							<div class="boxEstadisticas">
@@ -430,6 +431,37 @@
 <!--
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 -->
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla11b">
+				<div class="contenidoGen">
+					<h4 class="titSeccionSub">CONFIGURACIONES</h4>
+					<div class="boxuser">
+						<div class="btnUserMenu btnCerrarSession">Cerrar sessión</div>
+					</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
+					<div class="bototneraBottom">
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla11c">
+				<div class="contenidoGen">
+					<h4 class="titSeccionSub">MIS CURSOS</h4>
+					<div class="boxuser" id="miscursoscont">
+					</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
+					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
