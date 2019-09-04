@@ -23,7 +23,7 @@ var app = {
         isLoginSave = false;
         loginData_nombre  = '';
         userLogId = false;
-        localStorage.getItem('isLogin', isLogin);
+        localStorage.getItem('isLogin', isLoginSave);
         localStorage.getItem('loginData_nombre', loginData_nombre);
         localStorage.getItem('userLogId', userLogId);
         $('.ventana').addClass('hidden');
@@ -84,7 +84,7 @@ var app = {
 		
         $('#login').click(function(e) {
 			e.preventDefault();
-			$('#glyphicon glyphicon-user').html($('#email').val());
+			//~ $('#glyphicon glyphicon-user').html($('#email').val());
 			ponerPantalla('pantalla0a');
 		});
 		
@@ -96,8 +96,15 @@ var app = {
 		
         $('#registro').click(function(e) {
 			e.preventDefault();
-			$('#glyphicon glyphicon-user').html($('#email2').val());
+			//~ $('#glyphicon glyphicon-user').html($('#email2').val());
 			ponerPantalla('pantalla0b');
+		});
+		
+		
+        $('#recpass').click(function(e) {
+			e.preventDefault();
+			//~ $('#glyphicon glyphicon-user').html($('#email2').val());
+			ponerPantalla('pantalla0c');
 		});
 		
         $('#btnLogin').click(function(e) {
@@ -171,6 +178,32 @@ var app = {
 				});
 			} else {
 				alerta("debes completar todos los campos");
+			}
+		});
+		
+        $('#btnRecpass').click(function(e) {
+			e.preventDefault();
+			$(':focus').blur();
+			if(validateEmail($('#email3').val())) {
+				var datos = {};
+				datos.action = 'doRecPass';
+				datos.email = $('#email3').val();
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						if(data.res) {
+							ponerPantalla('pantalla0');
+							alerta(data.message);
+						} else {
+							alerta(data.message);
+						}
+					}
+				});
+			} else {
+				alerta("debes ingresar el email con el que te has registrado.");
 			}
 		});
 		
@@ -353,6 +386,7 @@ var app = {
 		 $('.btnLibreria').click(function(e) {
 			e.preventDefault();
 			navigator.vibrate(100);
+			app.ponerCategorias();
 			ponerPantalla('pantalla9');
 		});
 		
@@ -1005,19 +1039,22 @@ var app = {
 				if(data.res) {
 					categorias = data.datos;
 					app.ponerInfoHome();
-					var podac;
-					for(var i=0;i<categorias.length;i++) {
-						podac = ''+
-						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
-						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
-						'</div>';
-						$('.categoriascur').append(podac);
-					}
+					app.ponerCategorias();
 				} else {
 					alerta(data.message);
 				}
 			}
 		});
+	},
+    ponerCategorias: function() {
+		var podac;
+		for(var i=0;i<categorias.length;i++) {
+			podac = ''+
+			'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
+			'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+			'</div>';
+			$('.categoriascur').append(podac);
+		}
 	},
     ponerAllCursos: function() {
 		var datos = {};
