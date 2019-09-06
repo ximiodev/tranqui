@@ -769,6 +769,14 @@ var app = {
 			lang: 'es',   // Specify language like: lang: 'pl' or omit setting to use default
 			theme: 'ios'            // Specify theme like: theme: 'ios' or omit setting to use default
 		};
+		
+		
+		$('#codigombsr').focusin(function() {
+			$('.bototneraBottom').hide();
+		});
+		$('#codigombsr').focusout(function() {
+			$('.bototneraBottom').show();
+		});
 
     },
     iniciarCont: function() {
@@ -1601,6 +1609,7 @@ function alerta(msj) {
 }
 
 function ponerPantalla(cual) {
+	$('.bototneraBottom').show();
 	$('.ventana.activa').fadeOut( 600, function() {
 		if(cual!='pantalla14') {
 			$('#pantalla14').addClass('hidden');
