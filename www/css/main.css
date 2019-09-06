@@ -422,9 +422,13 @@ video.videomin {
     margin: 10px auto!important;
 }
 
+.contenidoGen.sinpub {
+	padding-bottom: 70px;
+}
+
 .contenidoGen {
 	padding: 15px;
-	padding-bottom: 110px;
+	padding-bottom: 150px;
 	height: fit-content;
     min-height: -webkit-fill-available;
 }
@@ -464,6 +468,10 @@ video.videomin {
 	width: 100px;
 	margin: auto;
 	
+}
+
+.espaciobajo {
+	margin-bottom: 15px;
 }
 
 .toabajo {
@@ -657,6 +665,7 @@ video.videomin {
 
 #pantalla12c .listetapas {
     height: 65vh;
+    margin: 0 auto;
 }
 
 .listetapas {
@@ -1403,14 +1412,14 @@ span.rs-tooltip.rs-tooltip-text.edit {
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
-	padding-left: 25px; /* 10 px padding right + 15px input type*/
+	padding-left: 17px; /* 10 px padding right + 15px input type*/
 	margin-right: 10px; /* margin between inputs types */
 }
 	
 .checkB label:before {  
 	content: "";
-	width: 30px;
-	height: 30px;
+	width: 15px;
+	height: 15px;
 	position: absolute;  
 	left: 0;
 }
@@ -1422,7 +1431,7 @@ span.rs-tooltip.rs-tooltip-text.edit {
 .checkB label:before {
 	background: url('../img/checkbox-tilde.png') center center no-repeat;
 	background-size: cover;
-    margin-top: 2px;
+    margin-top: 4px;
 }
 	
 .checkB input[type=checkbox]:checked + label:before {  
@@ -1568,25 +1577,31 @@ button.close {
     color: #FFF;
 }
 
+.circuloaudio {
+    position: relative;
+    height: 100px;
+    padding: 20px 0;
+}
+
 .selectorTiempo {
     width: 200px;
     margin: 15px auto;
-	margin-top: 200px;
+	margin-top: 30px;
 }
 
 .ab_audClaseP {
-    top: 140px;
+    top: 10px;
     margin-top: 0;
 }
 
 div#audClaseP_control {
-    top: 140px;
+    top: 10px;
     margin-top: 0;
 }
 
 .btnPlayMed.ct_audClaseP {
     margin-top: 0;
-    top: 150px;
+    top: 20px;
 }
 
 .mbsc-sc-whl-l {

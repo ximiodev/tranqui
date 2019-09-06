@@ -5,6 +5,7 @@ window.onerror = function(message, url, lineNumber) {
 var apiURL = "http://tranquiapp.net/apiTranqui.php";
 var baseURL = "http://tranquiapp.net/";
 var isLoginSave = false;
+var isLogin = false;
 var userLogId = false;
 var timerac = '';
 var sinintrombsr = false;
@@ -23,9 +24,10 @@ var app = {
         isLoginSave = false;
         loginData_nombre  = '';
         userLogId = false;
-        localStorage.getItem('isLogin', isLogin);
-        localStorage.getItem('loginData_nombre', loginData_nombre);
-        localStorage.getItem('userLogId', userLogId);
+        localStorage.setItem('isLogin', isLoginSave);
+        localStorage.setItem('loginData_nombre', loginData_nombre);
+        localStorage.setItem('userLogId', userLogId);
+        
         $('.ventana').addClass('hidden');
         ponerPantalla('pantalla0');
     },
@@ -45,7 +47,7 @@ var app = {
 			userLogId  = '';
 		}
         
-        if(isLoginSave) {
+        if(isLoginSave=="true") {
 			$('#pantalla0').removeClass('activa');
 			$('#pantalla0').addClass('hidden');
 			$('#pantalla1').removeClass('hidden');
@@ -84,7 +86,7 @@ var app = {
 		
         $('#login').click(function(e) {
 			e.preventDefault();
-			$('#glyphicon glyphicon-user').html($('#email').val());
+			//~ $('#glyphicon glyphicon-user').html($('#email').val());
 			ponerPantalla('pantalla0a');
 		});
 		
@@ -96,8 +98,15 @@ var app = {
 		
         $('#registro').click(function(e) {
 			e.preventDefault();
-			$('#glyphicon glyphicon-user').html($('#email2').val());
+			//~ $('#glyphicon glyphicon-user').html($('#email2').val());
 			ponerPantalla('pantalla0b');
+		});
+		
+		
+        $('#recpass').click(function(e) {
+			e.preventDefault();
+			//~ $('#glyphicon glyphicon-user').html($('#email2').val());
+			ponerPantalla('pantalla0c');
 		});
 		
         $('#btnLogin').click(function(e) {
@@ -117,7 +126,6 @@ var app = {
 					if(data.res) {
 						ponerPantalla('pantalla1');
 						app.iniciarCont();
-						$('.videomin')[0].play();
 						isLogin = true;
 						localStorage.setItem('isLogin', isLogin);
 						loginData_nombre = data.datos.nombre;
@@ -155,7 +163,6 @@ var app = {
 						if(data.res) {
 							ponerPantalla('pantalla1');
 							app.iniciarCont();
-							$('.videomin')[0].play();
 							isLogin = true;
 							localStorage.setItem('isLogin', isLogin);
 							loginData_nombre = data.datos.nombre;
@@ -171,6 +178,60 @@ var app = {
 				});
 			} else {
 				alerta("debes completar todos los campos");
+			}
+		});
+		
+        $('#btnRecpass').click(function(e) {
+			e.preventDefault();
+			$(':focus').blur();
+			if(validateEmail($('#email3').val())) {
+				var datos = {};
+				datos.action = 'doRecPass';
+				datos.email = $('#email3').val();
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						if(data.res) {
+							ponerPantalla('pantalla0d');
+							alerta(data.message);
+						} else {
+							alerta(data.message);
+						}
+					}
+				});
+			} else {
+				alerta("debes ingresar el email con el que te has registrado.");
+			}
+		});
+		
+        $('#btnResetpass').click(function(e) {
+			e.preventDefault();
+			$(':focus').blur();
+			if($('#codigo').val()!='' && $('#password3').val()!='' && $('#password3').val()==$('#password3b').val()) {
+				var datos = {};
+				datos.action = 'doResetPass';
+				datos.codigo = $('#codigo').val();
+				datos.pass1 = $('#password3').val();
+				datos.pass2 = $('#password3b').val();
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						if(data.res) {
+							ponerPantalla('pantalla0a');
+							alerta(data.message);
+						} else {
+							alerta(data.message);
+						}
+					}
+				});
+			} else {
+				alerta("debes ingresar el email con el que te has registrado.");
 			}
 		});
 		
@@ -300,6 +361,11 @@ var app = {
 			ponerPantalla('pantalla3');
 		});
 		
+		 $('#btnContinuarmedini').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla4');
+		});
+		
 		 $('.btnVolverHome').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla5');
@@ -353,6 +419,7 @@ var app = {
 		 $('.btnLibreria').click(function(e) {
 			e.preventDefault();
 			navigator.vibrate(100);
+			app.ponerCategorias();
 			ponerPantalla('pantalla9');
 		});
 		
@@ -705,20 +772,54 @@ var app = {
 
     },
     iniciarCont: function() {
-		app.getMBSR();
-		app.ponerAllCursos();
-		app.getCuestionario();
-		app.getMedIni();
-		app.getMedDiaria();
-		app.getPodcasts();
-		app.getTimers();
-		app.getCategorias();
-		app.getEsfera();
-		app.getMensajes();
+		var datos = {};
+		datos.action = 'getContenido';
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					//mbsr
+					mbsr_cont = data.mbsr;
+					app.doMBSR();
+					//cursos
+					allcursos = data.cursos;
+					cursos = data.cursos;
+					//cuestionario
+					preguntas = data.preguntas;
+					//meditacioninicial
+					app.doMedIni(data.medini);
+					//medidaria
+					app.doMedDiaria(data.med_diaria);
+					//podcasts
+					podcasts = data.podcasts;
+					app.doPodcasts();
+					//timers
+					timers = data.timers;
+					//categorias
+					categorias = data.categorias;
+					//esfera
+					$('#audEsfera').html('<source src="'+baseURL+data.esfera.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+					mensajes_app = data.mensajes;
+					app.doMensajes();
+					
+					//listo?
+					
+					app.ponerInfoHome();
+					app.ponerCategorias();
 		
-		setTimeout(function() {
-			app.loadEstadisticas();
-		}, 900);
+					setTimeout(function() {
+						app.loadEstadisticas();
+					}, 900);
+					
+					$('#videoIni')[0].play();
+				} else {
+					alerta(data.message);
+				}
+			}
+		});
     },
     initStore: function() {
 		if (!window.store) {
@@ -827,7 +928,6 @@ var app = {
 		loginData_nombre = datos.displayname;
 		localStorage.setItem('loginData_nombre', loginData_nombre);
 		localStorage.setItem('isLogin', isLogin);
-		$('.videomin')[0].play();
 	},
     hacerloginFace: function(datos) {
 		
@@ -856,7 +956,6 @@ var app = {
 						localStorage.setItem('isLogin', isLogin);
 						userLogId = data.datos.ID;
 						localStorage.setItem('userLogId', userLogId);
-						$('.videomin')[0].play();
 					} else {
 						alerta(data.message);
 					}
@@ -927,71 +1026,21 @@ var app = {
 			}
 		});
 	},
-    getCuestionario: function() {
-		var datos = {};
-		datos.action = 'getPreguntas';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					preguntas = data.datos;
-					//~ ponerPregunta();
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
-	},
-    getPodcasts: function() {
-		var datos = {};
-		datos.action = 'getPodcasts';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					podcasts = data.datos;
-					var podac;
-					for(var i=0;i<podcasts.length;i++) {
-						if(i==0) {
-							$('.ultimopodcast .titPod').html(podcasts[i].nombre);
-							$('.ultimopodcast .durPod').html(podcasts[i].duration);
-						} else {
-							podac = ''+
-							'<div class="boxcast" data-pod="'+i+'">'+
-							'	<div class="titPod">'+podcasts[i].nombre+'</div>'+
-							'	<div class="durPod">'+podcasts[i].duration+'</div>'+
-							'</div>';
-							$('.todospods').append(podac);
-						}	
-					}
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
-	},
-    getTimers: function() {
-		var datos = {};
-		datos.action = 'getTimers';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					timers = data.datos;
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
+    doPodcasts: function() {
+		var podac;
+		for(var i=0;i<podcasts.length;i++) {
+			if(i==0) {
+				$('.ultimopodcast .titPod').html(podcasts[i].nombre);
+				$('.ultimopodcast .durPod').html(podcasts[i].duration);
+			} else {
+				podac = ''+
+				'<div class="boxcast" data-pod="'+i+'">'+
+				'	<div class="titPod">'+podcasts[i].nombre+'</div>'+
+				'	<div class="durPod">'+podcasts[i].duration+'</div>'+
+				'</div>';
+				$('.todospods').append(podac);
+			}	
+		}
 	},
     getCategorias: function() {
 		var datos = {};
@@ -1005,38 +1054,22 @@ var app = {
 				if(data.res) {
 					categorias = data.datos;
 					app.ponerInfoHome();
-					var podac;
-					for(var i=0;i<categorias.length;i++) {
-						podac = ''+
-						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
-						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
-						'</div>';
-						$('.categoriascur').append(podac);
-					}
+					app.ponerCategorias();
 				} else {
 					alerta(data.message);
 				}
 			}
 		});
 	},
-    ponerAllCursos: function() {
-		var datos = {};
-		datos.action = 'getCursos';
-		datos.catid = 0;
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					allcursos = data.cursos;
-					cursos = data.cursos;
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
+    ponerCategorias: function() {
+		var podac;
+		for(var i=0;i<categorias.length;i++) {
+			podac = ''+
+			'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
+			'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+			'</div>';
+			$('.categoriascur').append(podac);
+		}
 	},
     ponerCursos: function(posc, catid) {
 		var datos = {};
@@ -1240,8 +1273,9 @@ var app = {
             display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
             showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
         });
-		$('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
-		$('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
+		
+		//~ $('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
+		$('#pantalla16').attr('style',categorias[posci].codigo);
 		$('#pantalla16 .viole').attr('style', categorias[posci].codigo);
 		$('#pantalla16 .bolita').attr('style', categorias[posci].codigo);
 		$('#audiosclase .btnGenerico').attr('style',categorias[posci].codigo);
@@ -1279,124 +1313,51 @@ var app = {
 			}
 		}
 	},
-    getMedIni: function() {
-		var datos = {};
-		datos.action = 'getMedIni';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					var podnaco = '';
-					for(var j=0;j<data.clases;j++) {
-						var claseTom = (j==0)?'':' activo';
-						podnaco += ''+
-						'		<div class="curItemComp'+claseTom+'" >'+
-						'			<div class="circItemA violet">'+
-						'				<div class="circItemB violet"><img src="img/check.png"></div>'+
-						'			</div>'+
-						'			<div class="numIteCu violet">'+(j+1)+'</div>'+
-						'		</div>';
-					}
-					$('.contClasesmedini').html(podnaco);
-					console.log(data);
-					if(data.fondo!='') {
-						$('#pantalla3b').attr('style',data.fondo);
-						$('#pantalla3c').attr('style',data.fondo);
-						$('#pantalla3').attr('style',data.fondo);
-						$('#pantalla3 .btnPlayMed').attr('style',data.fondo);
-						$('#pantalla3 .circmed').attr('style',data.fondo);
-						$('#pantalla3 .circsma').attr('style',data.fondo);
-						$('#pantalla3 .contClasesmedini .circItemA').attr('style',data.fondo);
-						$('#pantalla3 .contClasesmedini .circItemB').attr('style',data.fondo);
-						$('#pantalla3 .activo .circItemA').attr('style','border-color: #'+data.color+';');
-					}
-					
-					$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
+    doMedIni: function(data) {
+		
+		var podnaco = '';
+		for(var j=0;j<data.clases;j++) {
+			var claseTom = (j==0)?'':' activo';
+			podnaco += ''+
+			'		<div class="curItemComp'+claseTom+'" >'+
+			'			<div class="circItemA violet">'+
+			'				<div class="circItemB violet"><img src="img/check.png"></div>'+
+			'			</div>'+
+			'			<div class="numIteCu violet">'+(j+1)+'</div>'+
+			'		</div>';
+		}
+		$('.contClasesmedini').html(podnaco);
+		if(data.fondo!='') {
+			$('#pantalla3b').attr('style',data.fondo);
+			bntsombra = '-webkit-box-shadow: 5px 5px 10px 0px #'+data.color+'; -moz-box-shadow: 5px 5px 10px 0px #'+data.color+'; box-shadow: 5px 5px 10px 0px #'+data.color+';';
+			$('#pantalla3c .btnGenerico').attr('style',data.fondo+bntsombra);
+			$('#pantalla3c').attr('style',data.fondo);
+			$('#pantalla3').attr('style',data.fondo);
+			$('#pantalla3 .btnPlayMed').attr('style',data.fondo);
+			$('#pantalla3 .circmed').attr('style',data.fondo);
+			$('#pantalla3 .circsma').attr('style',data.fondo);
+			$('#pantalla3 .contClasesmedini .circItemA').attr('style',data.fondo);
+			$('#pantalla3 .contClasesmedini .circItemB').attr('style',data.fondo);
+			$('#pantalla3 .activo .circItemA').attr('style','border-color: #'+data.color+';');
+		}
+		
+		$('#med_ini').html('<source src="'+baseURL+data.datos.file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 	},
-    getMedDiaria: function() {
-		var datos = {};
-		datos.action = 'getMedDiaria';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					$('#diameddia').html(data.datos.dia);
-					meditadiraria = data.datos.ID;
-					$('#audMedDiaria').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
+    doMedDiaria: function(data) {
+		$('#diameddia').html(data.dia);
+		meditadiraria = data.ID;
+		$('#audMedDiaria').html('<source src="'+baseURL+data.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 	},
-    getEsfera: function() {
-		var datos = {};
-		datos.action = 'getEsfera';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					$('#audEsfera').html('<source src="'+baseURL+data.datos.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
+    doMensajes: function() {
+		$('#mensajeFinenc').html(getTexto('final_encuesta'));
+		$('#mensajeInimed').html(getTexto('meditacion_inicial'));
+		$('#sub_boton_resp').html(getTexto('sub_boton_resp'));
+		$('#sub_boton_med').html(getTexto('sub_boton_med'));
 	},
-    getMensajes: function() {
-		var datos = {};
-		datos.action = 'getMensajes';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					mensajes_app = data.datos;
-					$('#mensajeFinenc').html(getTexto('final_encuesta'));
-					$('#mensajeInimed').html(getTexto('meditacion_inicial'));
-					$('#sub_boton_resp').html(getTexto('sub_boton_resp'));
-					$('#sub_boton_med').html(getTexto('sub_boton_med'));
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
-	},
-    getMBSR: function() {
-		var datos = {};
-		datos.action = 'getMBSRCont';
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					mbsr_cont = data.datos;
-					var splitted = mbsr_cont['descripcion'].split("\n");
-					$('.text_mb_1').html(splitted[0]);
-					$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
-				} else {
-					alerta(data.message);
-				}
-			}
-		});
+    doMBSR: function() {
+		var splitted = mbsr_cont['descripcion'].split("\n");
+		$('.text_mb_1').html(splitted[0]);
+		$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
 	},
     savePushToken: function() {
 		var datos = {};
@@ -1958,3 +1919,9 @@ function compartirEnlace() {
 	window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
 }
 
+window.addEventListener('keyboardDidShow', function () {
+	$('.bototneraBottom').hide();
+});
+window.addEventListener('keyboardDidHide', function () {
+	$('.bototneraBottom').show();
+});

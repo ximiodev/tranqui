@@ -85,6 +85,7 @@
 						<i class="glyphicon glyphicon-eye-open" id="changeTypePass3"></i>
 					</div>
 					<button class="btn btn-default btnGenerico btnViole" id="btnRegistro">Registrarse</button>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla0c">
@@ -94,10 +95,29 @@
 						<input type="email" class="form-control" id="email3" placeholder="Email">
 					</div>
 					<button class="btn btn-default btnGenerico btnViole" id="btnRecpass">Recuperar contraseña</button>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla0d">
+				<div class="boxForm">
+					<div class="tiotge">Ingresa el código que te llegó a tu cuenta de correo y la nueva contraseña.</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="codigo" placeholder="Código">
+					</div>
+					<div class="form-group blopas">
+						<input type="password" class="form-control" id="password3" placeholder="Password">
+						<i class="glyphicon glyphicon-eye-open" id="changeTypePass4"></i>
+					</div>
+					<div class="form-group blopas">
+						<input type="password" class="form-control" id="password3b" placeholder="Reingresa Password">
+						<i class="glyphicon glyphicon-eye-open" id="changeTypePass5"></i>
+					</div>
+					<button class="btn btn-default btnGenerico btnViole" id="btnResetpass">Cambiar contraseña</button>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla1">
-				<video class="videomin" id="videoIni" autoplay>
+				<video class="videomin" id="videoIni">
 					<source src="video/video-intro_1_s.mp4" type="video/mp4">
 				</video>
 				<div class="saltarVid btnSinborde btn50P">Saltar »</div>
@@ -150,8 +170,8 @@
 					<div class="contClasesmedini">
 					</div>
 					<h4 class="titSeccion">Meditación incial</h4>
-					<button class="btnGenerico btnViole" id="btnRepetirMEdIni">Repetir</button>
-					<button class="btnGenerico btnViole btnSaltarMedIn btn50P" id="btnContinuarmedini">Continuar</button>
+					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirMEdIni">Repetir</button>
+					<button class="btnGenerico btnViole espaciobajo" id="btnContinuarmedini">Continuar</button>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla4">
@@ -491,7 +511,7 @@
 						<div class="text_mb_2"></div>
 					</div>
 					<div class="toabajo">
-						<div class="volverint btnSinborde btnSigPantMBSR">Saltar »</div>
+						<div class="volverint btnSinborde btnSigPantMBSR btn50P">Saltar »</div>
 						<div class="checkB">
 							<input type="checkbox" name="check" value="check1" id="nomostrarmbsrintro">
 							<label for="nomostrarmbsrintro"> no volver a mostrar</label>
@@ -512,7 +532,7 @@
 					<div class="boxcupon">
 						¿TENÉS CUPON?
 						<input type="text" class="form-control inputfant" id="codigombsr" placeholder="Escribí tu código">
-						<div class="volverint btnSinborde btnGetCupon">enviar »</div>
+						<div class="volverint btnSinborde btnGetCupon btn50P">enviar »</div>
 					</div>
 					<div class="contclases"></div>
 					<div class="volverint btnSinborde linkdeboton"><a href="#" onclick="window.open('https://www.mindfulnessbuenosaires.com/programas-mbsr', '_system'); return false;" target="_blank">Próximos programas</a></div>
@@ -531,7 +551,7 @@
 					<div class="listetapas">
 						<div class="contesli2"></div>
 					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla12b">Volver</div>
+					<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -628,19 +648,21 @@
 				<div class="contenidoGen">
 					<h4 class="tituloClase"></h4>
 					<div class="descripcionClase"></div>
-					<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
-						<div class="circmed viole">
-							<div class="circsma viole">
-								<i class="glyphicon glyphicon-play"></i>
+					<div class="circuloaudio">
+						<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
+							<div class="circmed viole">
+								<div class="circsma viole">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
 							</div>
 						</div>
+						<div class="circle audioBorde ab_audClaseP"></div>
+						<div id="audClaseP_control" class="circuloN"></div>
+						<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
 					</div>
-					<div class="circle audioBorde ab_audClaseP"></div>
-					<div id="audClaseP_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
 					<div class="selectorTiempo">
 						<div class="titiempo">Tiempo</div>
 						<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
