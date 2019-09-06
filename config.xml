@@ -21,7 +21,7 @@
     <plugin name="cordova-plugin-dialogs" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-device" source="npm" version="1" />
     <plugin name="cordova-plugin-inappbrowser" source="npm" />
-    <plugin name="cordova-plugin-keyboardr" source="npm" />
+    <plugin name="cordova-plugin-keyboard" source="npm" />
     <plugin name="cordova-plugin-vibration" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.2.1"/>
