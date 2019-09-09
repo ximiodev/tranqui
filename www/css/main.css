@@ -144,7 +144,7 @@ a {
 	background-image: url(../img/fndPods-80.jpg);
 }
 
-#pantalla8b {
+#pantalla8b, #pantalla8c {
 	background-image: url(../img/fndPods2-80.jpg);
 }
 
@@ -160,7 +160,7 @@ a {
 	background-image: url(../img/fndUser-80.jpg);
 }
 
-#pantalla12, #pantalla12b, #pantalla12c, #pantalla12d {
+#pantalla12, #pantalla12b, #pantalla12c, #pantalla12d, #pantalla12e {
 	background-image: url(../img/fndMBSR-80.jpg);
 }
 
@@ -441,6 +441,8 @@ video.videomin {
 .contbton {
     position: relative;
     height: 120px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 #med_ini {
@@ -456,6 +458,14 @@ video.videomin {
 }
 
 .iniciarmedini {
+    font-size: 20px;
+    width: fit-content;
+    margin: auto;
+    color: #0f0f0f!important;
+    background: #FFF!important;
+}
+
+.btnContinuar {
     font-size: 20px;
     width: fit-content;
     margin: auto;
@@ -612,6 +622,7 @@ video.videomin {
     border-bottom: 1px solid #e76239;
     padding-bottom: 3px;
     margin-bottom: 5px;
+    letter-spacing: 3px;
 }
 
 .titLibreria {
@@ -621,6 +632,7 @@ video.videomin {
     color: #7740a2;
     padding: 15px 0;
     margin-bottom: 5px;
+	letter-spacing: 4px;
 }
 
 .ultimoCursosTit span{
@@ -633,9 +645,10 @@ video.videomin {
     text-align: center;
     font-size: 11px;
     padding-bottom: 10px;
+    letter-spacing: 2px;
 }
 
-#med_ini, #audClaseP, #audEsfera, #audTim, #audMedDiaria {
+#med_ini, #audClaseP, #audClaseInd, #audEsfera, #audTim, #audMedDiaria {
 	opacity:0;
 }
 
@@ -762,6 +775,7 @@ video.videomin {
 	width: 80%;
     border-bottom: 1px solid #FFF;
     padding-bottom: 5px;
+	letter-spacing: 4px;
 }
 
 .titSeccionSubT {
@@ -1103,8 +1117,19 @@ div#msjconf {
 .botronesHoem .sub {
     font-family: 'MontserratRegular';
     border-top: 1px solid #FFF;
-    width: fit-content;
+    width: 80%;
     margin: 0 auto;
+    text-transform: initial;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.botronesHoem.btn50 {
+    width: 38%;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    margin: 10px 6%!important;
 }
 
 .botronesHoem {
@@ -1117,19 +1142,23 @@ div#msjconf {
 	background: linear-gradient(to right, rgba(245,198,59,1) 0%, rgba(255,43,138,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5c63b', endColorstr='#ff2b8a', GradientType=1 );
 	color: #FFF;
+	box-shadow: 4px 4px 4px rgba(255,43,138,0.5);
+	width: 80%;
     font-family: 'MontserratSemiBold';
     padding: 15px;
     text-align: center;
     margin: 10px auto;
     border-radius: 50px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
 
 .ultimopodcast {
     font-family: 'MontserratSemiBold';
     color: #FFF;
-    padding: 15px;
+    padding: 8px;
     font-size: 15px;
-    border-radius: 15px;
+    border-radius: 35px;
     text-align: center;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
     background: rgba(255,142,108,1);
@@ -1140,6 +1169,10 @@ div#msjconf {
 	background: -ms-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
 	background: linear-gradient(to right, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
+	font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+	margin-top: 80px;
 }
 
 .btnNaranja {
@@ -1182,7 +1215,8 @@ div#msjconf {
     text-align: center;
     font-family: 'MontserratMedium';
     font-size: 24px;
-    margin: 20px auto;
+    margin: 80px auto 40px;
+    letter-spacing: 5px;
 }
 
 .tituloCat {
@@ -1209,7 +1243,7 @@ div#msjconf {
     margin: 20px auto;
 }
 
-.tituloClase, .tituloClase2 {
+.tituloClase, .tituloClase2, .tituloClaseInd {
     color: #FFF;
     text-align: center;
     font-family: 'MontserratMedium';
@@ -1220,7 +1254,7 @@ div#msjconf {
 .boxcast {
     font-size: 13px;
     border-radius: 15px;
-    padding: 15px;
+    padding: 8px;
     font-family: 'MontserratSemiBold';
     color: #FFF;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.2)
@@ -1228,33 +1262,42 @@ div#msjconf {
 
 .todospods .boxcast {
     font-size: 16px;
-    padding: 15px;
     background: rgba(255,221,165,0.2);
     color: #FFF;
     text-align: center;
-    font-family: 'MontserratMedium';
     border: 0;
-    border-radius: 20px;
+    border-radius: 35px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .categoriascur {
-/*
-    height: 73vh;
-*/
-    padding: 5px;
+    padding: 5px 30px;
     margin: 10px auto;
     border-radius: 5px;
 }
 
+.durPod {
+    font-family: 'MontserratMedium';
+    font-size: 11px;
+}
+
 .boxcate {
     padding: 10px;
-    font-size: 22px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     text-align: center;
     border: 0;
     margin-top: 5px;
     color: #FFF;
     border-radius: 25px;
     background: #7740a2;
+}
+
+.sinborde {
+	border: 0!important;
 }
 
 .titEsta {
@@ -1354,6 +1397,15 @@ div#audClaseP_control {
 	pointer-events: none;
 }
 
+div#audClaseInd_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
 div#uad_MBSR_control {
     position: absolute;
     top: 50%;
@@ -1429,16 +1481,20 @@ span.rs-tooltip.rs-tooltip-text.edit {
 }
 	
 .checkB label:before {
-	background: url('../img/checkbox-tilde.png') center center no-repeat;
+	background: url('../img/checkbox.png') center center no-repeat;  
 	background-size: cover;
     margin-top: 4px;
 }
 	
 .checkB input[type=checkbox]:checked + label:before {  
-	background: url('../img/checkbox.png') center center no-repeat;  
+	background: url('../img/checkbox-tilde.png') center center no-repeat;
 	background-size: cover;
-} 
-	
+}
+
+#pantalla12e button {
+    background: transparent;
+    margin-bottom: 10px;
+}
 
 .boxcuponre {
     font-family: 'MontserratMedium';
@@ -1579,14 +1635,14 @@ button.close {
 
 .circuloaudio {
     position: relative;
-    height: 100px;
+    height: 140px;
     padding: 20px 0;
 }
 
 .selectorTiempo {
     width: 200px;
     margin: 15px auto;
-	margin-top: 30px;
+	margin-top: 0;
 }
 
 .ab_audClaseP {
@@ -1600,6 +1656,21 @@ div#audClaseP_control {
 }
 
 .btnPlayMed.ct_audClaseP {
+    margin-top: 0;
+    top: 20px;
+}
+
+.ab_audClaseInd {
+    top: 10px;
+    margin-top: 0;
+}
+
+div#audClaseInd_control {
+    top: 10px;
+    margin-top: 0;
+}
+
+.btnPlayMed.ct_audClaseInd {
     margin-top: 0;
     top: 20px;
 }
@@ -1644,6 +1715,14 @@ div#audClaseP_control {
     left: 0;
     transition: .5s;
     position: absolute;
+	background: rgba(127,36,255,1);
+	background: -moz-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(127,36,255,1)), color-stop(100%, rgba(255,172,255,1)));
+	background: -webkit-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
 }
 
 .bolita.bolitaOn {
@@ -1655,7 +1734,7 @@ div#audClaseP_control {
     text-align: center;
     color: #FFF;
     margin-bottom: -10px;
-    padding-top: 25px;
+    padding-top: 5px;
     font-size: 12px;
     text-transform: uppercase;
 }

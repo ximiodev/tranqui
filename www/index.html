@@ -137,7 +137,7 @@
 			<div class="ventana hidden" id="pantalla2b">
 				<div class="nombreuser"></div>
 				<div class="cuetionario mensajeapp" id="mensajeFinenc"></div>
-				<div class="saltar btnSinborde btn50P">Continuar »</div>
+				<div class="btnContinuar btnSinborde btn50P">Continuar »</div>
 			</div>
 			<div class="ventana hidden" id="pantalla3b">
 				<div class="nombreuser"></div>
@@ -167,9 +167,8 @@
 			</div>
 			<div class="ventana hidden" id="pantalla3c">
 				<div class="contenidoGen">
-					<div class="contClasesmedini">
-					</div>
 					<h4 class="titSeccion">Meditación incial</h4>
+					<div class="cuetionario mensajeapp" id="mensajeInimedFin"></div>
 					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirMEdIni">Repetir</button>
 					<button class="btnGenerico btnViole espaciobajo" id="btnContinuarmedini">Continuar</button>
 				</div>
@@ -185,6 +184,7 @@
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
 									<div class="notinumber" data-max="23">00</div>
+									<input type="hidden" class="campoculto" id="conf_val_1a_i">
 									<div class="infhor"><i class="glyphicon glyphicon-chevron-down"></i></div>
 								</div>
 								<div class="bloquehor">
@@ -193,6 +193,7 @@
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
 									<div class="notinumber" data-max="59">00</div>
+									<input type="hidden" class="campoculto" id="conf_val_1b_i">
 									<div class="infhor"><i class="glyphicon glyphicon-chevron-down"></i></div>
 								</div>
 								<div class="bloquehor">
@@ -206,6 +207,7 @@
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
 									<div class="notinumber" data-max="23">00</div>
+									<input type="hidden" class="campoculto" id="conf_val_2a_i">
 									<div class="infhor"><i class="glyphicon glyphicon-chevron-down"></i></div>
 								</div>
 								<div class="bloquehor">
@@ -214,6 +216,7 @@
 								<div class="bloquehor">
 									<div class="suphor"><i class="glyphicon glyphicon-chevron-up"></i></div>
 									<div class="notinumber" data-max="59">00</div>
+									<input type="hidden" class="campoculto" id="conf_val_2b_i">
 									<div class="infhor"><i class="glyphicon glyphicon-chevron-down"></i></div>
 								</div>
 								<div class="bloquehor">
@@ -240,7 +243,7 @@
 						<div class="sub">Regalate un momento hoy</div>
 					</div>
 					<div class="botronesHoem btnProximoCurso">
-						Próximo Curso
+						Curso relacionado
 						<div class="sub">Explorá otra práctica</div>
 					</div>
 					<div class="contbton">
@@ -353,7 +356,7 @@
 			</div>
 			<div class="ventana hidden" id="pantalla8">
 				<div class="contenidoGen">
-					<h4 class="titSeccionSub">PODCAST</h4>
+					<h4 class="titSeccionSub sinborde">PODCAST</h4>
 					<div class="ultimopodcast">
 						<div class="titPod"></div>
 						<div class="durPod"></div>
@@ -395,6 +398,20 @@
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla8c">
+				<div class="contenidoGen">
+					<h4 class="tituloClase2"></h4>
+					<button class="espaciobajo btnSinborde btn50P" id="btnRepetirPod">Repetir</button>
+					<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla8">Volver</button>
+					<div class="bototneraBottom conpub">
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
@@ -587,6 +604,20 @@
 					</div>
 				</div>
 			</div>
+			<div class="ventana hidden" id="pantalla12e">
+				<div class="contenidoGen">
+					<h4 class="tituloClase2"></h4>
+					<button class="espaciobajo btnSinborde btn50P" id="btnRepetirMBSR">Repetir</button>
+					<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla5">Volver Home</button>
+					<div class="bototneraBottom conpub">
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
 			<div class="ventana hidden" id="pantalla13">
 				<div class="contenidoGen">
 					<div class="tituloCat"></div>
@@ -673,6 +704,67 @@
 					</div>
 					<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita"></div></div></div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla16b">
+				<div class="contenidoGen">
+					<h4 class="tituloClase"></h4>
+					<div class="descripcionClase"></div>
+					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirClase">Repetir</button>
+					<button class="btnGenerico btnViole espaciobajo" id="btnSigClase">Siguiente clase</button>
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla16c">
+				<div class="contenidoGen">
+					<h4 class="tituloClaseInd"></h4>
+					<div class="circuloaudio">
+						<div class="btnPlayMed ct_audClaseInd viole" onclick="togglePlaying('audClaseInd')">
+							<div class="circmed viole">
+								<div class="circsma viole">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
+							</div>
+						</div>
+						<div class="circle audioBorde ab_audClaseInd"></div>
+						<div id="audClaseInd_control" class="circuloN"></div>
+						<audio ontimeupdate="updateBar('audClaseInd')" id="audClaseInd">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
+					</div>
+					<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita"></div></div></div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
+				</div>
+			</div>
+			<div class="ventana hidden" id="pantalla16d">
+				<div class="contenidoGen">
+					<h4 class="tituloClaseInd"></h4>
+					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirClaseInd">Repetir</button>
+					<button class="btnGenerico btnViole espaciobajo" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>

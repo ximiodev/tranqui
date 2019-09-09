@@ -10,6 +10,7 @@ var userLogId = false;
 var timerac = '';
 var sinintrombsr = false;
 var loginData_nombre = '';
+var animres;
 var cur_i;
 var cur_posc;
 var cur_curid;
@@ -32,7 +33,7 @@ var app = {
         ponerPantalla('pantalla0');
     },
     onDeviceReady: function() {
-        //~ app.setupPush();
+        app.setupPush();
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
@@ -216,6 +217,7 @@ var app = {
 				datos.codigo = $('#codigo').val();
 				datos.pass1 = $('#password3').val();
 				datos.pass2 = $('#password3b').val();
+				datos.email = $('#email3').val();
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
@@ -256,6 +258,9 @@ var app = {
 			if(donde=='pantalla16') {
 				$('#audClaseP')[0].pause();
 			}
+			if(donde=='pantalla13') {
+				$('#audClaseInd')[0].pause();
+			}
 			if(donde=='pantalla12d') {
 				$('#uad_MBSR')[0].pause();
 			}
@@ -271,6 +276,7 @@ var app = {
 		 $('.suphor').click(function(e) {
 			e.preventDefault();
 			var cont = $(this).parent().find('.notinumber');
+			var cont_i = $(this).parent().find('.campoculto');
 			var hor = parseInt(cont.html());
 			var max = cont.data('max');
 			if(hor<max) {
@@ -280,11 +286,13 @@ var app = {
 				hor = '0'+hor;
 			}
 			cont.html(hor);
+			cont_i.val(hor);
 		});
 		
 		 $('.infhor').click(function(e) {
 			e.preventDefault();
 			var cont = $(this).parent().find('.notinumber');
+			var cont_i = $(this).parent().find('.campoculto');
 			var hor = parseInt(cont.html());
 			if(hor>0) {
 				hor--;
@@ -293,6 +301,7 @@ var app = {
 				hor = '0'+hor;
 			}
 			cont.html(hor);
+			cont_i.val(hor);
 		});
 		
 		 $('#confNotResp').click(function(e) {
@@ -308,6 +317,11 @@ var app = {
 		});
 		
 		 $('.saltar').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla3b');
+		});
+		
+		 $('#pantalla2b .btnContinuar').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla3b');
 		});
@@ -332,6 +346,24 @@ var app = {
 					);
 				}
 			);
+		
+			var datos = {};
+			datos.action = 'saveConfig';
+			datos.tipo = 'respirar';
+			datos.valor = $('#conf_val_1a_i').val()+':'+$('#conf_val_1b_i').val()+':00';
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					//~ if(data.res) {
+						//~ alerta(data.message);
+					//~ } else {
+						//~ alerta(data.message);
+					//~ }
+				}
+			});
 		});
 		
 		 $('.btnConfirmar2').click(function(e) {
@@ -349,6 +381,25 @@ var app = {
 					);
 				}
 			);
+		
+			var datos = {};
+			datos.action = 'saveConfig';
+			datos.tipo = 'meditar';
+			datos.userid = userLogId;
+			datos.valor = $('#conf_val_2a_i').val()+':'+$('#conf_val_2b_i').val()+':00';
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					//~ if(data.res) {
+						//~ alerta(data.message);
+					//~ } else {
+						//~ alerta(data.message);
+					//~ }
+				}
+			});
 		});
 		
 		 $('.btnFinalizarConf').click(function(e) {
@@ -356,9 +407,89 @@ var app = {
 			ponerPantalla('pantalla5');
 		});
 		
+		 $('#btnRepetirClase').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla16');
+			var method
+			var audi = document.getElementById('audClaseP')
+			  
+			$('.btnPlayMed.ct_audClaseP .circsma').html('<i class="glyphicon glyphicon-pause"></i>');
+			estaplay = true
+			method = 'play';
+			
+			setTimeout(function() {
+				audi.currentTime = 0; 
+				audi[method]();
+			}, 900);
+		});
+		
+		 $('#btnRepetirClaseInd').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla16c');
+			var method
+			var audi = document.getElementById('audClaseInd')
+			  
+			$('.btnPlayMed.ct_audClaseInd .circsma').html('<i class="glyphicon glyphicon-pause"></i>');
+			estaplay = true
+			method = 'play';
+			
+			setTimeout(function() {
+				audi.currentTime = 0; 
+				audi[method]();
+			}, 900);
+		});
+		
+		 $('#btnRepetirMBSR').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla12d');
+			var method
+			var audi = document.getElementById('uad_MBSR')
+			  
+			$('.btnPlayMed.ct_uad_MBSR .circsma').html('<i class="glyphicon glyphicon-pause"></i>');
+			estaplay = true
+			method = 'play';
+			
+			setTimeout(function() {
+				audi.currentTime = 0; 
+				audi[method]();
+			}, 900);
+		});
+		
+		 $('#btnRepetirPod').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla8b');
+			var method
+			var audi = document.getElementById('audPod')
+			  
+			$('.btnPlayMed.ct_audPod .circsma').html('<i class="glyphicon glyphicon-pause"></i>');
+			estaplay = true
+			method = 'play';
+			
+			setTimeout(function() {
+				audi.currentTime = 0; 
+				audi[method]();
+			}, 900);
+		});
+		
 		 $('#btnRepetirMEdIni').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla3');
+			var method
+			var audi = document.getElementById('med_ini')
+			  
+			$('.btnPlayMed.ct_med_ini .circsma').html('<i class="glyphicon glyphicon-pause"></i>');
+			estaplay = true
+			method = 'play';
+			
+			setTimeout(function() {
+				audi.currentTime = 0; 
+				audi[method]();
+			}, 900);
+		});
+		
+		 $('#btnSigClase').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla15');
 		});
 		
 		 $('#btnContinuarmedini').click(function(e) {
@@ -443,7 +574,7 @@ var app = {
 			e.preventDefault();
 			navigator.vibrate(100);
 			var muestroono = localStorage.getItem('sinintrombsr');
-			if(muestroono || sinintrombsr) {
+			if(muestroono=="true" || sinintrombsr) {
 				ponerPantalla('pantalla12b');
 			} else {
 				$('#elotro').removeClass('activo');
@@ -456,10 +587,17 @@ var app = {
 		 $('.btnSigPantMBSR').click(function(e) {
 			e.preventDefault();
 			if($('#nomostrarmbsrintro').prop("checked")) {
-				localStorage.setItem('sinintrombsr', true);
+				localStorage.setItem('sinintrombsr', "true");
 				sinintrombsr = true;
 			}
 			ponerPantalla('pantalla12b');
+		});
+		
+		$('#codigombsr').keypress(function(event){
+			var keycode = (event.keyCode ? event.keyCode : event.which);
+			if(keycode == '13'){
+				$('.btnGetCupon').click();	
+			}
 		});
 		
 		$('.btnGetCupon').click(function(e) {
@@ -662,6 +800,26 @@ var app = {
 			}
 		});
 		
+		$("#audClaseInd_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audClaseInd')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
 		$("#uad_MBSR_control").roundSlider({
 			radius: 60,
 			width: 1,
@@ -812,6 +970,8 @@ var app = {
 					$('#audEsfera').html('<source src="'+baseURL+data.esfera.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 					mensajes_app = data.mensajes;
 					app.doMensajes();
+					
+					animres = data.a_respiracion;
 					
 					//listo?
 					
@@ -1024,7 +1184,7 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					n_estadisticas = data.estadisticas;
-					if(data.cursohome.nombre!=undefined) {
+					if(data.cursohome.nombre!=undefined && data.cursohome.nombre!='') {
 						app.ponerCursoHome(data.cursohome.nombre, data.cursohome.etapa, data.cursohome.curso, data.cursohome.catei);
 					}
 					curoreco = data.cursorecomendado.ID;
@@ -1071,6 +1231,7 @@ var app = {
 	},
     ponerCategorias: function() {
 		var podac;
+		$('.categoriascur').html('');
 		for(var i=0;i<categorias.length;i++) {
 			podac = ''+
 			'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
@@ -1284,9 +1445,26 @@ var app = {
 		
 		//~ $('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
 		$('#pantalla16').attr('style',categorias[posci].codigo);
+		$('#pantalla16b').attr('style', categorias[posci].codigo);
+		$('#pantalla16b .btnViole').attr('style', categorias[posci].codigo);
 		$('#pantalla16 .viole').attr('style', categorias[posci].codigo);
 		$('#pantalla16 .bolita').attr('style', categorias[posci].codigo);
 		$('#audiosclase .btnGenerico').attr('style',categorias[posci].codigo);
+	},
+    ponerClaseInd: function(i, posci, claseid) {
+		$('.tituloClaseInd').html(clases[i].nombre);
+		ponerPantalla('pantalla16c');
+		
+		$('#audClaseInd').html('<source src="'+baseURL+clases[i].archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#audClaseInd')[0].pause();
+		$('#audClaseInd')[0].load();
+		
+		$('#pantalla16c').attr('style',categorias[posci].codigo);
+		$('#pantalla16d').attr('style', categorias[posci].codigo);
+		$('#pantalla16c .btnViole').attr('style', categorias[posci].codigo);
+		$('#pantalla16c .viole').attr('style', categorias[posci].codigo);
+		$('#pantalla16c .bolita').attr('style', categorias[posci].codigo);
+		$('#audiosclasec .btnGenerico').attr('style',categorias[posci].codigo);
 	},
     ponerClase2: function(j, i, claid, i2) {
 		$('.tituloClase2').html(mbsr_cont.semanas[i].clases[j].nombre_clase);
@@ -1322,9 +1500,8 @@ var app = {
 		}
 	},
     doMedIni: function(data) {
-		
 		var podnaco = '';
-		for(var j=0;j<data.clases;j++) {
+		for(var j=0;j<data.clases_medini;j++) {
 			var claseTom = (j==0)?'':' activo';
 			podnaco += ''+
 			'		<div class="curItemComp'+claseTom+'" >'+
@@ -1359,6 +1536,7 @@ var app = {
     doMensajes: function() {
 		$('#mensajeFinenc').html(getTexto('final_encuesta'));
 		$('#mensajeInimed').html(getTexto('meditacion_inicial'));
+		$('#mensajeInimedFin').html(getTexto('meditacion_inicial_fin'));
 		$('#sub_boton_resp').html(getTexto('sub_boton_resp'));
 		$('#sub_boton_med').html(getTexto('sub_boton_med'));
 	},
@@ -1629,6 +1807,7 @@ function ponerPantalla(cual) {
 		$('#audEsfera')[0].pause();
 		$('#audMedDiaria')[0].pause();
 		$('#audClaseP')[0].pause();
+		$('#audClaseInd')[0].pause();
 		$('#uad_MBSR')[0].pause();
 		$('#audPod')[0].pause();
 	});
@@ -1680,6 +1859,7 @@ var audEsfera = document.getElementById("audEsfera")
 var audTim = document.getElementById("audTim")
 var audPod = document.getElementById("audPod")
 var audClaseP = document.getElementById("audClaseP")
+var audClaseInd = document.getElementById("audClaseInd")
 var uad_MBSR = document.getElementById("uad_MBSR")
 var audMedDiaria = document.getElementById("audMedDiaria")
 var estaplay = false
@@ -1707,6 +1887,11 @@ audPod.addEventListener('loadedmetadata', function() {
 audClaseP.addEventListener('loadedmetadata', function() {
   var duration = audClaseP.duration
   var currentTime = audClaseP.currentTime
+});
+
+audClaseInd.addEventListener('loadedmetadata', function() {
+  var duration = audClaseInd.duration
+  var currentTime = audClaseInd.currentTime
 });
 
 uad_MBSR.addEventListener('loadedmetadata', function() {
@@ -1771,6 +1956,19 @@ function updateBar(cual) {
 		if(percentage>0.99) {
 			if(cual=="med_ini") {
 				ponerPantalla('pantalla3c');
+				
+			}
+			if(cual=="audClaseP") {
+				ponerPantalla('pantalla16b');
+			}
+			if(cual=="audPod") {
+				ponerPantalla('pantalla8c');
+			}
+			if(cual=="audClaseInd") {
+				ponerPantalla('pantalla16d');
+			}
+			if(cual=="uad_MBSR") {
+				ponerPantalla('pantalla12e');
 			}
 		}
 	}
@@ -1876,7 +2074,7 @@ function swipeEnd(e) {
 				});
 			} else {
 				if($('#nomostrarmbsrintro').prop("checked")) {
-					localStorage.setItem('sinintrombsr', true);
+					localStorage.setItem('sinintrombsr', "true");
 					sinintrombsr = true;
 				}
 				ponerPantalla('pantalla12b');
