@@ -1150,6 +1150,7 @@ div#msjconf {
     margin: 10px auto;
     border-radius: 50px;
     letter-spacing: 3px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 

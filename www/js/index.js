@@ -7,6 +7,7 @@ var baseURL = "http://tranquiapp.net/";
 var isLoginSave = false;
 var isLogin = false;
 var userLogId = false;
+var volverHome = false;
 var timerac = '';
 var sinintrombsr = false;
 var loginData_nombre = '';
@@ -33,7 +34,10 @@ var app = {
         ponerPantalla('pantalla0');
     },
     onDeviceReady: function() {
-        app.setupPush();
+		var isapp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
+		if ( isapp ) {
+			app.setupPush();
+		}
         //~ app.initStore();
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
@@ -260,6 +264,14 @@ var app = {
 			}
 			if(donde=='pantalla13') {
 				$('#audClaseInd')[0].pause();
+			}
+			if(donde=='pantalla14' && volverHome) {
+				volverHome = false;
+				donde = 'pantalla5';
+			}
+			if(donde=='pantalla13' && volverHome) {
+				volverHome = false;
+				donde = 'pantalla5';
 			}
 			if(donde=='pantalla12d') {
 				$('#uad_MBSR')[0].pause();
@@ -1388,7 +1400,7 @@ var app = {
 							for(var j=0;j<n_etapas[i].clases.length;j++) {
 								var claseTom = (inArray(n_etapas[i].clases[j].ID, n_estadisticas.clases_c))?'':' activo';
 								podac += ''+
-								'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+								'		<div class="curItemComp'+claseTom+'" onclick="volverHome=true;app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
 								'			<div class="circItemA">'+
 								'				<div class="circItemB"><img src="img/check.png"></div>'+
 								'			</div>'+
@@ -1793,7 +1805,7 @@ function ponerPantalla(cual) {
 			$('#pantalla14').addClass('hidden');
 		}
 		$('.ventana.activa').removeClass('activa');
-		$('.ventana.activa').addClass('hidden');
+		$('.ventana').addClass('hidden');
 		$('#'+cual).removeClass('hidden');
 		$('#'+cual).addClass('activa');
 		$('#'+cual).fadeIn(600);
@@ -1954,6 +1966,10 @@ function updateBar(cual) {
 			}
 		}
 		if(percentage>0.99) {
+			audi.currentTime = 0;
+			$('.btnPlayMed.ct_'+cual+' .circsma').html('<i class="glyphicon glyphicon-play"></i>');
+			estaplay = false
+			method = 'pause'
 			if(cual=="med_ini") {
 				ponerPantalla('pantalla3c');
 				
