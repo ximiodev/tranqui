@@ -11,7 +11,11 @@ var volverHome = false;
 var timerac = '';
 var sinintrombsr = false;
 var loginData_nombre = '';
-var animres;
+var tiempo_insp=2;
+var tiempo_mant=2;
+var tiempo_exalar=2;
+var tiempo_veces=15;
+var tiempo_vecesT=0;
 var cur_i;
 var cur_posc;
 var cur_curid;
@@ -117,6 +121,7 @@ var app = {
         $('#btnLogin').click(function(e) {
 			e.preventDefault();
 			$(':focus').blur();
+			ponerLoading();
 			var datos = {};
 			datos.action = 'doLogin';
 			datos.tipo = 'user';
@@ -128,6 +133,7 @@ var app = {
 				url: apiURL,
 				data: datos,
 				success: function (data) {
+					sacarLoading();
 					if(data.res) {
 						ponerPantalla('pantalla1');
 						app.iniciarCont();
@@ -159,12 +165,14 @@ var app = {
 				datos.nombre = $('#nombre2').val();
 				datos.email = $('#email2').val();
 				datos.password = $('#password2').val();
+				ponerLoading();
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
 					url: apiURL,
 					data: datos,
 					success: function (data) {
+						sacarLoading();
 						if(data.res) {
 							ponerPantalla('pantalla1');
 							app.iniciarCont();
@@ -193,12 +201,14 @@ var app = {
 				var datos = {};
 				datos.action = 'doRecPass';
 				datos.email = $('#email3').val();
+				ponerLoading();
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
 					url: apiURL,
 					data: datos,
 					success: function (data) {
+						sacarLoading();
 						if(data.res) {
 							ponerPantalla('pantalla0d');
 							alerta(data.message);
@@ -222,12 +232,14 @@ var app = {
 				datos.pass1 = $('#password3').val();
 				datos.pass2 = $('#password3b').val();
 				datos.email = $('#email3').val();
+				ponerLoading();
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
 					url: apiURL,
 					data: datos,
 					success: function (data) {
+						sacarLoading();
 						if(data.res) {
 							ponerPantalla('pantalla0a');
 							alerta(data.message);
@@ -237,7 +249,15 @@ var app = {
 					}
 				});
 			} else {
-				alerta("debes ingresar el email con el que te has registrado.");
+				if($('#codigo').val()=='') {
+					alerta("El código no debe estar vacío.");
+				}
+				if($('#codigo').val()=='') {
+					alerta("La contraseña no debe estar vacía.");
+				}
+				if($('#password3').val()!='' && $('#password3').val()!=$('#password3b').val()) {
+					alerta("Las contraseñas no coinciden.");
+				}
 			}
 		});
 		
@@ -528,19 +548,20 @@ var app = {
 		 $('.btnGuiada').click(function(e) {
 			e.preventDefault();
 			timerac = 'GUIADA';
-			ponerPantalla('pantalla6a');
+			ponerPantalla('pantalla6b');
 		});
 		
 		 $('.btnNoGuiada').click(function(e) {
 			e.preventDefault();
 			timerac = 'NO GUIADA';
-			ponerPantalla('pantalla6a');
+			ponerPantalla('pantalla6b');
 		});
 		
 		 $('.btnGratuita').click(function(e) {
 			e.preventDefault();
 			timerac = 'GRATUITA';
-			ponerPantalla('pantalla6a');
+			app.ponerTimer(5);
+			ponerPantalla('pantalla6b');
 		});
 		
 		 $('.btnTimers').click(function(e) {
@@ -550,6 +571,7 @@ var app = {
 		
 		 $('.btnEsfera').click(function(e) {
 			e.preventDefault();
+			app.iniciarResp();
 			ponerPantalla('pantalla7');
 		});
 		
@@ -713,6 +735,13 @@ var app = {
 		$('.btnCerrarSession').click(function(e) {
 			e.preventDefault();
 			app.logOff();
+		});
+		
+		$('#buscarCate').keypress(function(event){
+			var keycode = (event.keyCode ? event.keyCode : event.which);
+			if(keycode == '13'){
+				$('#btnBuscar').click();	
+			}
 		});
 		
 		$('#btnBuscar').click(function(e) {
@@ -976,6 +1005,15 @@ var app = {
 					app.doPodcasts();
 					//timers
 					timers = data.timers;
+					$('#tiempoclaseTimer').mobiscroll().select({
+						display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
+						showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
+					});
+					
+					tiempo_insp=data.timers_anim.t_inspirar;
+					tiempo_mant=data.timers_anim.t_aguantar;
+					tiempo_exalar=data.timers_anim.t_exalar;
+					tiempo_veces=data.timers_anim.repeticiones;
 					//categorias
 					categorias = data.categorias;
 					//esfera
@@ -1200,6 +1238,7 @@ var app = {
 						app.ponerCursoHome(data.cursohome.nombre, data.cursohome.etapa, data.cursohome.curso, data.cursohome.catei);
 					}
 					curoreco = data.cursorecomendado.ID;
+					$('.btnProximoCurso .sub').html(data.cursorecomendado.nombre);
 				} else {
 					alerta(data.message);
 				}
@@ -1221,6 +1260,39 @@ var app = {
 				$('.todospods').append(podac);
 			}	
 		}
+	},
+    animaRespirar: function() {
+		$('.circ_resp').css({'transition':tiempo_insp+'s'});
+		$('.circ_resp').addClass('activo');
+		setTimeout(function() {
+			setTimeout(function() {
+				$('.circ_resp').css({'transition':tiempo_exalar+'s'});
+				$('.circ_resp').removeClass('activo');
+				setTimeout(function() {
+					if(tiempo_vecesT<tiempo_veces) {
+						tiempo_vecesT++;
+						app.animaRespirar();
+					} else {
+						//pararaaudio
+						var method = 'pause';
+						var audi = document.getElementById('audEsfera');
+						audi.currentTime = 0; 
+						audi[method]();
+						ponerPantalla('pantalla5');
+					}
+				}, tiempo_exalar*1000);
+			}, tiempo_mant*1000);
+		}, tiempo_insp*1000);
+	},
+    iniciarResp: function() {
+		setTimeout(function() {
+			var method = 'play';
+			tiempo_vecesT = 0;
+			var audi = document.getElementById('audEsfera');
+			audi.currentTime = 0; 
+			app.animaRespirar();
+			audi[method]();
+		}, 1000);
 	},
     getCategorias: function() {
 		var datos = {};
@@ -1340,7 +1412,8 @@ var app = {
 						$('.listetapas .contesli').append(podac);
 						$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
 						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
-						$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
+						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
+						$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
 					}
 					
 						
@@ -1490,6 +1563,9 @@ var app = {
     ponerAudioFile: function(k) {
 		app.ponerClaseAudio(k,cur_i,cur_posc,cur_curid);
 	},
+    ponerAudioFileTimer: function(k) {
+		app.ponerClaseAudio(k,cur_i,cur_posc,cur_curid);
+	},
     ponerClaseAudio: function(k,i, posc, curid) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		//~ ponerPantalla('pantalla17');
@@ -1503,13 +1579,24 @@ var app = {
 		var length = timers.length;
 		for(var i = 0; i < length; i++) {
 			if(timers[i]['tipo'] == dura && timers[i]['nombre']==timerac) {
-				ponerPantalla('pantalla6b');
+				//~ ponerPantalla('pantalla6b');
 				$('.titSeccionSubT').html(timerac+' - '+dura+' minutos');
 				$('#audTim').html('<source src="'+baseURL+timers[i]['archivo']+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				$('#audTim')[0].pause();
 				$('#audTim')[0].load();
+				app.rebovinarAudio('audTim');
 			}
 		}
+	},
+    rebovinarAudio: function(cual) {
+		var method
+		var audi = document.getElementById(cual);
+		  
+		$('.btnPlayMed.ct_'+cual+' .circsma').html('<i class="glyphicon glyphicon-play"></i>');
+		estaplay = true
+		method = 'pause';
+		audi.currentTime = 0; 
+		audi[method]();
 	},
     doMedIni: function(data) {
 		var podnaco = '';
@@ -2130,6 +2217,14 @@ var onSuccess = function(result) {
 
 var onError = function(msg) {
   console.log("Sharing failed with message: " + msg);
+}
+
+function ponerLoading() {
+	$('.loader').removeClass('hidden');
+}
+
+function sacarLoading() {
+	$('.loader').addClass('hidden');
 }
 
 function compartirEnlace() {

@@ -263,14 +263,15 @@
 			<div class="ventana hidden" id="pantalla6">
 				<div class="contenidoGen">
 					<h4 class="titSeccionSub">Timers</h4>
-					
-					<div class="interna">
-						<div class="btnGenerico btnCele btnGuiada">GUIADA</div>
-						<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA</div>
-						<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
+					<div class="pantcomun">
+						<div class="interna">
+							<div class="btnGenerico btnCele btnGuiada">GUIADA</div>
+							<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA</div>
+							<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
+						</div>
+						
+						<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
 					</div>
-					
-					<div class="volverint btnSinborde btnVolverHome">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
@@ -304,20 +305,31 @@
 				<div class="contenidoGen">
 					<h4 class="titSeccionSub">Timers</h4>
 					<h5 class="titSeccionSubT"></h5>
-					<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
-						<div class="circmed cele">
-							<div class="circsma cele">
-								<i class="glyphicon glyphicon-play"></i>
+					<div class="circuloaudio">
+						<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
+							<div class="circmed cele">
+								<div class="circsma cele">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
 							</div>
 						</div>
+						<div class="circle audioBorde ab_audTim"></div>
+						<div id="audTim_control" class="circuloN"></div>
+						<audio ontimeupdate="updateBar('audTim')" id="audTim">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
 					</div>
-					<div class="circle audioBorde ab_audTim"></div>
-					<div id="audTim_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('audTim')" id="audTim">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
+					<div class="selectorTiempo">
+						<div class="titiempo">Tiempo</div>
+						<select name="tiempoclase" id="tiempoclaseTimer" onchange="app.ponerTimer(this.value)" data-enhance="false">
+							<option value="5">5 min</option>
+							<option value="10">10 min</option>
+							<option value="15">15 min</option>
+						</select>
+					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6a">Volver</div>
+					<div class="blokespacio"></div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
@@ -332,7 +344,7 @@
 				<!--	respiracion  -->
 				<div class="contenidoGen">
 					<h4 class="titSeccionSub">Esfera de Meditación</h4>
-					<div class="btnPlayMed ct_audEsfera cele" onclick="togglePlaying('audEsfera')">
+					<div class="btnPlayMed ct_audEsfera cele">
 						<div class="circmed cele">
 							<div class="circsma cele">
 								<i class="glyphicon glyphicon-play"></i>
@@ -345,13 +357,13 @@
 					<div class="circ_resp circ_resp_4"></div>
 					<div class="circ_resp circ_resp_5"></div>
 					<div class="circ_resp circ_resp_6"></div>
-					<div class="circle audioBorde ab_audEsfera"></div>
-					<div id="audEsfera_control" class="circuloN"></div>
+					<div class="circle audioBorde ab_audEsfera hidden"></div>
+					<div id="audEsfera_control" class="circuloN hidden"></div>
 					<audio ontimeupdate="updateBar('audEsfera')" id="audEsfera">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
-					<div class="saltarVid2 btnSinborde btnVolverHome">Volver</div>
+					<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla8">
@@ -568,6 +580,7 @@
 					<div class="listetapas">
 						<div class="contesli2"></div>
 					</div>
+					<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
 					<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
@@ -594,6 +607,7 @@
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
+					<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla12c">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
@@ -647,6 +661,7 @@
 					<div class="listetapas">
 						<div class="contesli owl-carousel1"></div>
 					</div>
+					<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
@@ -829,6 +844,22 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="loader hidden">
+		<div class="container">
+		  <div class="dot dot-1"></div>
+		  <div class="dot dot-2"></div>
+		  <div class="dot dot-3"></div>
+		</div>
+
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+		  <defs>
+			<filter id="goo">
+			  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+			  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
+			</filter>
+		  </defs>
+		</svg>
 	</div>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>

@@ -183,6 +183,8 @@ video.videomin {
 
 .listcursos {
     background: #FFF;
+	margin-left: -15px;
+    margin-right: -15px;
     padding: 15px;
 }
 
@@ -504,24 +506,43 @@ video.videomin {
 }
 
 .curItemComp {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     text-align: center;
     font-family: 'MontserratMedium';
     color: rgba(231,98,57,1);
     display: inline-block;
-	margin: 5px 10px;
+	margin: 5px;
 }
 
 .contClasesmedini {
-    width: 320px;
+    width: 100%;
     margin: 0 auto;
 	text-align: center;
 }
 
 .listclases {
-    width: 320px;
+    width: 100%;
     margin: 0 auto;
+}
+
+.pantcomun {
+    position: relative;
+    height: 60vh;
+}
+
+.interna {
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    top: 50%;
+    height: 140px;
+    margin-top: -100px;
+}
+
+#pantalla12c .numIteCu {
+    color: #FFF;
+    padding: 0 0 0 2px;
 }
 
 .circItemA {
@@ -533,8 +554,8 @@ video.videomin {
     background: -ms-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
     background: linear-gradient(to right, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e76239', endColorstr='#ffde67', GradientType=1 );
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 	padding: 5px;
 }
@@ -548,13 +569,11 @@ video.videomin {
     background: -ms-linear-gradient(left, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
     background: linear-gradient(to right, rgba(231,98,57,1) 0%, rgba(255,222,103,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e76239', endColorstr='#ffde67', GradientType=1 );
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     transform: rotate(180deg);
 }
-
-
 
 .circItemA.violet {
 	background: rgba(127,36,255,1);
@@ -565,8 +584,8 @@ video.videomin {
     background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
     background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
 	padding: 5px;
 }
@@ -580,8 +599,8 @@ video.videomin {
     background: -ms-linear-gradient(left, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
     background: linear-gradient(to right, rgba(127,36,255,1) 0%, rgba(255,172,255,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7f24ff', endColorstr='#ffacff', GradientType=1 );
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     transform: rotate(180deg);
 }
@@ -802,9 +821,9 @@ video.videomin {
 	border-radius: 20px;
     font-family: 'MontserratBold';
     padding: 10px;
-    -webkit-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
-	-moz-box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
-	box-shadow: 5px 5px 10px 0px rgba(98,29,194,1);
+    -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
+	-moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
+	box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
 }
 
 .btnGenerico.btnCele {
@@ -859,18 +878,19 @@ video.videomin {
 }
 
 .tituCurAct {
-  background: #fdfae7;
-  padding: 10px;
-  border-radius: 18px;
+	background: #fdfae7;
+	padding: 10px;
+	border-radius: 18px;
 }
 
 .boxCursoAct {
-  max-width: 100%;
-  padding: 1rem;
-  position: relative;
-  background: linear-gradient(to right, #ff2b8b, #ffc752);
-  padding: 3px;
-  border-radius: 20px;
+	max-width: 90%;
+	margin: 0 auto;
+	padding: 1rem;
+	position: relative;
+	background: linear-gradient(to right, #ff2b8b, #ffc752);
+	padding: 3px;
+	border-radius: 20px;
 }
 
 .btnGenerico {
@@ -1150,7 +1170,7 @@ div#msjconf {
     margin: 10px auto;
     border-radius: 50px;
     letter-spacing: 3px;
-    font-size: 14px;
+    font-size: 12px;
     text-transform: uppercase;
 }
 
@@ -1565,55 +1585,54 @@ button.close {
     opacity: 0;
 }
 
+
 .circ_resp_1 {
-	animation-delay: .1s;
-    -webkit-animation: fadein_1 2s ease-in  alternate-reverse infinite;
-    -moz-animation: fadein_1 2s ease-in  alternate-reverse infinite;
-    animation: fadein_1 2s ease-in  alternate-reverse infinite;
+	opacity: 0; transform: scale(1, 1);
+}
+
+.circ_resp_1.activo {
+	opacity: 1;transform: scale(1.6, 1.6);
 }
 
 .circ_resp_2 {
-	animation-delay: .2s;
-    -webkit-animation: fadein_2 2s ease-in  alternate-reverse infinite;
-    -moz-animation: fadein_2 2s ease-in  alternate-reverse infinite;
-    animation: fadein_2 2s ease-in  alternate-reverse infinite;
+	opacity: 0; transform: scale(1, 1);
+}
+
+.circ_resp_2.activo {
+	opacity: .8;transform: scale(1.5, 1.5);
 }
 
 .circ_resp_3 {
-	animation-delay: .3s;
-    -webkit-animation: fadein_3 2s ease-in  alternate-reverse infinite;
-    -moz-animation: fadein_3 2s ease-in  alternate-reverse infinite;
-    animation: fadein_3 2s ease-in  alternate-reverse infinite;
+	opacity: 0; transform: scale(1, 1);
+}
+
+.circ_resp_3.activo {
+	opacity: .6;transform: scale(1.4, 1.4);
 }
 
 .circ_resp_4 {
-	animation-delay: .4s;
-    -webkit-animation: fadein_4 2s ease-in  alternate-reverse infinite;
-    -moz-animation: fadein_4 2s ease-in  alternate-reverse infinite;
-    animation: fadein_4 2s ease-in  alternate-reverse infinite;
+	opacity: 0; transform: scale(1, 1);
+}
+
+.circ_resp_4.activo {
+	opacity: .4;transform: scale(1.3, 1.3);
 }
 
 .circ_resp_5 {
-	animation-delay: .5s;
-    -webkit-animation: fadein_5 2s ease-in  alternate-reverse infinite;
-    -moz-animation: fadein_5 2s ease-in  alternate-reverse infinite;
-    animation: fadein_5 2s ease-in  alternate-reverse infinite;
+	opacity: 0; transform: scale(1, 1);
+}
+
+.circ_resp_5.activo {
+	opacity: .2;transform: scale(1.2, 1.2);
 }
 
 .circ_resp_6 {
-	animation-delay: .6s;
-    -webkit-animation: fadein_6 2s ease-in  alternate-reverse infinite;
-    -moz-animation: fadein_6 2s ease-in  alternate-reverse infinite;
-    animation: fadein_6 2s ease-in  alternate-reverse infinite;
+	opacity: 0; transform: scale(1, 1);
 }
 
-@keyframes fadein_1 { from { opacity: 0; transform: scale(1, 1);} to { opacity: 1;transform: scale(1.6, 1.6); }}
-@keyframes fadein_2 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .8;transform: scale(1.5, 1.5); }}
-@keyframes fadein_3 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .6;transform: scale(1.4, 1.4); }}
-@keyframes fadein_4 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .4;transform: scale(1.3, 1.3); }}
-@keyframes fadein_5 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .2;transform: scale(1.2, 1.2); }}
-@keyframes fadein_6 { from { opacity: 0; transform: scale(1, 1);} to { opacity: .1;transform: scale(1.1, 1.1); }}
-
+.circ_resp_6.activo {
+	opacity: .1;transform: scale(1.1, 1.1)
+}
 
 
 .mbsc-ios.mbsc-fr.mbsc-fr-inline .mbsc-sc-whl-o {
@@ -1708,6 +1727,17 @@ div#audClaseInd_control {
     position: relative;
 }
 
+.backcolor_mbsr {
+	background: rgba(22,196,137,1);
+	background: -moz-linear-gradient(left, rgba(22,196,137,1) 0%, rgba(23,146,187,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(22,196,137,1)), color-stop(100%, rgba(23,146,187,1)));
+	background: -webkit-linear-gradient(left, rgba(22,196,137,1) 0%, rgba(23,146,187,1) 100%);
+	background: -o-linear-gradient(left, rgba(22,196,137,1) 0%, rgba(23,146,187,1) 100%);
+	background: -ms-linear-gradient(left, rgba(22,196,137,1) 0%, rgba(23,146,187,1) 100%);
+	background: linear-gradient(to right, rgba(22,196,137,1) 0%, rgba(23,146,187,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#16c489', endColorstr='#1792bb', GradientType=1 );
+}
+
 .bolita {
     width: 10px;
     height: 10px;
@@ -1795,4 +1825,99 @@ div#audClaseInd_control {
 #miscursoscont .btnNaranja {
     margin-bottom: 15px;
     padding: 5px;
+}
+
+.loader {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 9999999;
+	background-color: rgba(0,0,0,.6);
+}
+
+.loader .container {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  filter: url('#goo');
+  animation: rotate-move 2s ease-in-out infinite;
+}
+
+.dot { 
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.dot-3 {
+  background-color: rgba(255,142,108,1);
+  animation: dot-3-move 2s ease infinite, index 6s ease infinite;
+}
+
+.dot-2 {
+  background-color: rgba(39,35,102,1);
+  animation: dot-2-move 2s ease infinite, index 6s -4s ease infinite;
+}
+
+.dot-1 {
+  background-color: rgba(127,36,255,1);
+  animation: dot-1-move 2s ease infinite, index 6s -2s ease infinite;
+}
+
+@keyframes dot-3-move {
+  20% {transform: scale(1)}
+  45% {transform: translateY(-18px) scale(.45)}
+  60% {transform: translateY(-90px) scale(.45)}
+  80% {transform: translateY(-90px) scale(.45)}
+  100% {transform: translateY(0px) scale(1)}
+}
+
+@keyframes dot-2-move {
+  20% {transform: scale(1)}
+  45% {transform: translate(-16px, 12px) scale(.45)}
+  60% {transform: translate(-80px, 60px) scale(.45)}
+  80% {transform: translate(-80px, 60px) scale(.45)}
+  100% {transform: translateY(0px) scale(1)}
+}
+
+@keyframes dot-1-move {
+  20% {transform: scale(1)}
+  45% {transform: translate(16px, 12px) scale(.45)}
+  60% {transform: translate(80px, 60px) scale(.45)}
+  80% {transform: translate(80px, 60px) scale(.45)}
+  100% {transform: translateY(0px) scale(1)}
+}
+
+@keyframes rotate-move {
+  55% {transform: translate(-50%, -50%) rotate(0deg)}
+  80% {transform: translate(-50%, -50%) rotate(360deg)}
+  100% {transform: translate(-50%, -50%) rotate(360deg)}
+}
+
+@keyframes index {
+  0%, 100% {z-index: 3}
+  33.3% {z-index: 2}
+  66.6% {z-index: 1}
+}
+
+.mbsc-fr.mbsc-ios.mbsc-fr-inline.mbsc-sc.mbsc-sel.mbsc-fr-liq.mbsc-fr-nobtn {
+    transform: scale(0.7);
+    margin: -25px auto;
+}
+
+.blokespacio {
+    height: 70px;
 }
