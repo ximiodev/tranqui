@@ -10,6 +10,7 @@ var userLogId = false;
 var volverHome = false;
 var timerac = '';
 var sinintrombsr = false;
+var respirando = false;
 var loginData_nombre = '';
 var tiempo_insp=2;
 var tiempo_mant=2;
@@ -33,6 +34,7 @@ var app = {
         localStorage.setItem('isLogin', isLoginSave);
         localStorage.setItem('loginData_nombre', loginData_nombre);
         localStorage.setItem('userLogId', userLogId);
+        localStorage.setItem('sinintrombsr', "false");
         
         $('.ventana').addClass('hidden');
         ponerPantalla('pantalla0');
@@ -571,8 +573,8 @@ var app = {
 		
 		 $('.btnEsfera').click(function(e) {
 			e.preventDefault();
-			app.iniciarResp();
 			ponerPantalla('pantalla7');
+			app.iniciarResp();
 		});
 		
 		 $('.btnPodcasts').click(function(e) {
@@ -744,12 +746,18 @@ var app = {
 			}
 		});
 		
+		$('.btnVolverLib').click(function(e) {
+			e.preventDefault();
+			$('#buscarCate').val('');
+			$('#btnBuscar').click();	
+		});
+		
 		$('#btnBuscar').click(function(e) {
 			e.preventDefault();
 			var wts = $('#buscarCate').val();
 			$('.categoriascur').html('');
 			var podac;
-			
+			var cant = 0;
 			for(var i=0;i<categorias.length;i++) {
 				if(wts!='') {
 					var keywords = categorias[i].keywords.split(',');
@@ -765,6 +773,7 @@ var app = {
 						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
 						'</div>';
 						$('.categoriascur').append(podac);
+						cant++;
 					}
 				} else {
 					podac = ''+
@@ -774,15 +783,28 @@ var app = {
 					$('.categoriascur').append(podac);
 				}
 			}
+			if(wts!='' && cant==0) {
+				$('.sinresu').removeClass('hidden');
+			} else {
+				$('.sinresu').addClass('hidden');
+			}
 		});
 		
 		$('.btnDescargaFile').click(function(e) {
 			e.preventDefault();
 			var quien = $(this).find('.bolita');
-			if(quien.hasClass('bolitaOn')) {
-				quien.removeClass('bolitaOn');
+			if(navigator.onLine) {
+				ponerLoading();
+				setTimeout(function() {
+					sacarLoading();
+					if(quien.hasClass('bolitaOn')) {
+						quien.removeClass('bolitaOn');
+					} else {
+						quien.addClass('bolitaOn');
+					}
+				}, 1000);
 			} else {
-				quien.addClass('bolitaOn');
+				alerta("No tienes internet");
 			}
 		});
 		
@@ -1264,25 +1286,36 @@ var app = {
     animaRespirar: function() {
 		$('.circ_resp').css({'transition':tiempo_insp+'s'});
 		$('.circ_resp').addClass('activo');
-		setTimeout(function() {
+		if(respirando) {
+			$('.mensajere').removeClass('activo');
+			$('#resp_txt_1').addClass('activo');
 			setTimeout(function() {
-				$('.circ_resp').css({'transition':tiempo_exalar+'s'});
-				$('.circ_resp').removeClass('activo');
+				$('.mensajere').removeClass('activo');
+				$('#resp_txt_2').addClass('activo');
 				setTimeout(function() {
-					if(tiempo_vecesT<tiempo_veces) {
-						tiempo_vecesT++;
-						app.animaRespirar();
-					} else {
-						//pararaaudio
-						var method = 'pause';
-						var audi = document.getElementById('audEsfera');
-						audi.currentTime = 0; 
-						audi[method]();
-						ponerPantalla('pantalla5');
-					}
-				}, tiempo_exalar*1000);
-			}, tiempo_mant*1000);
-		}, tiempo_insp*1000);
+					$('.circ_resp').css({'transition':tiempo_exalar+'s'});
+					$('.circ_resp').removeClass('activo');
+					$('.mensajere').removeClass('activo');
+					$('#resp_txt_3').addClass('activo');
+					setTimeout(function() {
+						if(tiempo_vecesT<tiempo_veces) {
+							tiempo_vecesT++;
+							if(respirando) {
+								app.animaRespirar();
+							}
+						} else {
+							//pararaaudio
+							var method = 'pause';
+							var audi = document.getElementById('audEsfera');
+							audi.currentTime = 0; 
+							audi[method]();
+							respirando = false;
+							ponerPantalla('pantalla5');
+						}
+					}, tiempo_exalar*1000);
+				}, tiempo_mant*1000);
+			}, tiempo_insp*1000);
+		}
 	},
     iniciarResp: function() {
 		setTimeout(function() {
@@ -1290,6 +1323,7 @@ var app = {
 			tiempo_vecesT = 0;
 			var audi = document.getElementById('audEsfera');
 			audi.currentTime = 0; 
+			respirando = true;
 			app.animaRespirar();
 			audi[method]();
 		}, 1000);
@@ -1340,6 +1374,9 @@ var app = {
 					ponerPantalla('pantalla13');
 					$('#pantalla13').attr('style',categorias[posc].codigo);
 					$('#pantalla14').attr('style',categorias[posc].codigo);
+					$('#pantalla13 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
+					$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
+					$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
 					cursos = data.cursos;
 					var podac;
 					$('.listcursos').html('');
@@ -1408,11 +1445,12 @@ var app = {
 						'		</div>'+
 						'	</div>'+
 						'</div>'+
+						'<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>'+
 						'</div>';
 						$('.listetapas .contesli').append(podac);
 						$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
 						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
-						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
+						$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
 						$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
 					}
 					
@@ -1899,7 +1937,7 @@ function ponerPantalla(cual) {
 		if(cual=='pantalla2') {
 			ponerPregunta();
 		}
-		
+		respirando = false;
 		$("#audPod")[0].pause();   
 		$('#med_ini')[0].pause();
 		$('#audTim')[0].pause();
@@ -1997,6 +2035,11 @@ uad_MBSR.addEventListener('loadedmetadata', function() {
   var duration = uad_MBSR.duration
   var currentTime = uad_MBSR.currentTime
 });
+
+document.getElementById('videoIni').addEventListener('ended',detenerVideoHome,false);
+function detenerVideoHome(e) {
+	ponerPantalla('pantalla2');
+}
 
 function togglePlaying(cual) {
   var method

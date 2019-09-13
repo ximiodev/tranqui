@@ -153,7 +153,7 @@ a {
 }
 
 #pantalla10 {
-	background-image: url(../img/fndMEditacion-80.jpg);
+	background-image: url(../img/fndMeditacion.jpg);
 }
 
 #pantalla11, #pantalla11b, #pantalla11c {
@@ -433,6 +433,8 @@ video.videomin {
 	padding-bottom: 150px;
 	height: fit-content;
     min-height: -webkit-fill-available;
+    background: repeat center top;
+    background-size: 100px;
 }
 
 .contenidoGen.conpub {
@@ -445,6 +447,7 @@ video.videomin {
     height: 120px;
     width: 80%;
     margin: 0 auto;
+    text-align: center;
 }
 
 #med_ini {
@@ -505,6 +508,15 @@ video.videomin {
 	margin-bottom: 55px;
 }
 
+#pantalla14 .curItemComp {
+	margin: 5px 2px;
+}
+
+#pantalla14 .btnDescargaFile {
+    text-transform: initial;
+    margin: 20px auto 0!important;
+}
+
 .curItemComp {
     width: 30px;
     height: 30px;
@@ -524,6 +536,7 @@ video.videomin {
 .listclases {
     width: 100%;
     margin: 0 auto;
+	max-width: 220px;
 }
 
 .pantcomun {
@@ -695,8 +708,12 @@ video.videomin {
     position: relative;
 }
 
+#pantalla12c .boxcontmbsr {
+    height: 70vh;
+	overflow: auto;
+}
+
 #pantalla12c .listetapas {
-    height: 65vh;
     margin: 0 auto;
 }
 
@@ -734,11 +751,17 @@ video.videomin {
     width: 100%;
 }
 
+.contesli2 .curItemComp {
+    width: 29px;
+    height: 29px;
+}
+
 .listetapas .contesli2 .boxcate {
     margin: 10px auto;
     display: block;
     background: transparent;
     border: 1px solid #FFF;
+	float: none;
 }
 
 .contesli2 .circItemB {
@@ -773,8 +796,8 @@ video.videomin {
     border-radius: 15px;
     padding: 15px;
     padding-top: 35px;
-    margin: 0 5vw;
-	width: 90vw;
+    margin: 0 10vw;
+    width: 80vw;
     display: inline-block;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
     float: left;
@@ -1145,11 +1168,13 @@ div#msjconf {
 }
 
 .botronesHoem.btn50 {
-    width: 38%;
+    width: 90px;
     text-align: center;
-    font-size: 12px;
-    padding: 10px;
-    margin: 10px 6%!important;
+    font-size: 10px;
+    padding: 8px;
+    display: inline-block;
+    letter-spacing: 2px;
+    float: none;
 }
 
 .botronesHoem {
@@ -1727,7 +1752,18 @@ div#audClaseInd_control {
     position: relative;
 }
 
-.backcolor_mbsr {
+#pantalla11b .backcolor_usr {
+	background: rgba(254, 195, 69,1);
+    background: -moz-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(254, 195, 69,1)), color-stop(100%, rgba(255,45,138,1)));
+    background: -webkit-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+    background: -o-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+    background: -ms-linear-gradient(left, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+    background: linear-gradient(to right, rgba(254, 195, 69,1) 0%, rgba(255,45,138,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
+}
+
+.boxcontmbsr .backcolor_mbsr {
 	background: rgba(22,196,137,1);
 	background: -moz-linear-gradient(left, rgba(22,196,137,1) 0%, rgba(23,146,187,1) 100%);
 	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(22,196,137,1)), color-stop(100%, rgba(23,146,187,1)));
@@ -1817,14 +1853,31 @@ div#audClaseInd_control {
 }
 
 .btnUserMenu {
-    color: #FFF;
-    text-align: center;
+    color: #fb2d88;
+    text-align: left;
+	margin-bottom: 10px;
+    font-family: 'MontserratRegular';
+    letter-spacing: 1px;
 }
 
+#pantalla11b .marcloca {
+    float: right;
+    border: 1px solid;
+    height: 16px;
+}
 
 #miscursoscont .btnNaranja {
     margin-bottom: 15px;
     padding: 5px;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    margin: 25px auto;
+    width: 275px;
+    background: #fefff1;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+    color: #fb2d88;
 }
 
 .loader {
@@ -1920,4 +1973,46 @@ div#audClaseInd_control {
 
 .blokespacio {
     height: 70px;
+}
+
+.mensajesresp {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratSemiBold';
+    letter-spacing: 8px;
+    font-size: 20px;
+    position: relative;
+}
+
+.mensajere.activo {
+    opacity: 1;
+}
+
+.btnVolverLib {
+    color: #7740a2;
+    border-color: #7740a2;
+    margin: 15px auto;
+}
+
+.mensajere {
+    position: absolute;
+    width: 100%;
+    transition: .5s;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.msjsincon {
+    text-align: center;
+    font-family: 'MontserratSemiBold';
+    color: #7740a2;
+}
+
+.busador {
+    padding-top: 25px;
+}
+
+.marcamenuusr {
+    display: inline-block;
+    float: right;
 }

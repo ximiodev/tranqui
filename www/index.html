@@ -270,7 +270,9 @@
 							<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
 						</div>
 						
+<!--
 						<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
+-->
 					</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
@@ -328,7 +330,7 @@
 							<option value="15">15 min</option>
 						</select>
 					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6a">Volver</div>
+					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6">Volver</div>
 					<div class="blokespacio"></div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
@@ -343,7 +345,12 @@
 			<div class="ventana hidden" id="pantalla7">
 				<!--	respiracion  -->
 				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Esfera de Meditación</h4>
+					<h4 class="titSeccionSub">Respiración</h4>
+					<div class="mensajesresp">
+						<div class="mensajere" id="resp_txt_1">INHALÁ</div>
+						<div class="mensajere" id="resp_txt_2">MANTENÉ</div>
+						<div class="mensajere" id="resp_txt_3">EXHALÁ</div>
+					</div>
 					<div class="btnPlayMed ct_audEsfera cele">
 						<div class="circmed cele">
 							<div class="circsma cele">
@@ -363,7 +370,19 @@
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
+<!--
 					<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
+-->
+					<div class="bototneraBottom conpub">
+<!--
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
+-->
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
+						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+					</div>
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla8">
@@ -441,7 +460,10 @@
 					<div class="titLibreria">LIBRERÍA</div>
 					<div class="categoriascur">
 					</div>
-					<div class="volverint violeta btnSinborde btnVolverHome">Volver</div>
+					<div class="sinresu hidden">
+						<div class="msjsincon">No se encontraron resultados.</div>
+						<div class="btnSinborde btn50P btnVolverLib">Volver</div>
+					</div>
 					<div class="bototneraBottom botoneraLib conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
@@ -468,7 +490,9 @@
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
+<!--
 					<div class="saltarVid2 btnSinborde btnVolverHome">Volver</div>
+-->
 				</div>
 			</div>
 			<div class="ventana hidden" id="pantalla11">
@@ -484,7 +508,9 @@
 						</div>
 						<div class="btnNaranja verSmall" onclick="compartirEnlace()">Invitar un amigo</div>
 					</div>
+<!--
 					<div class="volverint btnSinborde btnVolverHome">Volver</div>
+-->
 					<div class="bototneraBottom">
 <!--
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
@@ -499,9 +525,11 @@
 			</div>
 			<div class="ventana hidden" id="pantalla11b">
 				<div class="contenidoGen">
-					<h4 class="titSeccionSub">CONFIGURACIONES</h4>
-					<div class="boxuser">
-						<div class="btnUserMenu btnCerrarSession">Cerrar sessión</div>
+					<h4 class="titSeccionSub"><i class="fa fa-cog"></i> CONFIGURACIÓN</h4>
+					<div class="boxEstadisticasCont">
+						<div class="btnUserMenu btnNotificaciones">Notificaciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
+						<div class="btnUserMenu btnSacarAnuncios">Anuncios <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
+						<div class="btnUserMenu btnCerrarSession">Cerrar sessión <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
 					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
 					<div class="bototneraBottom">
@@ -577,11 +605,14 @@
 			<div class="ventana hidden" id="pantalla12c">
 				<div class="contenidoGen">
 					<h4 class="titSeccionSub">MBSR</h4>
-					<div class="listetapas">
-						<div class="contesli2"></div>
+					<div class="boxcontmbsr">
+						<div class="listetapas">
+							<div class="contesli2"></div>
+						</div>
+						<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
+						<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
+					
 					</div>
-					<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
-					<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
 					<div class="bototneraBottom">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -661,7 +692,6 @@
 					<div class="listetapas">
 						<div class="contesli owl-carousel1"></div>
 					</div>
-					<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
@@ -806,8 +836,8 @@
 					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
--->
 					</audio>
+-->
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla16">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
