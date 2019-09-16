@@ -1096,7 +1096,7 @@ var app = {
 		
 		app.platform = device.platform.toLowerCase();
 		// Enable maximum logging level
-		//store.verbosity = store.DEBUG;
+		store.verbosity = store.DEBUG;
 		
 		 store.validator = "https://api.fovea.cc:1982/check-purchase";
 
@@ -1107,9 +1107,9 @@ var app = {
 			type:  store.PAID_SUBSCRIPTION
 		});
 			
-		store.when("product").updated(function (p) {
-			app.renderIAP(p);
-		});
+		//~ store.when("product").updated(function (p) {
+			//~ app.renderIAP(p);
+		//~ });
 		store.when("subscription1").approved(function(p) {
 			alerta("verify subscription");
 			p.verify();
@@ -1123,6 +1123,7 @@ var app = {
 		});
 		store.when("subscription1").updated(function(p) {
 			if (p.owned) {
+				$('#logbox').html($('#logbox').html()+'You are a lucky subscriber!');
 				$('.comprasbox').html('You are a lucky subscriber!');
 				document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
 			}
@@ -1134,7 +1135,7 @@ var app = {
 
 		// Log all errors
 		store.error(function(error) {
-			alerta('ERROR ' + error.code + ': ' + error.message);
+			$('#logbox').html($('#logbox').html()+'ERROR ' + error.code + ': ' + error.message);
 		});
 		
 
