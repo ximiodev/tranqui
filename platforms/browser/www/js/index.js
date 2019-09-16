@@ -10,6 +10,8 @@ var userLogId = false;
 var volverHome = false;
 var timerac = '';
 var sinintrombsr = false;
+var cambiandopantalla = false;
+var buscandoCont = false;
 var respirando = false;
 var loginData_nombre = '';
 var tiempo_insp=2;
@@ -18,6 +20,7 @@ var tiempo_exalar=2;
 var tiempo_veces=15;
 var tiempo_vecesT=0;
 var cur_i;
+var vibrar = true;
 var cur_posc;
 var cur_curid;
 var app = {
@@ -44,7 +47,9 @@ var app = {
 		if ( isapp ) {
 			app.setupPush();
 		}
-        //~ app.initStore();
+		if ( isapp ) {
+			app.initStore();
+		}
         setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
         
@@ -93,6 +98,11 @@ var app = {
         $('.btnCerrarAlerta').click(function(e) {
 			e.preventDefault();
 			sacarAlerta();
+		});
+		
+        $('.boxprem').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla18');
 		});
 		
         $('#login').click(function(e) {
@@ -301,6 +311,12 @@ var app = {
 			ponerPantalla(donde);
 		});
 		
+		 $('.btnIniciarResp').click(function(e) {
+			e.preventDefault();
+			$('.btnIniciarResp').hide();
+			app.iniciarResp();
+		});
+		
 		 $('.saltarVid').click(function(e) {
 			e.preventDefault();
 			$('.videomin')[0].pause();
@@ -380,24 +396,7 @@ var app = {
 					);
 				}
 			);
-		
-			var datos = {};
-			datos.action = 'saveConfig';
-			datos.tipo = 'respirar';
-			datos.valor = $('#conf_val_1a_i').val()+':'+$('#conf_val_1b_i').val()+':00';
-			$.ajax({
-				type: 'POST',
-				dataType: 'json',
-				url: apiURL,
-				data: datos,
-				success: function (data) {
-					//~ if(data.res) {
-						//~ alerta(data.message);
-					//~ } else {
-						//~ alerta(data.message);
-					//~ }
-				}
-			});
+			saveConfig('respirar', $('#conf_val_1a_i').val()+':'+$('#conf_val_1b_i').val()+':00');
 		});
 		
 		 $('.btnConfirmar2').click(function(e) {
@@ -415,25 +414,7 @@ var app = {
 					);
 				}
 			);
-		
-			var datos = {};
-			datos.action = 'saveConfig';
-			datos.tipo = 'meditar';
-			datos.userid = userLogId;
-			datos.valor = $('#conf_val_2a_i').val()+':'+$('#conf_val_2b_i').val()+':00';
-			$.ajax({
-				type: 'POST',
-				dataType: 'json',
-				url: apiURL,
-				data: datos,
-				success: function (data) {
-					//~ if(data.res) {
-						//~ alerta(data.message);
-					//~ } else {
-						//~ alerta(data.message);
-					//~ }
-				}
-			});
+			saveConfig('meditar', $('#conf_val_2a_i').val()+':'+$('#conf_val_2b_i').val()+':00');
 		});
 		
 		 $('.btnFinalizarConf').click(function(e) {
@@ -543,13 +524,16 @@ var app = {
 		
 		 $('.btnHome').click(function(e) {
 			e.preventDefault();
-			navigator.vibrate(100);
+			if(vibrar) {
+				navigator.vibrate(100);
+			}
 			ponerPantalla('pantalla5');
 		});
 		
 		 $('.btnGuiada').click(function(e) {
 			e.preventDefault();
 			timerac = 'GUIADA';
+			$('.titSeccionSubT').html('GUIADA - 5 minutos');
 			ponerPantalla('pantalla6b');
 		});
 		
@@ -573,19 +557,23 @@ var app = {
 		
 		 $('.btnEsfera').click(function(e) {
 			e.preventDefault();
+			$('.btnIniciarResp').show();
 			ponerPantalla('pantalla7');
-			app.iniciarResp();
 		});
 		
 		 $('.btnPodcasts').click(function(e) {
 			e.preventDefault();
-			navigator.vibrate(100);
+			if(vibrar) {
+				navigator.vibrate(100);
+			}
 			ponerPantalla('pantalla8');
 		});
 		
 		 $('.btnLibreria').click(function(e) {
 			e.preventDefault();
-			navigator.vibrate(100);
+			if(vibrar) {
+				navigator.vibrate(100);
+			}
 			app.ponerCategorias();
 			ponerPantalla('pantalla9');
 		});
@@ -602,13 +590,17 @@ var app = {
 		
 		 $('.btnUser').click(function(e) {
 			e.preventDefault();
-			navigator.vibrate(100);
+			if(vibrar) {
+				navigator.vibrate(100);
+			}
 			ponerPantalla('pantalla11');
 		});
 		
 		 $('.btnMSBR').click(function(e) {
 			e.preventDefault();
-			navigator.vibrate(100);
+			if(vibrar) {
+				navigator.vibrate(100);
+			}
 			var muestroono = localStorage.getItem('sinintrombsr');
 			if(muestroono=="true" || sinintrombsr) {
 				ponerPantalla('pantalla12b');
@@ -775,6 +767,20 @@ var app = {
 						$('.categoriascur').append(podac);
 						cant++;
 					}
+					wts = wts.substring(0, 3);
+					for(var t=0;t<keywords.length;t++) {
+						if(keywords[t].search(wts)!=-1) {
+							encontro1 = true;
+						}
+					}
+					if(encontro1 || categorias[i].nombre.search(wts)!=-1) {
+						podac = ''+
+						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
+						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+						'</div>';
+						$('.categoriascur').append(podac);
+						cant++;
+					}
 				} else {
 					podac = ''+
 					'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
@@ -805,6 +811,27 @@ var app = {
 				}, 1000);
 			} else {
 				alerta("No tienes internet");
+			}
+		});
+		
+		$('.btnUserMenu').click(function(e) {
+			e.preventDefault();
+			var quien = $(this).find('.bolita');
+			if(quien) {
+				var tipo = $(this).data('tipo');
+				var valor = "true";
+				if(quien.hasClass('bolitaOn')) {
+					quien.removeClass('bolitaOn');
+					valor = "false";
+				} else {
+					quien.addClass('bolitaOn');
+				}
+				if(tipo=="vibrar") {
+					saveConfig('vibrar', valor);
+				}
+				if(tipo=="notificaciones") {
+					saveConfig('notificaciones', valor);
+				}
 			}
 		});
 		
@@ -983,7 +1010,7 @@ var app = {
 			}
 		});
 		var altpan = $(window).height();
-		$("<style type='text/css'> .contenidoApp, .ventana{ min-height: "+altpan+"px;} </style>").appendTo("head");
+		//~ $("<style type='text/css'> .contenidoApp, .ventana{ min-height: "+altpan+"px;} </style>").appendTo("head");
 		
 		mobiscroll.settings = {
 			
@@ -1068,15 +1095,12 @@ var app = {
 		}
 		
 		app.platform = device.platform.toLowerCase();
-		document.getElementsByTagName('body')[0].className = app.platform;
-
 		// Enable maximum logging level
 		//store.verbosity = store.DEBUG;
 		
 		 store.validator = "https://api.fovea.cc:1982/check-purchase";
 
 		// Inform the store of your products
-		log('registerProducts');
 		store.register({
 			id:    'subscription1', // id without package name!
 			alias: 'subscription1',
@@ -1099,10 +1123,10 @@ var app = {
 		});
 		store.when("subscription1").updated(function(p) {
 			if (p.owned) {
-				document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
+				$('.comprasbox').html('You are a lucky subscriber!');
 			}
 			else {
-				document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
+				$('.comprasbox').html('You are not subscribed');
 			}
 		});
 
@@ -1111,15 +1135,10 @@ var app = {
 			log('ERROR ' + error.code + ': ' + error.message);
 		});
 		
-		store.ready(function() {
-			var el = document.getElementById("loading-indicator");
-			if (el)
-				el.style.display = 'none';
-		});
 
 		// When store is ready, activate the "refresh" button;
 		store.ready(function() {
-			var el = document.getElementById('refresh-button');
+			var el = document.getElementById('comprasbox');
 			if (el) {
 				el.style.display = 'block';
 				el.onclick = function(ev) {
@@ -1163,6 +1182,7 @@ var app = {
 		$('.nombreuser').html('Hola '+datos.displayname);
 		$('#glyphicon glyphicon-user').html(datos.displayname);
 		ponerPantalla('pantalla1');
+		app.savePushToken();
 		app.iniciarCont();
 		isLogin = true;
 		loginData_nombre = datos.displayname;
@@ -1189,6 +1209,7 @@ var app = {
 						$('.nombreuser').html('Hola '+result.name);
 						$('#glyphicon glyphicon-user').html(result.name);
 						ponerPantalla('pantalla1');
+						app.savePushToken();
 						app.iniciarCont();
 						isLogin = true;
 						loginData_nombre = result.name;
@@ -1238,6 +1259,7 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					estadisticas = data.estadisticas;
+					app.getConfig();
 					ponerEstadisticas();
 				} else {
 					alerta(data.message);
@@ -1267,6 +1289,44 @@ var app = {
 			}
 		});
 	},
+    getConfig: function() {
+		var datos = {};
+		datos.action = 'getConfig';
+		datos.userid = userLogId;
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					glocbalConf = data.datos;
+					for(var i=0;i<glocbalConf.length;i++) {
+						if(glocbalConf[i].tipo=="vibrar") {
+							var quien = $('.btnVibrar').find('.bolita');
+							if(glocbalConf[i].valor=="true") {
+								vibrar = true;
+								quien.addClass('bolitaOn');
+							} else {
+								vibrar = false;
+								quien.removeClass('bolitaOn');
+							}
+						}
+						if(glocbalConf[i].tipo=="notificaciones") {
+							var quien = $('.btnNotificaciones').find('.bolita');
+							if(glocbalConf[i].valor=="true") {
+								quien.addClass('bolitaOn');
+							} else {
+								quien.removeClass('bolitaOn');
+							}
+						}
+					}
+				} else {
+					//~ alerta(data.message);
+				}
+			}
+		});
+	},
     doPodcasts: function() {
 		var podac;
 		for(var i=0;i<podcasts.length;i++) {
@@ -1292,32 +1352,38 @@ var app = {
 			setTimeout(function() {
 				$('.mensajere').removeClass('activo');
 				$('#resp_txt_2').addClass('activo');
-				setTimeout(function() {
-					$('.circ_resp').css({'transition':tiempo_exalar+'s'});
-					$('.circ_resp').removeClass('activo');
-					$('.mensajere').removeClass('activo');
-					$('#resp_txt_3').addClass('activo');
+				if(respirando) {
 					setTimeout(function() {
-						if(tiempo_vecesT<tiempo_veces) {
-							tiempo_vecesT++;
-							if(respirando) {
-								app.animaRespirar();
-							}
-						} else {
-							//pararaaudio
-							var method = 'pause';
-							var audi = document.getElementById('audEsfera');
-							audi.currentTime = 0; 
-							audi[method]();
-							respirando = false;
-							ponerPantalla('pantalla5');
+						$('.circ_resp').css({'transition':tiempo_exalar+'s'});
+						$('.circ_resp').removeClass('activo');
+						$('.mensajere').removeClass('activo');
+						$('#resp_txt_3').addClass('activo');
+						if(respirando) {
+							setTimeout(function() {
+								if(tiempo_vecesT<tiempo_veces) {
+									tiempo_vecesT++;
+									if(respirando) {
+										app.animaRespirar();
+									}
+								} else {
+									//pararaaudio
+									var method = 'pause';
+									var audi = document.getElementById('audEsfera');
+									audi.currentTime = 0; 
+									audi[method]();
+									respirando = false;
+									ponerPantalla('pantalla5');
+								}
+							}, tiempo_exalar*1000);
 						}
-					}, tiempo_exalar*1000);
-				}, tiempo_mant*1000);
+					}, tiempo_mant*1000);
+				}
 			}, tiempo_insp*1000);
 		}
 	},
     iniciarResp: function() {
+		$('.circ_resp').removeClass('activo');
+		$('.mensajere').removeClass('activo');
 		setTimeout(function() {
 			var method = 'play';
 			tiempo_vecesT = 0;
@@ -1379,6 +1445,7 @@ var app = {
 					$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
 					cursos = data.cursos;
 					var podac;
+					$('.listcursos').show();
 					$('.listcursos').html('');
 					for(var i=0;i<cursos.length;i++) {
 						podac = ''+
@@ -1387,6 +1454,9 @@ var app = {
 						'	<div class="descCate" style="color:#'+categorias[posc].color+'">'+cursos[i].descripcion+'</div>'+
 						'</div>';
 						$('.listcursos').append(podac);
+					}
+					if(cursos.length==0) {
+						$('.listcursos').hide();
 					}
 					clases = data.clases;
 					var podac;
@@ -1409,76 +1479,86 @@ var app = {
 		});
 	},
     ponerCurso: function(posc, posci, curid) {
-		var datos = {};
-		datos.action = 'getCurso';
-		datos.curid = curid;
-		$('.tituloCurso .titcur').html(cursos[posc].nombre);
-		$('.tituloCurso .descur').html(cursos[posc].descripcion);
-		$.ajax({
-			type: 'POST',
-			dataType: 'json',
-			url: apiURL,
-			data: datos,
-			success: function (data) {
-				if(data.res) {
-					ponerPantalla('pantalla14');
-					etapas = data.etapas;
-					var podac;
-					$('.listetapas .contesli').html('');
-					for(var i=0;i<etapas.length;i++) {
-						podac = ''+
-						'<div class="boxcate item">'+
-						'	<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
-						'	<div class="clasesEtapa">'+
-						'		<div class="listclases">';
-						for(var j=0;j<etapas[i].clases.length;j++) {
-							var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+		if(!buscandoCont) {
+			var datos = {};
+			buscandoCont = true;
+			datos.action = 'getCurso';
+			datos.curid = curid;
+			$('.tituloCurso .titcur').html(cursos[posc].nombre);
+			$('.tituloCurso .descur').html(cursos[posc].descripcion);
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					buscandoCont = false;
+					if(data.res) {
+						ponerPantalla('pantalla14');
+						etapas = data.etapas;
+						var podac;
+						$('.listetapas .contesli').html('');
+						for(var i=0;i<etapas.length;i++) {
+							podac = ''+
+							'<div class="boxcatecon">'+
+							'	<div class="boxcate item">'+
+							'		<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
+							'		<div class="clasesEtapa">'+
+							'			<div class="listclases">';
+							for(var j=0;j<etapas[i].clases.length;j++) {
+								var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+								podac += ''+
+								'			<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+								'				<div class="circItemA">'+
+								'					<div class="circItemB"><img src="img/check.png"></div>'+
+								'				</div>'+
+								'				<div class="numIteCu">'+(j+1)+'</div>'+
+								'			</div>';
+							}
 							podac += ''+
-							'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
-							'			<div class="circItemA">'+
-							'				<div class="circItemB"><img src="img/check.png"></div>'+
 							'			</div>'+
-							'			<div class="numIteCu">'+(j+1)+'</div>'+
-							'		</div>';
+							'		</div>'+
+							'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>'+
+							'	</div>'+
+							'</div>';
+							$('.listetapas .contesli').append(podac);
+							$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
+							$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
+							$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
+							$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
 						}
-						podac += ''+
-						'		</div>'+
-						'	</div>'+
-						'</div>'+
-						'<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>'+
-						'</div>';
-						$('.listetapas .contesli').append(podac);
-						$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
-						$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
-						$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
-						$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
-					}
-					
 						
-					//~ owl1 = $('.owl-carousel1');
-					//~ owl1.owlCarousel({
-						//~ loop:true,
-						//~ margin:0,
-						//~ responsiveClass:true,
-						//~ pagination: false,dots: false,
-						//~ responsive:{
-							//~ 0:{
-								//~ items:1,
-								//~ nav:false,
-								//~ false:false
-							//~ },
-							//~ 600:{
-								//~ items:2,
-								//~ nav:false,
-								//~ false:false
+						$('.listetapas').scrollsnap({
+							snaps: '.boxcatecon',
+							direction: 'x',
+							proximity: 300,
+							easing: 'easeOutBack'
+						});
+						//~ owl1 = $('.owl-carousel1');
+						//~ owl1.owlCarousel({
+							//~ loop:true,
+							//~ margin:0,
+							//~ responsiveClass:true,
+							//~ pagination: false,dots: false,
+							//~ responsive:{
+								//~ 0:{
+									//~ items:1,
+									//~ nav:false,
+									//~ false:false
+								//~ },
+								//~ 600:{
+									//~ items:2,
+									//~ nav:false,
+									//~ false:false
+								//~ }
 							//~ }
-						//~ }
-					//~ });
-				} else {
-					alerta(data.message);
+						//~ });
+					} else {
+						alerta(data.message);
+					}
 				}
-			}
-		});
+			});
+		}
 	},
     ponerCursoHome: function(nonmbrecur, etapa, curid, catei) {
 		var datos = {};
@@ -1924,30 +2004,36 @@ function alerta(msj) {
 }
 
 function ponerPantalla(cual) {
-	$('.bototneraBottom').show();
-	$('.ventana.activa').fadeOut( 600, function() {
-		if(cual!='pantalla14') {
-			$('#pantalla14').addClass('hidden');
-		}
-		$('.ventana.activa').removeClass('activa');
-		$('.ventana').addClass('hidden');
-		$('#'+cual).removeClass('hidden');
-		$('#'+cual).addClass('activa');
-		$('#'+cual).fadeIn(600);
-		if(cual=='pantalla2') {
-			ponerPregunta();
-		}
-		respirando = false;
-		$("#audPod")[0].pause();   
-		$('#med_ini')[0].pause();
-		$('#audTim')[0].pause();
-		$('#audEsfera')[0].pause();
-		$('#audMedDiaria')[0].pause();
-		$('#audClaseP')[0].pause();
-		$('#audClaseInd')[0].pause();
-		$('#uad_MBSR')[0].pause();
-		$('#audPod')[0].pause();
-	});
+	if(!cambiandopantalla) {
+		cambiandopantalla=true;
+		$('.bototneraBottom').show();
+		$('.ventana.activa').fadeOut( 600, function() {
+			if(cual!='pantalla14') {
+				$('#pantalla14').addClass('hidden');
+			}
+			$('.ventana.activa').removeClass('activa');
+			$('.ventana').addClass('hidden');
+			$('#'+cual).removeClass('hidden');
+			$('#'+cual).addClass('activa');
+			$('#'+cual).fadeIn(600, function() {
+				cambiandopantalla=false;
+			});
+			if(cual=='pantalla2') {
+				videoIni.pause();
+				ponerPregunta();
+			}
+			respirando = false;
+			$("#audPod")[0].pause();   
+			$('#med_ini')[0].pause();
+			$('#audTim')[0].pause();
+			$('#audEsfera')[0].pause();
+			$('#audMedDiaria')[0].pause();
+			$('#audClaseP')[0].pause();
+			$('#audClaseInd')[0].pause();
+			$('#uad_MBSR')[0].pause();
+			$('#audPod')[0].pause();
+		});
+	}
 }
 
 function sacarAlerta() {
@@ -2185,7 +2271,7 @@ var touchStartCoords =  {'x':-1, 'y':-1}, // X and Y coordinates on mousedown or
     startTime = 0,// Time on swipeStart
     elapsedTime = 0,// Elapsed time between swipeStart and swipeEnd
     itemmbs = 0,
-    targetElement = document.getElementById('boxcuponre');// Element to delegate
+    targetElement = document.getElementById('pantalla12');// Element to delegate
 
 function swipeStart(e) {
   e = e ? e : window.event;
@@ -2274,7 +2360,7 @@ function compartirEnlace() {
 	var options = {
 	  message: 'Tranqui', // not supported on some apps (Facebook, Instagram)
 	  subject: 'Tranqui', // fi. for email
-	  url: 'https://www.tranqui.com/',
+	  url: 'https://tranquiapp.net/shareapp.php',
 	  chooserTitle: 'Tranqui' // Android only, you can override the default share sheet title
 	}
 	window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
@@ -2286,3 +2372,26 @@ window.addEventListener('keyboardDidShow', function () {
 window.addEventListener('keyboardDidHide', function () {
 	$('.bototneraBottom').show();
 });
+
+
+function saveConfig(tipo, valor) {
+	var datos = {};
+	datos.action = 'saveConfig';
+	datos.tipo = tipo;
+	datos.userid = userLogId;
+	datos.valor = valor;
+	$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url: apiURL,
+		data: datos,
+		success: function (data) {
+			app.getConfig();
+			//~ if(data.res) {
+				//~ alerta(data.message);
+			//~ } else {
+				//~ alerta(data.message);
+			//~ }
+		}
+	});
+}

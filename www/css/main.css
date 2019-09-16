@@ -703,8 +703,8 @@ video.videomin {
     font-size: 18px;
     font-family: 'MontserratSemiBold';
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
-	z-index: 89;
-	    background: #ccc;
+	z-index: 99;
+	background: #ccc;
     position: relative;
 }
 
@@ -2015,4 +2015,21 @@ div#audClaseInd_control {
 .marcamenuusr {
     display: inline-block;
     float: right;
+}
+
+#pantalla2 .saltar.btnSinborde.btn50P {
+    margin-bottom: 15px;
+}
+
+.boxcatecon {
+    margin: 0 10vw;
+    float: left;
+}
+
+.contBotAlmedio {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: 110px;
+    left: 0;
 }
