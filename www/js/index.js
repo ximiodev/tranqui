@@ -1090,7 +1090,7 @@ var app = {
     },
     initStore: function() {
 		if (!window.store) {
-			log('Store not available');
+			alerta('Store not available');
 			return;
 		}
 		
@@ -1111,28 +1111,30 @@ var app = {
 			app.renderIAP(p);
 		});
 		store.when("subscription1").approved(function(p) {
-			log("verify subscription");
+			alerta("verify subscription");
 			p.verify();
 		});
 		store.when("subscription1").verified(function(p) {
-			log("subscription verified");
+			alerta("subscription verified");
 			p.finish();
 		});
 		store.when("subscription1").unverified(function(p) {
-			log("subscription unverified");
+			alerta("subscription unverified");
 		});
 		store.when("subscription1").updated(function(p) {
 			if (p.owned) {
 				$('.comprasbox').html('You are a lucky subscriber!');
+				document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
 			}
 			else {
 				$('.comprasbox').html('You are not subscribed');
+				document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
 			}
 		});
 
 		// Log all errors
 		store.error(function(error) {
-			log('ERROR ' + error.code + ': ' + error.message);
+			alerta('ERROR ' + error.code + ': ' + error.message);
 		});
 		
 

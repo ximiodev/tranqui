@@ -854,11 +854,41 @@
 					<h4 class="tituloClase">Compras</h4>
 					<div class="comprasbox" id="comprasbox">
 					</div>
+					<div id="registration" class="blink">
+						<p class="event waiting">Requesting Registration ID</p>
+						<p class="event received">Registered</p>
+					</div>
+					
+					<!-- List of in-app purchases -->
+					<div class="app">
+						<h3 id="loading-indicator">Loading</h3>
+						<div id="in-app-purchase-list">
+							<div id="subscription1-purchase"></div>
+						</div>
+					</div>
+
+					<!-- Are we subscribers? -->
+					<div id="subscriber-info" class="section">Loading subscription status...</div>
+
+					<!-- Non-consumable non-(provider-)hosted content download -->
+					<div id="non-consumable-non-hosted-content-download" class="section" style="display:none"></div>
+
+					<!-- Non-consumable Apple-hosted content download -->
+					<div id="non-consumable-hosted-content-download" class="section ios-only" style="display:none"></div>
+
+					<div class="section">
+						<!-- Button to access the full version feature: initially hidden -->
+						<div id="access-full-version-button" class="button" style="display:none">Access the awesome Full Version feature</div>
+
+						<!-- Button to access the full version feature: initially hidden -->
+						<div id="refresh-button" class="button" style="display:none">Refresh purchases</div>
+
+					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
 						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
 						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
