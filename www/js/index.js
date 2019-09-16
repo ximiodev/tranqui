@@ -70,6 +70,7 @@ var app = {
 			}
 		});
 
+
 		// Log all errors
 		store.error(function(error) {
 			log('ERROR ' + error.code + ': ' + error.message);
