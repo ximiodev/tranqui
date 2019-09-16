@@ -1133,6 +1133,7 @@ var app = {
 			}
 		});
 
+
 		// Log all errors
 		store.error(function(error) {
 			$('#logbox').html($('#logbox').html()+'ERROR ' + error.code + ': ' + error.message);
