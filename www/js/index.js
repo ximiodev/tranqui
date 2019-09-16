@@ -1102,26 +1102,26 @@ var app = {
 
 		// Inform the store of your products
 		store.register({
-			id:    'subscription1', // id without package name!
-			alias: 'subscription1',
+			id:    'tranquisusc1', // id without package name!
+			alias: 'tranquisusc1',
 			type:  store.PAID_SUBSCRIPTION
 		});
 			
-		//~ store.when("product").updated(function (p) {
-			//~ app.renderIAP(p);
-		//~ });
-		store.when("subscription1").approved(function(p) {
+		store.when("product").updated(function (p) {
+			app.renderIAP(p);
+		});
+		store.when("tranquisusc1").approved(function(p) {
 			alerta("verify subscription");
 			p.verify();
 		});
-		store.when("subscription1").verified(function(p) {
+		store.when("tranquisusc1").verified(function(p) {
 			alerta("subscription verified");
 			p.finish();
 		});
-		store.when("subscription1").unverified(function(p) {
+		store.when("tranquisusc1").unverified(function(p) {
 			alerta("subscription unverified");
 		});
-		store.when("subscription1").updated(function(p) {
+		store.when("tranquisusc1").updated(function(p) {
 			if (p.owned) {
 				$('#logbox').html($('#logbox').html()+'You are a lucky subscriber!');
 				$('.comprasbox').html('You are a lucky subscriber!');
@@ -1137,6 +1137,9 @@ var app = {
 		store.error(function(error) {
 			$('#logbox').html($('#logbox').html()+'ERROR ' + error.code + ': ' + error.message);
 		});
+		store.error(store.ERR_SETUP, function() {
+		   store.trigger("refreshed");
+		 });
 		
 
 		// When store is ready, activate the "refresh" button;
