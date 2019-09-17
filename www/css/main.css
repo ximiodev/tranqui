@@ -395,6 +395,7 @@ video.videomin {
 	border: 1px solid #7740a2;
     border-radius: 15px;
     border-right: 0;
+    background: transparent;
 }
 
 .sinbor button.btn.btn-default {
@@ -402,6 +403,7 @@ video.videomin {
     border-radius: 0 15px 15px 0;
     border-left: 0;
     color: #7740a2;
+    background: transparent;
 }
 
 .saltarVid {
@@ -432,13 +434,32 @@ video.videomin {
 	padding-bottom: 70px;
 }
 
+#pantalla13 .contenidoGen {
+	background: no-repeat center top;
+    background-size: 40%;
+}
+
+#pantalla0 .subcont,
+#pantalla0a .subcont,
+#pantalla0b .subcont,
+#pantalla0c .subcont,
+#pantalla0d .subcont,
+#pantalla2 .subcont,
+#pantalla2b .subcont,
+#pantalla4 .contenidoGen,
+#pantalla1 .subcont {
+    background: no-repeat center top url(../img/login_fnd.png);
+    background-size: contain;
+    height: 100%;
+}
+
 .contenidoGen {
 	padding: 15px;
 	padding-bottom: 150px;
 	height: fit-content;
     min-height: -webkit-fill-available;
-    background: repeat center top;
-    background-size: 100px;
+	background: no-repeat center top;
+    background-size: contain;
 }
 
 .contenidoGen.conpub {
@@ -766,6 +787,7 @@ video.videomin {
     background: transparent;
     border: 1px solid #FFF;
 	float: none;
+	padding-top: 15px;
 }
 
 .contesli2 .circItemB {
@@ -774,8 +796,8 @@ video.videomin {
 
 .contesli2 .circItemA {
     background: #FFF;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     padding: 5px;
 }
@@ -837,14 +859,14 @@ video.videomin {
 }
 
 .btnGenerico.btnViole {
-	background: rgba(255,172,255,1);
-	background: -moz-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
-	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,172,255,1)), color-stop(100%, rgba(127,36,255,1)));
-	background: -webkit-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
-	background: -o-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
-	background: -ms-linear-gradient(left, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
-	background: linear-gradient(to right, rgba(255,172,255,1) 0%, rgba(127,36,255,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffacff', endColorstr='#7f24ff', GradientType=1 );
+	background: rgba(0,0,1,1);
+	background: -moz-linear-gradient(left, rgba(0,0,1,1) 0%, rgba(85,24,169,1) 28%, rgba(250,165,255,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(0,0,1,1)), color-stop(28%, rgba(85,24,169,1)), color-stop(100%, rgba(250,165,255,1)));
+	background: -webkit-linear-gradient(left, rgba(0,0,1,1) 0%, rgba(85,24,169,1) 28%, rgba(250,165,255,1) 100%);
+	background: -o-linear-gradient(left, rgba(0,0,1,1) 0%, rgba(85,24,169,1) 28%, rgba(250,165,255,1) 100%);
+	background: -ms-linear-gradient(left, rgba(0,0,1,1) 0%, rgba(85,24,169,1) 28%, rgba(250,165,255,1) 100%);
+	background: linear-gradient(to right, rgba(0,0,1,1) 0%, rgba(85,24,169,1) 28%, rgba(250,165,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000001', endColorstr='#faa5ff', GradientType=1 );
 	color: #FFF;
 	outline: none!important;
 	border: 0;
@@ -854,6 +876,11 @@ video.videomin {
     -webkit-box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
 	-moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
 	box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
+}
+
+.btnGenerico.btnViole.activo {
+	background: #FFF;
+    color: #8025fd;
 }
 
 .btnGenerico.btnCele {
@@ -1066,10 +1093,13 @@ div#msjconf {
     top: 0;
     color: #FFF;
     float: left;
+	margin-bottom: 15px;
 }
 
 .internum {
     padding: 48px 5px;
+    font-size: 20px;
+    line-height: 57px;
 }
 
 .contConfNot {
@@ -1077,7 +1107,7 @@ div#msjconf {
     height: 0;
     overflow: hidden;
     text-align: center;
-    margin: 20px auto;
+    margin: 10px auto;
     width: max-content;
 }
 
@@ -1326,6 +1356,11 @@ div#msjconf {
     margin-bottom: 15px;
 }
 
+.fndRosa .btotonbotom {
+	position: relative;
+    margin-top: 10px;
+}
+
 .fndRosa {
 	background: rgba(255,51,136,1);
 	background: -moz-linear-gradient(left, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
@@ -1335,6 +1370,11 @@ div#msjconf {
 	background: -ms-linear-gradient(left, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
 	background: linear-gradient(to right, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3388', endColorstr='#ff567d', GradientType=1 );
+}
+
+.fnMbsr .btotonbotom {
+	position: relative;
+    margin-top: 10px;
 }
 
 .fnMbsr {
@@ -1585,10 +1625,11 @@ span.rs-tooltip.rs-tooltip-text.edit {
     font-family: 'MontserratMedium';
     text-align: center;
     color: #FFF;
-    padding: 0 10px;
-	height: 120px;
+    padding: 0;
+    height: 120px;
     position: relative;
-    width: 100%;
+    width: 80vw;
+    margin: 0 auto;
 }
 
 .text_mb_1, .text_mb_2 {
@@ -1627,8 +1668,15 @@ button.close {
     text-align: center;
     color: #FFF;
     font-size: 12px;
+    width: 90%;
+    margin: -10px auto 70px;
+}
+
+.btnConf {
     width: 70%;
-    margin: 0 auto 15px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
 }
 
 .circ_resp {
@@ -2174,7 +2222,51 @@ div#audClaseInd_control {
     text-transform: uppercase;
 }
 
-
 .bolitaOn_c {
 	background: #fb2d88;
+}
+
+.notinumber {
+    font-family: 'MontserratRegular';
+    font-size: 40px;
+}
+
+.mensajetip {
+    font-family: 'MontserratRegular';
+    color: #FFF;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    margin-top: 90px;
+}
+
+span#diameddia {
+    display: block;
+    padding: 10px;
+    margin: 10px 0;
+    border-top: 1px solid #FFF;
+}
+
+.listclasesind .boxcate {
+    width: 80vw;
+    margin: 10px auto 10px;
+}
+
+.separaeta {
+    border-top: 1px solid #FFF;
+    margin: 15px 0 0;
+}
+
+.sepatitu {
+    border-top: 2px solid #FFF;
+    width: 50%;
+    margin: -12px auto 0;
+}
+
+.sepambsr {
+    border-top: 2px solid #FFF;
+    margin: -25px auto 25px;
+    width: 80vw;
 }

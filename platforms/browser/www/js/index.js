@@ -351,14 +351,18 @@ var app = {
 		
 		 $('#confNotResp').click(function(e) {
 			e.preventDefault();
-			$('#notRespB').addClass('activo');
+			$('#pantalla4 .btnGenerico.btnViole').removeClass('activo');
 			$('#notRespM').removeClass('activo');
+			$('#notRespB').addClass('activo');
+			$('#confNotResp').addClass('activo');
 		});
 		
 		 $('#confNotMed').click(function(e) {
 			e.preventDefault();
-			$('#notRespM').addClass('activo');
+			$('#pantalla4 .btnGenerico.btnViole').removeClass('activo');
 			$('#notRespB').removeClass('activo');
+			$('#notRespM').addClass('activo');
+			$('#confNotMed').addClass('activo');
 		});
 		
 		 $('.saltar').click(function(e) {
@@ -398,6 +402,7 @@ var app = {
 			e.preventDefault();
 			$('#notRespB').removeClass('activo');
 			$('#notRespM').removeClass('activo');
+			$('#pantalla4 .btnGenerico.btnViole').removeClass('activo');
 			$('#msjconf').css({'opacity':0});
 			$('#msjconf').html(getTexto('confirm_notificaciones_respirar'));
 			$('#msjconf').animate({opacity: 1}, 300, 
@@ -1190,6 +1195,7 @@ var app = {
 		var elId = parts[parts.length-1];
 
 		var el = document.getElementById(elId + '-purchase');
+		// id='buy-" + p.id + "' productId='" + p.id + "'
 		if (!el) return;
 
 		if (!p.loaded) {
@@ -1201,11 +1207,12 @@ var app = {
 		else if (p.valid) {
 			var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
 			if (p.canPurchase) {
-				html += "<div class='buttonPurchase' id='buy-" + p.id + "' productId='" + p.id + "' type='button'>" + p.price + "</div>";
+				html += "<div class='buttonPurchase'>" + p.price + "</div>";
 			}
 			el.innerHTML = html;
 			if (p.canPurchase) {
-				document.getElementById("buy-" + p.id).onclick = function (event) {
+				el.setAttribute("productId", p.id);
+				document.getElementById(elId + '-purchase').onclick = function (event) {
 					var pid = this.getAttribute("productId");
 					store.order(pid);
 				};
@@ -1512,6 +1519,7 @@ var app = {
 						'</div>';
 						$('.listclasesind').append(podac);
 					}
+					$('.listetapas').animate({scrollLeft: 37}, 500);
 					$('#pantalla13 .boxcatex .titCate').attr('style',categorias[posc].codigo);
 					$('#pantalla13 .listclasesind .boxcate').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .boxcatex').attr('style',categorias[posc].codigo);
@@ -1562,6 +1570,7 @@ var app = {
 							podac += ''+
 							'			</div>'+
 							'		</div>'+
+							'		<div class="separaeta"></div>'+
 							'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>'+
 							'	</div>'+
 							'</div>';
@@ -1570,14 +1579,27 @@ var app = {
 							$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
 							$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
 							$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
+							if(categorias[posci].fondo_pantalla!=undefined || categorias[posci].fondo_pantalla!='') {
+								$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+								$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+								$('#pantalla16 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+								$('#pantalla16b .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+								$('#pantalla16c .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+								$('#pantalla16d .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+							}
 						}
 						
 						$('.listetapas').scrollsnap({
 							snaps: '.boxcatecon',
 							direction: 'x',
-							proximity: 300,
-							easing: 'easeOutBack'
+							proximity: 170,
+							duration : 100
 						});
+						$('.listetapas').animate({scrollLeft: 37}, 500);
+						setTimeout(function() {
+							$('.listetapas').animate({scrollLeft: 37}, 500);
+						}, 300);
+						
 						//~ owl1 = $('.owl-carousel1');
 						//~ owl1.owlCarousel({
 							//~ loop:true,
@@ -1791,6 +1813,7 @@ var app = {
 	},
     doMedDiaria: function(data) {
 		$('#diameddia').html(data.dia);
+		$('.mensajetip').html(data.mensaje);
 		meditadiraria = data.ID;
 		$('#audMedDiaria').html('<source src="'+baseURL+data.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 	},
@@ -1798,8 +1821,7 @@ var app = {
 		$('#mensajeFinenc').html(getTexto('final_encuesta'));
 		$('#mensajeInimed').html(getTexto('meditacion_inicial'));
 		$('#mensajeInimedFin').html(getTexto('meditacion_inicial_fin'));
-		$('#sub_boton_resp').html(getTexto('sub_boton_resp'));
-		$('#sub_boton_med').html(getTexto('sub_boton_med'));
+		$('#sub_boton_config').html(getTexto('sub_boton_config'));
 	},
     doMBSR: function() {
 		var splitted = mbsr_cont['descripcion'].split("\n");
@@ -1939,7 +1961,8 @@ function ponerEstadisticas() {
 			}
 		}
 		//i posicion del cuso
-		var item = '<div class="btnNaranja" onclick="app.ponerCurso('+curpos+','+posci+','+estadisticas.cursos[i].ID+')"><div class="nombrcura">'+estadisticas.cursos[i].nombre+'</div><div class="detallecur">'+estadisticas.cursos[i].clases+'/'+estadisticas.cursos[i].clases_tot+'</div><div class="rayausu"></div></div>';
+		//~ var item = '<div class="btnNaranja" onclick="app.ponerCurso('+curpos+','+posci+','+estadisticas.cursos[i].ID+')"><div class="nombrcura">'+estadisticas.cursos[i].nombre+'</div><div class="detallecur">'+estadisticas.cursos[i].clases+'/'+estadisticas.cursos[i].clases_tot+'</div><div class="rayausu"></div></div>';
+		var item = '<div class="btnNaranja"><div class="nombrcura">'+estadisticas.cursos[i].nombre+'</div><div class="detallecur">'+estadisticas.cursos[i].clases+'/'+estadisticas.cursos[i].clases_tot+'</div><div class="rayausu"></div></div>';
 		$('#miscursoscont').append(item);
 	}
 	
