@@ -104,20 +104,24 @@ a {
 .ventana {
     height: 100vh;
     overflow: auto;
-	background: no-repeat center center url(../img/fondo_0_a.jpg); 
+	background: no-repeat center center url(../img/login.png); 
 	background-size: cover;
 }
 
 #pantalla0a, #pantalla0b {
-	background-image: url(../img/fondo_0_a.jpg);
+	background-image: url(../img/login.png);
 }
 
 #pantalla1 {
-	background-image: url(../img/fondo_0_b.jpg);
+	background-image: url(../img/login.png);
+}
+
+#pantalla18 {
+	background-image: url(../img/fndCompras.jpg);
 }
 
 #pantalla2 {
-	background-image: url(../img/fondo_0_c.jpg);
+	background-image: url(../img/encuesta.png);
 }
 
 #pantalla3 {
@@ -125,7 +129,7 @@ a {
 }
 
 #pantalla4 {
-	background-image: url(../img/fondo_0_e.jpg);
+	background-image: url(../img/notificaciones.png);
 }
 
 #pantalla5 {
@@ -813,11 +817,14 @@ video.videomin {
     color: #FFF;
     font-size: 20px;
     font-family: 'MontserratSemiBold';
-    margin: 40px auto 30px;
+    margin: 70px auto 30px;
 	width: 80%;
+/*
     border-bottom: 1px solid #FFF;
+*/
     padding-bottom: 5px;
 	letter-spacing: 4px;
+	text-transform: uppercase;
 }
 
 .titSeccionSubT {
@@ -1248,7 +1255,7 @@ div#msjconf {
 }
 
 .todospods {
-    padding: 35px 0;
+    padding: 15px 0;
 }
 
 
@@ -1316,6 +1323,29 @@ div#msjconf {
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.fndRosa {
+	background: rgba(255,51,136,1);
+	background: -moz-linear-gradient(left, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,51,136,1)), color-stop(100%, rgba(255,86,125,1)));
+	background: -webkit-linear-gradient(left, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
+	background: linear-gradient(to right, rgba(255,51,136,1) 0%, rgba(255,86,125,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3388', endColorstr='#ff567d', GradientType=1 );
+}
+
+.fnMbsr {
+	background: rgba(28,167,164,1);
+	background: -moz-linear-gradient(left, rgba(28,167,164,1) 0%, rgba(24,133,202,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(28,167,164,1)), color-stop(100%, rgba(24,133,202,1)));
+	background: -webkit-linear-gradient(left, rgba(28,167,164,1) 0%, rgba(24,133,202,1) 100%);
+	background: -o-linear-gradient(left, rgba(28,167,164,1) 0%, rgba(24,133,202,1) 100%);
+	background: -ms-linear-gradient(left, rgba(28,167,164,1) 0%, rgba(24,133,202,1) 100%);
+	background: linear-gradient(to right, rgba(28,167,164,1) 0%, rgba(24,133,202,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ca7a4', endColorstr='#1885ca', GradientType=1 );
 }
 
 .categoriascur {
@@ -1349,18 +1379,27 @@ div#msjconf {
 .titEsta {
     font-size: 22px;
     color: #fb2d88;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #ff995b;
+    font-family: 'MontserratSemiBold';
+    text-align: left;
+}
+
+.estdis {
+    position: relative;
+    margin-bottom: 22px;
 }
 
 .numgig {
-    font-size: 22px;
+    font-size: 32px;
+    font-family: 'MontserratSemiBold';
+    position: absolute;
+    right: 0;
+    top: -13px;
 }
 
 .boxEstadisticasCont {
 	padding: 10px;
     font-size: 14px;
-    text-align: center;
+    text-align: left;
     margin: 25px auto;
     width: 275px;
     background: #fefff1;
@@ -2032,4 +2071,110 @@ div#audClaseInd_control {
     top: 50%;
     margin-top: 110px;
     left: 0;
+}
+
+.boxCompra {
+    width: 46%;
+    display: inline-block;
+    position: relative;
+    margin: 0 2%;
+    background: rgba(117,63,159,1);
+    background: -moz-linear-gradient(top, rgba(117,63,159,1) 0%, rgba(19,31,79,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(117,63,159,1)), color-stop(100%, rgba(19,31,79,1)));
+    background: -webkit-linear-gradient(top, rgba(117,63,159,1) 0%, rgba(19,31,79,1) 100%);
+    background: -o-linear-gradient(top, rgba(117,63,159,1) 0%, rgba(19,31,79,1) 100%);
+    background: -ms-linear-gradient(top, rgba(117,63,159,1) 0%, rgba(19,31,79,1) 100%);
+    background: linear-gradient(to bottom, rgba(117,63,159,1) 0%, rgba(19,31,79,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#753f9f', endColorstr='#131f4f', GradientType=0 );
+    padding: 10px;
+    border-radius: 10px;
+    height: 210px;
+    float: left;
+    margin-bottom: 50px;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.4);
+    color: #FFF;
+    font-size: 14px;
+}
+
+.buttonPurchase {
+    position: absolute;
+    bottom: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #FFF;
+    width: calc(100% - 20px);
+}
+
+.boxCompra h3 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-family: 'MontserratSemiBold';
+}
+
+.boxCompra p {
+    font-size: 11px;
+}
+
+.volverint.btnSinborde.btnVolverPods {
+    position: absolute;
+    left: 50%;
+    bottom: 80px;
+    margin: 120px 0 0 -50px!important;
+}
+
+.tiempopod {
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: 80px;
+    left: 0;
+    color: #FFF;
+    font-family: 'MontserratSemiBold';
+    letter-spacing: 2px;
+}
+
+.btnMiscursos .circItemA {
+    float: right;
+    margin-top: -3px;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.btnNaranja.btnMiscursos {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.rayausu {
+    background: rgba(251,45,136,1);
+    background: -moz-linear-gradient(left, rgba(251,45,136,1) 0%, rgba(255,154,91,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(251,45,136,1)), color-stop(100%, rgba(255,154,91,1)));
+    background: -webkit-linear-gradient(left, rgba(251,45,136,1) 0%, rgba(255,154,91,1) 100%);
+    background: -o-linear-gradient(left, rgba(251,45,136,1) 0%, rgba(255,154,91,1) 100%);
+    background: -ms-linear-gradient(left, rgba(251,45,136,1) 0%, rgba(255,154,91,1) 100%);
+    background: linear-gradient(to right, rgba(251,45,136,1) 0%, rgba(255,154,91,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fb2d88', endColorstr='#ff9a5b', GradientType=1 );
+    width: 100%;
+    height: 3px;
+    margin-bottom: 20px;
+}
+
+.detallecur {
+    width: 20%;
+    display: inline-block;
+    text-align: right;
+    font-family: 'MontserratMedium';
+}
+
+.nombrcura {
+    width: 80%;
+    display: inline-block;
+    font-size: 20px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+
+.bolitaOn_c {
+	background: #fb2d88;
 }

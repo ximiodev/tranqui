@@ -21,6 +21,7 @@ var tiempo_veces=15;
 var tiempo_vecesT=0;
 var cur_i;
 var vibrar = true;
+var suscrito = false;
 var cur_posc;
 var cur_curid;
 var app = {
@@ -311,12 +312,6 @@ var app = {
 			ponerPantalla(donde);
 		});
 		
-		 $('.btnIniciarResp').click(function(e) {
-			e.preventDefault();
-			$('.btnIniciarResp').hide();
-			app.iniciarResp();
-		});
-		
 		 $('.saltarVid').click(function(e) {
 			e.preventDefault();
 			$('.videomin')[0].pause();
@@ -557,7 +552,8 @@ var app = {
 		
 		 $('.btnEsfera').click(function(e) {
 			e.preventDefault();
-			$('.btnIniciarResp').show();
+			$('.circ_resp').removeClass('activo');
+			$('.mensajere').removeClass('activo');
 			ponerPantalla('pantalla7');
 		});
 		
@@ -583,9 +579,11 @@ var app = {
 			ponerPantalla('pantalla10');
 		});
 		
-		 $('.btnMedDiaria').click(function(e) {
+		 $('.btnPlayMed.ct_audEsfera').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla10');
+			if(!respirando) {
+				app.iniciarResp();
+			}
 		});
 		
 		 $('.btnUser').click(function(e) {
@@ -822,15 +820,20 @@ var app = {
 				var valor = "true";
 				if(quien.hasClass('bolitaOn')) {
 					quien.removeClass('bolitaOn');
+					quien.parent().removeClass('bolitaOn_c');
 					valor = "false";
 				} else {
 					quien.addClass('bolitaOn');
+					quien.parent().addClass('bolitaOn_c');
 				}
 				if(tipo=="vibrar") {
 					saveConfig('vibrar', valor);
 				}
 				if(tipo=="notificaciones") {
 					saveConfig('notificaciones', valor);
+				}
+				if(tipo=="anuncios") {
+					ponerPantalla('pantalla18');
 				}
 			}
 		});
@@ -1095,8 +1098,9 @@ var app = {
 		}
 		
 		app.platform = device.platform.toLowerCase();
+		document.getElementsByTagName('body')[0].className = app.platform;
 		// Enable maximum logging level
-		store.verbosity = store.DEBUG;
+		//store.verbosity = store.DEBUG;
 		
 		 store.validator = "https://api.fovea.cc:1982/check-purchase";
 
@@ -1111,36 +1115,61 @@ var app = {
 			app.renderIAP(p);
 		});
 		store.when("tranquisusc1").approved(function(p) {
-			alerta("verify subscription");
+			//~ alerta("verify subscription");
 			p.verify();
 		});
 		store.when("tranquisusc1").verified(function(p) {
-			alerta("subscription verified");
+			//~ alerta("subscription verified");
 			p.finish();
 		});
 		store.when("tranquisusc1").unverified(function(p) {
-			alerta("subscription unverified");
+			//~ alerta("subscription unverified");
 		});
 		store.when("tranquisusc1").updated(function(p) {
 			if (p.owned) {
-				$('#logbox').html($('#logbox').html()+'You are a lucky subscriber!');
-				$('.comprasbox').html('You are a lucky subscriber!');
-				document.getElementById('subscriber-info').innerHTML = 'You are a lucky subscriber!';
+				suscrito = true;
 			}
-			else {
-				$('.comprasbox').html('You are not subscribed');
-				document.getElementById('subscriber-info').innerHTML = 'You are not subscribed';
+			validarSuscrip();
+		});
+		
+		store.register({
+			id:    'subscription1', // id without package name!
+			alias: 'subscription1',
+			type:  store.PAID_SUBSCRIPTION
+		});
+		
+		store.when("subscription1").approved(function(p) {
+			//~ alerta("verify subscription");
+			p.verify();
+		});
+		store.when("subscription1").verified(function(p) {
+			//~ alerta("subscription verified");
+			p.finish();
+		});
+		store.when("subscription1").unverified(function(p) {
+			//~ alerta("subscription unverified");
+		});
+		store.when("subscription1").updated(function(p) {
+			if (p.owned) {
+				suscrito = true;
 			}
+			validarSuscrip();
 		});
 
 
 		// Log all errors
 		store.error(function(error) {
-			$('#logbox').html($('#logbox').html()+'ERROR ' + error.code + ': ' + error.message);
+			//~ $('#logbox').html($('#logbox').html()+'ERROR ' + error.code + ': ' + error.message);
 		});
 		store.error(store.ERR_SETUP, function() {
 		   store.trigger("refreshed");
 		 });
+		
+		store.ready(function() {
+			var el = document.getElementById("loading-indicator");
+			if (el)
+				el.style.display = 'none';
+		});
 		
 
 		// When store is ready, activate the "refresh" button;
@@ -1172,7 +1201,7 @@ var app = {
 		else if (p.valid) {
 			var html = "<h3>" + p.title + "</h3>" + "<p>" + p.description + "</p>";
 			if (p.canPurchase) {
-				html += "<div class='button' id='buy-" + p.id + "' productId='" + p.id + "' type='button'>" + p.price + "</div>";
+				html += "<div class='buttonPurchase' id='buy-" + p.id + "' productId='" + p.id + "' type='button'>" + p.price + "</div>";
 			}
 			el.innerHTML = html;
 			if (p.canPurchase) {
@@ -1308,25 +1337,33 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					glocbalConf = data.datos;
-					for(var i=0;i<glocbalConf.length;i++) {
-						if(glocbalConf[i].tipo=="vibrar") {
-							var quien = $('.btnVibrar').find('.bolita');
-							if(glocbalConf[i].valor=="true") {
-								vibrar = true;
-								quien.addClass('bolitaOn');
-							} else {
-								vibrar = false;
-								quien.removeClass('bolitaOn');
+					if(glocbalConf.length>0) {
+						for(var i=0;i<glocbalConf.length;i++) {
+							if(glocbalConf[i].tipo=="vibrar") {
+								var quien = $('.btnVibrar').find('.bolita');
+								if(glocbalConf[i].valor=="true") {
+									vibrar = true;
+									quien.addClass('bolitaOn');
+								} else {
+									vibrar = false;
+									quien.removeClass('bolitaOn');
+								}
+							}
+							if(glocbalConf[i].tipo=="notificaciones") {
+								var quien = $('.btnNotificaciones').find('.bolita');
+								if(glocbalConf[i].valor=="true") {
+									quien.addClass('bolitaOn');
+								} else {
+									quien.removeClass('bolitaOn');
+								}
 							}
 						}
-						if(glocbalConf[i].tipo=="notificaciones") {
-							var quien = $('.btnNotificaciones').find('.bolita');
-							if(glocbalConf[i].valor=="true") {
-								quien.addClass('bolitaOn');
-							} else {
-								quien.removeClass('bolitaOn');
-							}
-						}
+					} else {
+						var quien = $('.btnVibrar').find('.bolita');
+						vibrar = true;
+						quien.addClass('bolitaOn');
+						var quien = $('.btnNotificaciones').find('.bolita');
+						quien.addClass('bolitaOn');
 					}
 				} else {
 					//~ alerta(data.message);
@@ -1868,13 +1905,25 @@ function ponerSigPreg() {
 	}
 }
 
+function validarSuscrip() {
+	if(suscrito) {
+		$('.bototneraBottom').removeClass('conpub');
+		$('.contenidoGen').removeClass('conpub');
+		$('.boxprem').hide();
+	} else {
+		$('.bototneraBottom').addClass('conpub');
+		$('.contenidoGen').addClass('conpub');
+		$('.boxprem').show();
+	}
+}
+
 function ponerEstadisticas() {
 	var conte = ''+
-	'<div class="estdis"><b>Tiempo meditado:</b> <span class="numgig">'+secondsToHms(estadisticas.duracion*60)+' </span></div>'+
-	'<div class="estdis"><b>Días desde que no meditas:</b> <span class="numgig">'+estadisticas.dias+' </span></div>'+
+	'<div class="estdis"><b>Tiempo<br>meditado:</b> <span class="numgig">'+secondsToHms(estadisticas.duracion*60)+' </span></div>'+
+	'<div class="estdis"><b>Días desde que<br>no meditas:</b> <span class="numgig">'+estadisticas.dias+' </span></div>'+
 	'<div class="estdis"><b>Clases tomadas:</b> <span class="numgig">'+estadisticas.clases+'</span></div>'+
-	'<div class="estdis"><b>Meditaciones diarias:</b> <span class="numgig">'+estadisticas.meditaciones+'</span></div>'+
-	'<div class="estdis"><b>Cursos completados:</b> <span class="numgig">0</span></div>';
+	'<div class="estdis"><b>Meditaciones<br>diarias:</b> <span class="numgig">'+estadisticas.meditaciones+'</span></div>'+
+	'<div class="estdis"><b>Cursos<br>completados:</b> <span class="numgig">'+estadisticas.cursos_completos+'</span></div>';
 	$('.boxEstadisticas').html(conte);
 	$('#miscursoscont').append('');
 	allcursos = estadisticas.cursosAll;
@@ -1882,6 +1931,7 @@ function ponerEstadisticas() {
 	for(var i=0;i<estadisticas.cursos.length;i++) {
 		var posci=0;
 		var curpos=0;
+		var totoclases=0;
 		for(var k=0;k<allcursos.length;k++) {
 			if(allcursos[k].ID==estadisticas.cursos[i].ID) {
 				curpos = k;
@@ -1889,7 +1939,7 @@ function ponerEstadisticas() {
 			}
 		}
 		//i posicion del cuso
-		var item = '<div class="btnNaranja" onclick="app.ponerCurso('+curpos+','+posci+','+estadisticas.cursos[i].ID+')">'+estadisticas.cursos[i].nombre+'</div>';
+		var item = '<div class="btnNaranja" onclick="app.ponerCurso('+curpos+','+posci+','+estadisticas.cursos[i].ID+')"><div class="nombrcura">'+estadisticas.cursos[i].nombre+'</div><div class="detallecur">'+estadisticas.cursos[i].clases+'/'+estadisticas.cursos[i].clases_tot+'</div><div class="rayausu"></div></div>';
 		$('#miscursoscont').append(item);
 	}
 	
@@ -1996,6 +2046,7 @@ function ponerPod(num) {
 	 var audio = $("#audPod");      
     $("#podsour").attr("src", baseURL+podcasts[num].archivo);
 	$('#audPod').html('<source src="'+baseURL+podcasts[num].archivo+'"  id="podsour" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+	$('.tiempopod').html(podcasts[num].duration);
 	ponerPantalla('pantalla8b');
     audio[0].pause();
     audio[0].load();
