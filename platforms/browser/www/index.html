@@ -521,10 +521,7 @@
 <!--
 					<div class="volverint btnSinborde btnVolverHome">Volver</div>
 -->
-					<div class="bototneraBottom">
-<!--
-						<div class="boxprem"><img src="img/boxpremium.png"></div>
--->
+					<div class="bototneraBottom fondoUser">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -543,7 +540,7 @@
 						<div class="btnUserMenu btnCerrarSession">Cerrar sessión <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
 					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
-					<div class="bototneraBottom">
+					<div class="bototneraBottom fondoUser">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -558,7 +555,7 @@
 					<div class="boxuser" id="miscursoscont">
 					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
-					<div class="bototneraBottom">
+					<div class="bototneraBottom fondoUser">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
 						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> MSBR</div>
@@ -623,7 +620,7 @@
 						<div class="listetapas">
 							<div class="contesli2"></div>
 						</div>
-						<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
+						<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="MBSR"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
 						<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
 					
 					</div>
@@ -640,21 +637,25 @@
 				<div class="contenidoGen">
 					<h4 class="tituloClase2"></h4>
 					<div class="sepambsr"></div>
-					<div class="btnPlayMed ct_uad_MBSR vercel" onclick="togglePlaying('uad_MBSR')">
-						<div class="circmed vercel">
-							<div class="circsma vercel">
-								<i class="glyphicon glyphicon-play"></i>
+					<div class="contCentrado">
+						<div class="circuloaudio">
+							<div class="btnPlayMed ct_uad_MBSR vercel" onclick="togglePlaying('uad_MBSR')">
+								<div class="circmed vercel">
+									<div class="circsma vercel">
+										<i class="glyphicon glyphicon-play"></i>
+									</div>
+								</div>
 							</div>
+							<div class="circle audioBorde ab_uad_MBSR"></div>
+							<div id="uad_MBSR_control" class="circuloN"></div>
+							<audio ontimeupdate="updateBar('uad_MBSR')" id="uad_MBSR">
+								<source src="" type="audio/mpeg">
+								Su navegador no sorporta audio HTML5
+							</audio>
 						</div>
+						<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla12c">Volver</div>
 					</div>
-					<div class="circle audioBorde ab_uad_MBSR"></div>
-					<div id="uad_MBSR_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('uad_MBSR')" id="uad_MBSR">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
-					<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla12c">Volver</div>
 					<div class="bototneraBottom fnMbsr">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -681,14 +682,17 @@
 			</div>
 			<div class="ventana hidden" id="pantalla13">
 				<div class="contenidoGen">
-					<div class="tituloCat"></div>
-					<div class="descripcionCat"></div>
-					<div class="listcursos">
+					<div class="monchito"></div>
+					<div class="conteiiuer">
+						<div class="tituloCat"></div>
+						<div class="descripcionCat"></div>
+						<div class="listcursos">
+						</div>
+						<div class="listclasesind">
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla9">Volver</div>
 					</div>
-					<div class="listclasesind">
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla9">Volver</div>
-					<div class="bototneraBottom botoneraLib conpub">
+					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -741,31 +745,33 @@
 					<h4 class="tituloClase"></h4>
 					<div class="sepatitu"></div>
 					<div class="descripcionClase"></div>
-					<div class="circuloaudio">
-						<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
-							<div class="circmed viole">
-								<div class="circsma viole">
-									<i class="glyphicon glyphicon-play"></i>
+					<div class="contCentrado">
+						<div class="circuloaudio">
+							<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
+								<div class="circmed viole">
+									<div class="circsma viole">
+										<i class="glyphicon glyphicon-play"></i>
+									</div>
 								</div>
 							</div>
+							<div class="circle audioBorde ab_audClaseP"></div>
+							<div id="audClaseP_control" class="circuloN"></div>
+							<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
+								<source src="" type="audio/mpeg">
+								Su navegador no sorporta audio HTML5
+							</audio>
 						</div>
-						<div class="circle audioBorde ab_audClaseP"></div>
-						<div id="audClaseP_control" class="circuloN"></div>
-						<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
-							<source src="" type="audio/mpeg">
-							Su navegador no sorporta audio HTML5
-						</audio>
+						<div class="selectorTiempo">
+							<div class="titiempo">Tiempo</div>
+							<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
+								<option value="1">5 min</option>
+								<option value="2">10 min</option>
+								<option value="3">15 min</option>
+							</select>
+						</div>
+						<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita"></div></div></div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
 					</div>
-					<div class="selectorTiempo">
-						<div class="titiempo">Tiempo</div>
-						<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
-							<option value="1">5 min</option>
-							<option value="2">10 min</option>
-							<option value="3">15 min</option>
-						</select>
-					</div>
-					<div class="volverint btnSinborde btnDescargaFile" data-file="">descargar clase <div class="marcloca"><div class="bolita"></div></div></div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>

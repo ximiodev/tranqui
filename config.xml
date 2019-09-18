@@ -25,6 +25,7 @@
     <plugin name="cordova-plugin-keyboard" source="npm" />
     <plugin name="cordova-plugin-hidden-statusbar" source="npm" />
     <plugin name="cordova-plugin-vibration" source="npm" />
+    <plugin name="cordova-plugin-file-downloader" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.2.1"/>
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >

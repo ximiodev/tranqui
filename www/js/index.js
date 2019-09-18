@@ -799,19 +799,37 @@ var app = {
 			}
 		});
 		
-		$('.btnDescargaFile').click(function(e) {
+		$('body').on('click','.btnDescargaFile', function(e) {
 			e.preventDefault();
 			var quien = $(this).find('.bolita');
+			var btnensi = $(this);
 			if(navigator.onLine) {
-				ponerLoading();
-				setTimeout(function() {
-					sacarLoading();
+				//~ downloader.init({folder: "TranquiFiles"});
+				//~ downloader.get($(this).data('file'));
+				if($(this).data('file')!="todos") {
+					ponerLoading();
+					setTimeout(function() {
+						sacarLoading();
+						if(quien.hasClass('bolitaOn')) {
+							quien.removeClass('bolitaOn');
+						} else {
+							quien.addClass('bolitaOn');
+						}
+					}, 1000);
+				} else {
 					if(quien.hasClass('bolitaOn')) {
 						quien.removeClass('bolitaOn');
 					} else {
 						quien.addClass('bolitaOn');
 					}
-				}, 1000);
+					btnensi.find('.fondobotondes').animate({
+						width: '100%'
+					}, 3000, function() {
+						btnensi.find('.fondobotondes').animate({
+							width: '0%'
+						}, 10);
+					})
+				}
 			} else {
 				alerta("No tienes internet");
 			}
@@ -832,6 +850,11 @@ var app = {
 					quien.parent().addClass('bolitaOn_c');
 				}
 				if(tipo=="vibrar") {
+					if(valor=="true") {
+						vibrar = true;
+					} else {
+						vibrar = false;
+					}
 					saveConfig('vibrar', valor);
 				}
 				if(tipo=="notificaciones") {
@@ -1351,17 +1374,21 @@ var app = {
 								if(glocbalConf[i].valor=="true") {
 									vibrar = true;
 									quien.addClass('bolitaOn');
+									quien.parent().addClass('bolitaOn_c');
 								} else {
 									vibrar = false;
 									quien.removeClass('bolitaOn');
+									quien.parent().removeClass('bolitaOn_c');
 								}
 							}
 							if(glocbalConf[i].tipo=="notificaciones") {
 								var quien = $('.btnNotificaciones').find('.bolita');
 								if(glocbalConf[i].valor=="true") {
 									quien.addClass('bolitaOn');
+									quien.parent().addClass('bolitaOn_c');
 								} else {
 									quien.removeClass('bolitaOn');
+									quien.parent().removeClass('bolitaOn_c');
 								}
 							}
 						}
@@ -1369,8 +1396,10 @@ var app = {
 						var quien = $('.btnVibrar').find('.bolita');
 						vibrar = true;
 						quien.addClass('bolitaOn');
+						quien.parent().addClass('bolitaOn_c');
 						var quien = $('.btnNotificaciones').find('.bolita');
 						quien.addClass('bolitaOn');
+						quien.parent().addClass('bolitaOn_c');
 					}
 				} else {
 					//~ alerta(data.message);
@@ -1488,12 +1517,22 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
-					ponerPantalla('pantalla13');
 					$('#pantalla13').attr('style',categorias[posc].codigo);
 					$('#pantalla14').attr('style',categorias[posc].codigo);
-					$('#pantalla13 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
-					$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
-					$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
+					$('body').attr('style',categorias[posc].codigo);
+					ponerPantalla('pantalla13');
+					$('#pantalla13 .monchito').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
+					//~ $('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
+					//~ $('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
+					if(categorias[posc].fondo_pantalla!=undefined || categorias[posc].fondo_pantalla!='') {
+						$('#pantalla13 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla16 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla16b .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla16c .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla16d .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+					}
 					cursos = data.cursos;
 					var podac;
 					$('.listcursos').show();
@@ -1571,7 +1610,7 @@ var app = {
 							'			</div>'+
 							'		</div>'+
 							'		<div class="separaeta"></div>'+
-							'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos">descargar todo <div class="marcloca"><div class="bolita"></div></div></div>'+
+							'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="etapas" data-etid="'+etapas[i].ID+'"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita"></div></div></div>'+
 							'	</div>'+
 							'</div>';
 							$('.listetapas .contesli').append(podac);
@@ -1580,6 +1619,7 @@ var app = {
 							$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
 							$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
 							if(categorias[posci].fondo_pantalla!=undefined || categorias[posci].fondo_pantalla!='') {
+								$('#pantalla13 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
 								$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
 								$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
 								$('#pantalla16 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
@@ -1725,6 +1765,7 @@ var app = {
 		ponerPantalla('pantalla16c');
 		
 		$('#audClaseInd').html('<source src="'+baseURL+clases[i].archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#pantalla16c .btnDescargaFile').data('file', baseURL+clases[i].archivo);
 		$('#audClaseInd')[0].pause();
 		$('#audClaseInd')[0].load();
 		
@@ -1741,6 +1782,7 @@ var app = {
 		datosClase.audio_ID = mbsr_cont.semanas[i].clases[j].ID;
 		registroClase = false;
 		$('#uad_MBSR').html('<source src="'+baseURL+mbsr_cont.semanas[i].clases[j].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#pantalla12d .btnDescargaFile').data('file', baseURL+mbsr_cont.semanas[i].clases[j].file_clase);
 		$('#uad_MBSR')[0].pause();
 		$('#uad_MBSR')[0].load();
 	},
@@ -1756,6 +1798,7 @@ var app = {
 		datosClase.audio_ID = etapas[posc].clases[i].archivos[k].ID;
 		registroClase = false;
 		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#pantalla16 .btnDescargaFile').data('file', baseURL+etapas[posc].clases[i].archivos[k].file_clase);
 		$('#audClaseP')[0].pause();
 		$('#audClaseP')[0].load();
 	},
@@ -2084,8 +2127,51 @@ function alerta(msj) {
 	$('#alerta').removeClass('hidden');
 }
 
+function cambiarFondoBody(cual) {
+	$('body').removeClass('fondoHome');
+	if(cual=='pantalla5') {
+		$('body').addClass('fondoHome');
+	}
+	$('body').removeClass('fondoLibre');
+	if(cual=='pantalla9') {
+		$('body').addClass('fondoLibre');
+	}
+	$('body').removeClass('fondoMBSR');
+	if(cual=='pantalla12' || cual=='pantalla12b' || cual=='pantalla12c' || cual=='pantalla12d' || cual=='pantalla12e') {
+		$('body').addClass('fondoMBSR');
+	}
+	$('body').removeClass('fondoPod');
+	if(cual=='pantalla8' || cual=='pantalla8b' || cual=='pantalla8c') {
+		$('body').addClass('fondoPod');
+	}
+	$('body').removeClass('fondoUser');
+	if(cual=='pantalla11' || cual=='pantalla11b' || cual=='pantalla11c') {
+		$('body').addClass('fondoUser');
+	}
+	$('body').removeClass('fondoMeddia');
+	if(cual=='pantalla10') {
+		$('body').addClass('fondoMeddia');
+	}
+	$('body').removeClass('fondoResp');
+	if(cual=='pantalla7') {
+		$('body').addClass('fondoResp');
+	}
+	$('body').removeClass('fondoCompras');
+	if(cual=='pantalla18') {
+		$('body').addClass('fondoCompras');
+	}
+	$('body').removeClass('fondoTimer');
+	if(cual=='pantalla6' || cual=='pantalla6a' || cual=='pantalla6b') {
+		$('body').addClass('fondoTimer');
+	}
+	if(cual!='pantalla13' && cual!='pantalla14' && cual!='pantalla15' && cual!='pantalla16' && cual!='pantalla16b' && cual!='pantalla16c' && cual!='pantalla16d') {
+		$('body').attr('style','');
+	}
+}
+
 function ponerPantalla(cual) {
 	if(!cambiandopantalla) {
+		cambiarFondoBody(cual);
 		cambiandopantalla=true;
 		$('.bototneraBottom').show();
 		$('.ventana.activa').fadeOut( 600, function() {
@@ -2104,17 +2190,26 @@ function ponerPantalla(cual) {
 				ponerPregunta();
 			}
 			respirando = false;
-			$("#audPod")[0].pause();   
-			$('#med_ini')[0].pause();
-			$('#audTim')[0].pause();
-			$('#audEsfera')[0].pause();
-			$('#audMedDiaria')[0].pause();
-			$('#audClaseP')[0].pause();
-			$('#audClaseInd')[0].pause();
-			$('#uad_MBSR')[0].pause();
-			$('#audPod')[0].pause();
+			rebobinarAudio('audPod');
+			rebobinarAudio('med_ini');
+			rebobinarAudio('audTim');
+			rebobinarAudio('audEsfera');
+			rebobinarAudio('audMedDiaria');
+			rebobinarAudio('audClaseP');
+			rebobinarAudio('audClaseInd');
+			rebobinarAudio('uad_MBSR');
+			rebobinarAudio('audPod');
 		});
 	}
+}
+
+function rebobinarAudio(cual) {
+	audi = $("#"+cual)[0];
+	audi.currentTime = 0;
+	$('.btnPlayMed.ct_'+cual+' .circsma').html('<i class="glyphicon glyphicon-play"></i>');
+	estaplay = false;
+	method = 'pause';
+	audi[method]();
 }
 
 function sacarAlerta() {
@@ -2288,6 +2383,12 @@ function updateBar(cual) {
 	if(!estadrag) {
 		$("#"+cual+"_control").roundSlider("setValue", (Math.round(percentage*100)), 1);
 	}
+	if(cual=="audPod") {
+		//tiempopod;
+		if(!isNaN(duration)) {
+			$('.tiempopod').html(sToTime(duration-currentTime));
+		}
+	}
   $('.audioBorde.circle.ab_'+cual).circleProgress({
     value: (percentage).toFixed(2),
     animation: false,
@@ -2310,6 +2411,16 @@ function convertElapsedTime(inputSeconds) {
   }
   var minutes = Math.floor(inputSeconds / 60)
   return minutes + ":" + seconds
+}
+
+function sToTime(t) {
+  return padZero(parseInt((t / (60 * 60)) % 24)) + ":" +
+         padZero(parseInt((t / (60)) % 60)) + ":" + 
+         padZero(parseInt((t) % 60));
+}
+
+function padZero(v) {
+  return (v < 10) ? "0" + v : v;
 }
 
 function getTexto(clave) {
@@ -2476,3 +2587,9 @@ function saveConfig(tipo, valor) {
 		}
 	});
 }
+
+
+document.addEventListener('DOWNLOADER_downloadProgress', function(event){
+  var data = event.data;
+  console.log(data.percentage);
+});
