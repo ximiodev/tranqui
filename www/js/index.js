@@ -69,6 +69,7 @@ var app = {
 			$('#pantalla0').addClass('hidden');
 			$('#pantalla1').removeClass('hidden');
 			$('#pantalla1').addClass('activa');
+			$('#pantalla1').css({'display':'block'});
 			$('.nombreuser').html('Hola '+loginData_nombre);
 			app.setSession();
 			app.savePushToken();
@@ -645,6 +646,8 @@ var app = {
 					data: datos,
 					success: function (data) {
 						if(data.res) {
+							mbsr_cont = data.mbsr;
+							app.doMBSR();
 							ponerPantalla('pantalla12c');
 						} else {
 							alerta("El código ingresado no es válido.");
@@ -816,6 +819,14 @@ var app = {
 							quien.addClass('bolitaOn');
 						}
 					}, 1000);
+					
+					btnensi.find('.fondobotondes').animate({
+						width: '100%'
+					}, 1000, function() {
+						btnensi.find('.fondobotondes').animate({
+							width: '0%'
+						}, 10);
+					})
 				} else {
 					if(quien.hasClass('bolitaOn')) {
 						quien.removeClass('bolitaOn');
@@ -871,14 +882,24 @@ var app = {
 			//posc es indide dentro de categorias
 			var posci=0;
 			var curpos=0;
+			cursos = allcursos;
 			for(var k=0;k<allcursos.length;k++) {
 				if(allcursos[k].ID==curoreco) {
 					curpos = k;
-					posci = allcursos[k].categoria_ID
+					cateid = allcursos[k].categoria_ID
 				}
 			}
+			var poscate = 0;
+			for(var m=0;m<categorias.length;m++) {
+				if(categorias[m].ID==posci) {
+					poscate = m;
+				}
+			}
+			buscandoCont = false;
 			//i posicion del cuso
-			app.ponerCurso(curpos,posci,curoreco);
+			app.ponerCursos(poscate, cateid, true);
+			
+			//~ app.ponerCurso(curpos,cateid,curoreco);
 		});
 		
 		$("#med_ini_control").roundSlider({
@@ -1069,8 +1090,6 @@ var app = {
 			success: function (data) {
 				if(data.res) {
 					//mbsr
-					mbsr_cont = data.mbsr;
-					app.doMBSR();
 					//cursos
 					allcursos = data.cursos;
 					cursos = data.cursos;
@@ -1504,7 +1523,7 @@ var app = {
 			$('.categoriascur').append(podac);
 		}
 	},
-    ponerCursos: function(posc, catid) {
+    ponerCursos: function(posc, catid, sinc=false) {
 		var datos = {};
 		datos.action = 'getCursos';
 		datos.catid = catid;
@@ -1520,7 +1539,6 @@ var app = {
 					$('#pantalla13').attr('style',categorias[posc].codigo);
 					$('#pantalla14').attr('style',categorias[posc].codigo);
 					$('body').attr('style',categorias[posc].codigo);
-					ponerPantalla('pantalla13');
 					$('#pantalla13 .monchito').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
 					//~ $('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
 					//~ $('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].file_fondo+');');
@@ -1544,6 +1562,10 @@ var app = {
 						'	<div class="descCate" style="color:#'+categorias[posc].color+'">'+cursos[i].descripcion+'</div>'+
 						'</div>';
 						$('.listcursos').append(podac);
+						
+						if(cursos[i].ID==curoreco) {
+							var curpos = i;
+						}
 					}
 					if(cursos.length==0) {
 						$('.listcursos').hide();
@@ -1563,6 +1585,11 @@ var app = {
 					$('#pantalla13 .listclasesind .boxcate').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .boxcatex').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .tituloCurso').attr('style',categorias[posc].codigo);
+					if(!sinc) {
+						ponerPantalla('pantalla13');
+					} else {
+						app.ponerCurso(curpos,posc,curoreco);
+					}
 				} else {
 					alerta(data.message);
 				}
@@ -1575,6 +1602,7 @@ var app = {
 			buscandoCont = true;
 			datos.action = 'getCurso';
 			datos.curid = curid;
+			console.log("cuac: "+posc);
 			$('.tituloCurso .titcur').html(cursos[posc].nombre);
 			$('.tituloCurso .descur').html(cursos[posc].descripcion);
 			$.ajax({
@@ -1799,6 +1827,7 @@ var app = {
 		registroClase = false;
 		$('#audClaseP').html('<source src="'+baseURL+etapas[posc].clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 		$('#pantalla16 .btnDescargaFile').data('file', baseURL+etapas[posc].clases[i].archivos[k].file_clase);
+		app.rebovinarAudio('audClaseP');
 		$('#audClaseP')[0].pause();
 		$('#audClaseP')[0].load();
 	},
@@ -1870,6 +1899,34 @@ var app = {
 		var splitted = mbsr_cont['descripcion'].split("\n");
 		$('.text_mb_1').html(splitted[0]);
 		$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
+		//poner mbsr
+		//poner cursos
+		var podac;
+		$('.listetapas .contesli2').html('');
+		for(var i=0;i<mbsr_cont.semanas.length;i++) {
+			podac = ''+
+			'<div class="boxcate">'+
+			'	<div class="titEtapa">'+mbsr_cont.semanas[i].nombre_etapa+'</div>'+
+			'	<div class="clasesEtapa">'+
+			'		<div class="listclases">';
+			for(var j=0;j<mbsr_cont.semanas[i].clases.length;j++) {
+				var claseTom = ' activo';
+				var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.mbsr_c))?'':' activo';
+				podac += ''+
+				'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase2('+j+','+i+','+mbsr_cont.semanas[i].clases[j].ID+', '+i+');" data-clase="'+j+'">'+
+				'			<div class="circItemA">'+
+				'				<div class="circItemB"><img src="img/check.png"></div>'+
+				'			</div>'+
+				'			<div class="numIteCu">'+(j+1)+'</div>'+
+				'		</div>';
+			}
+			podac += ''+
+			'		</div>'+
+			'	</div>'+
+			'</div>'+
+			'</div>';
+			$('.listetapas .contesli2').append(podac);
+		}
 	},
     savePushToken: function() {
 		var datos = {};
@@ -2008,40 +2065,6 @@ function ponerEstadisticas() {
 		var item = '<div class="btnNaranja"><div class="nombrcura">'+estadisticas.cursos[i].nombre+'</div><div class="detallecur">'+estadisticas.cursos[i].clases+'/'+estadisticas.cursos[i].clases_tot+'</div><div class="rayausu"></div></div>';
 		$('#miscursoscont').append(item);
 	}
-	
-	
-	
-	//poner mbsr
-	
-	
-	mbsr_cont = estadisticas.mbsr_cont.datos;
-	//poner cursos
-	var podac;
-	$('.listetapas .contesli2').html('');
-	for(var i=0;i<mbsr_cont.semanas.length;i++) {
-		podac = ''+
-		'<div class="boxcate">'+
-		'	<div class="titEtapa">'+mbsr_cont.semanas[i].nombre_etapa+'</div>'+
-		'	<div class="clasesEtapa">'+
-		'		<div class="listclases">';
-		for(var j=0;j<mbsr_cont.semanas[i].clases.length;j++) {
-			var claseTom = ' activo';
-			var claseTom = (inArray(mbsr_cont.semanas[i].clases[j].ID, estadisticas.mbsr_c))?'':' activo';
-			podac += ''+
-			'		<div class="curItemComp'+claseTom+'" onclick="app.ponerClase2('+j+','+i+','+mbsr_cont.semanas[i].clases[j].ID+', '+i+');" data-clase="'+j+'">'+
-			'			<div class="circItemA">'+
-			'				<div class="circItemB"><img src="img/check.png"></div>'+
-			'			</div>'+
-			'			<div class="numIteCu">'+(j+1)+'</div>'+
-			'		</div>';
-		}
-		podac += ''+
-		'		</div>'+
-		'	</div>'+
-		'</div>'+
-		'</div>';
-		$('.listetapas .contesli2').append(podac);
-	}
 }
 function secondsToHms(d) {
     d = Number(d);
@@ -2177,6 +2200,9 @@ function ponerPantalla(cual) {
 		$('.ventana.activa').fadeOut( 600, function() {
 			if(cual!='pantalla14') {
 				$('#pantalla14').addClass('hidden');
+			}
+			if(cual!='pantalla1') {
+				$('.videomin')[0].pause();
 			}
 			$('.ventana.activa').removeClass('activa');
 			$('.ventana').addClass('hidden');
