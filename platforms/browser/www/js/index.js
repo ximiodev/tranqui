@@ -2265,6 +2265,7 @@ meddiaria.onplaying = function() {
 	});
 };
 function registrarAudioComp(datos) {
+	var accion = datos.action;
 	$.ajax({
 		type: 'POST',
 		dataType: 'json',
@@ -2273,6 +2274,10 @@ function registrarAudioComp(datos) {
 		success: function (data) {
 			estadisticas = data.estadisticas;
 			ponerEstadisticas();
+			console.log(accion);
+			if(accion=="saveClase") {
+				$('#pantalla16b .descripcionClase').html(data.mensaje_random);
+			}
 		}
 	});
 };

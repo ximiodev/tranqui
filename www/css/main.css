@@ -964,13 +964,36 @@ video.videomin {
     width: 220px;
     margin: 0 auto;
     text-align: center;
-    padding: 150px 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
 }
 
 .tituCurAct {
 	background: #fdfae7;
 	padding: 10px;
 	border-radius: 18px;
+}
+
+.cajaCenter_1 {
+    position: absolute;
+    top: 50%;
+    margin-top: -170px;
+    width: 100%;
+}
+
+.cajaCenter_2 {
+    position: absolute;
+    width: calc(100% - 30px);
+    top: 50%;
+    margin-top: -180px;
+}
+
+.cajaCenter_3 {
+    position: absolute;
+    width: calc(100% - 30px);
+    top: 50%;
+    margin-top: -110px;
 }
 
 .boxCursoAct {
@@ -1017,6 +1040,8 @@ video.videomin {
 .boxForm {
     padding: 60px 15px;
     text-align: center;
+    height: 100%;
+    position: relative;
 }
 
 .links {
@@ -1805,7 +1830,11 @@ button.close {
 }
 
 .mbsc-ios .mbsc-sc-itm-sel, .mbsc-ios .mbsc-sc-whl-gr-3d .mbsc-sc-itm {
-    color: #FFF;
+    color: #FFF!important;
+}
+
+.mbsc-ios .mbsc-sc-itm {
+    color: rgba(255,255,255,.6);
 }
 
 .circuloaudio {
@@ -1866,6 +1895,10 @@ div#audClaseInd_control {
 
 .btn50P {
     width: 50%!important;
+}
+
+.btn55P {
+    width: 55%!important;
 }
 
 .saltarVid.btn50P, .saltarVid2.btn50P {
@@ -2131,7 +2164,7 @@ div#audClaseInd_control {
 
 .mbsc-fr.mbsc-ios.mbsc-fr-inline.mbsc-sc.mbsc-sel.mbsc-fr-liq.mbsc-fr-nobtn {
     transform: scale(0.7);
-    margin: -25px auto;
+    margin: -60px auto;
 }
 
 .blokespacio {
@@ -2450,6 +2483,11 @@ span#diameddia {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff308a', endColorstr='#febf4b', GradientType=1 );
 }
 
+.fondoUser .btotonbotom {
+	position: relative;
+    margin-top: 10px;
+}
+
 .fondoMeddia {
 	background: rgba(70,97,251,1);
 	background: -moz-linear-gradient(45deg, rgba(70,97,251,1) 0%, rgba(40,34,104,1) 100%);
@@ -2481,4 +2519,39 @@ span#diameddia {
 	background: -ms-linear-gradient(45deg, rgba(129,150,254,1) 0%, rgba(28,252,200,1) 100%);
 	background: linear-gradient(45deg, rgba(129,150,254,1) 0%, rgba(28,252,200,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8196fe', endColorstr='#1cfcc8', GradientType=1 );
+}
+
+
+.modal-body {
+    position: relative;
+    padding: 20px;
+    font-size: 12px;
+    text-align: justify;
+}
+
+
+.contSeltiempo {
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.conttimers {
+    position: absolute;
+    width: calc(100% - 30px);
+    top: 50%;
+    margin-top: -250px;
+}
+
+.conteiiuer {
+    overflow-y: auto;
+    height: calc(100vh - 30px - 130px);
+}
+
+.btnAl70 {
+    width: 70%;
+    margin: 0 auto;
+    position: relative;
+    display: block;
 }

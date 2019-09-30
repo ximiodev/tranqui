@@ -37,36 +37,41 @@
 			<div class="ventana activa" id="pantalla0">
 				<div class="subcont">
 					<div class="contBotones">
-						<div class="tiotge">Ingresa</div>
-						<div class="form-group">
-							<button id="login" class="btn btn-default btnGenerico btnViole">Ingresa con tu usuario</button>
+						<div class="cajaCenter_1">
+							<div class="tiotge">Ingresa</div>
+							<div class="form-group">
+								<button id="login" class="btn btn-default btnGenerico btnViole">Ingresa con tu usuario</button>
+							</div>
+							<div class="form-group">
+								<button id="facebooklogin" class="btn btn-default btnGenerico">Facebook login</button>
+							</div>
+							<div class="form-group">
+								<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
+							</div>
+							
+							<a href="#" class="btnSinborde martop60" data-toggle="modal" data-target="#terminos_condiciones">términos & condiciones &nbsp; »</a>
 						</div>
-						<div class="form-group">
-							<button id="facebooklogin" class="btn btn-default btnGenerico">Facebook login</button>
-						</div>
-						<div class="form-group">
-							<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
-						</div>
-						
-						<a href="#" class="btnSinborde martop60" data-toggle="modal" data-target="#terminos_condiciones">términos & condiciones &nbsp; »</a>
 					</div>
 				</div>
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla0a">
 				<div class="subcont">
 					<div class="boxForm">
-						<div class="tiotge">Ingresa tu email y password</div>
-						<div class="form-group">
-							<input type="email" class="form-control" id="email" placeholder="Email">
-						</div>
-						<div class="form-group blopas">
-							<input type="password" class="form-control" id="password" placeholder="Password">
-							<i class="glyphicon glyphicon-eye-open" id="changeTypePass"></i>
-						</div>
-						<button class="btn btn-default btnGenerico btnViole" id="btnLogin">Ingresar</button>
-						<div class="links">
-							<a href="#" id="registro" class="btnSinborde minilinks">Registro</a><br>
-							<a href="#" id="recpass" class="btnSinborde minilinks">Olvide mi password</a>
+						<div class="cajaCenter_2">
+							<div class="tiotge">Ingresa tu email y password</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email" placeholder="Email">
+							</div>
+							<div class="form-group blopas">
+								<input type="password" class="form-control" id="password" placeholder="Password">
+								<i class="glyphicon glyphicon-eye-open" id="changeTypePass"></i>
+							</div>
+							<button class="btn btn-default btnGenerico btnViole" id="btnLogin">Ingresar</button>
+							<div class="links">
+								<a href="#" id="registro" class="btnSinborde minilinks btn55P">Registro</a><br>
+								<a href="#" id="recpass" class="btnSinborde minilinks btn55P">Olvide mi password</a>
+							</div>
+							<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla0">Volver</div>
 						</div>
 					</div>
 				</div>
@@ -74,55 +79,61 @@
 			<div class="ventana hidden" style="display: none;" id="pantalla0b">
 				<div class="subcont">
 					<div class="boxForm">
-						<div class="tiotge">Registrate</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="nombre2" placeholder="Nombre y Apellido">
+						<div class="cajaCenter_2">
+							<div class="tiotge">Registrate</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="nombre2" placeholder="Nombre y Apellido">
+							</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email2" placeholder="Email">
+							</div>
+							<div class="form-group blopas">
+								<input type="password" class="form-control" id="password2" placeholder="Password">
+								<i class="glyphicon glyphicon-eye-open" id="changeTypePass2"></i>
+							</div>
+							<div class="form-group blopas">
+								<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
+								<i class="glyphicon glyphicon-eye-open" id="changeTypePass3"></i>
+							</div>
+							<button class="btn btn-default btnGenerico btnViole" id="btnRegistro">Registrarse</button>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 						</div>
-						<div class="form-group">
-							<input type="email" class="form-control" id="email2" placeholder="Email">
-						</div>
-						<div class="form-group blopas">
-							<input type="password" class="form-control" id="password2" placeholder="Password">
-							<i class="glyphicon glyphicon-eye-open" id="changeTypePass2"></i>
-						</div>
-						<div class="form-group blopas">
-							<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
-							<i class="glyphicon glyphicon-eye-open" id="changeTypePass3"></i>
-						</div>
-						<button class="btn btn-default btnGenerico btnViole" id="btnRegistro">Registrarse</button>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 					</div>
 				</div>
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla0c">
 				<div class="subcont">
 					<div class="boxForm">
-						<div class="tiotge">Ingresa tu email</div>
-						<div class="form-group">
-							<input type="email" class="form-control" id="email3" placeholder="Email">
+						<div class="cajaCenter_3">
+							<div class="tiotge">Ingresa tu email</div>
+							<div class="form-group">
+								<input type="email" class="form-control" id="email3" placeholder="Email">
+							</div>
+							<button class="btn btn-default btnGenerico btnViole" id="btnRecpass">Recuperar contraseña</button>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 						</div>
-						<button class="btn btn-default btnGenerico btnViole" id="btnRecpass">Recuperar contraseña</button>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 					</div>
 				</div>
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla0d">
 				<div class="subcont">
 					<div class="boxForm">
-						<div class="tiotge">Ingresa el código que te llegó a tu cuenta de correo y la nueva contraseña.</div>
-						<div class="form-group">
-							<input type="text" class="form-control" id="codigo" placeholder="Código">
+						<div class="cajaCenter_2">
+							<div class="tiotge">Ingresa el código que te llegó a tu cuenta de correo y la nueva contraseña.</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="codigo" placeholder="Código">
+							</div>
+							<div class="form-group blopas">
+								<input type="password" class="form-control" id="password3" placeholder="Password">
+								<i class="glyphicon glyphicon-eye-open" id="changeTypePass4"></i>
+							</div>
+							<div class="form-group blopas">
+								<input type="password" class="form-control" id="password3b" placeholder="Reingresa Password">
+								<i class="glyphicon glyphicon-eye-open" id="changeTypePass5"></i>
+							</div>
+							<button class="btn btn-default btnGenerico btnViole" id="btnResetpass">Cambiar contraseña</button>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 						</div>
-						<div class="form-group blopas">
-							<input type="password" class="form-control" id="password3" placeholder="Password">
-							<i class="glyphicon glyphicon-eye-open" id="changeTypePass4"></i>
-						</div>
-						<div class="form-group blopas">
-							<input type="password" class="form-control" id="password3b" placeholder="Reingresa Password">
-							<i class="glyphicon glyphicon-eye-open" id="changeTypePass5"></i>
-						</div>
-						<button class="btn btn-default btnGenerico btnViole" id="btnResetpass">Cambiar contraseña</button>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
 					</div>
 				</div>
 			</div>
@@ -183,7 +194,9 @@
 				<div class="contenidoGen">
 					<h4 class="titSeccion">Meditación incial</h4>
 					<div class="cuetionario mensajeapp" id="mensajeInimedFin"></div>
+<!--
 					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirMEdIni">Repetir</button>
+-->
 					<button class="btnGenerico btnViole espaciobajo" id="btnContinuarmedini">Continuar</button>
 				</div>
 			</div>
@@ -318,40 +331,44 @@
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla6b">
 				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Timers</h4>
-					<h5 class="titSeccionSubT"></h5>
-					<div class="circuloaudio">
-						<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
-							<div class="circmed cele">
-								<div class="circsma cele">
-									<i class="glyphicon glyphicon-play"></i>
+					<div class="conttimers">
+						<h4 class="titSeccionSub">Timers</h4>
+						<h5 class="titSeccionSubT"></h5>
+						<div class="circuloaudio">
+							<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
+								<div class="circmed cele">
+									<div class="circsma cele">
+										<i class="glyphicon glyphicon-play"></i>
+									</div>
 								</div>
 							</div>
+							<div class="circle audioBorde ab_audTim"></div>
+							<div id="audTim_control" class="circuloN"></div>
+							<audio ontimeupdate="updateBar('audTim')" id="audTim">
+								<source src="" type="audio/mpeg">
+								Su navegador no sorporta audio HTML5
+							</audio>
 						</div>
-						<div class="circle audioBorde ab_audTim"></div>
-						<div id="audTim_control" class="circuloN"></div>
-						<audio ontimeupdate="updateBar('audTim')" id="audTim">
-							<source src="" type="audio/mpeg">
-							Su navegador no sorporta audio HTML5
-						</audio>
-					</div>
-					<div class="selectorTiempo">
-						<div class="titiempo">Tiempo</div>
-						<select name="tiempoclase" id="tiempoclaseTimer" onchange="app.ponerTimer(this.value)" data-enhance="false">
-							<option value="5">5 min</option>
-							<option value="10">10 min</option>
-							<option value="15">15 min</option>
-						</select>
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6">Volver</div>
-					<div class="blokespacio"></div>
-					<div class="bototneraBottom conpub">
-						<div class="boxprem"><img src="img/boxpremium.png"></div>
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						<div class="selectorTiempo">
+							<div class="titiempo">Tiempo</div>
+							<div class="contSeltiempo">
+								<select name="tiempoclase" id="tiempoclaseTimer" onchange="app.ponerTimer(this.value)" data-enhance="false">
+									<option value="5">5 min</option>
+									<option value="10">10 min</option>
+									<option value="15">15 min</option>
+								</select>
+							</div>
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6">Volver</div>
+						<div class="blokespacio"></div>
+						<div class="bototneraBottom conpub">
+							<div class="boxprem"><img src="img/boxpremium.png"></div>
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -570,7 +587,7 @@
 						<div class="puntob activo"></div>
 						<div class="puntob" id="elotro"></div>
 					</div>
-					<h4 class="titSeccionSub">Porgramas</h4>
+					<h4 class="titSeccionSub">Programas</h4>
 					<div class="sepambsr"></div>
 					<div id="boxcuponre" class="boxcuponre">
 						<div class="text_mb_1"></div>
@@ -594,7 +611,7 @@
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla12b">
 				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Porgramas</h4>
+					<h4 class="titSeccionSub">Programas</h4>
 					<div class="sepambsr"></div>
 					<div class="boxcupon">
 						¿TENÉS CUPON?
@@ -614,7 +631,7 @@
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla12c">
 				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Porgramas</h4>
+					<h4 class="titSeccionSub">Programas</h4>
 					<div class="sepambsr"></div>
 					<div class="boxcontmbsr">
 						<div class="listetapas">
@@ -763,13 +780,19 @@
 						</div>
 						<div class="selectorTiempo">
 							<div class="titiempo">Tiempo</div>
-							<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
-								<option value="1">5 min</option>
-								<option value="2">10 min</option>
-								<option value="3">15 min</option>
-							</select>
+							<div class="contSeltiempo">
+								<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
+									<option value="1">5 min</option>
+									<option value="2">10 min</option>
+									<option value="3">15 min</option>
+								</select>
+							</div>
 						</div>
-						<div class="volverint btnSinborde btnDescargaFile" data-file=""><div class="fondobotondes"></div><div class="texttodos">descargar sessión</div> <div class="marcloca"><div class="bolita"></div></div></div>
+						<div class="volverint btnSinborde btnDescargaFile" data-file="">
+							<div class="fondobotondes"></div>
+							<div class="texttodos">descargar sessión</div> 
+							<div class="marcloca"><div class="bolita"></div></div>
+						</div>
 						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
 					</div>
 					<div class="bototneraBottom conpub">
@@ -786,8 +809,10 @@
 				<div class="contenidoGen">
 					<h4 class="tituloClase"></h4>
 					<div class="descripcionClase"></div>
-					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirClase">Repetir</button>
-					<button class="btnGenerico btnViole espaciobajo" id="btnSigClase">Siguiente sessión</button>
+					<div class="cajaCenter_3">
+						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnRepetirClase">Repetir</button>
+						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSigClase">Siguiente sesión</button>
+					</div>
 					<div class="bototneraBottom conpub">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
