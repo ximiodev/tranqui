@@ -291,9 +291,9 @@
 					<h4 class="titSeccionSub">Timers</h4>
 					<div class="pantcomun">
 						<div class="interna">
-							<div class="btnGenerico btnCele btnGuiada">GUIADA</div>
-							<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA</div>
 							<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
+							<div class="btnGenerico btnCele btnGuiada">GUIADA <i class="fa fa-lock sinrep"></i></div>
+							<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA <i class="fa fa-lock sinrep"></i></div>
 						</div>
 						
 <!--
@@ -361,14 +361,14 @@
 						</div>
 						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6">Volver</div>
 						<div class="blokespacio"></div>
-						<div class="bototneraBottom conpub">
-							<div class="boxprem"><img src="img/boxpremium.png"></div>
-							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-						</div>
+					</div>
+					<div class="bototneraBottom conpub">
+						<div class="boxprem"><img src="img/boxpremium.png"></div>
+						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
 			</div>
@@ -376,6 +376,11 @@
 				<!--	respiracion  -->
 				<div class="contenidoGen">
 					<h4 class="titSeccionSub">Respiración</h4>
+					<div class="mensajesresp">
+						<div class="mensajere" id="resp_txt_1">INHALÁ</div>
+						<div class="mensajere" id="resp_txt_2">PAUSA</div>
+						<div class="mensajere" id="resp_txt_3">EXHALÁ</div>
+					</div>
 					<div class="btnPlayMed ct_audEsfera cele">
 						<div class="circmed cele">
 							<div class="circsma cele">
@@ -396,11 +401,6 @@
 						Su navegador no sorporta audio HTML5
 					</audio>
 					<div class="contBotAlmedio">
-						<div class="mensajesresp">
-							<div class="mensajere" id="resp_txt_1">INHALÁ</div>
-							<div class="mensajere" id="resp_txt_2">MANTENÉ</div>
-							<div class="mensajere" id="resp_txt_3">EXHALÁ</div>
-						</div>
 						<div class="btnSinborde btnVolverHome btn50P">Volver</div>
 					</div>
 					<div class="bototneraBottom conpub">
@@ -554,6 +554,7 @@
 						<div class="btnUserMenu btnNotificaciones" data-tipo="notificaciones">Notificaciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
 						<div class="btnUserMenu btnSacarAnuncios" data-tipo="anuncios">Anuncios <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
 						<div class="btnUserMenu btnVibrar" data-tipo="vibrar">Vibraciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
+						<div class="btnUserMenu btnTermCond" data-toggle="modal" data-target="#terminos_condiciones">términos & condiciones <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
 						<div class="btnUserMenu btnCerrarSession">Cerrar sessión <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
 					</div>
 					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
@@ -721,15 +722,17 @@
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla14">
 				<div class="contenidoGen">
-					<div class="tituloCat"></div>
-					<div class="tituloCurso">
-						<div class="titcur"></div>
-						<div class="descur"></div>
+					<div class="conteiiuer">
+						<div class="tituloCat"></div>
+						<div class="tituloCurso">
+							<div class="titcur"></div>
+							<div class="descur"></div>
+						</div>
+						<div class="listetapas">
+							<div class="contesli owl-carousel1"></div>
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					</div>
-					<div class="listetapas">
-						<div class="contesli owl-carousel1"></div>
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
 					<div class="bototneraBottom">
 						<div class="boxprem"><img src="img/boxpremium.png"></div>
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>

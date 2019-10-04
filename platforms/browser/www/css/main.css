@@ -242,6 +242,7 @@ video.videomin {
 	box-shadow: 4px 4px 6px rgba(0,0,0,0.2);
 	padding: 10px;
     border-radius: 10px;
+    border-radius: 20px;
     font-size: 14px;
     margin-bottom: 10px;
 	background: #ccc;
@@ -783,6 +784,10 @@ video.videomin {
     clear: both;
 }
 
+.clear {
+    clear: both;
+}
+
 .owl-item {
     float: left;
 }
@@ -1198,6 +1203,7 @@ div#msjconf {
     padding: 10px;
     color: #FFF;
     min-height: 60px;
+    z-index: 91;
 }
 
 .btotonbotom {
@@ -1448,7 +1454,7 @@ div#msjconf {
 }
 
 .categoriascur {
-    padding: 5px 45px;
+    padding: 5px 35px;
     margin: 10px auto;
     border-radius: 5px;
 }
@@ -1478,6 +1484,7 @@ div#msjconf {
     -moz-box-shadow: 5px 5px 10px 0px rgba(0,0,0,.6);
     box-shadow: 3px 4px 5px 0px rgba(0,0,0,.4);
     font-size: 10px;
+    font-weight: bold;
 }
 
 .sinborde {
@@ -2179,6 +2186,7 @@ div#audClaseInd_control {
     font-size: 20px;
     position: relative;
     height: 40px;
+    margin-top: -20px;
 }
 
 .mensajere.activo {
@@ -2547,6 +2555,8 @@ span#diameddia {
 .conteiiuer {
     overflow-y: auto;
     height: calc(100vh - 30px - 130px);
+	margin-left: -15px;
+    margin-right: -15px;
 }
 
 .btnAl70 {

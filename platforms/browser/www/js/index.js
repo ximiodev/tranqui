@@ -22,6 +22,7 @@ var tiempo_vecesT=0;
 var cur_i;
 var vibrar = true;
 var suscrito = false;
+var suscrito_cup = false;
 var cur_posc;
 var cur_curid;
 var app = {
@@ -1122,6 +1123,11 @@ var app = {
 					
 					animres = data.a_respiracion;
 					
+					if(data.suscrito_cup=="true") {
+						suscrito_cup = true;
+						validarSuscrip();
+					}
+					
 					//listo?
 					
 					app.ponerInfoHome();
@@ -1179,6 +1185,8 @@ var app = {
 			validarSuscrip();
 		});
 		
+		// otra subsc
+		
 		store.register({
 			id:    'subscription1', // id without package name!
 			alias: 'subscription1',
@@ -1197,6 +1205,32 @@ var app = {
 			//~ alerta("subscription unverified");
 		});
 		store.when("subscription1").updated(function(p) {
+			if (p.owned) {
+				suscrito = true;
+			}
+			validarSuscrip();
+		});
+		
+		// otra subsc
+		
+		store.register({
+			id:    'tranquisusc_6m', // id without package name!
+			alias: 'tranquisusc_6m',
+			type:  store.PAID_SUBSCRIPTION
+		});
+		
+		store.when("tranquisusc_6m").approved(function(p) {
+			//~ alerta("verify subscription");
+			p.verify();
+		});
+		store.when("tranquisusc_6m").verified(function(p) {
+			//~ alerta("subscription verified");
+			p.finish();
+		});
+		store.when("tranquisusc_6m").unverified(function(p) {
+			//~ alerta("subscription unverified");
+		});
+		store.when("tranquisusc_6m").updated(function(p) {
 			if (p.owned) {
 				suscrito = true;
 			}
@@ -1556,12 +1590,32 @@ var app = {
 					$('.listcursos').show();
 					$('.listcursos').html('');
 					for(var i=0;i<cursos.length;i++) {
+						
+						if((i%2)==0 && i>0) {
+							$('.listcursos').append('<div class="clear"></div>');
+						}
+						var pago = '';
+						var bloqueado = '0';
+						if(i>0) {
+							pago = ' <i class="fa fa-lock sinrep"></i>';
+							bloqueado = '1';
+						}
+						if(catid==5) {
+							if(cursos[i].ID!=7) {
+								pago = ' <i class="fa fa-lock sinrep"></i>';
+								bloqueado = '1';
+							} else {
+								pago = '';
+								bloqueado = '0';
+							}
+						}
 						podac = ''+
-						'<div class="boxcatex" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+');" data-cur="'+i+'">'+
-						'	<div class="titCate">'+cursos[i].nombre+'</div>'+
+						'<div class="boxcatex" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+','+bloqueado+');" data-cur="'+i+'">'+
+						'	<div class="titCate">'+cursos[i].nombre+pago+'</div>'+
 						'	<div class="descCate" style="color:#'+categorias[posc].color+'">'+cursos[i].descripcion+'</div>'+
 						'</div>';
 						$('.listcursos').append(podac);
+						
 						
 						if(cursos[i].ID==curoreco) {
 							var curpos = i;
@@ -1596,102 +1650,106 @@ var app = {
 			}
 		});
 	},
-    ponerCurso: function(posc, posci, curid) {
+    ponerCurso: function(posc, posci, curid, bloqueado=0) {
 		if(!buscandoCont) {
-			var datos = {};
-			buscandoCont = true;
-			datos.action = 'getCurso';
-			datos.curid = curid;
-			console.log("cuac: "+posc);
-			$('.tituloCurso .titcur').html(cursos[posc].nombre);
-			$('.tituloCurso .descur').html(cursos[posc].descripcion);
-			$.ajax({
-				type: 'POST',
-				dataType: 'json',
-				url: apiURL,
-				data: datos,
-				success: function (data) {
-					buscandoCont = false;
-					if(data.res) {
-						ponerPantalla('pantalla14');
-						etapas = data.etapas;
-						var podac;
-						$('.listetapas .contesli').html('');
-						for(var i=0;i<etapas.length;i++) {
-							podac = ''+
-							'<div class="boxcatecon">'+
-							'	<div class="boxcate item">'+
-							'		<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
-							'		<div class="clasesEtapa">'+
-							'			<div class="listclases">';
-							for(var j=0;j<etapas[i].clases.length;j++) {
-								var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+			if(bloqueado==0 || suscrito) {
+				var datos = {};
+				buscandoCont = true;
+				datos.action = 'getCurso';
+				datos.curid = curid;
+				console.log("cuac: "+posc);
+				$('.tituloCurso .titcur').html(cursos[posc].nombre);
+				$('.tituloCurso .descur').html(cursos[posc].descripcion);
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						buscandoCont = false;
+						if(data.res) {
+							ponerPantalla('pantalla14');
+							etapas = data.etapas;
+							var podac;
+							$('.listetapas .contesli').html('');
+							for(var i=0;i<etapas.length;i++) {
+								podac = ''+
+								'<div class="boxcatecon">'+
+								'	<div class="boxcate item">'+
+								'		<div class="titEtapa">'+etapas[i].nombre_etapa+'</div>'+
+								'		<div class="clasesEtapa">'+
+								'			<div class="listclases">';
+								for(var j=0;j<etapas[i].clases.length;j++) {
+									var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+									podac += ''+
+									'			<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+									'				<div class="circItemA">'+
+									'					<div class="circItemB"><img src="img/check.png"></div>'+
+									'				</div>'+
+									'				<div class="numIteCu">'+(j+1)+'</div>'+
+									'			</div>';
+								}
 								podac += ''+
-								'			<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
-								'				<div class="circItemA">'+
-								'					<div class="circItemB"><img src="img/check.png"></div>'+
-								'				</div>'+
-								'				<div class="numIteCu">'+(j+1)+'</div>'+
-								'			</div>';
+								'			</div>'+
+								'		</div>'+
+								'		<div class="separaeta"></div>'+
+								'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="etapas" data-etid="'+etapas[i].ID+'"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita"></div></div></div>'+
+								'	</div>'+
+								'</div>';
+								$('.listetapas .contesli').append(podac);
+								$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
+								$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
+								$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
+								$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
+								if(categorias[posci].fondo_pantalla!=undefined || categorias[posci].fondo_pantalla!='') {
+									$('#pantalla13 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+									$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+									$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+									$('#pantalla16 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+									$('#pantalla16b .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+									$('#pantalla16c .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+									$('#pantalla16d .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
+								}
 							}
-							podac += ''+
-							'			</div>'+
-							'		</div>'+
-							'		<div class="separaeta"></div>'+
-							'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="etapas" data-etid="'+etapas[i].ID+'"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita"></div></div></div>'+
-							'	</div>'+
-							'</div>';
-							$('.listetapas .contesli').append(podac);
-							$('#pantalla14 .listetapas .boxcate').attr('style',categorias[posci].codigo);
-							$('#pantalla14 .listetapas .curItemComp .circItemA').attr('style',categorias[posci].codigo);
-							$('#pantalla14 .listetapas .curItemComp .circItemB').attr('style',categorias[posci].codigo);
-							$('#pantalla14 .bolita').attr('style',categorias[posci].codigo);
-							if(categorias[posci].fondo_pantalla!=undefined || categorias[posci].fondo_pantalla!='') {
-								$('#pantalla13 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-								$('#pantalla14 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-								$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-								$('#pantalla16 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-								$('#pantalla16b .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-								$('#pantalla16c .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-								$('#pantalla16d .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
-							}
-						}
-						
-						$('.listetapas').scrollsnap({
-							snaps: '.boxcatecon',
-							direction: 'x',
-							proximity: 170,
-							duration : 100
-						});
-						$('.listetapas').animate({scrollLeft: 37}, 500);
-						setTimeout(function() {
+							
+							$('.listetapas').scrollsnap({
+								snaps: '.boxcatecon',
+								direction: 'x',
+								proximity: 170,
+								duration : 100
+							});
 							$('.listetapas').animate({scrollLeft: 37}, 500);
-						}, 300);
-						
-						//~ owl1 = $('.owl-carousel1');
-						//~ owl1.owlCarousel({
-							//~ loop:true,
-							//~ margin:0,
-							//~ responsiveClass:true,
-							//~ pagination: false,dots: false,
-							//~ responsive:{
-								//~ 0:{
-									//~ items:1,
-									//~ nav:false,
-									//~ false:false
-								//~ },
-								//~ 600:{
-									//~ items:2,
-									//~ nav:false,
-									//~ false:false
+							setTimeout(function() {
+								$('.listetapas').animate({scrollLeft: 37}, 500);
+							}, 300);
+							
+							//~ owl1 = $('.owl-carousel1');
+							//~ owl1.owlCarousel({
+								//~ loop:true,
+								//~ margin:0,
+								//~ responsiveClass:true,
+								//~ pagination: false,dots: false,
+								//~ responsive:{
+									//~ 0:{
+										//~ items:1,
+										//~ nav:false,
+										//~ false:false
+									//~ },
+									//~ 600:{
+										//~ items:2,
+										//~ nav:false,
+										//~ false:false
+									//~ }
 								//~ }
-							//~ }
-						//~ });
-					} else {
-						alerta(data.message);
+							//~ });
+						} else {
+							alerta(data.message);
+						}
 					}
-				}
-			});
+				});
+			} else {
+				ponerPantalla('pantalla18');
+			}
 		}
 	},
     ponerCursoHome: function(nonmbrecur, etapa, curid, catei) {
@@ -1863,7 +1921,7 @@ var app = {
 			'			<div class="circItemA violet">'+
 			'				<div class="circItemB violet"><img src="img/check.png"></div>'+
 			'			</div>'+
-			'			<div class="numIteCu violet">'+(j+1)+'</div>'+
+			//~ '			<div class="numIteCu violet">'+(j+1)+'</div>'+
 			'		</div>';
 		}
 		$('.contClasesmedini').html(podnaco);
@@ -2028,7 +2086,7 @@ function ponerSigPreg() {
 }
 
 function validarSuscrip() {
-	if(suscrito) {
+	if(suscrito || suscrito_cup) {
 		$('.bototneraBottom').removeClass('conpub');
 		$('.contenidoGen').removeClass('conpub');
 		$('.boxprem').hide();
@@ -2274,7 +2332,7 @@ function registrarAudioComp(datos) {
 		success: function (data) {
 			estadisticas = data.estadisticas;
 			ponerEstadisticas();
-			console.log(accion);
+			app.ponerInfoHome();
 			if(accion=="saveClase") {
 				$('#pantalla16b .descripcionClase').html(data.mensaje_random);
 			}
@@ -2383,7 +2441,7 @@ function updateBar(cual) {
 		if(cual=="med_ini") {
 			if(!registroClase) {
 				datos.action = 'saveClase';
-				datos.clase_ID = 84; //claase 1 de iniciales
+				datos.clase_ID = 126; //claase 1 de iniciales
 				registrarAudioComp(datos);
 				registroClase = true;
 			}
