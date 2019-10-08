@@ -9,6 +9,7 @@ var isLogin = false;
 var userLogId = false;
 var volverHome = false;
 var timerac = '';
+var dataFilesStore = {};
 var sinintrombsr = false;
 var cambiandopantalla = false;
 var buscandoCont = false;
@@ -20,6 +21,8 @@ var tiempo_exalar=2;
 var tiempo_veces=15;
 var tiempo_vecesT=0;
 var cur_i;
+var posetapa;
+var poscate;
 var vibrar = true;
 var suscrito = false;
 var suscrito_cup = false;
@@ -40,6 +43,7 @@ var app = {
         localStorage.setItem('loginData_nombre', loginData_nombre);
         localStorage.setItem('userLogId', userLogId);
         localStorage.setItem('sinintrombsr', "false");
+        localStorage.setItem('dataFilesStore', "");
         
         $('.ventana').addClass('hidden');
         ponerPantalla('pantalla0');
@@ -63,6 +67,13 @@ var app = {
         userLogId = localStorage.getItem('userLogId');
         if(!userLogId) {
 			userLogId  = '';
+		}
+        var dataFilesStoreS = localStorage.getItem('dataFilesStore');
+        if(!dataFilesStoreS) {
+			dataFilesStore.etapas = new Array();
+			dataFilesStore.files = new Array();
+		} else {
+			dataFilesStore  = JSON.parse(dataFilesStoreS);
 		}
         
         if(isLoginSave=="true") {
@@ -506,7 +517,11 @@ var app = {
 		
 		 $('#btnSigClase').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla15');
+			
+			curoreco = etapas[posetapa].curso_ID;
+			app.ponerCursos(poscate, categorias[poscate].ID, true);
+			//~ ponerPantalla('pantalla15');
+			
 		});
 		
 		 $('#btnContinuarmedini').click(function(e) {
@@ -811,6 +826,7 @@ var app = {
 				//~ downloader.init({folder: "TranquiFiles"});
 				//~ downloader.get($(this).data('file'));
 				if($(this).data('file')!="todos") {
+					guardarFileSto('files', $(this).data('file'));
 					ponerLoading();
 					setTimeout(function() {
 						sacarLoading();
@@ -826,9 +842,12 @@ var app = {
 					}, 1000, function() {
 						btnensi.find('.fondobotondes').animate({
 							width: '0%'
-						}, 10);
+						}, 10, function() {
+							btnensi.replaceWith('<div class="volverint btnSinborde btnDescargaFileOk" ><div class="iconDecargado"></div> descargado</div>');
+						});
 					})
 				} else {
+					guardarFileSto('etapa', $(this).data('etid'));
 					if(quien.hasClass('bolitaOn')) {
 						quien.removeClass('bolitaOn');
 					} else {
@@ -839,7 +858,9 @@ var app = {
 					}, 3000, function() {
 						btnensi.find('.fondobotondes').animate({
 							width: '0%'
-						}, 10);
+						}, 10, function() {
+							btnensi.replaceWith('<div class="volverint btnSinborde btnDescargaFileOk" ><div class="iconDecargado"></div> descargado</div>');
+						});
 					})
 				}
 			} else {
@@ -1083,12 +1104,14 @@ var app = {
     iniciarCont: function() {
 		var datos = {};
 		datos.action = 'getContenido';
+		ponerLoading();
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
 			url: apiURL,
 			data: datos,
 			success: function (data) {
+				sacarLoading();
 				if(data.res) {
 					//mbsr
 					//cursos
@@ -1689,11 +1712,16 @@ var app = {
 									'				<div class="numIteCu">'+(j+1)+'</div>'+
 									'			</div>';
 								}
+								if(!inArray(etapas[i].ID, dataFilesStore.etapas)) {
+									botondes = '		<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="etapas" data-etid="'+etapas[i].ID+'"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita"></div></div></div>';
+								} else {
+									botondes = '		<div class="volverint btnSinborde btnDescargaFileOk" ><div class="iconDecargado"></div> descargado</div>';
+								}
 								podac += ''+
 								'			</div>'+
 								'		</div>'+
 								'		<div class="separaeta"></div>'+
-								'		<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="etapas" data-etid="'+etapas[i].ID+'"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita"></div></div></div>'+
+								botondes+
 								'	</div>'+
 								'</div>';
 								$('.listetapas .contesli').append(podac);
@@ -1821,6 +1849,10 @@ var app = {
     ponerClase: function(i, posc, curid, posci) {
 		$('.tituloClase').html(etapas[posc].clases[i].nombre_clase);
 		$('.descripcionClase').html(etapas[posc].clases[i].descripcion);
+		if(volverHome) {
+			posetapa = posc;
+			poscate = posci;
+		}
 		ponerPantalla('pantalla16');
 		$('#audiosclase').html('');
 		$('#tiempoclase').html('');
@@ -1840,6 +1872,8 @@ var app = {
 		
 		//~ $('#pantalla16').attr('style',$('#pantalla16').attr('style')+categorias[posci].codigo);
 		$('#pantalla16').attr('style',categorias[posci].codigo);
+		$('#pantalla15').attr('style',categorias[posci].codigo);
+		$('#pantalla15 .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posci].fondo_pantalla+')');
 		$('#pantalla16b').attr('style', categorias[posci].codigo);
 		$('#pantalla16b .btnViole').attr('style', categorias[posci].codigo);
 		$('#pantalla16 .viole').attr('style', categorias[posci].codigo);
@@ -1959,6 +1993,7 @@ var app = {
 		$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
 		//poner mbsr
 		//poner cursos
+		$('.nombreprog').html(mbsr_cont.nombre);
 		var podac;
 		$('.listetapas .contesli2').html('');
 		for(var i=0;i<mbsr_cont.semanas.length;i++) {
@@ -2675,6 +2710,22 @@ function saveConfig(tipo, valor) {
 			//~ }
 		}
 	});
+}
+
+function guardarFileSto(tipo, valor) {
+	console.log(tipo);
+	console.log(valor);
+	if(tipo=='etapa'){
+		if(!inArray(valor, dataFilesStore.etapas)) {
+			dataFilesStore.etapas.push(valor);
+		}
+	}
+	if(tipo=='files'){
+		if(!inArray(valor, dataFilesStore.files)) {
+			dataFilesStore.files.push(valor);
+		}
+	}
+	localStorage.setItem('dataFilesStore', JSON.stringify(dataFilesStore));
 }
 
 

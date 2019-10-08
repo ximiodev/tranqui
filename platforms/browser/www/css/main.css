@@ -529,7 +529,7 @@ video.videomin {
 	
 }
 
-.espaciobajo {
+.btnGenerico.espaciobajo {
 	margin-bottom: 15px;
 }
 
@@ -685,6 +685,8 @@ video.videomin {
 
 .boxprem {
     margin-bottom: 15px;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .bototneraBottom.conpub {
@@ -762,10 +764,15 @@ video.videomin {
     margin: 0 auto;
 }
 
+.boxcatex i.fa {
+    float: right;
+    margin: 3px 0;
+}
+
 .listetapas {
 	overflow-x: auto;
     z-index: 90;
-	margin: -30px -15px 0;
+	margin: -30px 0 0;
     padding: 0 0 30px;
 }
 
@@ -2564,4 +2571,30 @@ span#diameddia {
     margin: 0 auto;
     position: relative;
     display: block;
+}
+
+.nombreprog {
+    font-family: 'MontserratRegular';
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+
+.volverint.btnSinborde.btnDescargaFileOk {
+    font-size: 9px;
+    width: 130px!important;
+    color: #000;
+    background: #FFF;
+	position: relative;
+}
+
+.iconDecargado {
+    background: url(../img/check_icon.png) no-repeat center center;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-size: cover;
+    position: absolute;
+    left: 6px;
+    top: 4px;
 }
