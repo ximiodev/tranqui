@@ -1995,6 +1995,7 @@ var app = {
 		$('#mensajeInimed').html(getTexto('meditacion_inicial'));
 		$('#mensajeInimedFin').html(getTexto('meditacion_inicial_fin'));
 		$('#sub_boton_config').html(getTexto('sub_boton_config'));
+		$('.termcondcont').html(getTexto('terminos_condiciones'));
 	},
     doMBSR: function() {
 		var splitted = mbsr_cont['descripcion'].split("\n");
