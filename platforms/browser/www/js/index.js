@@ -189,6 +189,7 @@ var app = {
 				datos.action = 'doRegistro';
 				datos.tipo = 'user';
 				datos.nombre = $('#nombre2').val();
+				datos.apellido = $('#apellido').val();
 				datos.email = $('#email2').val();
 				datos.password = $('#password2').val();
 				ponerLoading();
@@ -772,7 +773,9 @@ var app = {
 			$('.categoriascur').html('');
 			var podac;
 			var cant = 0;
+			var candado = '';
 			for(var i=0;i<categorias.length;i++) {
+				candado = (categorias[i].ID!=5)?' <i class="fa fa-lock sinrep"></i>':'';
 				if(wts!='') {
 					var keywords = categorias[i].keywords.split(',');
 					var encontro1 = false;
@@ -784,7 +787,7 @@ var app = {
 					if(encontro1 || categorias[i].nombre.search(wts)!=-1) {
 						podac = ''+
 						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
-						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+						'	<div class="titCate">'+categorias[i].nombre+candado+'</div>'+
 						'</div>';
 						$('.categoriascur').append(podac);
 						cant++;
@@ -798,7 +801,7 @@ var app = {
 					if(encontro1 || categorias[i].nombre.search(wts)!=-1) {
 						podac = ''+
 						'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
-						'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+						'	<div class="titCate">'+categorias[i].nombre+candado+'</div>'+
 						'</div>';
 						$('.categoriascur').append(podac);
 						cant++;
@@ -806,7 +809,7 @@ var app = {
 				} else {
 					podac = ''+
 					'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
-					'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+					'	<div class="titCate">'+categorias[i].nombre+candado+'</div>'+
 					'</div>';
 					$('.categoriascur').append(podac);
 				}
@@ -1333,12 +1336,14 @@ var app = {
 	},
     hacerloginFace: function(datos) {
 		
-		facebookConnectPlugin.api("me/?fields=id,name,email,picture", [],
+		facebookConnectPlugin.api("me/?fields=id,name,email,picture,last_name,first_name", [],
 		  function onSuccess (result) {
 			var datos = {};
 			datos.action = 'doFacebook';
 			datos.tipo = 'face';
-			datos.nombre = result.name;
+			var nombre = (result.first_name!='')?result.first_name:result.name;
+			datos.nombre = nombre;
+			datos.apellido = result.last_name;
 			datos.email = result.email;
 			$.ajax({
 				type: 'POST',
@@ -1572,10 +1577,12 @@ var app = {
     ponerCategorias: function() {
 		var podac;
 		$('.categoriascur').html('');
+		var candado = '';
 		for(var i=0;i<categorias.length;i++) {
+			candado = (categorias[i].ID!=5)?' <i class="fa fa-lock sinrep"></i>':'';
 			podac = ''+
 			'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
-			'	<div class="titCate">'+categorias[i].nombre+'</div>'+
+			'	<div class="titCate">'+categorias[i].nombre+candado+'</div>'+
 			'</div>';
 			$('.categoriascur').append(podac);
 		}
@@ -1649,11 +1656,13 @@ var app = {
 					}
 					clases = data.clases;
 					var podac;
+					var candado = '';
 					$('.listclasesind').html('');
 					for(var i=0;i<clases.length;i++) {
+						candado = (categorias[i].ID!=5)?' <i class="fa fa-lock sinrep"></i>':'';
 						podac = ''+
 						'<div class="boxcate" onclick="app.ponerClaseInd('+i+','+posc+','+clases[i].ID+');" data-cur="'+i+'">'+
-						'	<div class="titCate">'+clases[i].nombre+'</div>'+
+						'	<div class="titCate">'+clases[i].nombre+candado+'</div>'+
 						'</div>';
 						$('.listclasesind').append(podac);
 					}
@@ -2259,6 +2268,10 @@ function cambiarFondoBody(cual) {
 	$('body').removeClass('fondoPod');
 	if(cual=='pantalla8' || cual=='pantalla8b' || cual=='pantalla8c') {
 		$('body').addClass('fondoPod');
+	}
+	$('body').removeClass('fondoMedini');
+	if(cual=='pantalla3' || cual=='pantalla3b' || cual=='pantalla3c') {
+		$('body').addClass('fondoMedini');
 	}
 	$('body').removeClass('fondoUser');
 	if(cual=='pantalla11' || cual=='pantalla11b' || cual=='pantalla11c') {

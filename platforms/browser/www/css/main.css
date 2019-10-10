@@ -474,6 +474,43 @@ video.videomin {
     top: 0;
     left: 0;
     background: no-repeat top center;
+    pointer-events: none;
+    background-size: contain;
+    -webkit-animation: kenburns-bottom 6s ease-out infinite alternate-reverse both;
+	animation: kenburns-bottom 6s ease-out infinite alternate-reverse both;
+}
+
+@-webkit-keyframes kenburns-bottom {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 84%;
+            transform-origin: 50% 84%;
+     opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateY(15px);
+            transform: scale(1.25) translateY(15px);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+     opacity: .6;
+  }
+}
+@keyframes kenburns-bottom {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+            transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 84%;
+            transform-origin: 50% 84%;
+     opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1.25) translateY(15px);
+            transform: scale(1.25) translateY(15px);
+    -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+     opacity: .6;
+  }
 }
 
 .conteiiuer {
@@ -767,6 +804,11 @@ video.videomin {
 .boxcatex i.fa {
     float: right;
     margin: 3px 0;
+}
+
+.boxcate i.fa {
+    float: right;
+    margin: 2px 0;
 }
 
 .listetapas {
@@ -1097,7 +1139,8 @@ div#alerta.hidden {
 .nombreuser {
     font-family: 'MontserratMedium';
     padding: 15px;
-    font-size: 40px;
+    font-size: 30px;
+	text-transform: uppercase;
     margin-top: 110px;
     color: #FFF;
     text-align: center;
@@ -1113,6 +1156,11 @@ div#msjconf {
     font-size: 12px;
     margin: 0 auto;
     opacity: 0;
+}
+
+.medinifon {
+	background: no-repeat center top;
+    background-size: 40%;
 }
 
 .bienvenido {
@@ -1134,13 +1182,16 @@ div#msjconf {
     font-size: 20px;
     font-weight: bold;
     margin: 0 auto 35px;
+	text-transform: uppercase;
     color: #FFF;
 }
 
 .respuesta {
     border: 1px solid #2c9b4b;
     padding: 3px 10px;
-    margin-bottom: 15px;
+	width: 80%;
+    margin: 15px auto;
+    padding: 12px!important;
     border-radius: 5px;
 }
 
@@ -1227,7 +1278,7 @@ div#msjconf {
 }
 
 .btotonbotom {
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .btotonbotom i {
@@ -2487,6 +2538,17 @@ span#diameddia {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7e70', endColorstr='#ff3489', GradientType=0 );
 }
 
+.fondoMedini {
+    background: rgba(255,209,100,1);
+    background: -moz-linear-gradient(-45deg, rgba(255,209,100,1) 0%, rgba(248,153,70,1) 27%, rgba(241,90,36,1) 57%, rgba(241,90,36,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(255,209,100,1)), color-stop(27%, rgba(248,153,70,1)), color-stop(57%, rgba(241,90,36,1)), color-stop(100%, rgba(241,90,36,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(255,209,100,1) 0%, rgba(248,153,70,1) 27%, rgba(241,90,36,1) 57%, rgba(241,90,36,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(255,209,100,1) 0%, rgba(248,153,70,1) 27%, rgba(241,90,36,1) 57%, rgba(241,90,36,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(255,209,100,1) 0%, rgba(248,153,70,1) 27%, rgba(241,90,36,1) 57%, rgba(241,90,36,1) 100%);
+    background: linear-gradient(135deg, rgba(255,209,100,1) 0%, rgba(248,153,70,1) 27%, rgba(241,90,36,1) 57%, rgba(241,90,36,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd164', endColorstr='#f15a24', GradientType=1 );
+}
+
 .fondoUser {
 	background: rgba(255,48,138,1);
 	background: -moz-linear-gradient(-45deg, rgba(255,48,138,1) 0%, rgba(254,191,75,1) 100%);
@@ -2597,4 +2659,9 @@ span#diameddia {
     position: absolute;
     left: 6px;
     top: 4px;
+}
+
+.boxcate .titCate {
+    font-family: 'MontserratBold';
+    text-transform: uppercase;
 }
