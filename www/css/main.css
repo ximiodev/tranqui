@@ -140,6 +140,10 @@ a {
 	background-image: url(../img/fndCele-80.jpg);
 }
 
+#pantalla19, #pantalla19b {
+	background-image: url(../img/fndCele-80.jpg);
+}
+
 #pantalla7 {
 	background-image: url(../img/fndCele-80.jpg);
 }
@@ -160,7 +164,7 @@ a {
 	background-image: url(../img/fndMeditacion.jpg);
 }
 
-#pantalla11, #pantalla11b, #pantalla11c {
+#pantalla11, #pantalla11b, #pantalla11c, #pantalla20 {
 	background-image: url(../img/fndUser-80.jpg);
 }
 
@@ -456,7 +460,7 @@ video.videomin {
 
 .contenidoGen {
 	padding: 15px;
-	padding-bottom: 150px;
+	padding-bottom: 70px;
 	height: fit-content;
     min-height: -webkit-fill-available;
 	background: no-repeat center top;
@@ -476,8 +480,10 @@ video.videomin {
     background: no-repeat top center;
     pointer-events: none;
     background-size: contain;
+/*
     -webkit-animation: kenburns-bottom 6s ease-out infinite alternate-reverse both;
 	animation: kenburns-bottom 6s ease-out infinite alternate-reverse both;
+*/
 }
 
 @-webkit-keyframes kenburns-bottom {
@@ -517,16 +523,18 @@ video.videomin {
     position: relative;
     z-index: 9;
 }
+/*
 
 .contenidoGen.conpub {
 	padding: 15px;
 	padding-bottom: 150px;
 }
+*/
 
 .contbton {
     position: relative;
-    height: 120px;
-    width: 80%;
+    height: auto;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
@@ -726,16 +734,18 @@ video.videomin {
     margin-right: -10px;
 }
 
-.bototneraBottom.conpub {
-    padding-top: 0;
+.ultimoCursosTit .curcortinop {
+    font-family: 'MontserratRegular';
 }
 
 .ultimoCursosTit {
     font-family: 'MontserratBold';
     text-align: center;
     font-size: 14px;
-    color: #ff2b8b;
+    color: #FFF;
+/*
     border-bottom: 1px solid #e76239;
+*/
     padding-bottom: 3px;
     margin-bottom: 5px;
     letter-spacing: 3px;
@@ -764,7 +774,7 @@ video.videomin {
     letter-spacing: 2px;
 }
 
-#med_ini, #audClaseP, #audClaseInd, #audEsfera, #audTim, #audMedDiaria {
+#med_ini, #audClaseP, #audClaseInd, #audEsfera, #audTim, #audGuiada, #audMedDiaria {
 	opacity:0;
 }
 
@@ -807,6 +817,11 @@ video.videomin {
 }
 
 .boxcate i.fa {
+    float: right;
+    margin: 2px 0;
+}
+
+.btnGenerico i.fa {
     float: right;
     margin: 2px 0;
 }
@@ -1024,7 +1039,6 @@ video.videomin {
 }
 
 .tituCurAct {
-	background: #fdfae7;
 	padding: 10px;
 	border-radius: 18px;
 }
@@ -1055,9 +1069,25 @@ video.videomin {
 	margin: 0 auto;
 	padding: 1rem;
 	position: relative;
-	background: linear-gradient(to right, #ff2b8b, #ffc752);
+	background: linear-gradient(to right, #ffc752, #ff2b8b);
 	padding: 3px;
 	border-radius: 20px;
+	box-shadow: 5px 5px 5px rgba(255,43,239,0.5);
+}
+
+.boxCursoAct .circItemA, .boxCursoAct .circItemB {
+	background: linear-gradient(to right, #ffc752, #ff2b8b);
+	color: #FFF;
+	line-height: 17px;
+    font-size: 24px;
+}
+
+.boxCursoAct .listclases {
+    text-align: center;
+}
+
+.boxCursoAct .listclases .numIteCu {
+	color: #FFF;
 }
 
 .btnGenerico {
@@ -1421,8 +1451,32 @@ div#msjconf {
     text-align: center;
     font-family: 'MontserratMedium';
     font-size: 24px;
-    margin: 80px auto 40px;
+    margin: 80px auto 30px;
     letter-spacing: 5px;
+}
+
+.subtituloHome {
+    color: #ff7153;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 18px;
+    margin: 5px auto;
+    letter-spacing: 4px;
+}
+
+.titiOtrasP {
+    color: #ff7153;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 14px;
+    margin: 5px auto 15px;
+    letter-spacing: 5px;
+}
+
+.boxOtrasPracticas {
+    padding: 20px 0;
+    max-width: fit-content;
+    margin: 0 -15px;
 }
 
 .tituloCat {
@@ -1637,6 +1691,15 @@ div#audTim_control {
 	pointer-events: none;
 }
 
+div#audGuiada_control {
+    position: absolute;
+    top: 50%;
+    margin-top: -60px;
+    left: 50%;
+    margin-left: -60px;
+	pointer-events: none;
+}
+
 div#audPod_control {
     position: absolute;
     top: 50%;
@@ -1774,6 +1837,12 @@ span.rs-tooltip.rs-tooltip-text.edit {
 }
 
 #codigombsr {
+    border: 1px solid #FFF!important;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+#codigoApp {
     border: 1px solid #FFF!important;
     border-radius: 20px;
     margin-bottom: 40px;
@@ -2623,7 +2692,7 @@ span#diameddia {
 
 .conteiiuer {
     overflow-y: auto;
-    height: calc(100vh - 30px - 130px);
+    height: calc(100vh - 70px);
 	margin-left: -15px;
     margin-right: -15px;
 }
@@ -2633,6 +2702,12 @@ span#diameddia {
     margin: 0 auto;
     position: relative;
     display: block;
+}
+
+.btnAl70w {
+    width: 70%;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 .nombreprog {
@@ -2664,4 +2739,154 @@ span#diameddia {
 .boxcate .titCate {
     font-family: 'MontserratBold';
     text-transform: uppercase;
+}
+
+.btnGenerico.btnViole.respuesta {
+    font-family: 'MontserratMedium';
+}
+
+.titBene {
+	font-size: 20px;
+    font-family: 'MontserratBold';
+    text-align: center;
+    margin: 10px auto;
+    color: #FFF;
+    max-width: 250px;
+}
+
+.txtBene {
+	font-size: 16px;
+    font-family: 'MontserratRegular';
+    text-align: center;
+    margin: 10px auto;
+    color: #FFF;
+    max-width: 250px;
+}
+
+.owl-theme .owl-dots, .owl-theme .owl-nav {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.owl-theme .owl-dots .owl-dot {
+    display: inline-block;
+    zoom: 1;
+}
+
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot {
+    background: 0 0;
+    color: inherit;
+    border: none;
+    padding: 0!important;
+    font: inherit;
+}
+
+.owl-carousel .owl-dot, .owl-carousel .owl-nav .owl-next, .owl-carousel .owl-nav .owl-prev {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: #869791;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    width: 10px;
+    height: 10px;
+    margin: 5px 7px;
+    background: #D6D6D6;
+    display: block;
+    -webkit-backface-visibility: visible;
+    transition: opacity .2s ease;
+    border-radius: 30px;
+}
+
+.carruselotrasoprac .item {
+    width: 100%;
+    border-radius: 15px;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    min-height: 180px;
+}
+
+.carruselotrasoprac {
+    overflow: hidden;
+}
+
+.titcursoreco {
+    color: #FFF;
+    font-family: 'MontserratBold';
+    text-align: center;
+    font-size: 16px;
+}
+
+.txtcursoreco {
+    color: #FFF;
+    font-family: 'MontserratRegular';
+    text-align: center;
+    font-size: 12px;
+}
+
+.tapaotrasclases {
+    background: -moz-linear-gradient(0deg, rgba(253,250,231,1) 0%, rgba(253,250,231,0) 17%, rgba(253,250,231,0) 87%, rgba(253,250,231,0.07) 88%, rgba(253,250,231,1) 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(253,250,231,1)), color-stop(17%, rgba(253,250,231,0)), color-stop(87%, rgba(253,250,231,0)), color-stop(88%, rgba(253,250,231,0.07)), color-stop(100%, rgba(253,250,231,1)));
+    background: -webkit-linear-gradient(0deg, rgba(253,250,231,1) 0%, rgba(253,250,231,0) 17%, rgba(253,250,231,0) 87%, rgba(253,250,231,0.07) 88%, rgba(253,250,231,1) 100%);
+    background: -o-linear-gradient(0deg, rgba(253,250,231,1) 0%, rgba(253,250,231,0) 17%, rgba(253,250,231,0) 87%, rgba(253,250,231,0.07) 88%, rgba(253,250,231,1) 100%);
+    background: -ms-linear-gradient(0deg, rgba(253,250,231,1) 0%, rgba(253,250,231,0) 17%, rgba(253,250,231,0) 87%, rgba(253,250,231,0.07) 88%, rgba(253,250,231,1) 100%);
+    background: linear-gradient(90deg, rgba(253,250,231,1) 0%, rgba(253,250,231,0) 17%, rgba(253,250,231,0) 87%, rgba(253,250,231,0.07) 88%, rgba(253,250,231,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfae7', endColorstr='#fdfae7',GradientType=1 );
+    position: absolute;
+    top: 0;
+    height: -webkit-fill-available;
+    width: 100%;
+    left: 0;
+    pointer-events: none;
+}
+
+.contcarruotras {
+    position: relative;
+    height: fit-content;
+}
+
+.boxBotonesHome {
+	margin: 30px -15px;
+	padding: 20px;
+	background: -moz-linear-gradient(45deg, rgba(255,104,74,1) 0%, rgba(255,196,97,1) 100%); /* ff3.6+ */
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255,104,74,1)), color-stop(100%, rgba(255,196,97,1))); /* safari4+,chrome */
+	background: -webkit-linear-gradient(45deg, rgba(255,104,74,1) 0%, rgba(255,196,97,1) 100%); /* safari5.1+,chrome10+ */
+	background: -o-linear-gradient(45deg, rgba(255,104,74,1) 0%, rgba(255,196,97,1) 100%); /* opera 11.10+ */
+	background: -ms-linear-gradient(45deg, rgba(255,104,74,1) 0%, rgba(255,196,97,1) 100%); /* ie10+ */
+	background: linear-gradient(45deg, rgba(255,104,74,1) 0%, rgba(255,196,97,1) 100%); /* w3c */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc461', endColorstr='#ff684a',GradientType=1 ); /* ie6-9 */
+}
+
+.botronesHoem.btn50 {
+    width: 40%;
+    text-align: center;
+    font-size: 10px;
+    padding: 8px;
+    display: inline-block;
+    letter-spacing: 2px;
+    float: none;
+    border-radius: 10px;
+    background: #fefff1;
+    color: #ff751c;
+    vertical-align: middle;
+    height: 50px;
+}
+
+.comotabla {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.comocelda {
+    display: table-cell;
+    vertical-align: middle;
 }

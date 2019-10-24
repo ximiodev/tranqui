@@ -7,8 +7,10 @@ var baseURL = "http://tranquiapp.net/";
 var isLoginSave = false;
 var isLogin = false;
 var userLogId = false;
+var primeraVez = false;
 var volverHome = false;
 var timerac = '';
+var guiadaac = '';
 var dataFilesStore = {};
 var sinintrombsr = false;
 var cambiandopantalla = false;
@@ -68,6 +70,10 @@ var app = {
         if(!userLogId) {
 			userLogId  = '';
 		}
+        primeraVez = localStorage.getItem('primeraVez');
+        if(primeraVez!='false') {
+			localStorage.setItem('primeraVez', "false");
+		}
         var dataFilesStoreS = localStorage.getItem('dataFilesStore');
         if(!dataFilesStoreS) {
 			dataFilesStore.etapas = new Array();
@@ -79,10 +85,16 @@ var app = {
         if(isLoginSave=="true") {
 			$('#pantalla0').removeClass('activa');
 			$('#pantalla0').addClass('hidden');
-			$('#pantalla1').removeClass('hidden');
-			$('#pantalla1').addClass('activa');
-			$('#pantalla1').css({'display':'block'});
 			$('.nombreuser').html('Hola '+loginData_nombre);
+			if(primeraVez!='false') {
+				$('#pantalla1').removeClass('hidden');
+				$('#pantalla1').addClass('activa');
+				$('#pantalla1').css({'display':'block'});
+			} else {
+				$('#pantalla5').removeClass('hidden');
+				$('#pantalla5').addClass('activa');
+				$('#pantalla5').css({'display':'block'});
+			}
 			app.setSession();
 			app.savePushToken();
 			app.iniciarCont();
@@ -161,7 +173,11 @@ var app = {
 				success: function (data) {
 					sacarLoading();
 					if(data.res) {
-						ponerPantalla('pantalla1');
+						if(primeraVez!='false') {
+							ponerPantalla('pantalla1');
+						} else {
+							ponerPantalla('pantalla5');
+						}
 						app.iniciarCont();
 						isLogin = true;
 						localStorage.setItem('isLogin', isLogin);
@@ -201,7 +217,11 @@ var app = {
 					success: function (data) {
 						sacarLoading();
 						if(data.res) {
-							ponerPantalla('pantalla1');
+							if(primeraVez!='false') {
+								ponerPantalla('pantalla1');
+							} else {
+								ponerPantalla('pantalla5');
+							}
 							app.iniciarCont();
 							isLogin = true;
 							localStorage.setItem('isLogin', isLogin);
@@ -550,17 +570,32 @@ var app = {
 		
 		 $('.btnGuiada').click(function(e) {
 			e.preventDefault();
-			timerac = 'GUIADA';
-			$('.titSeccionSubT').html('GUIADA - 5 minutos');
-			ponerPantalla('pantalla6b');
+			if(suscrito || suscrito_cup) {
+				guiadaac = 'GUIADA';
+				app.ponerGuiada(5);
+				$('.titSeccionSubT').html('GUIADA - 5 minutos');
+				ponerPantalla('pantalla19b');
+			} else {
+				ponerPantalla('pantalla18');
+			}
 		});
 		
 		 $('.btnNoGuiada').click(function(e) {
 			e.preventDefault();
-			timerac = 'NO GUIADA';
-			ponerPantalla('pantalla6b');
+			if(suscrito || suscrito_cup) {
+				guiadaac = 'NO GUIADA';
+				app.ponerGuiada(5);
+				ponerPantalla('pantalla19b');
+			} else {
+				ponerPantalla('pantalla18');
+			}
 		});
-		
+				
+		 $('.btnMedGuiada').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla19');
+		});
+
 		 $('.btnGratuita').click(function(e) {
 			e.preventDefault();
 			timerac = 'GRATUITA';
@@ -570,7 +605,10 @@ var app = {
 		
 		 $('.btnTimers').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla6');
+			//~ ponerPantalla('pantalla6');
+			timerac = 'GRATUITA';
+			app.ponerTimer(5);
+			ponerPantalla('pantalla6b');
 		});
 		
 		 $('.btnEsfera').click(function(e) {
@@ -600,6 +638,16 @@ var app = {
 		 $('.btnMedDiaria').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla10');
+		});
+		
+		 $('.btnCargarCodigoG').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla20');
+		});
+		
+		 $('#btnSuscibirse').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla18b');
 		});
 		
 		 $('.btnPlayMed.ct_audEsfera').click(function(e) {
@@ -668,6 +716,34 @@ var app = {
 							ponerPantalla('pantalla12c');
 						} else {
 							alerta("El código ingresado no es válido.");
+						}
+					}
+				});
+			} else {
+				alerta("Debes ingresar un codigo.");
+			}
+		});
+		
+		$('.btnValidarCodigo').click(function(e) {
+			e.preventDefault();
+			var codval = $('#codigoApp').val();
+			if(codval!='') {
+				var datos = {};
+				datos.action = 'validateAppCode';
+				datos.code = codval;
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					url: apiURL,
+					data: datos,
+					success: function (data) {
+						if(data.res) {
+							alerta(data.message);
+							suscrito_cup = true;
+							validarSuscrip();
+							ponerPantalla('pantalla11b');
+						} else {
+							alerta(data.message);
 						}
 					}
 				});
@@ -902,6 +978,31 @@ var app = {
 			}
 		});
 		
+		
+		 $('.carruselotrasoprac').on('click', '.item',function(e) {
+			e.preventDefault();
+			var posci=0;
+			var curpos=0;
+			var curoreco2 = $(this).data('curco');
+			var curoreco = $(this).data('curco');
+			cursos = allcursos;
+			for(var k=0;k<cursos.length;k++) {
+				if(cursos[k].ID==curoreco2) {
+					curpos = k;
+					cateid = cursos[k].categoria_ID
+				}
+			}
+			var poscate = 0;
+			for(var m=0;m<categorias.length;m++) {
+				if(categorias[m].ID==cateid) {
+					poscate = m;
+				}
+			}
+			buscandoCont = false;
+			//i posicion del cuso
+			app.ponerCursos(poscate, cateid, true);
+		});
+		
 		$('.btnProximoCurso').click(function(e) {
 			e.preventDefault();
 			//posc es indide dentro de categorias
@@ -935,6 +1036,7 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
+			endAngle: 449,
 			start: function(e) {
 				estadrag = true;
 			},
@@ -1067,6 +1169,26 @@ var app = {
 			}
 		});
 		
+		$("#audGuiada_control").roundSlider({
+			radius: 60,
+			width: 1,
+			handleSize: "+10",
+			handleShape: "dot",
+			sliderType: "min-range",
+			value: 0,
+			startAngle: 90,
+			start: function(e) {
+				estadrag = true;
+			},
+			stop: function(e) {
+				estadrag = false;
+				var porc = e.value;
+				var audio = $('#audGuiada')[0];
+				var tototime = (porc*audio.duration)/100;
+				audio.currentTime = tototime; 
+			}
+		});
+		
 		$("#audMedDiaria_control").roundSlider({
 			radius: 60,
 			width: 1,
@@ -1129,6 +1251,12 @@ var app = {
 					//podcasts
 					podcasts = data.podcasts;
 					app.doPodcasts();
+					//guiadas
+					guiadas = data.guiadas;
+					$('#tiempoclaseGuiadas').mobiscroll().select({
+						display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
+						showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
+					});
 					//timers
 					timers = data.timers;
 					$('#tiempoclaseTimer').mobiscroll().select({
@@ -1144,11 +1272,18 @@ var app = {
 					categorias = data.categorias;
 					//esfera
 					$('#audEsfera').html('<source src="'+baseURL+data.esfera.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+					//mensajes
 					mensajes_app = data.mensajes;
 					app.doMensajes();
 					
 					animres = data.a_respiracion;
 					
+					
+					//beneficios
+					beneficios = data.beneficios;
+					app.doBeneficios();
+					
+					//susbcripto via code?
 					if(data.suscrito_cup=="true") {
 						suscrito_cup = true;
 						validarSuscrip();
@@ -1163,7 +1298,13 @@ var app = {
 						app.loadEstadisticas();
 					}, 900);
 					
-					$('#videoIni')[0].play();
+					
+		
+					
+					
+					if(primeraVez!='false') {
+						$('#videoIni')[0].play();
+					}
 				} else {
 					alerta(data.message);
 				}
@@ -1326,7 +1467,11 @@ var app = {
 		//~ $('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
 		$('.nombreuser').html('Hola '+datos.displayname);
 		$('#glyphicon glyphicon-user').html(datos.displayname);
-		ponerPantalla('pantalla1');
+		if(primeraVez!='false') {
+			ponerPantalla('pantalla1');
+		} else {
+			ponerPantalla('pantalla5');
+		}
 		app.savePushToken();
 		app.iniciarCont();
 		isLogin = true;
@@ -1355,7 +1500,12 @@ var app = {
 						
 						$('.nombreuser').html('Hola '+result.name);
 						$('#glyphicon glyphicon-user').html(result.name);
-						ponerPantalla('pantalla1');
+						
+						if(primeraVez!='false') {
+							ponerPantalla('pantalla1');
+						} else {
+							ponerPantalla('pantalla5');
+						}
 						app.savePushToken();
 						app.iniciarCont();
 						isLogin = true;
@@ -1428,8 +1578,20 @@ var app = {
 					if(data.cursohome.nombre!=undefined && data.cursohome.nombre!='') {
 						app.ponerCursoHome(data.cursohome.nombre, data.cursohome.etapa, data.cursohome.curso, data.cursohome.catei);
 					}
-					curoreco = data.cursorecomendado.ID;
-					$('.btnProximoCurso .sub').html(data.cursorecomendado.nombre);
+					for(var i=0;i<data.cursorecomendado.length;i++) {
+						$('.carruselotrasoprac').append('<div class="item" data-curco="'+data.cursorecomendado[i].ID+'" style="'+data.cursorecomendado[i].codigo+'"><div class="titcursoreco">'+data.cursorecomendado[i].nombre+'</div><div class="titcursoreco"> • </div><div class="txtcursoreco">'+data.cursorecomendado[i].descripcion+'</div></div>');
+					}
+					$('.carruselotrasoprac').owlCarousel({
+						loop:true,
+						center:true,
+						margin:20,
+						nav:false,
+						dots:false,
+						stagePadding: 80,
+						items:1
+					})
+					curoreco = data.cursorecomendado[0].ID;
+					$('.btnProximoCurso .sub').html(data.cursorecomendado[0].nombre);
 				} else {
 					alerta(data.message);
 				}
@@ -1496,12 +1658,34 @@ var app = {
 				$('.ultimopodcast .durPod').html(podcasts[i].duration);
 			} else {
 				podac = ''+
-				'<div class="boxcast" data-pod="'+i+'">'+
+				'<div class="boxcast btnAl70w" data-pod="'+i+'">'+
 				'	<div class="titPod">'+podcasts[i].nombre+'</div>'+
 				'	<div class="durPod">'+podcasts[i].duration+'</div>'+
 				'</div>';
 				$('.todospods').append(podac);
 			}	
+		}
+	},
+    doBeneficios: function() {
+		var podac;
+		if(beneficios.length==0) {
+			$('.beneficios').hide();
+		} else {
+			for(var i=0;i<beneficios.length;i++) {
+				podac = ''+
+				'<div class="item">'+
+				'	<div class="titBene">'+beneficios[i].titulo+'</div>'+
+				'	<div class="txtBene">'+beneficios[i].texto+'</div>'+
+				'</div>';
+				$('.beneficios').append(podac);
+			}
+			$('.beneficios').owlCarousel({
+				loop:false,
+				margin:0,
+				nav:false,
+				dots:true,
+				items:1
+			})
 		}
 	},
     animaRespirar: function() {
@@ -1579,7 +1763,7 @@ var app = {
 		$('.categoriascur').html('');
 		var candado = '';
 		for(var i=0;i<categorias.length;i++) {
-			candado = (categorias[i].ID!=5)?' <i class="fa fa-lock sinrep"></i>':'';
+			candado = (categorias[i].ID!=5 && !(suscrito || suscrito_cup))?' <i class="fa fa-lock sinrep"></i>':'';
 			podac = ''+
 			'<div class="boxcate" onclick="app.ponerCursos('+i+','+categorias[i].ID+');" style="'+categorias[i].codigo+'" data-cate="'+i+'">'+
 			'	<div class="titCate">'+categorias[i].nombre+candado+'</div>'+
@@ -1619,6 +1803,7 @@ var app = {
 					var podac;
 					$('.listcursos').show();
 					$('.listcursos').html('');
+					var curpos = 0;
 					for(var i=0;i<cursos.length;i++) {
 						
 						if((i%2)==0 && i>0) {
@@ -1626,19 +1811,24 @@ var app = {
 						}
 						var pago = '';
 						var bloqueado = '0';
-						if(i>0) {
+						if(cursos[i].gratuito!=1 && !(suscrito || suscrito_cup)) {
 							pago = ' <i class="fa fa-lock sinrep"></i>';
 							bloqueado = '1';
 						}
-						if(catid==5) {
-							if(cursos[i].ID!=7) {
-								pago = ' <i class="fa fa-lock sinrep"></i>';
-								bloqueado = '1';
-							} else {
-								pago = '';
-								bloqueado = '0';
-							}
-						}
+						//~ if(i>0) {
+							//~ pago = ' <i class="fa fa-lock sinrep"></i>';
+							//~ bloqueado = '1';
+						//~ }
+						//~ if(catid==5) {
+							//~ if(cursos[i].ID!=7) {
+								//~ pago = ' <i class="fa fa-lock sinrep"></i>';
+								//~ bloqueado = '1';
+							//~ } else {
+								//~ pago = '';
+								//~ bloqueado = '0';
+							//~ }
+						//~ }
+						
 						podac = ''+
 						'<div class="boxcatex" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+','+bloqueado+');" data-cur="'+i+'">'+
 						'	<div class="titCate">'+cursos[i].nombre+pago+'</div>'+
@@ -1647,8 +1837,12 @@ var app = {
 						$('.listcursos').append(podac);
 						
 						
-						if(cursos[i].ID==curoreco) {
-							var curpos = i;
+						if(bloqueado == '0') {
+							curpos = i;
+						}
+						
+						if(cursos[i].ID==curoreco && cursos[i].gratuito==1) {
+							curpos = i;
 						}
 					}
 					if(cursos.length==0) {
@@ -1674,7 +1868,11 @@ var app = {
 					if(!sinc) {
 						ponerPantalla('pantalla13');
 					} else {
-						app.ponerCurso(curpos,posc,curoreco);
+						if(cursos[curpos].gratuito==1 ) {
+							app.ponerCurso(curpos,posc,curoreco);
+						} else {
+							ponerPantalla('pantalla18');
+						}
 					}
 				} else {
 					alerta(data.message);
@@ -1684,7 +1882,7 @@ var app = {
 	},
     ponerCurso: function(posc, posci, curid, bloqueado=0) {
 		if(!buscandoCont) {
-			if(bloqueado==0 || suscrito) {
+			if(bloqueado==0 || suscrito || suscrito_cup) {
 				var datos = {};
 				buscandoCont = true;
 				datos.action = 'getCurso';
@@ -1813,19 +2011,25 @@ var app = {
 					for(var i=0;i<n_etapas.length;i++) {
 						if(n_etapas[i].ID==etapa) {
 							podac = ''+
-							'	<div class="ultimoCursosTit">'+nonmbrecur+' • '+n_etapas[i].nombre_etapa+'</div>'+
-							'	<div class="ultimoCursosSubTit">Última práctica</div>'+
+							'	<div class="ultimoCursosTit">'+nonmbrecur+'<br> • <br><span class="curcortinop">'+n_etapas[i].nombre_etapa+'</span></div>'+
+							//~ '	<div class="ultimoCursosSubTit">Última práctica</div>'+
 							'	<div class="clasesEtapa">'+
 							'		<div class="listclases">';
+							var last = 0;
 							for(var j=0;j<n_etapas[i].clases.length;j++) {
 								var claseTom = (inArray(n_etapas[i].clases[j].ID, n_estadisticas.clases_c))?'':' activo';
-								podac += ''+
-								'		<div class="curItemComp'+claseTom+'" onclick="volverHome=true;app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
-								'			<div class="circItemA">'+
-								'				<div class="circItemB"><img src="img/check.png"></div>'+
-								'			</div>'+
-								'			<div class="numIteCu">'+(j+1)+'</div>'+
-								'		</div>';
+								if(claseTom=='') {
+									last++;
+								}
+								if(claseTom=='' && last==1) {
+									podac += ''+
+									'		<div class="curItemComp'+claseTom+'" onclick="volverHome=true;app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+									'			<div class="circItemA">'+
+									'				<div class="circItemB">&laquo;</div>'+
+									'			</div>'+
+									'			<div class="numIteCu">'+(j+1)+'</div>'+
+									'		</div>';
+								}
 							}
 							podac += ''+
 							'		</div>'+
@@ -1937,11 +2141,25 @@ var app = {
 		for(var i = 0; i < length; i++) {
 			if(timers[i]['tipo'] == dura && timers[i]['nombre']==timerac) {
 				//~ ponerPantalla('pantalla6b');
-				$('.titSeccionSubT').html(timerac+' - '+dura+' minutos');
+				$('.titSeccionSubT').html(dura+' minutos');
 				$('#audTim').html('<source src="'+baseURL+timers[i]['archivo']+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 				$('#audTim')[0].pause();
 				$('#audTim')[0].load();
 				app.rebovinarAudio('audTim');
+			}
+		}
+	},
+    ponerGuiada: function(dura) {
+		var length = guiadas.length;
+		for(var i = 0; i < length; i++) {
+			if(guiadas[i]['tipo'] == dura && guiadas[i]['nombre']==guiadaac) {
+				//~ ponerPantalla('pantalla6b');
+				$('#pantalla19b .titSeccionSub').html('MEDITACIÓN '+guiadaac);
+				$('#pantalla19b .titSeccionSubT').html(dura+' minutos');
+				$('#audGuiada').html('<source src="'+baseURL+guiadas[i]['archivo']+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+				$('#audGuiada')[0].pause();
+				$('#audGuiada')[0].load();
+				app.rebovinarAudio('audGuiada');
 			}
 		}
 	},
@@ -1996,11 +2214,12 @@ var app = {
 		$('#mensajeInimedFin').html(getTexto('meditacion_inicial_fin'));
 		$('#sub_boton_config').html(getTexto('sub_boton_config'));
 		$('.termcondcont').html(getTexto('terminos_condiciones'));
+		$('.mensajesdesb').html(getTexto('texto_desbloquear_app'));
 	},
     doMBSR: function() {
-		var splitted = mbsr_cont['descripcion'].split("\n");
-		$('.text_mb_1').html(splitted[0]);
-		$('.text_mb_2').html(splitted[1]).css({'opacity':'0'});
+		//~ var splitted = mbsr_cont['descripcion'].split("\n");
+		$('.text_mb_1').html(getTexto('programas_slide_1'));
+		$('.text_mb_2').html(getTexto('programas_slide_2'));
 		//poner mbsr
 		//poner cursos
 		$('.nombreprog').html(mbsr_cont.nombre);
@@ -2088,6 +2307,8 @@ var app = {
 };
 var preguntas;
 var podcasts;
+var beneficios;
+var guiadas;
 var timers;
 var categorias;
 var cursos;
@@ -2135,6 +2356,7 @@ function validarSuscrip() {
 		$('.bototneraBottom').removeClass('conpub');
 		$('.contenidoGen').removeClass('conpub');
 		$('.boxprem').hide();
+		$('.fa.fa-lock').hide();
 	} else {
 		$('.bototneraBottom').addClass('conpub');
 		$('.contenidoGen').addClass('conpub');
@@ -2275,7 +2497,7 @@ function cambiarFondoBody(cual) {
 		$('body').addClass('fondoMedini');
 	}
 	$('body').removeClass('fondoUser');
-	if(cual=='pantalla11' || cual=='pantalla11b' || cual=='pantalla11c') {
+	if(cual=='pantalla11' || cual=='pantalla11b' || cual=='pantalla11c' || cual=='pantalla20') {
 		$('body').addClass('fondoUser');
 	}
 	$('body').removeClass('fondoMeddia');
@@ -2292,6 +2514,9 @@ function cambiarFondoBody(cual) {
 	}
 	$('body').removeClass('fondoTimer');
 	if(cual=='pantalla6' || cual=='pantalla6a' || cual=='pantalla6b') {
+		$('body').addClass('fondoTimer');
+	}
+	if(cual=='pantalla19' || cual=='pantalla19b') {
 		$('body').addClass('fondoTimer');
 	}
 	if(cual!='pantalla13' && cual!='pantalla14' && cual!='pantalla15' && cual!='pantalla16' && cual!='pantalla16b' && cual!='pantalla16c' && cual!='pantalla16d') {
@@ -2326,6 +2551,7 @@ function ponerPantalla(cual) {
 			rebobinarAudio('audPod');
 			rebobinarAudio('med_ini');
 			rebobinarAudio('audTim');
+			rebobinarAudio('audGuiada');
 			rebobinarAudio('audEsfera');
 			rebobinarAudio('audMedDiaria');
 			rebobinarAudio('audClaseP');
@@ -2394,6 +2620,7 @@ var isLogin = false;
 var med_ini = document.getElementById("med_ini")
 var audEsfera = document.getElementById("audEsfera")
 var audTim = document.getElementById("audTim")
+var audGuiada = document.getElementById("audGuiada")
 var audPod = document.getElementById("audPod")
 var audClaseP = document.getElementById("audClaseP")
 var audClaseInd = document.getElementById("audClaseInd")
@@ -2414,6 +2641,11 @@ audEsfera.addEventListener('loadedmetadata', function() {
 audTim.addEventListener('loadedmetadata', function() {
   var duration = audTim.duration
   var currentTime = audTim.currentTime
+});
+
+audGuiada.addEventListener('loadedmetadata', function() {
+  var duration = audGuiada.duration
+  var currentTime = audGuiada.currentTime
 });
 
 audPod.addEventListener('loadedmetadata', function() {
