@@ -1475,8 +1475,11 @@ div#msjconf {
 
 .boxOtrasPracticas {
     padding: 20px 0;
+/*
     max-width: fit-content;
+*/
     margin: 0 -15px;
+    width: calc(100% + 30px);
 }
 
 .tituloCat {
