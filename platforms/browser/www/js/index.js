@@ -45,6 +45,7 @@ var app = {
         localStorage.setItem('loginData_nombre', loginData_nombre);
         localStorage.setItem('userLogId', userLogId);
         localStorage.setItem('sinintrombsr', "false");
+        localStorage.setItem('primeraVez', "false");
         localStorage.setItem('dataFilesStore', "");
         
         $('.ventana').addClass('hidden');
@@ -71,8 +72,12 @@ var app = {
 			userLogId  = '';
 		}
         primeraVez = localStorage.getItem('primeraVez');
-        if(primeraVez!='false') {
+        if(!primeraVez) {
+			localStorage.setItem('primeraVez', "true");
+			primeraVez = 'true';
+		} else {
 			localStorage.setItem('primeraVez', "false");
+			primeraVez = 'false';
 		}
         var dataFilesStoreS = localStorage.getItem('dataFilesStore');
         if(!dataFilesStoreS) {
@@ -2023,11 +2028,11 @@ var app = {
 								}
 								if(claseTom=='' && last==1) {
 									podac += ''+
-									'		<div class="curItemComp'+claseTom+'" onclick="volverHome=true;app.ponerClase('+j+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
+									'		<div class="curItemComp'+claseTom+'" onclick="volverHome=true;app.ponerClase('+(j+1)+','+i+','+n_etapas[i].clases[j].ID+', '+posci+');" data-clase="'+(j+1)+'">'+
 									'			<div class="circItemA">'+
 									'				<div class="circItemB">&laquo;</div>'+
 									'			</div>'+
-									'			<div class="numIteCu">'+(j+1)+'</div>'+
+									'			<div class="numIteCu">Práctica '+(j+1)+'</div>'+
 									'		</div>';
 								}
 							}
@@ -2066,6 +2071,8 @@ var app = {
 			posetapa = posc;
 			poscate = posci;
 		}
+			posetapa = posc;
+			poscate = posci;
 		ponerPantalla('pantalla16');
 		$('#audiosclase').html('');
 		$('#tiempoclase').html('');
