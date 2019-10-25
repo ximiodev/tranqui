@@ -96,8 +96,6 @@ var app = {
 				$('#pantalla5').css({'display':'block'});
 			}
 			app.setSession();
-			app.savePushToken();
-			app.iniciarCont();
 		}
         
         $('#facebooklogin').click(function(e) {
@@ -1538,6 +1536,8 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
+					app.savePushToken();
+					app.iniciarCont();
 				} else {
 					alerta(data.message);
 				}
