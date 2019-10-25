@@ -29,9 +29,9 @@
     <plugin name="cordova-plugin-x-socialsharing" source="npm" spec="5.2.1"/>
     <plugin spec="https://github.com/ximiodev/facelogtra.git" source="git" >
         <param name="APP_ID" value="1237015556466819" />
-        <param name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
+        <param name="FACEBOOK_ANDROID_SDK_VERSION" value="5.8.0" />
         <param name="APP_NAME" value="Tranqui" />
-        <preference name="FACEBOOK_ANDROID_SDK_VERSION" value="4.40.0" />
+        <preference name="FACEBOOK_ANDROID_SDK_VERSION" value="5.8.0" />
     </plugin>
     <plugin name="cordova-plugin-googleplus" source="npm" spec="~7.0.1">
         <variable name="PLAY_SERVICES_VERSION" value="15.0.1" />
