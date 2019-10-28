@@ -2,8 +2,8 @@ window.onerror = function(message, url, lineNumber) {
 	log("Error: "+message+" in "+url+" at line "+lineNumber);
 	alert("Error: "+message+" in "+url+" at line "+lineNumber);
 }
-var apiURL = "http://tranquiapp.net/apiTranqui.php";
-var baseURL = "http://tranquiapp.net/";
+var apiURL = "https://tranquiapp.net/apiTranqui.php";
+var baseURL = "https://tranquiapp.net/";
 var isLoginSave = false;
 var isLogin = false;
 var userLogId = false;
@@ -1039,7 +1039,6 @@ var app = {
 			sliderType: "min-range",
 			value: 0,
 			startAngle: 90,
-			endAngle: 449,
 			start: function(e) {
 				estadrag = true;
 			},
@@ -1311,6 +1310,9 @@ var app = {
 				} else {
 					alerta(data.message);
 				}
+			},
+			error: function(xhr, status, error) {
+				alerta("Problemas con el servidor.");
 			}
 		});
     },
@@ -2222,11 +2224,11 @@ var app = {
 		$('#sub_boton_config').html(getTexto('sub_boton_config'));
 		$('.termcondcont').html(getTexto('terminos_condiciones'));
 		$('.mensajesdesb').html(getTexto('texto_desbloquear_app'));
+		$('.text_mb_1').html(getTexto('programas_slide_1'));
+		$('.text_mb_2').html(getTexto('programas_slide_2'));
 	},
     doMBSR: function() {
 		//~ var splitted = mbsr_cont['descripcion'].split("\n");
-		$('.text_mb_1').html(getTexto('programas_slide_1'));
-		$('.text_mb_2').html(getTexto('programas_slide_2'));
 		//poner mbsr
 		//poner cursos
 		$('.nombreprog').html(mbsr_cont.nombre);
@@ -2734,11 +2736,14 @@ function updateBar(cual) {
 				registroClase = true;
 			}
 		}
-		if(percentage>0.99) {
-			audi.currentTime = 0;
+		if(percentage>=1) {
+			var audi = document.getElementById(cual);
+			audi['pause']();
+			audi.currentTime = 0; 
+		//~ }
+		//~ if(percentage>0.99) {
 			$('.btnPlayMed.ct_'+cual+' .circsma').html('<i class="glyphicon glyphicon-play"></i>');
-			estaplay = false
-			method = 'pause'
+			estaplay = false;
 			if(cual=="med_ini") {
 				ponerPantalla('pantalla3c');
 				

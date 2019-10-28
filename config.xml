@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.tranqui.app" version="1.0.11" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.tranqui.app" version="1.0.12" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Tranqui</name>
     <description>
         Push sample application that receives push notifications.
@@ -36,12 +36,12 @@
     <plugin name="cordova-plugin-googleplus" source="npm" spec="~7.0.1">
         <variable name="PLAY_SERVICES_VERSION" value="15.0.1" />
         <variable name="FCM_VERSION" value="15.0.1" />
-		<variable name="REVERSED_CLIENT_ID" value="539140823866-s6koqd6qo0vs3g48s4a4te76krfsg16m.apps.googleusercontent.com" />
+		<variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.106600278326-a3f47hr1rb2qooer86rffu5lio2grmal" />
 	</plugin>
 	<plugin name="cordova-plugin-googleplus" source="npm">
 		<variable value="15.0.1" name="PLAY_SERVICES_VERSION"/>
 		<variable value="15.0.1" name="FCM_VERSION"/>
-		<variable value="539140823866-s6koqd6qo0vs3g48s4a4te76krfsg16m.apps.googleusercontent.com" name="REVERSED_CLIENT_ID"/>
+		<variable value="com.googleusercontent.apps.106600278326-a3f47hr1rb2qooer86rffu5lio2grmal" name="REVERSED_CLIENT_ID"/>
 	</plugin>
 	<plugin name="phonegap-plugin-push" source="npm" spec="~1.11.1" >
 		<variable value="15.0.0" name="FCM_VERSION"/>
