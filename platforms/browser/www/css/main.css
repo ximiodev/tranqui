@@ -2567,6 +2567,14 @@ span#diameddia {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#16ca82', endColorstr='#1780cb', GradientType=1 );
 }
 
+.contCentrado {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50%;
+    margin-top: -140px;
+}
+
 
 @media (min-height: 635px) {
 	.contCentrado {
@@ -2574,7 +2582,7 @@ span#diameddia {
 		width: 100%;
 		left: 0;
 		top: 50%;
-		margin-top: -200px;
+		margin-top: -80px;
 	}
 }
 
@@ -2900,4 +2908,33 @@ span#diameddia {
 .comocelda {
     display: table-cell;
     vertical-align: middle;
+}
+
+.btnRosa.btnGenerico.btnViole {
+    background: rgba(255,142,108,1);
+	background: -moz-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,142,108,1)), color-stop(100%, rgba(255,45,138,1)));
+	background: -webkit-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	background: linear-gradient(to right, rgba(255,142,108,1) 0%, rgba(255,45,138,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8e6c', endColorstr='#ff2d8a', GradientType=1 );
+}
+
+
+button.owl-dot.active {
+    background-color: #FFF!important;
+}
+
+
+button.owl-dot {
+    background-color: rgba(255,255,255,.3)!important;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 5px;
+}
+.owl-dots {
+    text-align: center;
+    margin-bottom: 20px;
 }

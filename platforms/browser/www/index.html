@@ -8,7 +8,10 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *" />
-    <!-- Good default declaration:
+    <!--    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; font-src *; connect-src *"
+X-Content-Security-Policy: "default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; font-src *; connect-src *"
+X-WebKit-CSP: "default-src *; script-src *; object-src *; style-src *; img-src *; media-src *; frame-src *; font-src *; connect-src *" />
+ Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
     * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
@@ -190,7 +193,7 @@
 					</div>
 					<div class="circle audioBorde ab_med_ini"></div>
 					<div id="med_ini_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('med_ini')" id="med_ini">
+					<audio preload="metadata" ontimeupdate="updateBar('med_ini')" id="med_ini">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -362,7 +365,7 @@
 							</div>
 							<div class="circle audioBorde ab_audTim"></div>
 							<div id="audTim_control" class="circuloN"></div>
-							<audio ontimeupdate="updateBar('audTim')" id="audTim">
+							<audio preload="metadata" ontimeupdate="updateBar('audTim')" id="audTim">
 								<source src="" type="audio/mpeg">
 								Su navegador no sorporta audio HTML5
 							</audio>
@@ -414,7 +417,7 @@
 					<div class="circ_resp circ_resp_6"></div>
 					<div class="circle audioBorde ab_audEsfera hidden"></div>
 					<div id="audEsfera_control" class="circuloN hidden"></div>
-					<audio ontimeupdate="updateBar('audEsfera')" id="audEsfera">
+					<audio preload="metadata" ontimeupdate="updateBar('audEsfera')" id="audEsfera">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -461,7 +464,7 @@
 					</div>
 					<div class="circle audioBorde ab_audPod"></div>
 					<div id="audPod_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('audPod')" id="audPod">
+					<audio preload="metadata" ontimeupdate="updateBar('audPod')" id="audPod">
 						<source id="podsour" src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -478,9 +481,11 @@
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla8c">
 				<div class="contenidoGen">
-					<h4 class="tituloClase2"></h4>
-					<button class="espaciobajo btnSinborde btn50P" id="btnRepetirPod">Repetir</button>
-					<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla8">Volver</button>
+					<h4 class="tituloClase2" id="nomrepod2"></h4>
+					<div class="cajaCenter_3">
+						<button class="btnGenerico btnViole btnRosa espaciobajo btnAl70" id="btnRepetirPod">Repetir</button>
+						<button class="btnGenerico btnViole btnRosa espaciobajo btnAl70 btnVolverapa" data-apa="pantalla8">Volver</button>
+					</div>
 					<div class="bototneraBottom fndRosa">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -529,7 +534,7 @@
 					</div>
 					<div class="circle audioBorde ab_audMedDiaria"></div>
 					<div id="audMedDiaria_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('audMedDiaria')" id="audMedDiaria">
+					<audio preload="metadata" ontimeupdate="updateBar('audMedDiaria')" id="audMedDiaria">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -686,7 +691,7 @@
 							</div>
 							<div class="circle audioBorde ab_uad_MBSR"></div>
 							<div id="uad_MBSR_control" class="circuloN"></div>
-							<audio ontimeupdate="updateBar('uad_MBSR')" id="uad_MBSR">
+							<audio preload="metadata" ontimeupdate="updateBar('uad_MBSR')" id="uad_MBSR">
 								<source src="" type="audio/mpeg">
 								Su navegador no sorporta audio HTML5
 							</audio>
@@ -707,8 +712,10 @@
 				<div class="contenidoGen">
 					<h4 class="tituloClase2"></h4>
 					<div class="sepambsr"></div>
-					<button class="espaciobajo btnSinborde btn50P" id="btnRepetirMBSR">Repetir</button>
-					<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla5">Volver Home</button>
+					<div class="cajaCenter_3">
+						<button class="espaciobajo btnSinborde btn50P" id="btnRepetirMBSR">Repetir</button>
+						<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla12c">Volver a Programas</button>
+					</div>
 					<div class="bototneraBottom conpub">
 						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
 						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
@@ -834,7 +841,7 @@
 					<div class="descripcionClase"></div>
 					<div class="cajaCenter_3">
 						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnRepetirClase">Repetir</button>
-						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSigClase">Siguiente sesión</button>
+						<button class="btnGenerico btnViole espaciobajo btnAl70 btnVolverapa" data-apa="pantalla16c" id="btnSigClase">Siguiente sesión</button>
 					</div>
 					<div class="bototneraBottom conpub">
 						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
@@ -860,10 +867,20 @@
 							</div>
 							<div class="circle audioBorde ab_audClaseInd"></div>
 							<div id="audClaseInd_control" class="circuloN"></div>
-							<audio ontimeupdate="updateBar('audClaseInd')" id="audClaseInd">
+							<audio preload="metadata" ontimeupdate="updateBar('audClaseInd')" id="audClaseInd">
 								<source src="" type="audio/mpeg">
 								Su navegador no sorporta audio HTML5
 							</audio>
+						</div>
+						<div class="selectorTiempo">
+							<div class="titiempo">Tiempo</div>
+							<div class="contSeltiempo">
+								<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
+									<option value="1">5 min</option>
+									<option value="2">10 min</option>
+									<option value="3">15 min</option>
+								</select>
+							</div>
 						</div>
 						<div class="volverint btnSinborde btnDescargaFile" data-file=""><div class="fondobotondes"></div><div class="texttodos">descargar sessión</div> <div class="marcloca"><div class="bolita"></div></div></div>
 						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
@@ -906,7 +923,7 @@
 					</div>
 					<div class="circle audioBorde ab_audClaseP"></div>
 					<div id="audClaseP_control" class="circuloN"></div>
-					<audio ontimeupdate="updateBar('audClaseP')" id="audClaseP">
+					<audio preload="metadata" ontimeupdate="updateBar('audClaseP')" id="audClaseP">
 						<source src="" type="audio/mpeg">
 						Su navegador no sorporta audio HTML5
 					</audio>
@@ -928,10 +945,12 @@
 						CONVERTITE<br>
 						EN PREMIUM
 					</h4>
-					<div class="owl-carousel beneficios">
+					<div class="cajaCenter_3">
+						<div class="owl-carousel beneficios">
+						</div>
+						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSuscibirse">SUSCRIBITE</button>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
 					</div>
-					<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSuscibirse">SUSCRIBITE</button>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
 				</div>
 			</div>
 			<div class="ventana hidden" style="display: none;" id="pantalla18b">
@@ -988,7 +1007,7 @@
 							</div>
 							<div class="circle audioBorde ab_audGuiada"></div>
 							<div id="audGuiada_control" class="circuloN"></div>
-							<audio ontimeupdate="updateBar('audGuiada')" id="audGuiada">
+							<audio preload="metadata" ontimeupdate="updateBar('audGuiada')" id="audGuiada">
 								<source src="" type="audio/mpeg">
 								Su navegador no sorporta audio HTML5
 							</audio>
