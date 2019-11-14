@@ -164,7 +164,7 @@ a {
 	background-image: url(../img/fndMeditacion.jpg);
 }
 
-#pantalla11, #pantalla11b, #pantalla11c, #pantalla20 {
+#pantalla11, #pantalla11b, #pantalla11c, #pantalla20, #pantalla21 {
 	background-image: url(../img/fndUser-80.jpg);
 }
 
@@ -189,10 +189,17 @@ video.videomin {
 	max-height: -webkit-fill-available;
 }
 
+span.campousert {
+    font-weight: bold;
+}
+
 .listcursos {
     background: #FFF;
+/*
 	margin-left: -15px;
     margin-right: -15px;
+*/
+    text-align: center;
     padding: 15px;
 }
 
@@ -262,8 +269,12 @@ video.videomin {
 .listcursos .boxcatex {
     width: 48%;
     float: left;
+    display: inline-block;
 }
 
+.listcursos .boxcatex:last-child {
+    float: none;
+}
 
 .boxcatex {
     padding: 10px;
@@ -1064,6 +1075,11 @@ video.videomin {
     margin-top: -110px;
 }
 
+.cajaCenter_4 {
+    width: 100%;
+    margin-top: 30px;
+}
+
 .boxCursoAct {
 	max-width: 90%;
 	margin: 0 auto;
@@ -1091,7 +1107,7 @@ video.videomin {
 	display: block;
     margin: 6px auto;
     width: 80px;
-    margin-left: -23px;
+    margin-left: -25px;
 }
 
 .btnGenerico {
@@ -1502,7 +1518,23 @@ div#msjconf {
     margin: 20px auto;
 }
 
+.subtitcCat {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 14px;
+    margin: 20px auto;
+}
+
 .descripcionClase {
+    color: #FFF;
+    text-align: center;
+    font-family: 'MontserratMedium';
+    font-size: 14px;
+    margin: 20px auto;
+}
+
+.descripcionTimers {
     color: #FFF;
     text-align: center;
     font-family: 'MontserratMedium';
@@ -2506,8 +2538,10 @@ span#diameddia {
 }
 
 .listclasesind .boxcate {
-    width: 80vw;
-    margin: 10px auto 10px;
+    width: 70vw;
+    margin: 15px auto;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.2);
+    padding: 15px 10px;
 }
 
 .separaeta {
@@ -2706,7 +2740,7 @@ span#diameddia {
     position: absolute;
     width: calc(100% - 30px);
     top: 50%;
-    margin-top: -250px;
+    margin-top: -110px;
 }
 
 .conteiiuer {
@@ -2767,19 +2801,18 @@ span#diameddia {
 .titBene {
 	font-size: 20px;
     font-family: 'MontserratBold';
-    text-align: center;
-    margin: 10px auto;
+    text-align: left;
     color: #FFF;
-    max-width: 250px;
+    display: inline-block;
 }
 
 .txtBene {
 	font-size: 16px;
     font-family: 'MontserratRegular';
-    text-align: center;
-    margin: 10px auto;
+    text-align: left;
     color: #FFF;
-    max-width: 250px;
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 .owl-theme .owl-dots, .owl-theme .owl-nav {

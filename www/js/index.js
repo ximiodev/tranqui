@@ -13,17 +13,22 @@ var timerac = '';
 var guiadaac = '';
 var dataFilesStore = {};
 var sinintrombsr = false;
+var vinedeconf = false;
 var cambiandopantalla = false;
 var buscandoCont = false;
 var respirando = false;
 var loginData_nombre = '';
+var pantact = 'pantalla5';
+var ultimapant = '';
 var tiempo_insp=2;
 var tiempo_mant=2;
 var tiempo_exalar=2;
 var tiempo_veces=15;
 var tiempo_vecesT=0;
 var cur_i;
+var cur_i_e;
 var posetapa;
+var cursoelegHome = 0;
 var poscate;
 var vibrar = true;
 var suscrito = false;
@@ -330,6 +335,9 @@ var app = {
 		 $('.btnVolverapa').click(function(e) {
 			e.preventDefault();
 			var donde = $(this).data('apa');
+			if(donde=='lastapant') {
+				donde = ultimapant;
+			}
 			if(donde=='pantalla16') {
 				$('#audClaseP')[0].pause();
 			}
@@ -457,7 +465,18 @@ var app = {
 		
 		 $('.btnFinalizarConf').click(function(e) {
 			e.preventDefault();
-			ponerPantalla('pantalla5');
+			if(vinedeconf) {
+				ponerPantalla('pantalla11b');
+			} else {
+				ponerPantalla('pantalla5');
+			}
+		});
+		
+		 $('.btnConfigurarNot').click(function(e) {
+			e.preventDefault();
+			vinedeconf = true;
+			ponerPantalla('pantalla4');
+			$('.btnFinalizarConf').html('volver');
 		});
 		
 		 $('#btnRepetirClase').click(function(e) {
@@ -649,6 +668,11 @@ var app = {
 			ponerPantalla('pantalla20');
 		});
 		
+		 $('.btnMisdatos').click(function(e) {
+			e.preventDefault();
+			ponerPantalla('pantalla21');
+		});
+		
 		 $('#btnSuscibirse').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla18b');
@@ -657,7 +681,17 @@ var app = {
 		 $('.btnPlayMed.ct_audEsfera').click(function(e) {
 			e.preventDefault();
 			if(!respirando) {
+				$('.btnPlayMed.ct_audEsfera .circsma').html('<i class="glyphicon glyphicon-stop" style="margin-left: -5px;"></i>');
 				app.iniciarResp();
+			} else {
+				$('.circ_resp').removeClass('activo');
+				$('.mensajere').removeClass('activo');
+				$('.btnPlayMed.ct_audEsfera .circsma').html('<i class="glyphicon glyphicon-play"></i>');
+				respirando = false;
+				var audi = document.getElementById('audEsfera');
+				method = 'pause';
+				audi.currentTime = 0; 
+				audi[method]();
 			}
 		});
 		
@@ -982,6 +1016,9 @@ var app = {
 				if(tipo=="notificaciones") {
 					saveConfig('notificaciones', valor);
 				}
+				if(tipo=="emails") {
+					saveConfig('emails', valor);
+				}
 				if(tipo=="anuncios") {
 					ponerPantalla('pantalla18');
 				}
@@ -994,12 +1031,13 @@ var app = {
 			var posci=0;
 			var curpos=0;
 			var curoreco2 = $(this).data('curco');
-			var curoreco = $(this).data('curco');
+			curoreco = $(this).data('curco'); // es el ID del curso
 			var bloqueado = $(this).data('bloqueado');
 			cursos = allcursos;
 			for(var k=0;k<cursos.length;k++) {
 				if(cursos[k].ID==curoreco2) {
 					curpos = k;
+					cursoelegHome = k;
 					cateid = cursos[k].categoria_ID
 				}
 			}
@@ -1659,6 +1697,16 @@ var app = {
 									quien.parent().removeClass('bolitaOn_c');
 								}
 							}
+							if(glocbalConf[i].tipo=="emails") {
+								var quien = $('.btnEmailNot').find('.bolita');
+								if(glocbalConf[i].valor=="true") {
+									quien.addClass('bolitaOn');
+									quien.parent().addClass('bolitaOn_c');
+								} else {
+									quien.removeClass('bolitaOn');
+									quien.parent().removeClass('bolitaOn_c');
+								}
+							}
 						}
 					} else {
 						var quien = $('.btnVibrar').find('.bolita');
@@ -1666,6 +1714,9 @@ var app = {
 						quien.addClass('bolitaOn');
 						quien.parent().addClass('bolitaOn_c');
 						var quien = $('.btnNotificaciones').find('.bolita');
+						quien.addClass('bolitaOn');
+						quien.parent().addClass('bolitaOn_c');
+						var quien = $('.btnEmailNot').find('.bolita');
 						quien.addClass('bolitaOn');
 						quien.parent().addClass('bolitaOn_c');
 					}
@@ -1704,13 +1755,13 @@ var app = {
 				'</div>';
 				$('.beneficios').append(podac);
 			}
-			$('.beneficios').owlCarousel({
-				loop:false,
-				margin:0,
-				nav:false,
-				dots:true,
-				items:1
-			})
+			//~ $('.beneficios').owlCarousel({
+				//~ loop:false,
+				//~ margin:0,
+				//~ nav:false,
+				//~ dots:true,
+				//~ items:1
+			//~ })
 		}
 	},
     animaRespirar: function() {
@@ -1802,6 +1853,7 @@ var app = {
 		datos.catid = catid;
 		$('.tituloCat').html(categorias[posc].nombre);
 		$('.descripcionCat').html(categorias[posc].descripcion);
+		ponerLoading();
 		$.ajax({
 			type: 'POST',
 			dataType: 'json',
@@ -1809,6 +1861,7 @@ var app = {
 			data: datos,
 			success: function (data) {
 				if(data.res) {
+					sacarLoading();
 					$('#pantalla13').attr('style',categorias[posc].codigo);
 					$('#pantalla14').attr('style',categorias[posc].codigo);
 					$('body').attr('style',categorias[posc].codigo);
@@ -1862,11 +1915,11 @@ var app = {
 						$('.listcursos').append(podac);
 						
 						
-						if(bloqueado == '0') {
-							curpos = i;
-						}
+						//~ if(bloqueado == '0') {
+							//~ curpos = i;
+						//~ }
 						
-						if(cursos[i].ID==curoreco && cursos[i].gratuito==1) {
+						if(cursos[i].ID==curoreco) {
 							curpos = i;
 						}
 					}
@@ -1896,7 +1949,8 @@ var app = {
 					if(!sinc) {
 						ponerPantalla('pantalla13');
 					} else {
-						if(cursos[curpos].gratuito==1 ) {
+						if(cursos[curpos].gratuito==1 || (suscrito || suscrito_cup)) {
+							// pos del curso, pos de la cate, id del curso
 							app.ponerCurso(curpos,posc,curoreco);
 						} else {
 							ponerPantalla('pantalla18');
@@ -1915,9 +1969,10 @@ var app = {
 				buscandoCont = true;
 				datos.action = 'getCurso';
 				datos.curid = curid;
-				console.log("cuac: "+posc);
+				console.log("pos del curso: "+posc);
 				$('.tituloCurso .titcur').html(cursos[posc].nombre);
 				$('.tituloCurso .descur').html(cursos[posc].descripcion);
+				ponerLoading();
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
@@ -1925,6 +1980,7 @@ var app = {
 					data: datos,
 					success: function (data) {
 						buscandoCont = false;
+						sacarLoading();
 						if(data.res) {
 							ponerPantalla('pantalla14');
 							etapas = data.etapas;
@@ -2134,20 +2190,31 @@ var app = {
 	},
     ponerClaseInd: function(i, posci, claseid, bloqueado) {
 		if(bloqueado==0 || suscrito || suscrito_cup) {
-			$('.tituloClaseInd').html(clases[i].nombre);
-			ponerPantalla('pantalla16c');
-			
-			$('#audClaseInd').html('<source src="'+baseURL+clases[i].archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-			$('#pantalla16c .btnDescargaFile').data('file', baseURL+clases[i].archivo);
-			$('#audClaseInd')[0].pause();
-			$('#audClaseInd')[0].load();
-			
-			$('#pantalla16c').attr('style',categorias[posci].codigo);
-			$('#pantalla16d').attr('style', categorias[posci].codigo);
-			$('#pantalla16c .btnViole').attr('style', categorias[posci].codigo);
-			$('#pantalla16c .viole').attr('style', categorias[posci].codigo);
-			$('#pantalla16c .bolita').attr('style', categorias[posci].codigo);
-			$('#audiosclasec .btnGenerico').attr('style',categorias[posci].codigo);
+			if(clases[i].archivos.length>0) {
+				$('.tituloClaseInd').html(clases[i].nombre);
+				ponerPantalla('pantalla16c');
+				
+				$('#tiempoclase2').html('');
+				
+				for(var k=0;k<clases[i].archivos.length;k++) {
+					$('#tiempoclase2').append('<option value="'+k+'">'+clases[i].archivos[k].duracion+'</option>');
+				}
+				cur_i_e = i;
+				app.ponerClaseAudioInd(0,cur_i_e);
+				$('#tiempoclase2').mobiscroll().select({
+					display: 'inline',  // Specify display mode like: display: 'bottom' or omit setting to use default
+					showInput: false    // More info about showInput: https://docs.mobiscroll.com/4-7-3/select#opt-showInput
+				});
+				
+				$('#pantalla16c').attr('style',categorias[posci].codigo);
+				$('#pantalla16d').attr('style', categorias[posci].codigo);
+				$('#pantalla16c .btnViole').attr('style', categorias[posci].codigo);
+				$('#pantalla16c .viole').attr('style', categorias[posci].codigo);
+				$('#pantalla16c .bolita').attr('style', categorias[posci].codigo);
+				$('#audiosclasec .btnGenerico').attr('style',categorias[posci].codigo);
+			} else {
+				alerta('La clase no contiene Audios cargados.');
+			}
 		} else {
 			ponerPantalla('pantalla18');
 		}
@@ -2165,6 +2232,9 @@ var app = {
     ponerAudioFile: function(k) {
 		app.ponerClaseAudio(k,cur_i,cur_posc,cur_curid);
 	},
+    ponerAudioFileInd: function(k) {
+		app.ponerClaseAudioInd(k,cur_i_e);
+	},
     ponerAudioFileTimer: function(k) {
 		app.ponerClaseAudio(k,cur_i,cur_posc,cur_curid);
 	},
@@ -2179,16 +2249,17 @@ var app = {
 		$('#audClaseP')[0].pause();
 		$('#audClaseP')[0].load();
 	},
-    ponerClaseAudioInd: function(k,i, posc, curid) {
-		$('.tituloClaseInd').html(etapas[posc].clases[i].nombre_clase);
+    ponerClaseAudioInd: function(k,i) {
+		$('.tituloClaseInd').html(clases[i].nombre);
 		//~ ponerPantalla('pantalla17');
-		datosClase.audio_ID = etapas[posc].clases[i].archivos[k].ID;
+		datosClase.audio_ID = clases[i].archivos[k].ID;
 		registroClase = false;
-		$('#audClaseInd').html('<source src="'+baseURL+etapas[posc].clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
-		$('#pantalla16c .btnDescargaFile').data('file', baseURL+etapas[posc].clases[i].archivos[k].file_clase);
+		$('#audClaseInd').html('<source src="'+baseURL+clases[i].archivos[k].file_clase+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
+		$('#pantalla16c .btnDescargaFile').data('file', baseURL+clases[i].archivos[k].file_clase);
+		
 		app.rebovinarAudio('audClaseInd');
-		$('#audClaseInd')[0].pause();
-		$('#audClaseInd')[0].load();
+		//~ $('#audClaseInd')[0].pause();
+		//~ $('#audClaseInd')[0].load();
 	},
     ponerTimer: function(dura) {
 		var length = timers.length;
@@ -2271,6 +2342,7 @@ var app = {
 		$('.mensajesdesb').html(getTexto('texto_desbloquear_app'));
 		$('.text_mb_1').html(getTexto('programas_slide_1'));
 		$('.text_mb_2').html(getTexto('programas_slide_2'));
+		$('.descripcionTimers').html(getTexto('intro_timers'));
 	},
     doMBSR: function() {
 		//~ var splitted = mbsr_cont['descripcion'].split("\n");
@@ -2445,6 +2517,15 @@ function ponerEstadisticas() {
 		var item = '<div class="btnNaranja"><div class="nombrcura">'+estadisticas.cursos[i].nombre+'</div><div class="detallecur">'+estadisticas.cursos[i].clases+'/'+estadisticas.cursos[i].clases_tot+'</div><div class="rayausu"></div></div>';
 		$('#miscursoscont').append(item);
 	}
+	dateTimeParts = estadisticas.userInfo.fecha_registro.split(/[- :]/);
+	console.log(dateTimeParts);
+	var usercont = ''+
+	'<span class="campousert">Nombre: </span> '+estadisticas.userInfo.nombre+'<br>'+
+	'<span class="campousert">Apellido: </span> '+estadisticas.userInfo.apellido+'<br>'+
+	'<span class="campousert">Email: </span> '+estadisticas.userInfo.email+'<br>'+
+	'<span class="campousert">Usuario desde: </span> '+dateTimeParts[2]+'/'+dateTimeParts[1]+'/'+dateTimeParts[0]+'<br>'+
+	'';
+	$('.contMisDatos').html(usercont);
 }
 function secondsToHms(d) {
     d = Number(d);
@@ -2455,6 +2536,16 @@ function secondsToHms(d) {
     var hDisplay = h > 0 ? h + (h == 1 ? "" : "") : "00";
     var mDisplay = m > 0 ? m + (m == 1 ? "" : "") : "00";
     var sDisplay = s > 0 ? s + (s == 1 ? "" : "") : "00";
+    
+    hDisplay = h;
+    if(h<=9) {
+		hDisplay = "0"+h;
+	}
+    
+    mDisplay = m;
+    if(m<=9) {
+		mDisplay = "0"+m;
+	}
     return hDisplay+':'+mDisplay; 
 }
 
@@ -2582,6 +2673,8 @@ function cambiarFondoBody(cual) {
 
 function ponerPantalla(cual) {
 	if(!cambiandopantalla) {
+		ultimapant = pantact;
+		pantact = cual;
 		cambiarFondoBody(cual);
 		cambiandopantalla=true;
 		$('.bototneraBottom').show();
