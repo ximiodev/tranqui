@@ -1106,8 +1106,9 @@ span.campousert {
 	color: #FFF;
 	display: block;
     margin: 6px auto;
-    width: 80px;
-    margin-left: -25px;
+    width: 120px;
+    margin-left: -45px;
+    text-align: center;
 }
 
 .btnGenerico {
@@ -2767,6 +2768,7 @@ span#diameddia {
     font-family: 'MontserratRegular';
     font-size: 16px;
     margin-top: 10px;
+    display: block;
 }
 
 
@@ -2863,7 +2865,7 @@ span#diameddia {
     text-align: center;
     padding: 15px;
     font-size: 14px;
-    min-height: 180px;
+    min-height: 150px;
 }
 
 .carruselotrasoprac {

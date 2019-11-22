@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8" />
+	<head>
+		 <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
@@ -21,1162 +21,1137 @@ X-WebKit-CSP: "default-src *; script-src *; object-src *; style-src *; img-src *
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/fontawesome.css" />
-    <link rel="stylesheet" type="text/css" href="css/roundslider.css" />
-	<link rel="stylesheet" href="css/owl.carousel.min.css" />
-	<link rel="stylesheet" href="css/owl.theme.default.min.css" />
-    <link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-    <title>Tranqui</title>
-</head>
 
-<body>
-	<div class="container">
-		<div class="splashscreen">
-		   
-		</div>
-		<div class="contenidoApp hidden">
-			<div class="ventana activa" id="pantalla0">
-				<div class="subcont">
-					<div class="contBotones">
-						<div class="cajaCenter_1">
-							<div class="tiotge">Ingresa</div>
-							<div class="form-group">
-								<button id="login" class="btn btn-default btnGenerico btnViole">Ingresa con tu usuario</button>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/fontawesome.css" />
+		<link rel="stylesheet" type="text/css" href="css/roundslider.css" />
+		<link rel="stylesheet" href="css/owl.carousel.min.css" />
+		<link rel="stylesheet" href="css/owl.theme.default.min.css" />
+		<link rel="stylesheet" href="css/mobiscroll.jquery.min.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<title>Tranqui</title>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="splashscreen">
+			   
+			</div>
+			<div class="contenidoApp hidden">
+				<div class="ventana activa" id="pantalla0">
+					<div class="subcont">
+						<div class="contBotones">
+							<div class="cajaCenter_1">
+								<div class="tiotge">Ingresa</div>
+								<div class="form-group">
+									<button id="login" class="btn btn-default btnGenerico btnViole">Ingresa con tu usuario</button>
+								</div>
+								<div class="form-group">
+									<button id="facebooklogin" class="btn btn-default btnGenerico">Facebook login</button>
+								</div>
+								<div class="form-group">
+									<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
+								</div>
+								
+								<a href="#" class="btnSinborde martop60" data-toggle="modal" data-target="#terminos_condiciones">términos & condiciones &nbsp; »</a>
 							</div>
-							<div class="form-group">
-								<button id="facebooklogin" class="btn btn-default btnGenerico">Facebook login</button>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla0a">
+					<div class="subcont">
+						<div class="boxForm">
+							<div class="cajaCenter_2">
+								<div class="tiotge">Ingresa tu email y password</div>
+								<div class="form-group btnAl70w">
+									<input type="email" class="form-control" id="email" placeholder="Email">
+								</div>
+								<div class="form-group blopas btnAl70w">
+									<input type="password" class="form-control" id="password" placeholder="Password">
+									<i class="glyphicon glyphicon-eye-open" id="changeTypePass"></i>
+								</div>
+								<button class="btn btn-default btnGenerico btnViole btnAl70w" id="btnLogin">Ingresar</button>
+								<div class="links">
+									<a href="#" id="registro" class="btnSinborde minilinks btn55P">Registro</a><br>
+									<a href="#" id="recpass" class="btnSinborde minilinks btn55P">Olvide mi password</a>
+								</div>
+								<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla0">Volver</div>
 							</div>
-							<div class="form-group">
-								<button id="googlelogin" class="btn btn-default btnGenerico">Google login</button>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla0b">
+					<div class="subcont">
+						<div class="boxForm">
+							<div class="cajaCenter_2">
+								<div class="tiotge">Registrate</div>
+								<div class="form-group btnAl70w">
+									<input type="text" class="form-control" id="nombre2" placeholder="Nombre">
+								</div>
+								<div class="form-group btnAl70w">
+									<input type="text" class="form-control" id="apellido" placeholder="Apellido">
+								</div>
+								<div class="form-group btnAl70w">
+									<input type="email" class="form-control" id="email2" placeholder="Email">
+								</div>
+								<div class="form-group blopas btnAl70w">
+									<input type="password" class="form-control" id="password2" placeholder="Password">
+									<i class="glyphicon glyphicon-eye-open" id="changeTypePass2"></i>
+								</div>
+								<div class="form-group blopas btnAl70w">
+									<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
+									<i class="glyphicon glyphicon-eye-open" id="changeTypePass3"></i>
+								</div>
+								<button class="btn btn-default btnGenerico btnViole btnAl70w" id="btnRegistro">Registrarse</button>
+								<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla0a">Volver</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla0c">
+					<div class="subcont">
+						<div class="boxForm">
+							<div class="cajaCenter_3">
+								<div class="tiotge">Ingresa tu email</div>
+								<div class="form-group">
+									<input type="email" class="form-control" id="email3" placeholder="Email">
+								</div>
+								<button class="btn btn-default btnGenerico btnViole" id="btnRecpass">Recuperar contraseña</button>
+								<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla0d">
+					<div class="subcont">
+						<div class="boxForm">
+							<div class="cajaCenter_2">
+								<div class="tiotge">Ingresa el código que te llegó a tu cuenta de correo y la nueva contraseña.</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="codigo" placeholder="Código">
+								</div>
+								<div class="form-group blopas">
+									<input type="password" class="form-control" id="password3" placeholder="Password">
+									<i class="glyphicon glyphicon-eye-open" id="changeTypePass4"></i>
+								</div>
+								<div class="form-group blopas">
+									<input type="password" class="form-control" id="password3b" placeholder="Reingresa Password">
+									<i class="glyphicon glyphicon-eye-open" id="changeTypePass5"></i>
+								</div>
+								<button class="btn btn-default btnGenerico btnViole" id="btnResetpass">Cambiar contraseña</button>
+								<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla1">
+					<video class="videomin" id="videoIni">
+						<source src="video/video-intro_1_s2.mp4" type="video/mp4">
+					</video>
+					<div class="saltarVid btnSinborde btn50P">Saltar »</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla2">
+					<div class="subcont">
+						<div class="nombreuser"></div>
+						<div class="cuetionario">
+							<div class="pregunta" id="pregunta"></div>
+							<div class="respuesta btnGenerico btnViole" id="resp_1"></div>
+							<div class="respuesta btnGenerico btnViole" id="resp_2"></div>
+							<div class="respuesta btnGenerico btnViole" id="resp_3"></div>
+							<div class="respuesta btnGenerico btnViole" id="resp_4"></div>
+							<div class="paso"></div>
+						</div>
+						<div class="saltar btnSinborde btn50P">Saltar »</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla2b">
+					<div class="subcont">
+						<div class="nombreuser"></div>
+						<div class="cuetionario mensajeapp" id="mensajeFinenc"></div>
+						<div class="btnContinuar btnSinborde btn50P">Continuar »</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla3b">
+					<div class="contenidoGen" style="background-image: url(http://tranquiapp.net/uploads/images/3352403esenciales.png)">
+						<div class="monchito" style="background-image: url(http://tranquiapp.net/img/fondos/iconos-5.png);"></div>
+						<div class="nombreuser"></div>
+						<div class="cuetionario mensajeapp" id="mensajeInimed"></div>
+						<div class="iniciarmedini btnSinborde btn50P">Continuar »</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla3">
+					<div class="contenidoGen" style="background-image: url(http://tranquiapp.net/uploads/images/3352403esenciales.png)">
+						<div class="monchito" style="background-image: url(http://tranquiapp.net/img/fondos/iconos-5.png);"></div>
+						<div class="contClasesmedini">
+						</div>
+						<h4 class="titSeccion">Meditación incial</h4>
+						<div class="btnPlayMed ct_med_ini viole" onclick="togglePlaying('med_ini')">
+							<div class="circmed viole">
+								<div class="circsma viole">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
+							</div>
+						</div>
+						<div class="circle audioBorde ab_med_ini"></div>
+						<div id="med_ini_control" class="circuloN"></div>
+						<audio preload="metadata" ontimeupdate="updateBar('med_ini')" id="med_ini">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
+						<div class="saltarVid2 btnSaltarMedIn btnSinborde btn50P">Saltar »</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla3c">
+					<div class="contenidoGen" style="background-image: url(http://tranquiapp.net/uploads/images/3352403esenciales.png)">
+						<div class="monchito" style="background-image: url(http://tranquiapp.net/img/fondos/iconos-5.png);"></div>
+						<h4 class="titSeccion">Meditación incial</h4>
+						<div class="cuetionario mensajeapp" id="mensajeInimedFin"></div>
+	<!--
+						<button class="btnGenerico btnViole espaciobajo" id="btnRepetirMEdIni">Repetir</button>
+	-->
+						<button class="btnGenerico btnViole espaciobajo" id="btnContinuarmedini">Continuar</button>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla4">
+					<div class="contenidoGen">
+						<h4 class="titSeccion">Notificaciones</h4>
+							<div class="subtituconfig" id="sub_boton_config"></div>
+						<div class="bloqueselMin">
+							<div class="bloqueConf">
+								<button class="btnGenerico btnViole btnConf" id="confNotResp">Para poder respirar</button>
+								<div class="contConfNot" id="notRespB">
+									<div class="bloquehor">
+										<div class="suphor"><i class="fas fa-chevron-up"></i></div>
+										<div class="notinumber" data-max="23">00</div>
+										<input type="hidden" class="campoculto" id="conf_val_1a_i" value="00">
+										<div class="infhor"><i class="fas fa-chevron-down"></i></div>
+									</div>
+									<div class="bloquehor">
+										<div class="internum">:</div>
+									</div>
+									<div class="bloquehor">
+										<div class="suphor"><i class="fas fa-chevron-up"></i></div>
+										<div class="notinumber" data-max="59">00</div>
+										<input type="hidden" class="campoculto" id="conf_val_1b_i" value="00">
+										<div class="infhor"><i class="fas fa-chevron-down"></i></div>
+									</div>
+									<div class="bloquehor">
+										<div class="internum">hs</div>
+									</div>
+									<div class="btnSinborde btnConfirmar1">Confirmar</div>
+								</div>
+								<button class="btnGenerico btnViole btnConf" id="confNotMed">Para poder meditar</button>
+								<div class="contConfNot" id="notRespM">
+									<div class="bloquehor">
+										<div class="suphor"><i class="fas fa-chevron-up"></i></div>
+										<div class="notinumber" data-max="23">00</div>
+										<input type="hidden" class="campoculto" id="conf_val_2a_i" value="00">
+										<div class="infhor"><i class="fas fa-chevron-down"></i></div>
+									</div>
+									<div class="bloquehor">
+										<div class="internum">:</div>
+									</div>
+									<div class="bloquehor">
+										<div class="suphor"><i class="fas fa-chevron-up"></i></div>
+										<div class="notinumber" data-max="59">00</div>
+										<input type="hidden" class="campoculto" id="conf_val_2b_i" value="00">
+										<div class="infhor"><i class="fas fa-chevron-down"></i></div>
+									</div>
+									<div class="bloquehor">
+										<div class="internum">hs</div>
+									</div>
+									<div class="btnSinborde btnConfirmar2">Confirmar</div>
+								</div>
+							</div>
+						</div>
+						<div class="mensajesutil" id="msjconf"></div>
+						<div class="saltarVid2 btnSinborde btnFinalizarConf btn50P">Finalizar ></div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla5">
+					<div class="contenidoGen home">
+						<div class="tituloHome">BIENVENIDO</div>
+						<div class="subtituloHome">Siguiente práctica</div>
+						<div class="boxCursoAct">
+							<div class="tituCurAct">
+								<div class="ultimoCursosTit">No tienes ningún curso activo</div>
+							</div>
+						</div>
+						<div class="boxOtrasPracticas">
+							<div class="titiOtrasP">
+								Explorá<br>
+								otras prácticas
+							</div>
+							<div class="contcarruotras">
+								<div class="carruselotrasoprac">
+								</div>
+								<div class="tapaotrasclases"></div>
+							</div>
+						</div>
+						<div class="boxBotonesHome">
+							<div class="contbton">
+								<div class="botronesHoem btn50 btnMedDiaria"><div class="comotabla"><div class="comocelda">MEDITACIÓN DIARIA</div></div></div>
+								<div class="botronesHoem btn50 btnMedGuiada"><div class="comotabla"><div class="comocelda">MEDITACIÓN GUIADA</div></div></div>
+							</div>
+							<div class="contbton">
+								<div class="botronesHoem btn50 btnTimers"><div class="comotabla"><div class="comocelda">TIMER</div></div></div>
+								<div class="botronesHoem btn50 btnEsfera"><div class="comotabla"><div class="comocelda">RESPIRAR</div></div></div>
+							</div>
+						</div>
+						<div class="bototneraBottom botoneraHome conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome activo"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla6">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Timers</h4>
+						<div class="pantcomun">
+							<div class="interna">
+								<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
+								<div class="btnGenerico btnCele btnGuiada">GUIADA <i class="fa fa-lock sinrep"></i></div>
+								<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA <i class="fa fa-lock sinrep"></i></div>
 							</div>
 							
-							<a href="#" class="btnSinborde martop60" data-toggle="modal" data-target="#terminos_condiciones">términos & condiciones &nbsp; »</a>
+	<!--
+							<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
+	-->
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla0a">
-				<div class="subcont">
-					<div class="boxForm">
-						<div class="cajaCenter_2">
-							<div class="tiotge">Ingresa tu email y password</div>
-							<div class="form-group btnAl70w">
-								<input type="email" class="form-control" id="email" placeholder="Email">
-							</div>
-							<div class="form-group blopas btnAl70w">
-								<input type="password" class="form-control" id="password" placeholder="Password">
-								<i class="glyphicon glyphicon-eye-open" id="changeTypePass"></i>
-							</div>
-							<button class="btn btn-default btnGenerico btnViole btnAl70w" id="btnLogin">Ingresar</button>
-							<div class="links">
-								<a href="#" id="registro" class="btnSinborde minilinks btn55P">Registro</a><br>
-								<a href="#" id="recpass" class="btnSinborde minilinks btn55P">Olvide mi password</a>
-							</div>
-							<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla0">Volver</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla6a">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Timers</h4>
+						<div class="interna">
+							<div class="btnGenerico btnCele" onclick="app.ponerTimer(5);">5 minutos</div>
+							<div class="btnGenerico btnCele" onclick="app.ponerTimer(10);">10 minutos</div>
+							<div class="btnGenerico btnCele" onclick="app.ponerTimer(15);">15 minutos</div>
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6">Volver</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla0b">
-				<div class="subcont">
-					<div class="boxForm">
-						<div class="cajaCenter_2">
-							<div class="tiotge">Registrate</div>
-							<div class="form-group btnAl70w">
-								<input type="text" class="form-control" id="nombre2" placeholder="Nombre">
+				<div class="ventana hidden" style="display: none;" id="pantalla6b">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Timers</h4>
+						<div class="sepatitu"></div>
+						<h5 class="descripcionTimers"></h5>
+						<div class="conttimers">
+							<h5 class="titSeccionSubT"></h5>
+							<div class="circuloaudio">
+								<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
+									<div class="circmed cele">
+										<div class="circsma cele">
+											<i class="glyphicon glyphicon-play"></i>
+										</div>
+									</div>
+								</div>
+								<div class="circle audioBorde ab_audTim"></div>
+								<div id="audTim_control" class="circuloN"></div>
+								<audio preload="metadata" ontimeupdate="updateBar('audTim')" id="audTim">
+									<source src="" type="audio/mpeg">
+									Su navegador no sorporta audio HTML5
+								</audio>
 							</div>
-							<div class="form-group btnAl70w">
-								<input type="text" class="form-control" id="apellido" placeholder="Apellido">
+							<div class="selectorTiempo">
+								<div class="titiempo">Tiempo</div>
+								<div class="contSeltiempo">
+									<select name="tiempoclase" id="tiempoclaseTimer" onchange="app.ponerTimer(this.value)" data-enhance="false">
+										<option value="5">5 min</option>
+										<option value="10">10 min</option>
+										<option value="15">15 min</option>
+									</select>
+								</div>
 							</div>
-							<div class="form-group btnAl70w">
-								<input type="email" class="form-control" id="email2" placeholder="Email">
-							</div>
-							<div class="form-group blopas btnAl70w">
-								<input type="password" class="form-control" id="password2" placeholder="Password">
-								<i class="glyphicon glyphicon-eye-open" id="changeTypePass2"></i>
-							</div>
-							<div class="form-group blopas btnAl70w">
-								<input type="password" class="form-control" id="password2b" placeholder="Reingresa Password">
-								<i class="glyphicon glyphicon-eye-open" id="changeTypePass3"></i>
-							</div>
-							<button class="btn btn-default btnGenerico btnViole btnAl70w" id="btnRegistro">Registrarse</button>
-							<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla0a">Volver</div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
+							<div class="blokespacio"></div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla0c">
-				<div class="subcont">
-					<div class="boxForm">
+				<div class="ventana hidden" style="display: none;" id="pantalla7">
+					<!--	respiracion  -->
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Respiración</h4>
+						<div class="mensajesresp">
+							<div class="mensajere" id="resp_txt_1">INHALÁ</div>
+							<div class="mensajere" id="resp_txt_2">PAUSA</div>
+							<div class="mensajere" id="resp_txt_3">EXHALÁ</div>
+						</div>
+						<div class="btnPlayMed ct_audEsfera cele">
+							<div class="circmed cele">
+								<div class="circsma cele">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
+							</div>
+						</div>
+						<div class="circ_resp circ_resp_1"></div>
+						<div class="circ_resp circ_resp_2"></div>
+						<div class="circ_resp circ_resp_3"></div>
+						<div class="circ_resp circ_resp_4"></div>
+						<div class="circ_resp circ_resp_5"></div>
+						<div class="circ_resp circ_resp_6"></div>
+						<div class="circle audioBorde ab_audEsfera hidden"></div>
+						<div id="audEsfera_control" class="circuloN hidden"></div>
+						<audio preload="metadata" ontimeupdate="updateBar('audEsfera')" id="audEsfera">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
+						<div class="contBotAlmedio">
+							<div class="btnSinborde btnVolverHome btn50P">Volver</div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla8">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub sinborde">PODCAST</h4>
+						<div class="ultimopodcast btnAl70w">
+							<div class="titPod"></div>
+							<div class="durPod"></div>
+						</div>
+						<div class="todospods">
+						</div>
+						<div class="bototneraBottom fndRosa">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla8b">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub" id="nomrepod"></h4>
+						<div class="btnPlayMed ct_audPod rosa" onclick="togglePlaying('audPod')">
+							<div class="circmed rosa">
+								<div class="circsma rosa">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
+							</div>
+						</div>
+						<div class="circle audioBorde ab_audPod"></div>
+						<div id="audPod_control" class="circuloN"></div>
+						<audio preload="metadata" ontimeupdate="updateBar('audPod')" id="audPod">
+							<source id="podsour" src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
+						<div class="tiempopod"></div>
+						<div class="volverint btnSinborde  btnVolverPods">Volver</div>
+						<div class="bototneraBottom fndRosa">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla8c">
+					<div class="contenidoGen">
+						<h4 class="tituloClase2" id="nomrepod2"></h4>
 						<div class="cajaCenter_3">
-							<div class="tiotge">Ingresa tu email</div>
-							<div class="form-group">
-								<input type="email" class="form-control" id="email3" placeholder="Email">
-							</div>
-							<button class="btn btn-default btnGenerico btnViole" id="btnRecpass">Recuperar contraseña</button>
-							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
+							<button class="btnGenerico btnViole btnRosa espaciobajo btnAl70" id="btnRepetirPod">Repetir</button>
+							<button class="btnGenerico btnViole btnRosa espaciobajo btnAl70 btnVolverapa" data-apa="pantalla8">Volver</button>
+						</div>
+						<div class="bototneraBottom fndRosa">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla0d">
-				<div class="subcont">
-					<div class="boxForm">
-						<div class="cajaCenter_2">
-							<div class="tiotge">Ingresa el código que te llegó a tu cuenta de correo y la nueva contraseña.</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="codigo" placeholder="Código">
-							</div>
-							<div class="form-group blopas">
-								<input type="password" class="form-control" id="password3" placeholder="Password">
-								<i class="glyphicon glyphicon-eye-open" id="changeTypePass4"></i>
-							</div>
-							<div class="form-group blopas">
-								<input type="password" class="form-control" id="password3b" placeholder="Reingresa Password">
-								<i class="glyphicon glyphicon-eye-open" id="changeTypePass5"></i>
-							</div>
-							<button class="btn btn-default btnGenerico btnViole" id="btnResetpass">Cambiar contraseña</button>
-							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla0a">Volver</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla1">
-				<video class="videomin" id="videoIni">
-					<source src="video/video-intro_1_s2.mp4" type="video/mp4">
-				</video>
-				<div class="saltarVid btnSinborde btn50P">Saltar »</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla2">
-				<div class="subcont">
-					<div class="nombreuser"></div>
-					<div class="cuetionario">
-						<div class="pregunta" id="pregunta"></div>
-						<div class="respuesta btnGenerico btnViole" id="resp_1"></div>
-						<div class="respuesta btnGenerico btnViole" id="resp_2"></div>
-						<div class="respuesta btnGenerico btnViole" id="resp_3"></div>
-						<div class="respuesta btnGenerico btnViole" id="resp_4"></div>
-						<div class="paso"></div>
-					</div>
-					<div class="saltar btnSinborde btn50P">Saltar »</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla2b">
-				<div class="subcont">
-					<div class="nombreuser"></div>
-					<div class="cuetionario mensajeapp" id="mensajeFinenc"></div>
-					<div class="btnContinuar btnSinborde btn50P">Continuar »</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla3b">
-				<div class="contenidoGen" style="background-image: url(http://tranquiapp.net/uploads/images/3352403esenciales.png)">
-					<div class="monchito" style="background-image: url(http://tranquiapp.net/img/fondos/iconos-5.png);"></div>
-					<div class="nombreuser"></div>
-					<div class="cuetionario mensajeapp" id="mensajeInimed"></div>
-					<div class="iniciarmedini btnSinborde btn50P">Continuar »</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla3">
-				<div class="contenidoGen" style="background-image: url(http://tranquiapp.net/uploads/images/3352403esenciales.png)">
-					<div class="monchito" style="background-image: url(http://tranquiapp.net/img/fondos/iconos-5.png);"></div>
-					<div class="contClasesmedini">
-					</div>
-					<h4 class="titSeccion">Meditación incial</h4>
-					<div class="btnPlayMed ct_med_ini viole" onclick="togglePlaying('med_ini')">
-						<div class="circmed viole">
-							<div class="circsma viole">
-								<i class="glyphicon glyphicon-play"></i>
+				<div class="ventana hidden" style="display: none;" id="pantalla9">
+					<div class="contenidoGen conpub">
+						<div class="busador">						
+							<div class="input-group sinbor">
+								<input type="text" id="buscarCate" class="form-control" placeholder="Buscar">
+								<span class="input-group-btn">
+									<button class="btn btn-default"  id="btnBuscar" type="button"><i class="glyphicon glyphicon-search"></i></button>
+								</span>
 							</div>
 						</div>
+						<div class="titLibreria">LIBRERÍA</div>
+						<div class="categoriascur">
+						</div>
+						<div class="sinresu hidden">
+							<div class="msjsincon">No se encontraron resultados.</div>
+							<div class="btnSinborde btn50P btnVolverLib">Volver</div>
+						</div>
+						<div class="bototneraBottom botoneraLib conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
 					</div>
-					<div class="circle audioBorde ab_med_ini"></div>
-					<div id="med_ini_control" class="circuloN"></div>
-					<audio preload="metadata" ontimeupdate="updateBar('med_ini')" id="med_ini">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
-					<div class="saltarVid2 btnSaltarMedIn btnSinborde btn50P">Saltar »</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla3c">
-				<div class="contenidoGen" style="background-image: url(http://tranquiapp.net/uploads/images/3352403esenciales.png)">
-					<div class="monchito" style="background-image: url(http://tranquiapp.net/img/fondos/iconos-5.png);"></div>
-					<h4 class="titSeccion">Meditación incial</h4>
-					<div class="cuetionario mensajeapp" id="mensajeInimedFin"></div>
-<!--
-					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirMEdIni">Repetir</button>
--->
-					<button class="btnGenerico btnViole espaciobajo" id="btnContinuarmedini">Continuar</button>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla4">
-				<div class="contenidoGen">
-					<h4 class="titSeccion">Notificaciones</h4>
-						<div class="subtituconfig" id="sub_boton_config"></div>
-					<div class="bloqueselMin">
-						<div class="bloqueConf">
-							<button class="btnGenerico btnViole btnConf" id="confNotResp">Para poder respirar</button>
-							<div class="contConfNot" id="notRespB">
-								<div class="bloquehor">
-									<div class="suphor"><i class="fas fa-chevron-up"></i></div>
-									<div class="notinumber" data-max="23">00</div>
-									<input type="hidden" class="campoculto" id="conf_val_1a_i" value="00">
-									<div class="infhor"><i class="fas fa-chevron-down"></i></div>
+				<div class="ventana hidden" style="display: none;" id="pantalla10">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Meditación<span id="diameddia"></span></h4>
+						<div class="btnPlayMed ct_audMedDiaria azul" onclick="togglePlaying('audMedDiaria')">
+							<div class="circmed azul">
+								<div class="circsma azul">
+									<i class="glyphicon glyphicon-play"></i>
 								</div>
-								<div class="bloquehor">
-									<div class="internum">:</div>
-								</div>
-								<div class="bloquehor">
-									<div class="suphor"><i class="fas fa-chevron-up"></i></div>
-									<div class="notinumber" data-max="59">00</div>
-									<input type="hidden" class="campoculto" id="conf_val_1b_i" value="00">
-									<div class="infhor"><i class="fas fa-chevron-down"></i></div>
-								</div>
-								<div class="bloquehor">
-									<div class="internum">hs</div>
-								</div>
-								<div class="btnSinborde btnConfirmar1">Confirmar</div>
-							</div>
-							<button class="btnGenerico btnViole btnConf" id="confNotMed">Para poder meditar</button>
-							<div class="contConfNot" id="notRespM">
-								<div class="bloquehor">
-									<div class="suphor"><i class="fas fa-chevron-up"></i></div>
-									<div class="notinumber" data-max="23">00</div>
-									<input type="hidden" class="campoculto" id="conf_val_2a_i" value="00">
-									<div class="infhor"><i class="fas fa-chevron-down"></i></div>
-								</div>
-								<div class="bloquehor">
-									<div class="internum">:</div>
-								</div>
-								<div class="bloquehor">
-									<div class="suphor"><i class="fas fa-chevron-up"></i></div>
-									<div class="notinumber" data-max="59">00</div>
-									<input type="hidden" class="campoculto" id="conf_val_2b_i" value="00">
-									<div class="infhor"><i class="fas fa-chevron-down"></i></div>
-								</div>
-								<div class="bloquehor">
-									<div class="internum">hs</div>
-								</div>
-								<div class="btnSinborde btnConfirmar2">Confirmar</div>
 							</div>
 						</div>
-					</div>
-					<div class="mensajesutil" id="msjconf"></div>
-					<div class="saltarVid2 btnSinborde btnFinalizarConf btn50P">Finalizar ></div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla5">
-				<div class="contenidoGen home">
-					<div class="tituloHome">BIENVENIDO</div>
-					<div class="subtituloHome">Siguiente práctica</div>
-					<div class="boxCursoAct">
-						<div class="tituCurAct">
-							<div class="ultimoCursosTit">No tienes ningún curso activo</div>
-						</div>
-					</div>
-					<div class="boxOtrasPracticas">
-						<div class="titiOtrasP">
-							Explorá<br>
-							otras prácticas
-						</div>
-						<div class="contcarruotras">
-							<div class="carruselotrasoprac">
-							</div>
-							<div class="tapaotrasclases"></div>
-						</div>
-					</div>
-					<div class="boxBotonesHome">
-						<div class="contbton">
-							<div class="botronesHoem btn50 btnMedDiaria"><div class="comotabla"><div class="comocelda">MEDITACIÓN DIARIA</div></div></div>
-							<div class="botronesHoem btn50 btnMedGuiada"><div class="comotabla"><div class="comocelda">MEDITACIÓN GUIADA</div></div></div>
-						</div>
-						<div class="contbton">
-							<div class="botronesHoem btn50 btnTimers"><div class="comotabla"><div class="comocelda">TIMER</div></div></div>
-							<div class="botronesHoem btn50 btnEsfera"><div class="comotabla"><div class="comocelda">RESPIRAR</div></div></div>
-						</div>
-					</div>
-					<div class="bototneraBottom botoneraHome conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome activo"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla6">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Timers</h4>
-					<div class="pantcomun">
-						<div class="interna">
-							<div class="btnGenerico btnCele btnGratuita">GRATUITA</div>
-							<div class="btnGenerico btnCele btnGuiada">GUIADA <i class="fa fa-lock sinrep"></i></div>
-							<div class="btnGenerico btnCele btnNoGuiada">NO GUIADA <i class="fa fa-lock sinrep"></i></div>
-						</div>
-						
-<!--
+						<div class="circle audioBorde ab_audMedDiaria"></div>
+						<div id="audMedDiaria_control" class="circuloN"></div>
+						<audio preload="metadata" ontimeupdate="updateBar('audMedDiaria')" id="audMedDiaria">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
+						<div class="mensajetip"></div>
 						<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
--->
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla6a">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Timers</h4>
-					<div class="interna">
-						<div class="btnGenerico btnCele" onclick="app.ponerTimer(5);">5 minutos</div>
-						<div class="btnGenerico btnCele" onclick="app.ponerTimer(10);">10 minutos</div>
-						<div class="btnGenerico btnCele" onclick="app.ponerTimer(15);">15 minutos</div>
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla6">Volver</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla6b">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Timers</h4>
-					<div class="sepatitu"></div>
-					<h5 class="descripcionTimers"></h5>
-					<div class="conttimers">
-						<h5 class="titSeccionSubT"></h5>
-						<div class="circuloaudio">
-							<div class="btnPlayMed ct_audTim cele" onclick="togglePlaying('audTim')">
-								<div class="circmed cele">
-									<div class="circsma cele">
-										<i class="glyphicon glyphicon-play"></i>
-									</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla11">
+					<div class="contenidoGen">
+						<div class="btnUserOptions"><i class="fa fa-cog"></i></div>
+						<h4 class="titSeccionSub">USUARIO</h4>
+						<div class="boxuser">
+							<div class="btnNaranja btnMiscursos">CURSOS REALIZADOS <div class="circItemA"><div class="circItemB"><i class="fa fa-chevron-left"></i></div></div></div>
+							<div class="boxEstadisticasCont">
+								<div class="titEsta">ESTADÍSTICAS</div>
+								<div class="rayausu"></div>
+								<div class="boxEstadisticas">
 								</div>
 							</div>
-							<div class="circle audioBorde ab_audTim"></div>
-							<div id="audTim_control" class="circuloN"></div>
-							<audio preload="metadata" ontimeupdate="updateBar('audTim')" id="audTim">
-								<source src="" type="audio/mpeg">
-								Su navegador no sorporta audio HTML5
-							</audio>
+							<div class="btnNaranja verSmall" onclick="compartirEnlace()">Invitar un amigo</div>
 						</div>
-						<div class="selectorTiempo">
-							<div class="titiempo">Tiempo</div>
-							<div class="contSeltiempo">
-								<select name="tiempoclase" id="tiempoclaseTimer" onchange="app.ponerTimer(this.value)" data-enhance="false">
-									<option value="5">5 min</option>
-									<option value="10">10 min</option>
-									<option value="15">15 min</option>
-								</select>
-							</div>
-						</div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
-						<div class="blokespacio"></div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla7">
-				<!--	respiracion  -->
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Respiración</h4>
-					<div class="mensajesresp">
-						<div class="mensajere" id="resp_txt_1">INHALÁ</div>
-						<div class="mensajere" id="resp_txt_2">PAUSA</div>
-						<div class="mensajere" id="resp_txt_3">EXHALÁ</div>
-					</div>
-					<div class="btnPlayMed ct_audEsfera cele">
-						<div class="circmed cele">
-							<div class="circsma cele">
-								<i class="glyphicon glyphicon-play"></i>
-							</div>
+	<!--
+						<div class="volverint btnSinborde btnVolverHome">Volver</div>
+	-->
+						<div class="bototneraBottom fondoUser">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
-					<div class="circ_resp circ_resp_1"></div>
-					<div class="circ_resp circ_resp_2"></div>
-					<div class="circ_resp circ_resp_3"></div>
-					<div class="circ_resp circ_resp_4"></div>
-					<div class="circ_resp circ_resp_5"></div>
-					<div class="circ_resp circ_resp_6"></div>
-					<div class="circle audioBorde ab_audEsfera hidden"></div>
-					<div id="audEsfera_control" class="circuloN hidden"></div>
-					<audio preload="metadata" ontimeupdate="updateBar('audEsfera')" id="audEsfera">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
-					<div class="contBotAlmedio">
-						<div class="btnSinborde btnVolverHome btn50P">Volver</div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla8">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub sinborde">PODCAST</h4>
-					<div class="ultimopodcast btnAl70w">
-						<div class="titPod"></div>
-						<div class="durPod"></div>
-					</div>
-					<div class="todospods">
-					</div>
-					<div class="bototneraBottom fndRosa">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla8b">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub" id="nomrepod"></h4>
-					<div class="btnPlayMed ct_audPod rosa" onclick="togglePlaying('audPod')">
-						<div class="circmed rosa">
-							<div class="circsma rosa">
-								<i class="glyphicon glyphicon-play"></i>
-							</div>
-						</div>
-					</div>
-					<div class="circle audioBorde ab_audPod"></div>
-					<div id="audPod_control" class="circuloN"></div>
-					<audio preload="metadata" ontimeupdate="updateBar('audPod')" id="audPod">
-						<source id="podsour" src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
-					<div class="tiempopod"></div>
-					<div class="volverint btnSinborde  btnVolverPods">Volver</div>
-					<div class="bototneraBottom fndRosa">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla8c">
-				<div class="contenidoGen">
-					<h4 class="tituloClase2" id="nomrepod2"></h4>
-					<div class="cajaCenter_3">
-						<button class="btnGenerico btnViole btnRosa espaciobajo btnAl70" id="btnRepetirPod">Repetir</button>
-						<button class="btnGenerico btnViole btnRosa espaciobajo btnAl70 btnVolverapa" data-apa="pantalla8">Volver</button>
-					</div>
-					<div class="bototneraBottom fndRosa">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts activo"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla9">
-				<div class="contenidoGen conpub">
-					<div class="busador">						
-						<div class="input-group sinbor">
-							<input type="text" id="buscarCate" class="form-control" placeholder="Buscar">
-							<span class="input-group-btn">
-								<button class="btn btn-default"  id="btnBuscar" type="button"><i class="glyphicon glyphicon-search"></i></button>
-							</span>
-						</div>
-					</div>
-					<div class="titLibreria">LIBRERÍA</div>
-					<div class="categoriascur">
-					</div>
-					<div class="sinresu hidden">
-						<div class="msjsincon">No se encontraron resultados.</div>
-						<div class="btnSinborde btn50P btnVolverLib">Volver</div>
-					</div>
-					<div class="bototneraBottom botoneraLib conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla10">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Meditación<span id="diameddia"></span></h4>
-					<div class="btnPlayMed ct_audMedDiaria azul" onclick="togglePlaying('audMedDiaria')">
-						<div class="circmed azul">
-							<div class="circsma azul">
-								<i class="glyphicon glyphicon-play"></i>
-							</div>
-						</div>
-					</div>
-					<div class="circle audioBorde ab_audMedDiaria"></div>
-					<div id="audMedDiaria_control" class="circuloN"></div>
-					<audio preload="metadata" ontimeupdate="updateBar('audMedDiaria')" id="audMedDiaria">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
-					<div class="mensajetip"></div>
-					<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla11">
-				<div class="contenidoGen">
-					<div class="btnUserOptions"><i class="fa fa-cog"></i></div>
-					<h4 class="titSeccionSub">USUARIO</h4>
-					<div class="boxuser">
-						<div class="btnNaranja btnMiscursos">CURSOS REALIZADOS <div class="circItemA"><div class="circItemB"><i class="fa fa-chevron-left"></i></div></div></div>
+				<div class="ventana hidden" style="display: none;" id="pantalla11b">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub"><i class="fa fa-cog"></i> CONFIGURACIÓN</h4>
 						<div class="boxEstadisticasCont">
-							<div class="titEsta">ESTADÍSTICAS</div>
-							<div class="rayausu"></div>
-							<div class="boxEstadisticas">
+							<div class="btnUserMenu btnNotificaciones" data-tipo="notificaciones">Notificaciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
+							<div class="btnUserMenu btnEmailNot" data-tipo="emails">Alertas por Email <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
+							<div class="btnUserMenu btnVibrar" data-tipo="vibrar">Vibraciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
+							<div class="btnUserMenu btnTermCond" data-toggle="modal" data-target="#terminos_condiciones">Términos & condiciones <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
+							<div class="btnUserMenu btnPolpriv" data-toggle="modal" data-target="#politicas_privacidad">Políticas de privacidad <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
+							<div class="btnUserMenu btnMisdatos">Mis datos <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
+							<div class="btnUserMenu btnConfigurarNot">Configurar notificaciones <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
+							<div class="btnUserMenu btnCargarCodigoG">Desbloquear App <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
+							<div class="btnUserMenu btnCerrarSession">Cerrar sessión <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
+						<div class="bototneraBottom fondoUser">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla11c">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">CURSOS<br>REALIZADOS</h4>
+						<div class="boxuser" id="miscursoscont">
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
+						<div class="bototneraBottom fondoUser">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla12">
+					<div class="contenidoGen">
+						<div class="trespuntos">
+							<div class="puntob activo"></div>
+							<div class="puntob" id="elotro"></div>
+						</div>
+						<h4 class="titSeccionSub">Programas</h4>
+						<div class="sepambsr"></div>
+						<div id="boxcuponre" class="boxcuponre">
+							<div class="text_mb_1"></div>
+							<div class="text_mb_2"></div>
+						</div>
+						<div class="toabajo">
+							<div class="volverint btnSinborde btnSigPantMBSR btn50P">Saltar »</div>
+							<div class="checkB">
+								<input type="checkbox" name="check" value="check1" id="nomostrarmbsrintro">
+								<label for="nomostrarmbsrintro"> no volver a mostrar</label>
 							</div>
 						</div>
-						<div class="btnNaranja verSmall" onclick="compartirEnlace()">Invitar un amigo</div>
-					</div>
-<!--
-					<div class="volverint btnSinborde btnVolverHome">Volver</div>
--->
-					<div class="bototneraBottom fondoUser">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla11b">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub"><i class="fa fa-cog"></i> CONFIGURACIÓN</h4>
-					<div class="boxEstadisticasCont">
-						<div class="btnUserMenu btnNotificaciones" data-tipo="notificaciones">Notificaciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
-						<div class="btnUserMenu btnEmailNot" data-tipo="emails">Notificaciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
-						<div class="btnUserMenu btnVibrar" data-tipo="vibrar">Vibraciones <div class="marcloca"><div class="bolita backcolor_usr"></div></div></div>
-						<div class="btnUserMenu btnTermCond" data-toggle="modal" data-target="#terminos_condiciones">Términos & condiciones <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
-						<div class="btnUserMenu btnPolpriv" data-toggle="modal" data-target="#politicas_privacidad">Políticas de privacidad <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
-						<div class="btnUserMenu btnMisdatos">Mis datos <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
-						<div class="btnUserMenu btnConfigurarNot">Configurar notificaciones <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
-						<div class="btnUserMenu btnCargarCodigoG">Desbloquear App <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
-						<div class="btnUserMenu btnCerrarSession">Cerrar sessión <div class="marcamenuusr"><i class="fa fa-chevron-right"></i></div></div>
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
-					<div class="bototneraBottom fondoUser">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla11c">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">CURSOS<br>REALIZADOS</h4>
-					<div class="boxuser" id="miscursoscont">
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11">Volver</div>
-					<div class="bototneraBottom fondoUser">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla12">
-				<div class="contenidoGen">
-					<div class="trespuntos">
-						<div class="puntob activo"></div>
-						<div class="puntob" id="elotro"></div>
-					</div>
-					<h4 class="titSeccionSub">Programas</h4>
-					<div class="sepambsr"></div>
-					<div id="boxcuponre" class="boxcuponre">
-						<div class="text_mb_1"></div>
-						<div class="text_mb_2"></div>
-					</div>
-					<div class="toabajo">
-						<div class="volverint btnSinborde btnSigPantMBSR btn50P">Saltar »</div>
-						<div class="checkB">
-							<input type="checkbox" name="check" value="check1" id="nomostrarmbsrintro">
-							<label for="nomostrarmbsrintro"> no volver a mostrar</label>
+						<div class="bototneraBottom fnMbsr">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
-					<div class="bototneraBottom fnMbsr">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla12b">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Programas</h4>
-					<div class="sepambsr"></div>
-					<div class="boxcupon">
-						¿TENÉS CUPON?
-						<input type="text" class="form-control inputfant" id="codigombsr" placeholder="Escribí tu código">
-						<div class="volverint btnSinborde btnGetCupon btn50P">enviar »</div>
-					</div>
-					<div class="contclases"></div>
-					<div class="volverint btnSinborde linkdeboton"><a href="#" onclick="window.open('https://www.mindfulnessbuenosaires.com/programas-mbsr', '_system'); return false;" target="_blank">Próximos programas</a></div>
-					<div class="bototneraBottom fnMbsr">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla12c">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">
-						Programas
-						<div class="nombreprog"></div>
-					</h4>
-					<div class="sepambsr"></div>
-					<div class="boxcontmbsr">
-						<div class="listetapas">
-							<div class="contesli2"></div>
+				<div class="ventana hidden" style="display: none;" id="pantalla12b">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Programas</h4>
+						<div class="sepambsr"></div>
+						<div class="boxcupon">
+							¿TENÉS CUPON?
+							<input type="text" class="form-control inputfant" id="codigombsr" placeholder="Escribí tu código">
+							<div class="volverint btnSinborde btnGetCupon btn50P">enviar »</div>
 						</div>
-						<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="MBSR"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
-						<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
-					
-					</div>
-					<div class="bototneraBottom fnMbsr">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						<div class="contclases"></div>
+						<div class="volverint btnSinborde linkdeboton"><a href="#" onclick="window.open('https://www.mindfulnessbuenosaires.com/programas-mbsr', '_system'); return false;" target="_blank">Próximos programas</a></div>
+						<div class="bototneraBottom fnMbsr">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla12d">
-				<div class="contenidoGen">
-					<h4 class="tituloClase2"></h4>
-					<div class="sepambsr"></div>
-					<div class="contCentrado">
-						<div class="circuloaudio">
-							<div class="btnPlayMed ct_uad_MBSR vercel" onclick="togglePlaying('uad_MBSR')">
-								<div class="circmed vercel">
-									<div class="circsma vercel">
-										<i class="glyphicon glyphicon-play"></i>
-									</div>
-								</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla12c">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">
+							Programas
+							<div class="nombreprog"></div>
+						</h4>
+						<div class="sepambsr"></div>
+						<div class="boxcontmbsr">
+							<div class="listetapas">
+								<div class="contesli2"></div>
 							</div>
-							<div class="circle audioBorde ab_uad_MBSR"></div>
-							<div id="uad_MBSR_control" class="circuloN"></div>
-							<audio preload="metadata" ontimeupdate="updateBar('uad_MBSR')" id="uad_MBSR">
-								<source src="" type="audio/mpeg">
-								Su navegador no sorporta audio HTML5
-							</audio>
-						</div>
-						<div class="volverint btnSinborde btnDescargaFile" data-file=""><div class="fondobotondes"></div><div class="texttodos">descargar sessión</div> <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla12c">Volver</div>
-					</div>
-					<div class="bototneraBottom fnMbsr">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla12e">
-				<div class="contenidoGen">
-					<h4 class="tituloClase2"></h4>
-					<div class="sepambsr"></div>
-					<div class="cajaCenter_3">
-						<button class="espaciobajo btnSinborde btn50P" id="btnRepetirMBSR">Repetir</button>
-						<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla12c">Volver a Programas</button>
-					</div>
-					<div class="bototneraBottom conpub">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla13">
-				<div class="contenidoGen">
-					<div class="monchito"></div>
-					<div class="conteiiuer">
-						<div class="tituloCat"></div>
-						<div class="descripcionCat"></div>
-						<div class="listcursos">
-						</div>
-						<div class="subtitcCat">Clases sueltas</div>
-						<div class="listclasesind">
-						</div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla9">Volver</div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla14">
-				<div class="contenidoGen">
-					<div class="conteiiuer">
-						<div class="tituloCat"></div>
-						<div class="tituloCurso">
-							<div class="titcur"></div>
-							<div class="descur"></div>
-						</div>
-						<div class="listetapas">
-							<div class="contesli owl-carousel1"></div>
-						</div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
-					</div>
-					<div class="bototneraBottom">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla15">
-				<div class="contenidoGen">
-					<div class="tituloCat"></div>
-					<div class="tituloCurso"></div>
-					<div class="tituloEtapa"></div>
-					<div class="listclases"></div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla16">
-				<div class="contenidoGen">
-					<h4 class="tituloClase"></h4>
-					<div class="sepatitu"></div>
-					<div class="descripcionClase"></div>
-					<div class="contCentrado">
-						<div class="circuloaudio">
-							<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
-								<div class="circmed viole">
-									<div class="circsma viole">
-										<i class="glyphicon glyphicon-play"></i>
-									</div>
-								</div>
-							</div>
-							<div class="circle audioBorde ab_audClaseP"></div>
-							<div id="audClaseP_control" class="circuloN"></div>
-							<audio preload="metadata" ontimeupdate="updateBar('audClaseP')" id="audClaseP">
-								<source src="" type="audio/mpeg">
-								Su navegador no sorporta audio HTML5
-							</audio>
-						</div>
-						<div class="selectorTiempo">
-							<div class="titiempo">Tiempo</div>
-							<div class="contSeltiempo">
-								<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
-									<option value="1">5 min</option>
-									<option value="2">10 min</option>
-									<option value="3">15 min</option>
-								</select>
-							</div>
-						</div>
-						<div class="volverint btnSinborde btnDescargaFile" data-file="">
-							<div class="fondobotondes"></div>
-							<div class="texttodos">descargar sessión</div> 
-							<div class="marcloca"><div class="bolita"></div></div>
-						</div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla16b">
-				<div class="contenidoGen">
-					<h4 class="tituloClase"></h4>
-					<div class="descripcionClase"></div>
-					<div class="cajaCenter_3">
-						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnRepetirClase">Repetir</button>
-						<button class="btnGenerico btnViole espaciobajo btnAl70 btnVolverapa" data-apa="pantalla16c" id="btnSigClase">Siguiente sesión</button>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla16c">
-				<div class="contenidoGen">
-					<h4 class="tituloClaseInd"></h4>
-					<div class="contCentrado2">
-						<div class="circuloaudio">
-							<div class="btnPlayMed ct_audClaseInd viole" onclick="togglePlaying('audClaseInd')">
-								<div class="circmed viole">
-									<div class="circsma viole">
-										<i class="glyphicon glyphicon-play"></i>
-									</div>
-								</div>
-							</div>
-							<div class="circle audioBorde ab_audClaseInd"></div>
-							<div id="audClaseInd_control" class="circuloN"></div>
-							<audio preload="metadata" ontimeupdate="updateBar('audClaseInd')" id="audClaseInd">
-								<source src="" type="audio/mpeg">
-								Su navegador no sorporta audio HTML5
-							</audio>
-						</div>
-						<div class="selectorTiempo">
-							<div class="titiempo">Tiempo</div>
-							<div class="contSeltiempo">
-								<select name="tiempoclase2" id="tiempoclase2" onchange="app.ponerAudioFileInd(this.value)" data-enhance="false">
-									<option value="1">5 min</option>
-									<option value="2">10 min</option>
-									<option value="3">15 min</option>
-								</select>
-							</div>
-						</div>
-						<div class="volverint btnSinborde btnDescargaFile" data-file=""><div class="fondobotondes"></div><div class="texttodos">descargar sessión</div> <div class="marcloca"><div class="bolita"></div></div></div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla16d">
-				<div class="contenidoGen">
-					<h4 class="tituloClaseInd"></h4>
-					<button class="btnGenerico btnViole espaciobajo" id="btnRepetirClaseInd">Repetir</button>
-					<button class="btnGenerico btnViole espaciobajo btnVolverapa" data-apa="pantalla13">Volver</button>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla17">
-				<div class="contenidoGen">
-					<h4 class="tituloClase"></h4>
-<!--
-					<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
-						<div class="circmed viole">
-							<div class="circsma viole">
-								<i class="glyphicon glyphicon-play"></i>
-							</div>
-						</div>
-					</div>
-					<div class="circle audioBorde ab_audClaseP"></div>
-					<div id="audClaseP_control" class="circuloN"></div>
-					<audio preload="metadata" ontimeupdate="updateBar('audClaseP')" id="audClaseP">
-						<source src="" type="audio/mpeg">
-						Su navegador no sorporta audio HTML5
-					</audio>
--->
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla16">Volver</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla18">
-				<div class="contenidoGen">
-					<h4 class="tituloClase">
-						CONVERTITE<br>
-						EN PREMIUM
-					</h4>
-					<div class="cajaCenter_4">
-						<div class="beneficios">
-						</div>
-						<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSuscibirse">SUSCRIBITE</button>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="lastapant">Volver</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla18b">
-				<div class="contenidoGen">
-					<h4 class="tituloClase">Compras</h4>
-					<div class="comprasbox" id="comprasbox"></div>
-					
-					<!-- List of in-app purchases -->
-					<div class="app">
-						<h3 id="loading-indicator">Loading</h3>
-						<div id="in-app-purchase-list">
-							<div id="tranquisusc1-purchase" class="boxCompra"><h3>Suscripción Anual</h3><p>Accede a todo el contenido de la app por un año y ahorra 2 meses!</p></div>
-							<div id="tranquisusc_6m-purchase" class="boxCompra"><h3>Suscripción Semestral</h3><p>Acceso a todos los curos por 6 meses.</p></div>
-							<div id="subscription1-purchase" class="boxCompra"><h3>Suscripción Mensual</h3><p>Acceso a todos los curos por un mes.</p></div>
-						</div>
-					</div>
-
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla19">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Meditaciones Guiadas</h4>
-					<div class="pantcomun">
-						<div class="interna">
-							<div class="btnGenerico btnCele btnGuiada">GUIADA <i class="fa fa-lock sinrep"></i></div>
-							<div class="btnGenerico btnCele btnNoGuiada">SEMI GUIADA <i class="fa fa-lock sinrep"></i></div>
-						</div>
+							<div class="volverint btnSinborde btnDescargaFile" data-file="todos" data-tipo="MBSR"><div class="fondobotondes"></div><div class="texttodos">descargar todo</div> <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
+							<div class="volverint btnSinborde btnVolverapa btn50P" data-apa="pantalla12b">Volver</div>
 						
-						<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+						<div class="bototneraBottom fnMbsr">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla19b">
-				<div class="contenidoGen">
-					<div class="conttimers">
-						<h4 class="titSeccionSub">Meditaciones</h4>
-						<h5 class="titSeccionSubT"></h5>
-						<div class="circuloaudio">
-							<div class="btnPlayMed ct_audGuiada cele" onclick="togglePlaying('audGuiada')">
-								<div class="circmed cele">
-									<div class="circsma cele">
-										<i class="glyphicon glyphicon-play"></i>
+				<div class="ventana hidden" style="display: none;" id="pantalla12d">
+					<div class="contenidoGen">
+						<h4 class="tituloClase2"></h4>
+						<div class="sepambsr"></div>
+						<div class="contCentrado">
+							<div class="circuloaudio">
+								<div class="btnPlayMed ct_uad_MBSR vercel" onclick="togglePlaying('uad_MBSR')">
+									<div class="circmed vercel">
+										<div class="circsma vercel">
+											<i class="glyphicon glyphicon-play"></i>
+										</div>
 									</div>
 								</div>
+								<div class="circle audioBorde ab_uad_MBSR"></div>
+								<div id="uad_MBSR_control" class="circuloN"></div>
+								<audio preload="metadata" ontimeupdate="updateBar('uad_MBSR')" id="uad_MBSR">
+									<source src="" type="audio/mpeg">
+									Su navegador no sorporta audio HTML5
+								</audio>
 							</div>
-							<div class="circle audioBorde ab_audGuiada"></div>
-							<div id="audGuiada_control" class="circuloN"></div>
-							<audio preload="metadata" ontimeupdate="updateBar('audGuiada')" id="audGuiada">
-								<source src="" type="audio/mpeg">
-								Su navegador no sorporta audio HTML5
-							</audio>
+							<div class="volverint btnSinborde btnDescargaFile" data-file=""><div class="fondobotondes"></div><div class="texttodos">descargar sessión</div> <div class="marcloca"><div class="bolita backcolor_mbsr"></div></div></div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla12c">Volver</div>
 						</div>
-						<div class="selectorTiempo">
-							<div class="titiempo">Tiempo</div>
-							<div class="contSeltiempo">
-								<select name="tiempoclase" id="tiempoclaseGuiadas" onchange="app.ponerGuiada(this.value)" data-enhance="false">
-									<option value="5">5 min</option>
-									<option value="10">10 min</option>
-									<option value="15">15 min</option>
-								</select>
+						<div class="bototneraBottom fnMbsr">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla12e">
+					<div class="contenidoGen">
+						<h4 class="tituloClase2"></h4>
+						<div class="sepambsr"></div>
+						<div class="cajaCenter_3">
+							<button class="espaciobajo btnSinborde btn50P" id="btnRepetirMBSR">Repetir</button>
+							<button class="espaciobajo btnSinborde btn50P btnVolverapa" data-apa="pantalla12c">Volver a Programas</button>
+						</div>
+						<div class="bototneraBottom conpub">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR activo"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla13">
+					<div class="contenidoGen">
+						<div class="monchito"></div>
+						<div class="conteiiuer">
+							<div class="tituloCat"></div>
+							<div class="descripcionCat"></div>
+							<div class="listcursos">
+							</div>
+							<div class="subtitcCat" id="clasessueltit">Clases sueltas</div>
+							<div class="listclasesind">
+							</div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla9">Volver</div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla14">
+					<div class="contenidoGen">
+						<div class="conteiiuer">
+							<div class="tituloCat"></div>
+							<div class="tituloCurso">
+								<div class="titcur"></div>
+								<div class="descur"></div>
+							</div>
+							<div class="listetapas">
+								<div class="contesli owl-carousel1"></div>
+							</div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
+						</div>
+						<div class="bototneraBottom">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla15">
+					<div class="contenidoGen">
+						<div class="tituloCat"></div>
+						<div class="tituloCurso"></div>
+						<div class="tituloEtapa"></div>
+						<div class="listclases"></div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla16">
+					<div class="contenidoGen">
+						<h4 class="tituloClase"></h4>
+						<div class="sepatitu"></div>
+						<div class="descripcionClase"></div>
+						<div class="contCentrado">
+							<div class="circuloaudio">
+								<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
+									<div class="circmed viole">
+										<div class="circsma viole">
+											<i class="glyphicon glyphicon-play"></i>
+										</div>
+									</div>
+								</div>
+								<div class="circle audioBorde ab_audClaseP"></div>
+								<div id="audClaseP_control" class="circuloN"></div>
+								<audio preload="metadata" ontimeupdate="updateBar('audClaseP')" id="audClaseP">
+									<source src="" type="audio/mpeg">
+									Su navegador no sorporta audio HTML5
+								</audio>
+							</div>
+							<div class="selectorTiempo">
+								<div class="titiempo">Tiempo</div>
+								<div class="contSeltiempo">
+									<select name="tiempoclase" id="tiempoclase" onchange="app.ponerAudioFile(this.value)" data-enhance="false">
+										<option value="1">5 min</option>
+										<option value="2">10 min</option>
+										<option value="3">15 min</option>
+									</select>
+								</div>
+							</div>
+							<div class="volverint btnSinborde btnDescargaFile" data-file="">
+								<div class="fondobotondes"></div>
+								<div class="texttodos">descargar sessión</div> 
+								<div class="marcloca"><div class="bolita"></div></div>
+							</div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla14">Volver</div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla16b">
+					<div class="contenidoGen">
+						<h4 class="tituloClase"></h4>
+						<div class="descripcionClase"></div>
+						<div class="cajaCenter_3">
+							<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnRepetirClase">Repetir</button>
+							<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSigClase">Siguiente sesión</button>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla16c">
+					<div class="contenidoGen">
+						<h4 class="tituloClaseInd"></h4>
+						<div class="contCentrado2">
+							<div class="circuloaudio">
+								<div class="btnPlayMed ct_audClaseInd viole" onclick="togglePlaying('audClaseInd')">
+									<div class="circmed viole">
+										<div class="circsma viole">
+											<i class="glyphicon glyphicon-play"></i>
+										</div>
+									</div>
+								</div>
+								<div class="circle audioBorde ab_audClaseInd"></div>
+								<div id="audClaseInd_control" class="circuloN"></div>
+								<audio preload="metadata" ontimeupdate="updateBar('audClaseInd')" id="audClaseInd">
+									<source src="" type="audio/mpeg">
+									Su navegador no sorporta audio HTML5
+								</audio>
+							</div>
+							<div class="selectorTiempo">
+								<div class="titiempo">Tiempo</div>
+								<div class="contSeltiempo">
+									<select name="tiempoclase2" id="tiempoclase2" onchange="app.ponerAudioFileInd(this.value)" data-enhance="false">
+										<option value="1">5 min</option>
+										<option value="2">10 min</option>
+										<option value="3">15 min</option>
+									</select>
+								</div>
+							</div>
+							<div class="volverint btnSinborde btnDescargaFile" data-file=""><div class="fondobotondes"></div><div class="texttodos">descargar sessión</div> <div class="marcloca"><div class="bolita"></div></div></div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla13">Volver</div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla16d">
+					<div class="contenidoGen">
+						<h4 class="tituloClaseInd"></h4>
+						<div class="cajaCenter_3">
+							<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnRepetirClaseInd">Repetir</button>
+							<button class="btnGenerico btnViole espaciobajo btnVolverapa btnAl70" data-apa="pantalla13">Volver</button>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla17">
+					<div class="contenidoGen">
+						<h4 class="tituloClase"></h4>
+	<!--
+						<div class="btnPlayMed ct_audClaseP viole" onclick="togglePlaying('audClaseP')">
+							<div class="circmed viole">
+								<div class="circsma viole">
+									<i class="glyphicon glyphicon-play"></i>
+								</div>
 							</div>
 						</div>
-						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla19">Volver</div>
-						<div class="blokespacio"></div>
-					</div>
-					<div class="bototneraBottom conpub">
-						<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
-					</div>
-				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla20">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Desbloquear contenido</h4>
-					<div class="sepambsr"></div>
-					<div class="boxcupon">
-						<div class="mensajesdesb"></div>
-						<input type="text" class="form-control inputfant" id="codigoApp" placeholder="Escribí tu código">
-						<div class="volverint btnSinborde btnValidarCodigo btn50P">enviar »</div>
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11b">Volver</div>
-					<div class="bototneraBottom fondoUser">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+						<div class="circle audioBorde ab_audClaseP"></div>
+						<div id="audClaseP_control" class="circuloN"></div>
+						<audio preload="metadata" ontimeupdate="updateBar('audClaseP')" id="audClaseP">
+							<source src="" type="audio/mpeg">
+							Su navegador no sorporta audio HTML5
+						</audio>
+	-->
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla16">Volver</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria activo"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="ventana hidden" style="display: none;" id="pantalla21">
-				<div class="contenidoGen">
-					<h4 class="titSeccionSub">Mis datos</h4>
-					<div class="sepambsr"></div>
-					<div class="boxEstadisticasCont contMisDatos">
-					</div>
-					<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11b">Volver</div>
-					<div class="bototneraBottom fondoUser">
-						<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
-						<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
-						<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
-						<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
-						<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla18">
+					<div class="contenidoGen">
+						<h4 class="tituloClase">
+							CONVERTITE<br>
+							EN PREMIUM
+						</h4>
+						<div class="cajaCenter_4">
+							<div class="beneficios">
+							</div>
+							<button class="btnGenerico btnViole espaciobajo btnAl70" id="btnSuscibirse">SUSCRIBITE</button>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="lastapant">Volver</div>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-    </div>
-    <div class="hidden" id="alerta">
-		<div class="erorCont">
-			<div class="erorMsj">
-				<div id="alertatxt">
-				</div>
-				<button id="login" class="btn btn-danger btnCerrarAlerta">Cerrar</button>
-			</div>
-		</div>
-    </div>
-    
+				<div class="ventana hidden" style="display: none;" id="pantalla18b">
+					<div class="contenidoGen">
+						<h4 class="tituloClase">Compras</h4>
+						<div class="comprasbox" id="comprasbox"></div>
+						
+						<!-- List of in-app purchases -->
+						<div class="app">
+							<h3 id="loading-indicator">Loading</h3>
+							<div id="in-app-purchase-list">
+								<div id="tranquisusc1-purchase" class="boxCompra"><h3>Suscripción Anual</h3><p>Accede a todo el contenido de la app por un año y ahorra 2 meses!</p></div>
+								<div id="tranquisusc_6m-purchase" class="boxCompra"><h3>Suscripción Semestral</h3><p>Acceso a todos los curos por 6 meses.</p></div>
+								<div id="subscription1-purchase" class="boxCompra"><h3>Suscripción Mensual</h3><p>Acceso a todos los curos por un mes.</p></div>
+							</div>
+						</div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="terminos_condiciones" tabindex="-1" role="dialog" aria-labelledby="terminos_condiciones">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<div class="termcondcont">
-						<h1>Términos y condiciones</h1>
-						<hr>
-						<div class="">
-							<p>1. INFORMACI&Oacute;N GENERAL<br />1.1 PRODUCTOS DE TRANQUI<br />Estos T&eacute;rminos y condiciones (estos "T&eacute;rminos") contienen los t&eacute;rminos y condiciones en los que suministramos contenido, productos o servicios enumerados en <a href="www.tranquiapp.net" aria-invalid="true">www.tranquiapp.net</a> (el "Sitio web"), a trav&eacute;s de nuestras aplicaciones (las "Aplicaciones") o mediante otros &nbsp;m&eacute;todos de entrega a usted (el sitio web y dicho contenido, productos, servicios y las aplicaciones se denominan colectivamente en este documento como el "Producto" o "Productos", que pueden actualizarse peri&oacute;dicamente a la sola discreci&oacute;n de Tranqui). &nbsp;Lea atentamente estos t&eacute;rminos y condiciones antes de ordenar cualquier producto del sitio web o de tiendas de aplicaciones de terceros (por ejemplo, Apple App Store, Android Play Store, Amazon, etc.). &nbsp;Los t&eacute;rminos "Tranqui", "nos" o "nosotros" se refieren a Tranquiapp. &nbsp;El t&eacute;rmino "Dispositivo" se refiere al dispositivo que se utiliza para acceder a los Productos, incluidos, entre otros, computadoras, tel&eacute;fonos inteligentes y tabletas. &nbsp;El t&eacute;rmino "usted" se refiere al usuario de los Productos. &nbsp;Cuando realiza un pedido ("Pedido") de cualquier Producto, o de otro modo utiliza o accede a los Productos, acepta estar sujeto a estos T&eacute;rminos y a todas las leyes, normas y reglamentos aplicables. &nbsp;Tambi&eacute;n se le puede pedir que haga clic en "Acepto" en el lugar apropiado antes de su compra de acceso a los Productos. &nbsp;En ese momento, si no hace clic en "Acepto", es posible que no pueda completar dicha compra u obtener dicho acceso. &nbsp;Al usar los Productos, usted indica que acepta estos T&eacute;rminos y que acepta cumplirlos. &nbsp;Si no est&aacute; de acuerdo con estos T&eacute;rminos, no use los Productos.<br />Nuestra direcci&oacute;n de correo electr&oacute;nico de contacto es info@tranquiapp.net. &nbsp;Toda la correspondencia con Tranqui, incluidas las consultas que pueda tener sobre el uso de los Productos o estos T&eacute;rminos, deben enviarse a esta direcci&oacute;n de correo electr&oacute;nico de contacto.<br />1.2 BASE DE LICENCIA<br />(a) Estos T&eacute;rminos y la Orden establecen el acuerdo completo entre usted y nosotros para el suministro de los Productos. &nbsp;Para participar en ciertos Productos, es posible que deba aceptar t&eacute;rminos y condiciones adicionales; &nbsp;esos t&eacute;rminos adicionales se incorporan a estos T&eacute;rminos. &nbsp;Cuando dichos t&eacute;rminos sean inconsistentes con estos T&eacute;rminos, prevalecer&aacute;n los t&eacute;rminos adicionales.<br />(b) Verifique que los detalles en estos T&eacute;rminos y en el Pedido est&eacute;n completos y sean precisos antes de usar o comprometerse a comprar los Productos. &nbsp;Si cree que hay un error, aseg&uacute;rese de pedirnos que confirmemos cualquier cambio por escrito, ya que solo aceptamos la responsabilidad de las declaraciones y representaciones hechas por escrito por un funcionario de Tranqui.<br />(c) COMO PARTE DELUSO DE LOS PRODUCTOS, USTED ACEPTA AFIRMATIVAMENTE AL PROCESAMIENTO Y ALMACENAMIENTO DE SU INFORMACI&Oacute;N PERSONAL EN LA ARGENTINA, INCLUYENDO EL PROCESAMIENTO Y ALMACENAMIENTO DE SU INFORMACI&Oacute;N PERSONAL EN LA ARGENTINA PARA PROP&Oacute;SITOS DE PROCESAMIENTO DE PAGOS Y SEGUIMIENTO DEL USO INDIVIDUAL DE LOS PRODUCTOS. &nbsp;<br />1.3 CAMBIOS DE LOS T&Eacute;RMINOS<br />TRANQUI se reserva el derecho de cambiar o actualizar estos T&eacute;rminos, o cualquier otra de nuestras pol&iacute;ticas o pr&aacute;cticas, en cualquier momento, y notificar&aacute; a los usuarios publicando dichos T&eacute;rminos modificados o actualizados en esta p&aacute;gina. &nbsp;Cualquier cambio o actualizaci&oacute;n entrar&aacute; en vigencia inmediatamente despu&eacute;s de su publicaci&oacute;n en <a href="www.tranquiapp.net" aria-invalid="true">www.tranquiapp.net</a>. &nbsp;El uso continuado de los Productos constituye su aceptaci&oacute;n de cumplir con los T&eacute;rminos modificados. &nbsp;En determinadas circunstancias, tambi&eacute;n podemos optar por notificarle sobre cambios o actualizaciones de nuestros T&eacute;rminos por medios adicionales, como ventanas emergentes o notificaciones autom&aacute;ticas dentro de los Productos o correo electr&oacute;nico.</p>
-							<p>2. MEMBRES&Iacute;AS Y SUSCRIPCIONES<br />2.1 CONVERTIRSE EN MIEMBRO<br />(a) Puede registrarse como usuario registrado de los Productos de forma gratuita (un "Miembro"). &nbsp;Para convertirse en Miembro, debe ir a la secci&oacute;n correspondiente de los Productos, luego enviarnos su direcci&oacute;n de correo electr&oacute;nico y crear una contrase&ntilde;a para usar junto con esa direcci&oacute;n de correo electr&oacute;nico. &nbsp;Usted es responsable de mantener la confidencialidad de su cuenta y contrase&ntilde;a y de restringir el acceso a su Dispositivo.<br />(b) En el curso de su uso de los Productos, es posible que se le solicite que nos proporcione cierta informaci&oacute;n personalizada (en adelante, dicha informaci&oacute;n se denominar&aacute; "Informaci&oacute;n del usuario"). &nbsp;Esta informaci&oacute;n del usuario puede incluir informaci&oacute;n de su Facebook y perfiles de redes sociales similares. &nbsp;Nuestras pol&iacute;ticas de recopilaci&oacute;n y uso de informaci&oacute;n con respecto a la privacidad de dicha Informaci&oacute;n del usuario se establecen en la Pol&iacute;tica de privacidad de Tranqui. &nbsp;Usted reconoce y acepta que es el &uacute;nico responsable de la precisi&oacute;n y el contenido de la Informaci&oacute;n del usuario, y acepta mantenerla actualizada.<br />(c) Al realizar un Pedido a trav&eacute;s de los Productos, usted garantiza que:<br />(i) Usted es legalmente capaz de generar contratos vinculantes; &nbsp;(ii) Toda la informaci&oacute;n de registro que env&iacute;e es veraz y precisa; &nbsp;(iii) Mantendr&aacute; la precisi&oacute;n de dicha informaci&oacute;n; &nbsp;y (iv) Su uso de los Productos no viola ninguna ley o regulaci&oacute;n aplicable.<br />2.2 UNA VEZ UN MIEMBRO<br />Usted es responsable de mantener la confidencialidad de su cuenta, contrase&ntilde;a y otra informaci&oacute;n del usuario y de restringir el acceso a su dispositivo para ayudar a proteger dicha informaci&oacute;n. &nbsp;Usted es responsable de actualizar su informaci&oacute;n de usuario.<br />2.3 USO DE TRANQUI POR MENORES<br />Debe tener 18 a&ntilde;os de edad, o la mayor&iacute;a de edad en su provincia, territorio o pa&iacute;s, para registrarse como usuario registrado de los Productos. &nbsp;Las personas menores de 18 a&ntilde;os, o la mayor&iacute;a de edad aplicable, pueden utilizar los Productos solo con la participaci&oacute;n y el consentimiento de un padre o tutor legal, bajo la cuenta de dicha persona y sujeto a estos T&eacute;rminos.<br />2.4 MEMBRES&Iacute;A<br />Como miembro de Tranqui, recibir&aacute; acceso a ciertas secciones, caracter&iacute;sticas y funciones de los productos que no est&aacute;n disponibles para los no miembros.<br />Al aceptar convertirse en miembro, opta por recibir ocasionalmente ofertas especiales, marketing, encuestas y correos electr&oacute;nicos de comunicaci&oacute;n basados en productos. &nbsp;Puede darse de baja f&aacute;cilmente de los correos electr&oacute;nicos comerciales de Tranqui siguiendo las instrucciones de desuscripci&oacute;n a estos correos electr&oacute;nicos. &nbsp;Las suscripciones y membres&iacute;as de Tranqui no son transferibles y, por lo tanto, no pueden venderse, intercambiarse ni transferirse de ninguna manera.<br />2.5 SUSCRIPCIONES<br />(a) Los titulares de cuentas de Tranqui pueden acceder a los Productos de dos maneras:<br />(i) Prueba gratuita "B&aacute;sica": un programa gratuito que brinda acceso ilimitado a diez d&iacute;as de nuestro "Curso Esenciales".<br />(ii) Suscripci&oacute;n paga: un programa de suscripci&oacute;n basado en tarifas, que brinda acceso a todo el contenido, incluida la Prueba gratuita "Esenciales" y m&aacute;s all&aacute; de ella. &nbsp;Solo tendr&aacute; acceso al Programa de suscripci&oacute;n mientras su suscripci&oacute;n est&eacute; activa y subsistente. &nbsp;Puede tener acceso a un per&iacute;odo de prueba gratuito del Programa de suscripci&oacute;n de acuerdo con ciertas ofertas promocionales. &nbsp;Todos los servicios de suscripci&oacute;n proporcionan acceso a trav&eacute;s de los Productos. &nbsp;Puede suscribirse al Programa de Suscripci&oacute;n comprando una suscripci&oacute;n a los Productos desde el Sitio web, dentro de las Aplicaciones, donde lo permitan los socios del mercado de la Aplicaci&oacute;n, o mediante un paquete con uno o m&aacute;s de nuestros socios de suscripci&oacute;n. &nbsp;Tenga en cuenta que si compra una suscripci&oacute;n a trav&eacute;s de Apple iTunes Store o nuestra aplicaci&oacute;n para iPhone, la venta es final y no le proporcionaremos un reembolso. &nbsp;Su compra estar&aacute; sujeta a la pol&iacute;tica de pago aplicable de Apple, que tambi&eacute;n puede no proporcionar reembolsos. &nbsp;Si compra una suscripci&oacute;n a trav&eacute;s de la tienda Google Play, la venta es final y no le devolveremos el dinero. &nbsp;Su compra estar&aacute; sujeta a la pol&iacute;tica de pago aplicable de Google, que tambi&eacute;n puede no proporcionar reembolsos. &nbsp;Si compra a trav&eacute;s de uno o m&aacute;s de nuestros socios de suscripci&oacute;n de paquete, la compra puede estar sujeta a los T&eacute;rminos y Condiciones de dichos socios, y el pago y la administraci&oacute;n de la suscripci&oacute;n de paquete pueden ser administrados por ellos.<br />(b) Tranqui ofrece opciones de suscripci&oacute;n mensual y anual. &nbsp;A los fines de nuestras suscripciones mensuales y anuales, un mes constituye 30 d&iacute;as calendario y un a&ntilde;o constituye 365 d&iacute;as calendario. &nbsp;<br />(c) Nuestra suscripci&oacute;n "mensual" se paga en cuotas mensuales. &nbsp;Por cada mes que su suscripci&oacute;n mensual est&eacute; activa, usted reconoce y acepta que Tranqui est&aacute; autorizado a cobrar la misma tarjeta de cr&eacute;dito que se utiliz&oacute; para la tarifa de suscripci&oacute;n inicial u otro m&eacute;todo de pago como se establece en la secci&oacute;n 2.5 (h) (el "M&eacute;todo de pago"). &nbsp;Las tarifas de suscripci&oacute;n de renovaci&oacute;n mensual se seguir&aacute;n facturando al M&eacute;todo de pago que proporcion&oacute;, autom&aacute;ticamente hasta que se cancele. &nbsp;Debe cancelar su suscripci&oacute;n antes de que se renueve cada mes para evitar la facturaci&oacute;n de la tarifa de suscripci&oacute;n del pr&oacute;ximo mes al M&eacute;todo de pago que proporcion&oacute;. &nbsp;No se pueden reclamar reembolsos por ning&uacute;n per&iacute;odo de suscripci&oacute;n de mes parcial.<br />(d) Nuestra suscripci&oacute;n &ldquo;Anual&rdquo; &nbsp;se paga mediante un pago &uacute;nico por adelantado con renovaciones anuales autom&aacute;ticas. &nbsp;Usted reconoce y acepta que Tranqui est&aacute; autorizado a cobrar el M&eacute;todo de pago utilizado para (i) la tarifa de suscripci&oacute;n anual inicial a la tasa asegurada en el momento de la compra, y (ii) la (s) tarifa (s) de suscripci&oacute;n de renovaci&oacute;n sin descuento. &nbsp;Debe cancelar su suscripci&oacute;n antes de que se renueve para evitar la facturaci&oacute;n de la tarifa de suscripci&oacute;n de renovaci&oacute;n al M&eacute;todo de pago que proporcion&oacute;. &nbsp;No se pueden reclamar reembolsos por ning&uacute;n per&iacute;odo de suscripci&oacute;n parcial.<br />(e) Usted acepta notificar de inmediato a Tranqui sobre cualquier cambio en el M&eacute;todo de pago que proporcion&oacute; mientras las suscripciones permanecen pendientes. &nbsp;Usted es responsable de todas las tarifas y cargos aplicables incurridos, incluidos los impuestos aplicables, y todas las suscripciones compradas por usted.<br />(f) En el curso de su uso de los Productos, Tranqui y su proveedor de servicios de pago externo pueden recibir e implementar informaci&oacute;n actualizada de la tarjeta de cr&eacute;dito del emisor de su tarjeta de cr&eacute;dito para evitar que su suscripci&oacute;n sea interrumpida por una tarjeta obsoleta o inv&aacute;lida. &nbsp;Este desembolso de la informaci&oacute;n actualizada de la tarjeta de cr&eacute;dito se proporciona a Tranqui y al proveedor de servicios de pago externo de Tranqui a elecci&oacute;n exclusiva del emisor de su tarjeta de cr&eacute;dito. &nbsp;El emisor de su tarjeta de cr&eacute;dito puede otorgarle el derecho de optar por no recibir el servicio de actualizaci&oacute;n. &nbsp;Si desea hacerlo, comun&iacute;quese con el emisor de su tarjeta de cr&eacute;dito.<br />(g) Nuestra obligaci&oacute;n de proporcionar los Productos solo se produce cuando recibimos su Pedido y le confirmamos su compra por correo electr&oacute;nico. &nbsp;Confirmaremos su pedido y le enviaremos un correo electr&oacute;nico para confirmar su acceso a la suscripci&oacute;n comprada. &nbsp;Indique el n&uacute;mero de pedido en toda la correspondencia posterior que tenga con nosotros. &nbsp;Los precios en d&oacute;lares estadounidenses incluyen impuestos locales. Usted acepta no responsabilizarnos de los cargos bancarios incurridos debido a los pagos en su cuenta. &nbsp;Si no recibimos el pago del M&eacute;todo de pago que proporcion&oacute;, usted acepta pagar todos los montos adeudados a solicitud nuestra. &nbsp;Usted acepta que no tiene permitido revender ning&uacute;n Producto comprado a trav&eacute;s de Tranqui con fines comerciales.&nbsp;<br />2.6 REQUISITOS DEL DISPOSITIVO<br />Para disfrutar de Tranqui a trav&eacute;s de su tel&eacute;fono inteligente u otro dispositivo, su dispositivo debe cumplir ciertos requisitos del sistema. &nbsp;Estos requisitos se pueden encontrar en el sitio web y en los mercados de aplicaciones de Google y Apple.&nbsp;<br />2.7 COMUNIDADES CORPORATIVAS Y DE OTRO CONSUMIDOR<br />Si bien Tranqui es una compa&ntilde;&iacute;a de productos de consumo, las grandes comunidades de consumidores (corporaciones, universidades, hospitales, etc.) est&aacute;n cada vez m&aacute;s interesados ("Comunidades") en presentar los Productos a sus empleados y miembros. &nbsp;En algunos casos, estas Comunidades pueden complementar estos T&eacute;rminos con sus propios t&eacute;rminos y condiciones. &nbsp;En tal caso, estos t&eacute;rminos y condiciones de la Comunidad tambi&eacute;n se aplicar&aacute;n a su uso de los Productos. &nbsp;En caso de conflicto con dichos t&eacute;rminos adicionales y estos T&eacute;rminos, estos T&eacute;rminos prevalecer&aacute;n.<br />2.8 CAMBIO DE HONORARIOS Y CARGOS<br />Nos reservamos el derecho de cambiar nuestros planes de suscripci&oacute;n o ajustar los precios de nuestro servicio o cualquier componente del mismo de cualquier manera y en cualquier momento, seg&uacute;n lo determinemos a nuestro exclusivo y absoluto criterio. &nbsp;Salvo que se indique expresamente lo contrario en estos T&eacute;rminos, cualquier cambio de precio o cambio en su plan de suscripci&oacute;n entrar&aacute; en vigencia luego de la notificaci&oacute;n.</p>
-							<p>3. CANCELACI&Oacute;N DE SERVICIOS<br />3.1 CANCELACI&Oacute;N POR USTED<br />(a) Puede cancelar una suscripci&oacute;n mensual en cualquier momento. &nbsp;La cancelaci&oacute;n es efectiva al final del per&iacute;odo mensual aplicable. &nbsp;Haga dicha cancelaci&oacute;n visitando aqu&iacute; o enviando un correo electr&oacute;nico a info@tranquiapp.net.<br />(b) Puede cancelar nuestros planes de suscripci&oacute;n anual dentro de la oferta de garant&iacute;a de devoluci&oacute;n de dinero de 30 d&iacute;as, que le da derecho a cancelar su suscripci&oacute;n y que se le reembolse el costo total hasta 30 d&iacute;as calendario desde su primera fecha de pago, antes del &nbsp;enviando un correo electr&oacute;nico a info@tranquiapp.net. &nbsp;Tiene derecho a un solo reembolso. &nbsp;Despu&eacute;s de su reembolso, cualquier suscripci&oacute;n futura ya no calificar&aacute; para la garant&iacute;a de devoluci&oacute;n de dinero de 30 d&iacute;as. &nbsp;<br />(c) Tenga en cuenta que si compra una suscripci&oacute;n a trav&eacute;s de Apple iTunes Store o nuestra aplicaci&oacute;n para iPhone, puede cancelar su suscripci&oacute;n cancelando la renovaci&oacute;n autom&aacute;tica de suscripciones de aplicaciones pagas seleccionando Administrar suscripciones de aplicaciones en la configuraci&oacute;n de su cuenta de iTunes y seleccionando la suscripci&oacute;n que usted &nbsp;quiere modificar. &nbsp;Si compra una suscripci&oacute;n a trav&eacute;s de la tienda Google Play, puede cancelar las renovaciones autom&aacute;ticas en la configuraci&oacute;n de la cuenta en Suscripciones en la aplicaci&oacute;n Google Play, o de acuerdo con el proceso actual descrito por Google Play.<br />3.2 CANCELACI&Oacute;N POR NOSOTROS&nbsp;<br />Podemos suspender o finalizar su uso de los Productos como resultado de su fraude o incumplimiento de cualquier obligaci&oacute;n bajo estos T&eacute;rminos. &nbsp;Dicha terminaci&oacute;n o suspensi&oacute;n puede ser inmediata y sin previo aviso. &nbsp;El incumplimiento de estos T&eacute;rminos incluye, entre otros, la copia o descarga no autorizada de nuestro contenido de audio o video de los Productos.<br />3.3 C&Oacute;DIGOS DE PROMOCI&Oacute;N Y DESCUENTO<br />Cualquier c&oacute;digo u oferta de promoci&oacute;n (incluidas las Opciones de precios de descuento especiales) que proporcionemos no se puede utilizar junto con ning&uacute;n otro c&oacute;digo u oferta de promoci&oacute;n, pasada o presente. &nbsp;Las ofertas introductorias solo est&aacute;n disponibles para los nuevos usuarios de los Productos, excepto donde se indique expresamente lo contrario. &nbsp;Los usuarios anteriores o usuarios de prueba de los Productos no califican como nuevos usuarios. &nbsp;No se aplicar&aacute; ning&uacute;n c&oacute;digo de promoci&oacute;n o descuento a las suscripciones corporativas u otras suscripciones de la Comunidad. &nbsp;A menos que se establezca lo contrario en los t&eacute;rminos de cualquier promoci&oacute;n, todas las promociones de precios o descuentos se aplicar&aacute;n al per&iacute;odo inicial de la suscripci&oacute;n, y las renovaciones se cobrar&aacute;n a la tarifa sin descuento para el tipo de suscripci&oacute;n comprada.</p>
-							<p>4. USO PROHIBIDO DE LOS PRODUCTOS<br />4.1 Usted acepta no cargar, publicar, enviar por correo electr&oacute;nico o enviar o transmitir o introducir cualquier material que contenga virus de software o cualquier otro c&oacute;digo de computadora, archivos o programas dise&ntilde;ados para interrumpir, da&ntilde;ar, destruir o limitar la funcionalidad de cualquier software de computadora o &nbsp;hardware o equipo vinculado directa o indirectamente con los Productos o los Productos mismos. &nbsp;Usted acepta no interferir con los servidores o redes subyacentes o conectados a los Productos o violar cualquiera de los procedimientos, pol&iacute;ticas o regulaciones de las redes conectadas a los Productos. &nbsp;No puede acceder a los Productos de manera no autorizada.<br />4.2 Usted acepta no hacerse pasar por otra persona mientras usa los Productos, comportarse de manera ofensiva mientras usa los Productos, o usar los Productos para cualquier prop&oacute;sito ilegal, inmoral o da&ntilde;ino.<br />4.3 Al incumplir las disposiciones de esta secci&oacute;n 4, puede cometer un delito penal en virtud de las leyes aplicables. &nbsp;Podemos informar cualquier incumplimiento de este tipo a las autoridades policiales pertinentes y podemos cooperar con esas autoridades divulg&aacute;ndoles su identidad. &nbsp;En caso de tal incumplimiento, su derecho a usar los Productos cesar&aacute; de inmediato.<br />4.4 Usted acepta no usar los Productos para ning&uacute;n prop&oacute;sito relacionado con la investigaci&oacute;n cient&iacute;fica, an&aacute;lisis o evaluaci&oacute;n de los Productos sin el consentimiento expreso por escrito de Tranqui</p>
-							<p>5. MATERIALES OFRECIDOS A TRAV&Eacute;S DE LOS PRODUCTOS<br />5.1 PROPIEDAD INTELECTUAL<br />(a) Todos los materiales (incluido el software y el contenido descargado o no) contenidos en los Productos son propiedad de Tranqui, a menos que se indique lo contrario. &nbsp;Usted acepta y reconoce que los materiales son propiedad valiosa y que, aparte de cualquier licencia espec&iacute;fica y limitada para el uso de dichos materiales, no adquirir&aacute; ning&uacute;n derecho de propiedad sobre dichos materiales. &nbsp;Los materiales no se pueden usar, excepto seg&uacute;n lo dispuesto en estos T&eacute;rminos y cualquier otro t&eacute;rmino y condici&oacute;n relevante que se le proporcione sin nuestro permiso previo por escrito.<br />(b) Usted reconoce y acepta que ciertos materiales en los Productos son propiedad de terceros licenciantes .<br />(c) El contenido de audio o video de Tranqui no indicado expl&iacute;citamente como descargable no se puede descargar ni copiar de los Productos o cualquier Dispositivo.<br />(d) Los Productos no est&aacute;n destinados a su uso comercial. &nbsp;Los avisos comerciales, los enlaces de afiliados y otras formas de solicitud pueden ser eliminados por nosotros sin previo aviso y pueden dar lugar a la terminaci&oacute;n de los privilegios. &nbsp;No debe utilizar ninguna parte de los materiales utilizados en los Productos con fines comerciales sin obtener una licencia por escrito de nuestra parte. &nbsp;El material de los Productos no puede copiarse, distribuirse, republicarse o transmitirse de ninguna manera sin nuestro consentimiento previo por escrito. &nbsp;Cualquier uso no autorizado o violaci&oacute;n de estos T&eacute;rminos termina de forma inmediata y autom&aacute;tica su derecho a usar los Productos y puede estar sujeto a responsabilidad legal. &nbsp;Usted acepta no utilizar los Productos para fines ilegales (incluidos, entre otros, ilegales, acosadores, difamatorios, la invasi&oacute;n de la privacidad de otros, con fines abusivos, amenazantes u obscenos) y acepta que cumplir&aacute; con todas las leyes, normas y reglamentos relacionados con &nbsp;Su uso de los Productos. &nbsp;Se pueden tomar acciones legales apropiadas por cualquier uso ilegal o no autorizado de los Productos.<br />(e) Se puede marcar y autorizar una cantidad limitada de contenido para que el usuario comparta en sus canales sociales personales (Facebook, Twitter, etc.). &nbsp;Con respecto al contenido puesto a disposici&oacute;n por Tranqui a trav&eacute;s de los Productos que se identifica espec&iacute;ficamente como disponible para su distribuci&oacute;n ("Contenido de distribuci&oacute;n") como parte de su blog u otro comentario, an&aacute;lisis o revisi&oacute;n en l&iacute;nea ("Comentario del usuario"), Tranqui le otorga un derecho limitado a descargar, reproducir y distribuir Contenido de distribuci&oacute;n a trav&eacute;s de Internet como parte de su Comentario de usuario. &nbsp;Tambi&eacute;n puede modificar dicho Contenido de distribuci&oacute;n, pero s&oacute;lo seg&uacute;n sea necesario para permitir t&eacute;cnicamente la visualizaci&oacute;n y distribuci&oacute;n de dicho contenido a trav&eacute;s de sus sistemas inform&aacute;ticos y a trav&eacute;s de Internet (por ejemplo, un cambio en el formato de video o el tama&ntilde;o del archivo) siempre que dicha modificaci&oacute;n no altere materialmente la sustancia o &nbsp;calidad de dicho contenido. &nbsp;Su exhibici&oacute;n y distribuci&oacute;n de Contenido de distribuci&oacute;n tambi&eacute;n puede estar sujeta a otros t&eacute;rminos y condiciones que se establecen en la descripci&oacute;n de dicho contenido en los Productos, como la exhibici&oacute;n y distribuci&oacute;n de Contenido de distribuci&oacute;n solo dentro de las fechas de uso especificadas. &nbsp;Usted acepta no publicar el Contenido de distribuci&oacute;n con otro contenido que usted sepa que es falso, inexacto o enga&ntilde;oso, o que fomente actividades o conductas ilegales, da&ntilde;inas, amenazantes, abusivas, acosadoras, tortuosas, difamatorias, vulgar, obsceno, pornogr&aacute;fico, calumnioso, invasivo de la privacidad de otra persona, odioso o racial, &eacute;tnico o de otra manera objetable. &nbsp;El contenido de distribuci&oacute;n puede contener rastreadores que nos permiten recopilar informaci&oacute;n con respecto a la distribuci&oacute;n y el consumo de dicho contenido.<br />(f) De lo contrario, no puede descargar, mostrar, copiar, reproducir, distribuir, modificar, realizar, transferir, crear trabajos derivados, vender o explotar de otro modo ning&uacute;n contenido, c&oacute;digo, datos o materiales en los Productos. &nbsp;Si hace otro uso de los Productos, o el contenido, el c&oacute;digo, los datos o los materiales de los mismos, a excepci&oacute;n de lo dispuesto anteriormente, puede violar los derechos de autor y otras leyes de Argentina, otros pa&iacute;ses, as&iacute; como las leyes estatales aplicables y puede ser sujeto a responsabilidad por dicho uso no autorizado. Tranqui har&aacute; cumplir sus derechos de propiedad intelectual en toda la extensi&oacute;n de la ley, incluida la b&uacute;squeda de enjuiciamiento penal.<br />5.2 MARCA REGISTRADA.&nbsp;<br />Tranqui&reg;, el logotipo de Tranqui todas las dem&aacute;s marcas de productos o servicios de Tranqui son marcas comerciales de Tranqui. &nbsp;Toda la propiedad intelectual, otras marcas comerciales, logotipos, im&aacute;genes, nombres de productos y compa&ntilde;&iacute;as que se muestran o se mencionan en los Productos son propiedad de sus respectivos due&ntilde;os. &nbsp;Nada le otorga ninguna licencia o derecho de usar, alterar o eliminar o copiar dicho material. &nbsp;El uso indebido de las marcas comerciales que se muestran en los Productos est&aacute; estrictamente prohibido. &nbsp;Tranqui har&aacute; cumplir sus derechos de marca registrada en toda la extensi&oacute;n de la ley, incluida la b&uacute;squeda de enjuiciamiento penal.<br />6. DISPONIBILIDAD DE PRODUCTOS<br />6.1 Aunque nuestro objetivo es ofrecerle el mejor servicio posible, no prometemos que los Productos cumplir&aacute;n con sus requisitos y no podemos garantizar que los Productos estar&aacute;n libres de fallas. &nbsp;Si ocurre una falla en los Productos, inf&oacute;rmenos a info@tranquiapp.net y revisaremos su queja y, cuando determinemos que es apropiado hacerlo, corregiremos la falla. &nbsp;Si surge la necesidad, podemos suspender el acceso a los Productos mientras solucionamos la falla. &nbsp;No seremos responsables ante usted si los Productos no est&aacute;n disponibles por un per&iacute;odo de tiempo comercialmente razonable.<br />6.2 Su acceso a los Productos puede estar restringido ocasionalmente para permitir reparaciones, mantenimiento o la introducci&oacute;n de nuevas instalaciones o Productos. &nbsp;Restauraremos los Productos tan pronto como sea razonablemente posible. &nbsp; En el caso de que los Productos no est&eacute;n disponibles, se aplican nuestros plazos habituales de Pedido y cancelaci&oacute;n; &nbsp;notif&iacute;quenos los cambios en su pedido enviando un correo electr&oacute;nico a help@Tranqui.com.</p>
-							<p>7. MATERIAL DEL USUARIO<br />7.1 Los Productos pueden permitirle que nos env&iacute;e material: por ejemplo, puede subir una foto a su perfil, publicar temas y comentarios en la comunidad y comentar varios asuntos en varias partes de los Productos. &nbsp;Es posible que pueda cargar videos, im&aacute;genes o sonidos. &nbsp;En estos T&eacute;rminos, usamos el t&eacute;rmino "Material del usuario" para referirnos a cualquier material disponible al p&uacute;blico de cualquier tipo que nos env&iacute;e, incluidos textos, archivos, im&aacute;genes, fotos, videos, sonidos y obras musicales o literarias. &nbsp;El material del usuario no incluye la informaci&oacute;n de la cuenta, la compra del producto o la informaci&oacute;n de uso del producto que usted proporciona al registrarse y utilizar los productos.<br />7.2 Esta secci&oacute;n 7 establece los derechos y obligaciones que cada uno de nosotros tenemos en relaci&oacute;n con el Material del usuario. &nbsp;Si revisa o env&iacute;a el Material del usuario, acepta hacerlo de acuerdo con estos T&eacute;rminos. &nbsp;Si no desea revisar o enviar el Material del usuario de acuerdo con estos T&eacute;rminos, no debe hacerlo.<br />7.3 No revisamos sistem&aacute;ticamente el material del usuario enviado por usted u otros usuarios. No somos responsables del contenido del material del usuario proporcionado por usted o cualquier otro usuario. &nbsp;No necesariamente respaldamos ninguna opini&oacute;n contenida en dicho material. &nbsp;No ofrecemos garant&iacute;as ni representaciones, expresas o impl&iacute;citas, sobre el material del usuario, incluso en cuanto a su legalidad o precisi&oacute;n.<br />7.4 Nos reservamos el derecho, a nuestro exclusivo criterio, de negarnos a publicar o eliminar o editar cualquiera de sus Materiales de usuario, o restringir, suspender o finalizar su acceso a todos o parte de los Productos, particularmente cuando el Material de usuario viola &nbsp;esta secci&oacute;n 7, y podemos hacerlo con o sin previo aviso.<br />7.5 Podemos vincular el Material del usuario o partes del Material del usuario a otro material, incluido el material enviado por otros usuarios o creado por Tranqui u otros terceros. &nbsp;Podemos utilizar el Material del usuario para nuestros fines comerciales internos, por ejemplo, para examinar tendencias o categor&iacute;as o para promocionar, comercializar o publicitar Tranqui. &nbsp;Usted reconoce que podemos beneficiarnos indirectamente comercialmente del uso de su Material de usuario.<br />7.6 Cada vez que nos env&iacute;a material de usuario, nos declara y garantiza de la siguiente manera:<br />(a) Usted es propietario de su Material de usuario o tiene derecho a enviarlo, y al enviarlo no violar&aacute; ning&uacute;n derecho de terceros, incluidos los derechos de propiedad intelectual (como derechos de autor o marca comercial), privacidad o publicidad, &nbsp;derechos de confidencialidad o derechos bajo contrato.<br />(b) Su material de usuario no es ilegal, obsceno, difamatorio, amenazante, pornogr&aacute;fico, acosador, odioso, racial o &eacute;tnicamente ofensivo, y no fomenta conductas que se considerar&iacute;an un delito penal, y no da lugar a responsabilidad civil, viola &nbsp;cualquier ley, o de lo contrario se considera inapropiado.<br />(c) Su material de usuario no anuncia ning&uacute;n producto o servicio ni solicita ning&uacute;n negocio.<br />(d) Su Material de usuario no identifica a ninguna persona (incluido por medio de nombre o nombre, direcci&oacute;n o una imagen fija o video) menor de 18 a&ntilde;os y si el Material de usuario identifica a cualquier persona mayor de 18 a&ntilde;os, usted tiene el consentimiento de esa persona para &nbsp;ser identificado exactamente de esa manera en su Material de usuario; y al enviar su Material de usuario, no se hace pasar por otra persona.<br />(e) No recopilar&aacute; las direcciones de correo electr&oacute;nico de los usuarios con el fin de enviar correos electr&oacute;nicos no solicitados.<br />(f) No participar&aacute; en actividades criminales o tortuosas, incluyendo fraude, env&iacute;o de correo no deseado, fraude, env&iacute;o de virus u otros archivos da&ntilde;inos, infracci&oacute;n de derechos de autor, infracci&oacute;n de patentes o robo de secretos comerciales, o intentar&aacute; hacerse pasar por otro usuario o persona.<br />(g) No participar&aacute; en ning&uacute;n uso automatizado del sistema, como el uso de scripts para alterar nuestro contenido.<br />(h) No podr&aacute;, sin autorizaci&oacute;n, acceder, manipular o utilizar &aacute;reas no p&uacute;blicas de los Productos, los sistemas inform&aacute;ticos de Tranqui o los sistemas de entrega t&eacute;cnica de los proveedores de Tranqui.<br />(i) Excepto cuando sea necesario para mantener su propia seguridad inform&aacute;tica mediante el uso de productos antivirus o antimalware comerciales, no intentar&aacute; probar, escanear o probar la vulnerabilidad de los Productos o cualquier otro &nbsp;Sistema o red de espacio de cabeza o infringe cualquier medida de seguridad o autenticaci&oacute;n.<br />7.7 Tenemos derecho a identificarlo ante terceros que afirman que sus derechos han sido infringidos por el Material del usuario que ha enviado.<br />7.8 El material del usuario no se considera confidencial. &nbsp;Usted acepta no enviar ning&uacute;n contenido como Material de usuario en el que tenga expectativas de privacidad. &nbsp;No reclamamos ning&uacute;n derecho de propiedad sobre el Material del usuario. &nbsp;Sin embargo, al enviar el Material del usuario, usted otorga a Tranqui una licencia mundial irrevocable, perpetua, no exclusiva, libre de regal&iacute;as para usar, transmitir, copiar, realizar, mostrar, editar, distribuir y explotar el Material del usuario que publica en los Productos, &nbsp;o cualquier parte de los mismos, y cualquier idea, concepto o saber c&oacute;mo est&aacute; contenido en ellos, con o sin atribuci&oacute;n, y sin el requisito de ning&uacute;n permiso o pago para usted o para cualquier otra persona o entidad, de cualquier manera (incluyendo, sin limitaci&oacute;n, para fines comerciales, publicitarios, comerciales, promocionales o publicitarios) y en cualquiera y todos los medios conocidos ahora o desarrollados en el futuro, y para preparar trabajos derivados de, o incorporar a otros trabajos, dicho Material de usuario, y para otorgar y autorizar sublicencias de lo anterior sin ning&uacute;n pago de dinero o cualquier otra forma de consideraci&oacute;n para usted o un tercero. &nbsp;Tranqui puede incluir su Material de usuario en el Contenido de distribuci&oacute;n de Tranqui que se pone a disposici&oacute;n de otros a trav&eacute;s de los Productos. &nbsp;Tenga en cuenta que Tranqui no tiene control sobre el Material del usuario una vez que abandona los Productos, y es posible que otros puedan duplicar el material que se encuentra en los Productos, incluidos, entre otros, otros sitios en Internet. &nbsp;Usted declara y garantiza que posee o controla los derechos de su Material de usuario. &nbsp;Usted acepta indemnizar a Tranqui y sus afiliados por todos los reclamos que surjan de o en relaci&oacute;n con cualquier reclamo de cualquier derecho sobre su Material de usuario o cualquier da&ntilde;o que surja de su Material de usuario.<br />7.9 Cualquier consulta, comentario, sugerencia, idea u otra informaci&oacute;n que no sea parte de su uso de los Productos o el Material del usuario que nos proporcione (colectivamente, "Env&iacute;os") se tratar&aacute; como no patentado y no confidencial. &nbsp;Al transmitir, cargar, publicar, enviar por correo electr&oacute;nico o enviar a los Productos, usted otorga y declara y garantiza que tiene derecho a otorgar, a Tranqui, un derecho irrevocable, perpetuo, no exclusivo, libre de regal&iacute;as, en todo el mundo &nbsp;licencia para usar, transmitir, copiar, realizar, mostrar, editar, distribuir y explotar de cualquier otra forma las Presentaciones, o cualquier parte de las mismas, y cualquier idea, concepto o saber c&oacute;mo est&aacute;n contenidos, con o sin atribuci&oacute;n, y sin el requisito de ning&uacute;n permiso de o el pago a usted o a cualquier otra persona o entidad, de cualquier manera (incluidos, entre otros, con fines comerciales, publicitarios, comerciales, promocionales o publicitarios) y en cualquiera y todos los medios ahora conocidos o desarrollados en el futuro, y para preparar derivados &nbsp;obras de, o incorporar a otras obras, tales Env&iacute;os, y para otorgar y autorizar sublicencias de lo anterior sin ning&uacute;n pago de dinero o cualquier otra forma de consideraci&oacute;n para usted o un tercero. &nbsp;Tambi&eacute;n reconoce que sus Env&iacute;os no le ser&aacute;n devueltos y que Tranqui no tiene la obligaci&oacute;n de acusar recibo ni responder a ning&uacute;n Env&iacute;o. &nbsp;Si realiza una Presentaci&oacute;n, declara y garantiza que posee o controla los derechos de su Presentaci&oacute;n. &nbsp;Usted acepta indemnizar a Tranqui y sus afiliados por todos los reclamos que surjan de o en relaci&oacute;n con cualquier reclamo de derechos en cualquier Env&iacute;o o cualquier da&ntilde;o que surja de cualquier Env&iacute;o.</p>
-							<p>8. ENLACES A SITIOS WEB / P&Aacute;GINA DE INICIO<br />8.1 Podemos proporcionar enlaces a otros sitios web o servicios para que acceda. &nbsp;Usted reconoce que cualquier acceso es a su exclusivo criterio y solo para su informaci&oacute;n. &nbsp;No revisamos ni respaldamos ninguno de esos sitios web o servicios. &nbsp;No somos responsables de ninguna manera por: (a) la disponibilidad de, (b) las pr&aacute;cticas de privacidad de, (c) el contenido, publicidad, productos, bienes u otros materiales o recursos en o disponibles en, o (d) &nbsp;uso que otros hacen de estos otros sitios web o servicios. &nbsp;Tampoco somos responsables de ning&uacute;n da&ntilde;o, p&eacute;rdida u ofensa causada o presuntamente causada por, o en relaci&oacute;n con, el uso o la dependencia de dichos sitios web o servicios.<br />8.2 Puede vincular a nuestra p&aacute;gina de inicio, siempre que lo haga de una manera justa y legal y no da&ntilde;e nuestra reputaci&oacute;n ni se aproveche de ella, pero no debe establecer un enlace de tal manera que sugiera cualquier forma de &nbsp;asociaci&oacute;n, aprobaci&oacute;n o respaldo de nuestra parte donde no existe ninguno. &nbsp;No debe establecer un enlace desde ning&uacute;n sitio web que no sea de su propiedad. &nbsp;Los Productos no deben enmarcarse en ning&uacute;n otro sitio web, ni puede crear un enlace a ninguna parte de los Productos a menos que tenga un permiso por escrito para hacerlo desde Tranqui. &nbsp;Nos reservamos el derecho de retirar el permiso de enlace con un aviso por escrito. &nbsp;El sitio web desde el que se vincula debe cumplir en todos los aspectos con los est&aacute;ndares de contenido establecidos en nuestra pol&iacute;tica de uso aceptable. &nbsp;Si desea hacer uso de material en o en los Productos que no sea el establecido anteriormente, dirija su solicitud a info@tranquiapp.net.</p>
-							<p>9. DESCARGO DE RESPONSABILIDAD DE PRODUCTOS<br />La informaci&oacute;n contenida en los Productos es solo para fines de informaci&oacute;n general. &nbsp;Si bien nos esforzamos por mantener la informaci&oacute;n actualizada y correcta, no hacemos representaciones ni garant&iacute;as de ning&uacute;n tipo, expl&iacute;citas o impl&iacute;citas, sobre la integridad, precisi&oacute;n, fiabilidad, idoneidad o disponibilidad con respecto a los Productos o la informaci&oacute;n contenida en &nbsp;Los Productos para cualquier prop&oacute;sito. &nbsp;Por lo tanto, cualquier confianza que deposite en dicha informaci&oacute;n es estrictamente bajo su propio riesgo.</p>
-							<p>10. DESCARGO DE RESPONSABILIDAD M&Eacute;DICA<br />10.1 Tranqui es un proveedor de contenido de meditaci&oacute;n en l&iacute;nea y m&oacute;vil en el espacio de salud y bienestar. &nbsp;No somos un proveedor de dispositivos m&eacute;dicos o de atenci&oacute;n m&eacute;dica, ni nuestros productos deben considerarse consejos m&eacute;dicos. &nbsp;S&oacute;lo su m&eacute;dico u otro proveedor de atenci&oacute;n m&eacute;dica pueden hacer eso. &nbsp;Si bien existe evidencia de terceros de la investigaci&oacute;n de que la meditaci&oacute;n puede ayudar en el proceso de prevenci&oacute;n y recuperaci&oacute;n para una amplia gama de afecciones, as&iacute; como en la mejora de algunos problemas de rendimiento y relaci&oacute;n, Tranqui no hace afirmaciones, representaciones ni garant&iacute;as de que los Productos brinden un beneficio terap&eacute;utico.<br />10.2 Cualquier informaci&oacute;n de salud y enlaces en los Productos, ya sea proporcionada por Tranqui o por contrato de proveedores externos, se proporciona simplemente para informaci&oacute;n general sin que ello implique sugerencia o asesoramiento de ning&uacute;n tipo.<br />10.3 Cualquier consejo u otros materiales en los Productos est&aacute;n destinados &uacute;nicamente a fines de informaci&oacute;n general. &nbsp;No est&aacute;n destinados a ser confiables y no sustituyen el consejo m&eacute;dico profesional basado en su condici&oacute;n y circunstancias individuales. Los consejos y otros materiales que ponemos a disposici&oacute;n tienen el prop&oacute;sito de respaldar la relaci&oacute;n entre usted y sus proveedores de atenci&oacute;n m&eacute;dica y no reemplazarlos. &nbsp;No nos hacemos responsables de las consecuencias de que haya le&iacute;do o recibido informaci&oacute;n sobre dichos consejos u otros materiales, ya que asume la total responsabilidad de sus decisiones y acciones. &nbsp;En particular, en la mayor medida permitida por la ley, no hacemos ninguna representaci&oacute;n o garant&iacute;a sobre la precisi&oacute;n, integridad o idoneidad para cualquier prop&oacute;sito de los consejos, otros materiales e informaci&oacute;n publicados como parte de los Productos. Cualquier cuesti&oacute;n de car&aacute;cter m&eacute;dico debe ser consultada a un profesional m&eacute;dico habilitado. Por lo tanto, exhortamos a Ud. a que en cualquier caso, si Ud. tiene dudas o requiere asistencia y asesoramiento de un profesional m&eacute;dico, dirija su consulta a uno toda vez que la informaci&oacute;n contenida en los Productos no lo reemplaza.</p>
-							<p>11. LICENCIA DE USUARIO FINAL<br />11.1 Sujeto a los t&eacute;rminos de este acuerdo de licencia ("Acuerdo de licencia"), como se establece en esta secci&oacute;n 11, y estos otros T&eacute;rminos, y su pago de las tarifas de suscripci&oacute;n aplicables, Tranqui le otorga una licencia limitada, no exclusiva y revocable para &nbsp;transmitir, descargar y hacer un uso personal no comercial de los Productos.<br />11.2 Los Productos contienen o incorporan material con derechos de autor, material patentado u otra propiedad intelectual de Tranqui o sus licenciantes. &nbsp;Todos los derechos, t&iacute;tulos y propiedad de los Productos permanecen en Tranqui o sus licenciantes, seg&uacute;n corresponda. &nbsp;Los derechos para descargar y usar los Productos se le otorgan bajo licencia y no se le venden a usted, y no tiene ning&uacute;n derecho sobre ellos que no sea usarlos de acuerdo con este Acuerdo de licencia y nuestros otros T&eacute;rminos.<br />11.3 Usted acepta que no lo har&aacute; y que no ayudar&aacute; ni permitir&aacute; que ning&uacute;n tercero:<br />(a) Copiar, almacenar, reproducir, transmitir, modificar, alterar, aplicar ingenier&iacute;a inversa, emular, descompilar o desensamblar los Productos de cualquier manera, o crear trabajos derivados de los Productos;<br />(b) Usar los Productos o cualquier parte de ellos para crear cualquier herramienta o producto de software que pueda usarse para crear aplicaciones de software de cualquier naturaleza;<br />(c) alquilar, arrendar, prestar, poner a disposici&oacute;n del p&uacute;blico, vender o distribuir los Productos en su totalidad o en parte;<br />(d) Alterar los Productos o eludir cualquier tecnolog&iacute;a utilizada por Tranqui o sus licenciantes para proteger cualquier contenido accesible a trav&eacute;s de los Productos;<br />(e) Evitar cualquier restricci&oacute;n territorial aplicada a los Productos; &nbsp;o<br />(f) Usar los Productos de una manera que viole este Acuerdo de licencia u otros T&eacute;rminos.<br />11.4 No puede poner los Productos a disposici&oacute;n del p&uacute;blico. &nbsp;Los Productos puestos a disposici&oacute;n (en su totalidad o en parte) son propiedad de Tranqui o sus licenciantes y su uso debe estar de acuerdo con estos T&eacute;rminos.</p>
-							<p>12. T&Eacute;RMINOS Y CONDICIONES GENERALES<br />12.1 CESI&Oacute;N POR NOSOTROS<br />Tranqui puede transferir sus derechos y obligaciones bajo estos T&eacute;rminos a cualquier compa&ntilde;&iacute;a, firma o persona en cualquier momento si no afecta materialmente sus derechos bajo el mismo. &nbsp;No puede transferir sus derechos u obligaciones bajo estos T&eacute;rminos a nadie m&aacute;s. &nbsp;Estos T&eacute;rminos son personales para usted y ning&uacute;n tercero tiene derecho a beneficiarse de estos T&eacute;rminos, excepto lo establecido aqu&iacute;.<br />12.2 INDEMNIZACI&Oacute;N&nbsp;<br />Usted acepta defender, indemnizar y eximir de responsabilidad a Tranqui y sus directores, funcionarios, miembros, inversores, gerentes, empleados y agentes de todos y cada uno de los reclamos, responsabilidades, costos y gastos, incluidos los honorarios razonables de abogados, que surjan en cualquier forma de su uso &nbsp;de los Productos, su ubicaci&oacute;n o transmisi&oacute;n de cualquier mensaje, contenido, informaci&oacute;n, software u otros env&iacute;os a trav&eacute;s de los Productos, o su incumplimiento o violaci&oacute;n de la ley o de estos T&eacute;rminos. &nbsp;Tranqui se reserva el derecho, a su propio costo, de asumir la defensa y el control exclusivos de cualquier asunto sujeto a indemnizaci&oacute;n por su parte, y en tal caso, usted acepta cooperar con Tranqui en defensa de dicha reclamaci&oacute;n.<br />12.3 GARANT&Iacute;AS Y LIMITACIONES<br />(a) Le garantizamos que cualquier Producto que nos haya comprado, en el momento de la entrega, se ajustar&aacute; en todos los aspectos materiales con su descripci&oacute;n y tendr&aacute; una calidad razonablemente satisfactoria.<br />(b) Garantizamos que utilizaremos habilidades y cuidados razonables para poner los Productos a su disposici&oacute;n durante su suscripci&oacute;n.<br />(c) Nada en esta secci&oacute;n 12.3 o de otra manera en estos T&eacute;rminos excluir&aacute; o limitar&aacute; de ninguna manera la responsabilidad de Tranqui por: fraude; &nbsp;muerte o lesiones personales causadas por negligencia; &nbsp;o responsabilidad en la medida en que la misma no pueda ser excluida o limitada como una cuesti&oacute;n de derecho.<br />(d) Los Productos y su contenido se proporcionan de otro modo "tal cual son" (&ldquo;as is&rdquo;) y no hacemos representaciones ni garant&iacute;as de ning&uacute;n tipo con respecto a ellos, incluso en cuanto a la precisi&oacute;n, integridad o vigencia de los Productos o su contenido. &nbsp;No asumimos ninguna responsabilidad u obligaci&oacute;n por errores u omisiones en el contenido de los Productos, ni por fallas, demoras o interrupciones en la provisi&oacute;n de los Productos. &nbsp;Negamos y excluimos cualquier garant&iacute;a o representaci&oacute;n expresa o impl&iacute;cita, incluida cualquier garant&iacute;a en cuanto a comerciabilidad o adecuaci&oacute;n para un prop&oacute;sito particular de los Productos en la medida m&aacute;s amplia permitida por la ley. &nbsp;No ofrecemos garant&iacute;as ni representaciones, expresas o impl&iacute;citas, en cuanto a la puntualidad, precisi&oacute;n, calidad, integridad o existencia del contenido y la informaci&oacute;n publicada en los Productos. &nbsp;No ofrecemos garant&iacute;as ni representaciones, expresas o impl&iacute;citas, de accesibilidad t&eacute;cnica, adecuaci&oacute;n o impecabilidad de los Productos. &nbsp;No garantizamos ni representamos que el uso del contenido y la informaci&oacute;n publicada en los Productos no infrinjan los derechos de terceros.<br />(e) Todas las condiciones, garant&iacute;as y otros t&eacute;rminos que pudieran estar impl&iacute;citos en el estatuto, el derecho consuetudinario o la ley de equidad est&aacute;n, en la medida permitida por la ley, excluidos.<br />12.4 SIN RENUNCIA<br />Si demoramos el ejercicio o no ejercemos o hacemos cumplir alg&uacute;n derecho disponible bajo estos T&eacute;rminos, dicho retraso o falla no constituye una renuncia a ese derecho ni a ning&uacute;n otro derecho bajo estos T&eacute;rminos.<br />12.5 FUERZA MAYOR<br />No seremos responsables ante usted por la falta de rendimiento, o la falta de disponibilidad o falla de los Productos, o por cualquier falla o retraso por nuestra parte para cumplir con estos T&eacute;rminos, cuando dicha falta, falta de disponibilidad o falla surja de cualquier causa m&aacute;s all&aacute; de nuestro &nbsp;control razonable<br />12.6 INTERPRETACI&Oacute;N<br />En estos T&eacute;rminos, a menos que el contexto requiera lo contrario: i) cualquier frase introducida por las palabras "incluyendo", "incluir", "en particular", "por ejemplo" o cualquier expresi&oacute;n similar se interpretar&aacute; como ilustrativa &uacute;nicamente y no se interpretar&aacute; &nbsp;como limitante de la generalidad de cualquier palabra precedente; &nbsp;y ii) las referencias al singular incluyen el plural y al masculino incluyen el femenino, y en cada caso viceversa.<br />12.7 COMUNICACIONES ELECTR&Oacute;NICAS<br />(a) Las leyes aplicables requieren que parte de la informaci&oacute;n o comunicaciones que le enviemos sean por escrito. &nbsp;Al usar los Productos, usted acepta realizar transacciones electr&oacute;nicas con nosotros, y esa comunicaci&oacute;n con nosotros ser&aacute; principalmente electr&oacute;nica. &nbsp;Nos pondremos en contacto con usted por correo electr&oacute;nico o le proporcionaremos informaci&oacute;n mediante la publicaci&oacute;n de avisos en los Productos. &nbsp;Usted acepta este medio de comunicaci&oacute;n electr&oacute;nico y reconoce que todos los contratos, avisos, informaci&oacute;n y otras comunicaciones que le proporcionamos electr&oacute;nicamente cumplen con cualquier requisito legal de que dichas comunicaciones sean por escrito.<br />(b) Para conservar una copia, seleccione "Imprimir" y seleccione la impresora adecuada. &nbsp;Si no tiene una impresora, puede copiar el texto y los acuerdos subyacentes y pegarlos en un nuevo documento en un procesador de textos o un editor de texto en su computadora y guardar el texto.<br />(c) Tiene derecho a recibir una copia impresa de las comunicaciones. &nbsp;Para recibir una copia en papel, solic&iacute;tela envi&aacute;ndonos un correo electr&oacute;nico a info@tranquiapp.net<br />(d) Podemos cobrarle un cargo de servicio razonable por enviarle una copia impresa de cualquier comunicaci&oacute;n. &nbsp;Incluiremos dicho cargo por servicio en nuestro programa de tarifas o le informaremos primero sobre el cargo y le daremos la opci&oacute;n de decidir si a&uacute;n desea que le enviemos una copia en papel. &nbsp;Aseg&uacute;rese de indicar que est&aacute; solicitando una copia de la comunicaci&oacute;n en particular.<br />(e) Para recibir y ver una copia electr&oacute;nica de las comunicaciones, debe tener el siguiente equipo y software:<br />(i) Una computadora personal u otro dispositivo capaz de acceder a Internet. &nbsp;Su acceso a esta p&aacute;gina verifica que su sistema / dispositivo cumpla con estos requisitos.<br />(ii) un navegador web de Internet que sea capaz de soportar comunicaciones cifradas SSL de 128 bits, JavaScript y cookies. &nbsp;Su sistema o dispositivo debe tener un software de cifrado SSL de 128 bits. &nbsp;Su acceso a esta p&aacute;gina verifica que su navegador y software / dispositivo de encriptaci&oacute;n cumplan con estos requisitos.<br />(f) Para conservar una copia, debe tener una impresora conectada a su computadora personal u otro dispositivo o, como alternativa, la capacidad de guardar una copia mediante el uso de un servicio de impresi&oacute;n o software como Adobe Acrobat&reg;. &nbsp;Si tiene un procesador de textos o un programa de editor de texto en su computadora, tambi&eacute;n puede copiar el texto y pegarlo en un nuevo documento en el procesador de texto o editor de texto y guardar el texto.<br />(g) Tambi&eacute;n puede comunicarse con nosotros por correo electr&oacute;nico a info@tranquiapp.net &nbsp;para retirar su consentimiento para recibir comunicaciones electr&oacute;nicas futuras, incluso si los requisitos del sistema descritos anteriormente cambian y ya no posee el sistema requerido. &nbsp;Si retira su consentimiento, podremos finalizar su uso de los Productos.<br />(h) Nos reservamos el derecho, a nuestro exclusivo criterio, de suspender el suministro de sus comunicaciones electr&oacute;nicas, o de terminar o cambiar los t&eacute;rminos y condiciones en los que proporcionamos comunicaciones electr&oacute;nicas. &nbsp;Le enviaremos un aviso de dicha terminaci&oacute;n o cambio seg&uacute;n lo exija la ley.<br />12.8 NOTIFICACIONES<br />A menos que se indique lo contrario, todos los avisos que nos env&iacute;e deben enviarse a Tranqui a info@tranquiapp.net. &nbsp; Es posible que le notifiquemos a la direcci&oacute;n de correo electr&oacute;nico que nos proporcione cuando se registre, o en cualquiera de las formas especificadas en la secci&oacute;n 12.7 anterior. &nbsp;El aviso se considerar&aacute; recibido y debidamente entregado inmediatamente cuando se publique en los Productos o cuando se env&iacute;e un correo electr&oacute;nico u otra comunicaci&oacute;n electr&oacute;nica. &nbsp;Al probar el servicio de cualquier notificaci&oacute;n por correo electr&oacute;nico, ser&aacute; suficiente para demostrar que dicho correo electr&oacute;nico se envi&oacute; a la direcci&oacute;n de correo electr&oacute;nico especificada del destinatario.<br />12.9 ACUERDO COMPLETO<br />Estos T&eacute;rminos y cualquier documento mencionado expresamente en ellos constituyen el acuerdo completo entre nosotros y reemplazan todas las discusiones anteriores, correspondencia, negociaciones, arreglos anteriores, entendimiento o acuerdo entre nosotros en relaci&oacute;n con su tema. &nbsp;Cada uno de nosotros reconoce que ninguno de nosotros conf&iacute;a ni tendr&aacute; ning&uacute;n remedio con respecto a ninguna representaci&oacute;n o garant&iacute;a (ya sea de forma inocente o negligente) que no est&eacute; establecida en estos T&eacute;rminos o en los documentos mencionados en ellos. &nbsp;Cada uno de nosotros acepta que nuestra &uacute;nica responsabilidad con respecto a las declaraciones y garant&iacute;as que se establecen en este acuerdo (ya sea de forma inocente o negligente) ser&aacute; por incumplimiento de contrato. &nbsp;Nada en esta secci&oacute;n limita o excluye cualquier responsabilidad por fraude.<br />12.10 DERECHOS DE TERCEROS<br />Una persona que no sea parte de estos T&eacute;rminos no tendr&aacute;, sujeto a la secci&oacute;n 12 (DMCA), ning&uacute;n derecho bajo o en relaci&oacute;n con estos T&eacute;rminos.<br />12.11 NUESTRA RESPONSABILIDAD<br />(a) Haremos todos los esfuerzos razonables para remediar fallas en los Productos. &nbsp;Si no cumplimos con estos T&eacute;rminos, solo seremos responsables por el precio de compra de los Productos en cuesti&oacute;n. &nbsp;Adem&aacute;s, no seremos responsables de:<br />(i) Operaci&oacute;n defectuosa de las computadoras durante el proceso de registro o durante la finalizaci&oacute;n de una suscripci&oacute;n o durante la transmisi&oacute;n de cualquier informaci&oacute;n y / o por la transmisi&oacute;n incorrecta o demasiado lenta de datos por parte del proveedor de Internet y / o cualquier da&ntilde;o que ocurra debido a la informaci&oacute;n presentada &nbsp;por el hecho de que usted no sea recibido por nosotros o no se reciba de inmediato o no se considere, como consecuencia de fallas t&eacute;cnicas con nuestro software o hardware (est&eacute;n o no dentro o fuera de nuestro control).<br />(ii) Cualquier p&eacute;rdida o da&ntilde;o debido a virus u otro software malicioso que pueda infectar su Dispositivo, equipo inform&aacute;tico, software, datos u otra propiedad causada por el acceso, uso o descarga de los Productos, o por transmisiones por correo electr&oacute;nico o archivos adjuntos recibidos de &nbsp;nosotros.<br />(iii) Cualquier uso de sitios web vinculados a los Productos pero operados por terceros.<br />(b) En la medida permitida por la ley, Tranqui y sus afiliados, proveedores, clientes o licenciantes (colectivamente, las "Entidades Protegidas") no ser&aacute;n responsables de ning&uacute;n da&ntilde;o consecuente, ejemplar o punitivo que surja de, o directa o indirectamente relacionado &nbsp;al uso o la imposibilidad de usar los Productos o el contenido, materiales y funciones relacionados con los mismos, su provisi&oacute;n de informaci&oacute;n a trav&eacute;s de los Productos, o negocios perdidos o ventas perdidas, o cualquier error, virus o error contenido en los Productos, incluso si dicha Entidad protegida ha sido informada de la posibilidad de tales da&ntilde;os. &nbsp;En ning&uacute;n caso, las Entidades Protegidas ser&aacute;n responsables por o en relaci&oacute;n con cualquier contenido publicado, transmitido, intercambiado o recibido por o en nombre de cualquier usuario u otra persona en o a trav&eacute;s de los Productos. En ning&uacute;n caso, la responsabilidad total agregada de las Entidades Protegidas hacia usted por todos los da&ntilde;os, p&eacute;rdidas y causas de acci&oacute;n (ya sea por contrato o agravio, incluyendo, entre otros, negligencia o de otro modo) que surjan de estos t&eacute;rminos de uso o su &nbsp;el uso de los Productos excede, en conjunto, el monto, si corresponde, pagado por usted a Tranqui por su uso de los Productos.<br />12.12Ley Aplicable y Jurisdicci&oacute;n<br />12.12.1 Los presentes T&eacute;rminos y Condiciones, as&iacute; como la relaci&oacute;n entre Tranqui y Ud., se regir&aacute;n e interpretar&aacute;n con arreglo a la legislaci&oacute;n vigente en la Rep&uacute;blica Argentina.</p>
-							<p>&Uacute;ltima actualizaci&oacute;n 13/11/2019</p>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla5">Volver</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla19">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Meditaciones Guiadas</h4>
+						<div class="pantcomun">
+							<div class="interna">
+								<div class="btnGenerico btnCele btnGuiada">GUIADA <i class="fa fa-lock sinrep"></i></div>
+								<div class="btnGenerico btnCele btnNoGuiada">SEMI GUIADA <i class="fa fa-lock sinrep"></i></div>
+							</div>
+							
+							<div class="saltarVid2 btnSinborde btnVolverHome btn50P">Volver</div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla19b">
+					<div class="contenidoGen">
+						<div class="conttimers">
+							<h4 class="titSeccionSub">Meditaciones</h4>
+							<h5 class="titSeccionSubT"></h5>
+							<div class="circuloaudio">
+								<div class="btnPlayMed ct_audGuiada cele" onclick="togglePlaying('audGuiada')">
+									<div class="circmed cele">
+										<div class="circsma cele">
+											<i class="glyphicon glyphicon-play"></i>
+										</div>
+									</div>
+								</div>
+								<div class="circle audioBorde ab_audGuiada"></div>
+								<div id="audGuiada_control" class="circuloN"></div>
+								<audio preload="metadata" ontimeupdate="updateBar('audGuiada')" id="audGuiada">
+									<source src="" type="audio/mpeg">
+									Su navegador no sorporta audio HTML5
+								</audio>
+							</div>
+							<div class="selectorTiempo">
+								<div class="titiempo">Tiempo</div>
+								<div class="contSeltiempo">
+									<select name="tiempoclase" id="tiempoclaseGuiadas" onchange="app.ponerGuiada(this.value)" data-enhance="false">
+										<option value="5">5 min</option>
+										<option value="10">10 min</option>
+										<option value="15">15 min</option>
+									</select>
+								</div>
+							</div>
+							<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla19">Volver</div>
+							<div class="blokespacio"></div>
+						</div>
+						<div class="bototneraBottom conpub">
+							<!-- <div class="boxprem"><img src="img/boxpremium.png"></div> -->
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla20">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Desbloquear contenido</h4>
+						<div class="sepambsr"></div>
+						<div class="boxcupon">
+							<div class="mensajesdesb"></div>
+							<input type="text" class="form-control inputfant" id="codigoApp" placeholder="Escribí tu código">
+							<div class="volverint btnSinborde btnValidarCodigo btn50P">enviar »</div>
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11b">Volver</div>
+						<div class="bototneraBottom fondoUser">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
+						</div>
+					</div>
+				</div>
+				<div class="ventana hidden" style="display: none;" id="pantalla21">
+					<div class="contenidoGen">
+						<h4 class="titSeccionSub">Mis datos</h4>
+						<div class="sepambsr"></div>
+						<div class="boxEstadisticasCont contMisDatos">
+						</div>
+						<div class="volverint btnSinborde btnVolverapa" data-apa="pantalla11b">Volver</div>
+						<div class="bototneraBottom fondoUser">
+							<div class="btotonbotom btnHome"><i class="icon-iconHome"></i> Home</div>
+							<div class="btotonbotom btnLibreria"><i class="icon-iconLibreria fz22"></i> Libreria</div>
+							<div class="btotonbotom btnMSBR"><i class="icon-iconMBSR fz22"></i> Programas</div>
+							<div class="btotonbotom btnPodcasts"><i class="icon-iconPodcast fz22"></i> Podcast</div>
+							<div class="btotonbotom btnUser activo"><i class="icon-iconUSer"></i> Usuario</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		<div class="hidden" id="alerta">
+			<div class="erorCont">
+				<div class="erorMsj">
+					<div id="alertatxt">
+					</div>
+					<button id="login" class="btn btn-danger btnCerrarAlerta">Cerrar</button>
+				</div>
+			</div>
+		</div>
+		
 
-	<!-- Modal -->
-	<div class="modal fade" id="politicas_privacidad" tabindex="-1" role="dialog" aria-labelledby="politicas_privacidad">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-body">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<div class="termcondcont">
-						<h1>Politicas de privacidad</h1>
-						<hr>
-						<div class="">
-							<p>1.1. La presente Pol&iacute;tica de Privacidad (en adelante la &ldquo;Pol&iacute;tica de Privacidad&rdquo;) se aplica a la utilizaci&oacute;n de las aplicaciones de software (en adelante, &ldquo;Aplicaci&oacute;n&rdquo; o &ldquo;Aplicaciones&rdquo;) disponibles en las tiendas de aplicaciones Appstore de Apple Inc. y Google Play de Google, Inc. y la plataforma &ldquo;on-line&rdquo; publicada en la URL: <a href="http://tranquiapp.net/">http://tranquiapp.net/</a> &nbsp;(el &ldquo;Sitio&rdquo;), provistas por TRANQUI (en adelante &ldquo;TRANQUI&rdquo;), cuya funci&oacute;n principal es brindar un servicio de acceso a contenidos, tales como, pero no limitados a, cursos y pr&aacute;cticas de meditaci&oacute;n de mindfulness y/o atenci&oacute;n plena entre otros contenidos para m&uacute;ltiples plataformas y/o sistemas operativos (los &ldquo;Servicios&rdquo;) conforme se establece en el presente documento<br />En caso de ser necesario, TRANQUI podr&aacute; complementar la Pol&iacute;tica de Privacidad con informaci&oacute;n y/o t&eacute;rminos y condiciones espec&iacute;ficos con relaci&oacute;n a los Servicios.<br />La utilizaci&oacute;n de los Servicios atribuye la condici&oacute;n de Usuario de TRANQUI (en adelante, el "Usuario") y expresa la aceptaci&oacute;n plena y sin reservas del Usuario de todas y cada una de las cl&aacute;usulas de la Pol&iacute;tica de Privacidad en la versi&oacute;n publicada por TRANQUI en el momento mismo en que el Usuario utilice los Servicios. En consecuencia, la Pol&iacute;tica de Privacidad constituir&aacute; un acuerdo v&aacute;lido y obligatorio entre el Usuario e TRANQUI con relaci&oacute;n a la privacidad. Asimismo, la utilizaci&oacute;n de los Servicios expresa la aceptaci&oacute;n plena y sin reservas del Usuario de los T&eacute;rminos y Condiciones de Utilizaci&oacute;n de los Servicios (los &ldquo;T&eacute;rminos y Condiciones&rdquo;) publicados por TRANQUI en <a href="http://tranquiapp.net/terminosycondiciones" aria-invalid="true">http://tranquiapp.net/terminosycondiciones</a> , que se complementan con la Pol&iacute;tica de Privacidad.<br />TRANQUI podr&aacute; modificar la Pol&iacute;tica de Privacidad en cualquier momento. Las nuevas versiones de la Pol&iacute;tica de Privacidad ser&aacute;n notificadas mediante publicaci&oacute;n de dicha nueva versi&oacute;n en [<a href="http://tranquiapp.net/privacidad" aria-invalid="true">http://tranquiapp.net/privacidad</a>].<br />El Usuario acepta que ser&aacute; dado por notificado de cualquier modificaci&oacute;n a la Pol&iacute;tica de Privacidad una vez que TRANQUI hubiera publicado las mismas en [<a href="http://tranquiapp.net/privacidad" aria-invalid="true">http://tranquiapp.net/privacidad</a>], y que la continuaci&oacute;n del Usuario en el uso de los Servicios una vez publicada dicha nueva versi&oacute;n se considerar&aacute; como aceptaci&oacute;n de dichas modificaciones a la Pol&iacute;tica de Privacidad. En consecuencia, el Usuario acepta chequear [<a href="http://tranquiapp.net/privacidad" aria-invalid="true">http://tranquiapp.net/privacidad</a>] peri&oacute;dicamente.<br />Para TRANQUI la privacidad de los datos personales es muy importante.&nbsp;<br />Si tiene dudas con respecto a la Pol&iacute;tica de Privacidad, por favor escribanos a [support@tranquiapp.net].</p>
-							<p>2. RECOLECCI&Oacute;N DE INFORMACI&Oacute;N DE LOS USUARIOS. FINES.<br />2.1. El Usuario acepta que TRANQUI pueda recolectar informaci&oacute;n acerca del comportamiento de sus Usuarios utilizando cookies, tags y otros m&eacute;todos (tales como la informaci&oacute;n proporcionada por los Usuarios al efectuar una compra).&nbsp;<br />2.2. TRANQUI puede recopilar informaci&oacute;n de los Usuarios para mejorar la calidad de sus Servicios gracias a que almacena las preferencias de los Usuarios y a que supervisamos las tendencias de comportamiento, por ejemplo, el tipo de contenidos buscados y adquiridos por los Usuarios.&nbsp;<br />2.3. Asimismo, TRANQUI puede recopilar y/o almacenar el n&uacute;mero o direcci&oacute;n de IP (Internet Protocol) de los Usuarios a los fines de mejorar la calidad del Servicio que brinda a trav&eacute;s de su p&aacute;gina de internet. El almacenamiento por parte de TRANQUI del n&uacute;mero de IP de los dispositivos de los Usuarios permite identificarlos al momento de su ingreso a sus cuentas individuales. Asimismo facilita diagnosticar los eventuales problemas de conexi&oacute;n que puedan llegar a existir entre el sitio de internet TRANQUI y los Usuarios, mejorando la calidad de los Servicios.<br />El n&uacute;mero o direcci&oacute;n de IP (Internet Protocol) es una identificaci&oacute;n num&eacute;rica que distingue a un dispositivo electr&oacute;nico inform&aacute;tico (sea este una computadora, un tel&eacute;fono personal con acceso a redes, una tableta, una PDA, etc.) que se conecta a una red inform&aacute;tica (por ejemplo Internet).<br />TRANQUI podr&aacute; solicitar al Usuario su datos personales, datos de entrega y de facturaci&oacute;n: (i) nombre y apellido; (ii) g&eacute;nero; (iii) edad; (iv) tel&eacute;fono; (v) direcci&oacute;n; (vi) c&oacute;digo postal; (vii) ciudad; (viii) regi&oacute;n; (ix) pa&iacute;s de residencia; (x) DNI; (xi) correo electr&oacute;nico; (xii) datos de facturaci&oacute;n, datos impositivos y datos bancarios (los &ldquo;datos&rdquo;).<br />2.4. TRANQUI podr&aacute; almacenar o recopilar la informaci&oacute;n y datos de los medios de pago de los Usuarios como tarjetas de cr&eacute;dito, cuentas bancarias, etc. La informaci&oacute;n relacionada con los m&eacute;todos de pago podr&aacute; ser almacenada en los servidores de TRANQUI, pudiendo TRANQUI tener acceso a la misma.&nbsp;</p>
-							<p>3. USO DE LA INFORMACI&Oacute;N DE LOS USUARIOS RECOLECTADA.<br />3.1. TRANQUI podr&aacute; recolectar informaci&oacute;n de los Usuarios utilizando cookies y/o tags. La informaci&oacute;n que recopile TRANQUI podr&aacute; incluir el comportamiento de navegaci&oacute;n, direcci&oacute;n IP, logs, y otros tipos de informaci&oacute;n. Sin embargo, TRANQUI no recolectar&aacute; informaci&oacute;n personal identificable de manera directa de ning&uacute;n Usuario usando cookies o tags.<br />3.2. TRANQUI utilizar&aacute; la informaci&oacute;n provista por el Usuario y la recolectada por TRANQUI con el fin de proveer mejores servicios al Usuario, intentando ajustarse a sus necesidades. Adicionalmente, la informaci&oacute;n provista por un Usuario y la que TRANQUI recolecte directamente en nombre de dicho Usuario, podr&aacute; ser utilizada por TRANQUI para establecer comunicaciones m&aacute;s efectivas con los Usuarios a los fines de proveerlos de informaciones de inter&eacute;s y de distintas ofertas y promociones ofrecidos por TRANQUI.&nbsp;<br />3.3. TRANQUI utilizar&aacute; la informaci&oacute;n provista por el Usuario y la recolectada por TRANQUI para enviar ofertas y promociones al Usuario, as&iacute; como notificaciones, noticias y novedades de su inter&eacute;s, adem&aacute;s de aquellas que revistan el car&aacute;cter de notificaciones de &iacute;ndole institucional o legal.<br />3.4. TRANQUI utilizar&aacute; la informaci&oacute;n provista por el Usuario y la recolectada por TRANQUI para analizar las conductas y comportamientos de los Usuarios en car&aacute;cter de tales, en su Sitio, como sus ubicaciones geogr&aacute;ficas, sus sesiones de uso, permanencia en el Sitio, frecuencia de uso, a los efectos de intentar mejorar sus Servicios e intentar proveerlos de mejores soluciones a sus necesidades.<br />3.5. TRANQUI podr&aacute; compartir la informaci&oacute;n con otras empresas de servicios o sitios de internet dedicados a la evaluaci&oacute;n de las conductas de los Usuarios de internet o similares a los fines de mejorar la calidad de los Servicios de TRANQUI. Generalmente dichas empresas o sitios de internet poseen sus propias pol&iacute;ticas de privacidad de datos a los fines de su protecci&oacute;n. De todas maneras TRANQUI empe&ntilde;ar&aacute; sus mejores esfuerzos en que la privacidad de la informaci&oacute;n compartida sea protegida de la mejor manera posible. En los casos que corresponda TRANQUI intentar&aacute; firmar acuerdos expresos en materia de protecci&oacute;n de datos y de privacidad de la informaci&oacute;n. Sin perjuicio de ello, TRANQUI no ser&aacute; responsable por los da&ntilde;os provocados por tales empresas y/o sitios de internet en cuanto a su deber de protecci&oacute;n, confidencialidad y privacidad de los datos que ellas manejan.<br />3.6. TRANQUI utilizar&aacute; la informaci&oacute;n provista por el Usuario y la recolectada por TRANQUI en caso de ser solicitada por tribunales, u organismos estatales nacionales o internacionales que as&iacute; lo requieran y lo soliciten en la forma correspondiente.<br />3.7. TRANQUI no estar&aacute; obligado a retener la informaci&oacute;n durante ning&uacute;n plazo establecido y dispondr&aacute; la eliminaci&oacute;n de la misma cuando lo juzgue conveniente.</p>
-							<p>4. EL SITIO.<br />4.1. TRANQUI no vender&aacute;, alquilar&aacute; ni negociar&aacute; ning&uacute;n Dato a ning&uacute;n tercero para fines comerciales. Cualquier persona que hubiera provisto informaci&oacute;n de contacto personal a trav&eacute;s del Sitio de TRANQUI podr&aacute; enviar un correo electr&oacute;nico a privacy@tranquiapp.net &nbsp;a fin de actualizar, borrar y/o corregir su informaci&oacute;n personal de contacto. TRANQUI responder&aacute; dicho requerimiento dentro de los 10 (diez) d&iacute;as siguientes a la recepci&oacute;n del mismo v&iacute;a correo electr&oacute;nico.<br />4.2. El Sitio de TRANQUI podr&aacute; utilizar cookies para registrar patrones de Usuarios. En caso que un Usuario del Sitio no desee aceptar estas cookies, podr&aacute; configurar su navegador para que le otorgue la opci&oacute;n de aceptar cada cookie y rechazar las que no desee. El Sitio tambi&eacute;n podr&aacute; utilizar herramientas de an&aacute;lisis de los cookies, log files y tags.<br />4.3. El Sitio de TRANQUI podr&aacute; contener enlaces a otros sitios de internet que no sean propiedad de TRANQUI. En consecuencia, TRANQUI no ser&aacute; responsable por el actuar de dichos sitios de internet, a los cuales no se aplicar&aacute; la presente Pol&iacute;tica de Privacidad. Recomendamos examinar la pol&iacute;tica de privacidad detallada en aquellos sitios de internet para entender los procedimientos de recolecci&oacute;n de informaci&oacute;n que utilizan y como protegen sus datos personales.<br />4.4. Las disposiciones de la Pol&iacute;tica de Privacidad se aplicar&aacute;n a todos los Usuarios de TRANQUI, hayan estos ingresado sus Datos o no.</p>
-							<p>5. MENORES DE EDAD.<br />5.1. Si bien el Sitio y/o las Aplicaciones y/o Servicios est&aacute;n dirigidos a menores de edad y su uso deber&aacute; ser supervisado por los padres, madres, tutores o responsables legales, &nbsp;El Sitio y/o las Aplicaciones y Servicios est&aacute;n permitidos s&oacute;lo para quienes tengan edad legal para contratar y no se encuentren inhibidos legalmente o de alg&uacute;n modo vedados de ejercer actos jur&iacute;dicos, derechos y/u obligaciones. Habida cuenta de ello, los menores de 18 a&ntilde;os no tienen permitido el ingreso al Sitio y/o las Aplicaciones y/o Servicios, as&iacute; como tampoco suministrar ning&uacute;n Dato ni ning&uacute;n otro tipo de informaci&oacute;n.<br />5.2. Asimismo, toda vez que los menores de edad pueden no alcanzar a comprender debidamente la Pol&iacute;tica de Privacidad y sus implicancias, ni decidir v&aacute;lidamente sobre las opciones disponibles a trav&eacute;s de sus Servicios, TRANQUI insta a todos los padres o representantes, tutores o adultos bajo cuya supervisi&oacute;n se encuentren los menores que accedan a los Servicios de TRANQUI, a participar activa y cuidadosamente en las actividades que el menor realice en internet o trav&eacute;s de las Aplicaciones, a los Servicios on-line que utilicen dichos menores, a la informaci&oacute;n a la que estos accedan, ya sea cuando dichos menores visiten el Sitio de internet de TRANQUI o cualquier otro sitio de terceros, a ense&ntilde;arles y a guiarlos en c&oacute;mo proteger su propia informaci&oacute;n personal mientras est&eacute;n navegando en internet.&nbsp;</p>
-							<p>6. CONFIDENCIALIDAD Y SEGURIDAD DE LA INFORMACI&Oacute;N.<br />6.1. TRANQUI ha adoptado medidas de seguridad razonables para proteger la informaci&oacute;n de los Usuarios e impedir el acceso no autorizado a sus datos o cualquier modificaci&oacute;n, divulgaci&oacute;n o destrucci&oacute;n no autorizada de los mismos. La informaci&oacute;n recolectada por TRANQUI o por las empresas telef&oacute;nicas o de comunicaciones que trabajen junto a TRANQUI para ofrecer los Servicios (en adelante &ldquo;Operador&rdquo; u &ldquo;Operadores&rdquo;), ser&aacute; mantenida de manera estrictamente confidencial. El acceso a los datos personales est&aacute; restringido a aquellos empleados, contratistas, Operadores, y representantes de TRANQUI que necesitan conocer tales datos para desempe&ntilde;ar sus funciones y desarrollar o mejorar nuestros Servicios. TRANQUI exige a sus proveedores los mismos est&aacute;ndares de confidencialidad. TRANQUI no permite el acceso a esta informaci&oacute;n a terceros ajenos a TRANQUI, a excepci&oacute;n de un pedido expreso del Usuario.<br />6.2. Sin perjuicio de lo expuesto, considerando que internet es un sistema abierto, de acceso p&uacute;blico, TRANQUI no puede garantizar que terceros no autorizados no puedan eventualmente superar las medidas de seguridad y utilizar la informaci&oacute;n de los Usuarios en forma indebida.</p>
-							<p>7. CAMBIOS EN LA ESTRUCTURA CORPORATIVA.<br />7.1. TRANQUI se reserva el derecho de transferir la informaci&oacute;n recolectada en caso de venta o fusi&oacute;n de TRANQUI, o de una adquisici&oacute;n de los activos principales de TRANQUI, o cualquier otra clase de transferencia de TRANQUI a otra entidad. En dicho supuesto, TRANQUI deber&aacute; adoptar las medidas razonables a efectos de asegurar que dicha informaci&oacute;n sea utilizada de una manera consistente con la Pol&iacute;tica de Privacidad.</p>
-							<p>8. DERECHOS DE LOS USUARIOS SOBRE LA INFORMACI&Oacute;N.<br />8.1. La mayor&iacute;a de los navegadores est&aacute;n configurados para aceptar cookies, pero los Usuarios podr&aacute;n reconfigurar su navegador de internet para rechazar todas las cookies o para que el sistema le indique en qu&eacute; momento se env&iacute;a una. Sin embargo, si las cookies est&aacute;n inhabilitadas, es posible que algunas caracter&iacute;sticas y Servicios del Sitio de internet no funcionen de manera adecuada.&nbsp;<br />8.2. TRANQUI tratar&aacute;, por todos los medios a su alcance, de facilitar a los Usuarios sobre los cuales haya recopilado o almacenado informaci&oacute;n personal, el acceso a sus Datos (&ldquo;Derecho de Acceso&rdquo;), as&iacute; como la rectificaci&oacute;n, modificaci&oacute;n o actualizaci&oacute;n de los mismos (&ldquo;Derecho de Rectificaci&oacute;n&rdquo;), o incluso la cancelaci&oacute;n de dichos datos personales (&ldquo;Derecho de Remoci&oacute;n&rdquo;), a menos que TRANQUI pueda denegar dichas solicitudes (en adelante, las &ldquo;Solicitudes&rdquo;), en caso que se encuentre obligada o tenga derecho a conservar dichos Datos de acuerdo a la legislaci&oacute;n aplicable.&nbsp;<br />a) A dichos efectos, el Usuario deber&aacute; enviar su Solicitud mediante el env&iacute;o de un correo electr&oacute;nico con el asunto &ldquo;Acceso a Datos Personales&rdquo; a [privacy@tranquiapp.net]. TRANQUI podr&aacute; requerir a dicho Usuario que se identifique, lo que podr&aacute; ser verificado por TRANQUI, as&iacute; como que precise los Datos a los cuales se desea acceder, rectificar o remover.&nbsp;<br />b) TRANQUI podr&aacute; rechazar la tramitaci&oacute;n de Solicitudes que sean irrazonablemente repetitivas o sistem&aacute;ticas, que requieran un esfuerzo t&eacute;cnico desproporcionado, que pongan en peligro la privacidad de los dem&aacute;s Usuarios, o que se consideren poco pr&aacute;cticas, o para las que no sea necesario acceder a los Datos.&nbsp;<br />c) El servicio de acceso, rectificaci&oacute;n y remoci&oacute;n de Datos ser&aacute; prestado por TRANQUI en forma gratuita, excepto en caso que requiriera un esfuerzo desproporcionado o irrazonable, en cuyo caso podr&aacute; cobrarse un cargo de administraci&oacute;n.&nbsp;<br />EN CASO DE QUE EL USUARIO CONSIDERE QUE SUS DERECHOS FUEREN VULNERADOS EN VIRTUD DE LAS LEYES DE PROTECCI&Oacute;N DE DATOS PERSONALES VIGENTES, EL USUARIO TENDR&Aacute; LA FACULTAD DE EJERCER EL DERECHO DE ACCESO, PORTABILIDAD, RECTIFICACI&Oacute;N O REMOCI&Oacute;N A LOS MISMOS EN FORMA GRATUITA A LA AUTORIDAD APLICABLE DE ACUERDO AL PA&Iacute;S DONDE EL USUARIO SE ENCUENTRE. COMO EJEMPLO, PARA ARGENTINA, LA AUTORIDAD DE APLICACI&Oacute;N ES LA AGENCIA DE ACCESO A LA INFORMACI&Oacute;N P&Uacute;BLICA, SITA EN AV. PTE. JULIO A. ROCA 710, PISO 2&ordm; - CIUDAD DE BUENOS AIRES,&nbsp;<br />URL WWW.ARGENTINA.GOB.AR/AAIP - CORREO ELECTR&Oacute;NICO:<br />DATOSPERSONALES@AAIP.GOB.AR, TEL. + 5411-2821-0047.&nbsp;</p>
-							<p>9. EXCEPCIONES<br />9.1. No obstante cualquier otra provisi&oacute;n en contrario en la Pol&iacute;tica de Privacidad, TRANQUI podr&aacute; divulgar cierta informaci&oacute;n personal de los Usuarios, cuando crea de buena fe que esa divulgaci&oacute;n resulte razonablemente necesaria para:&nbsp;<br />a) evitar una responsabilidad legal;<br />b) cumplir una exigencia legal, tal como una orden de allanamiento, una citaci&oacute;n o una orden judicial;&nbsp;<br />c) cumplir un requerimiento de una autoridad gubernamental o reguladora; y/o<br />d) proteger los derechos, propiedad o seguridad de TRANQUI, de los Usuarios, o de un tercero.&nbsp;</p>
-							<p>10. SERVICIOS DE TERCEROS<br />10.1. TRANQUI podr&aacute; utilizar y utiliza servicios de terceros, de los que no resulta responsable por la informaci&oacute;n que recolectan ni la forma en que protegen su informaci&oacute;n personal. Para ello, cada uno de estos servicios de terceros cuentan con sus propias pol&iacute;ticas de privacidad y proveen, en los casos que se encuentre disponible, un m&eacute;todo con el que Usuario podr&aacute; hacer un opt-out.</p>
-							<p>11. CAMBIOS EN LA POL&Iacute;TICA DE PRIVACIDAD<br />11.1. TRANQUI podr&aacute; modificar la presente Pol&iacute;tica de Privacidad en caso que lo considere oportuno. En caso que las modificaciones sean sustanciales con relaci&oacute;n al tratamiento de los Datos recolectados en virtud de la utilizaci&oacute;n de os Servicios, las mismas ser&aacute;n notificadas mediante la publicaci&oacute;n de un aviso destacado en esta p&aacute;gina. En caso que el Usuario deseara ser notificado v&iacute;a correo electr&oacute;nico de dichas modificaciones, deber&aacute; enviar un correo electr&oacute;nico con el asunto &ldquo;Lista de Cambios de Pol&iacute;tica de Privacidad&rdquo;, a [privacy@tranquiapp.net], desde la direcci&oacute;n de correo electr&oacute;nico en la cual desea recibir dichas notificaciones.&nbsp;</p>
-							<p>12. CONTACTO.<br />12.1. En caso que el Usuario tenga alguna duda acerca de la Pol&iacute;tica de Privacidad, o sobre la aplicaci&oacute;n de la misma, deber&aacute; ponerse en contacto con TRANQUI, en cualquier momento, v&iacute;a correo electr&oacute;nico a [privacy@tranquiapp.net].&nbsp;</p>
+		<!-- Modal -->
+		<div class="modal fade" id="terminos_condiciones" tabindex="-1" role="dialog" aria-labelledby="terminos_condiciones">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="termcondcont">
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="loader hidden">
-		<div class="container">
-		  <div class="dot dot-1"></div>
-		  <div class="dot dot-2"></div>
-		  <div class="dot dot-3"></div>
-		</div>
 
-		<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-		  <defs>
-			<filter id="goo">
-			  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-			  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
-			</filter>
-		  </defs>
-		</svg>
-	</div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/jq211_min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/circle-progress.min.js"></script>
-    <script type="text/javascript" src="js/roundslider.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.js"></script>
-    <script type="text/javascript" src="js/mobiscroll.jquery.min.js"></script>
-    
-	<script src="js/jquery.scrollstop.js"></script>
-	<script src="js/jquery.easing.min.js"></script>
-	<script src="js/jquery.scrollsnap.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-</body>
+		<!-- Modal -->
+		<div class="modal fade" id="politicas_privacidad" tabindex="-1" role="dialog" aria-labelledby="politicas_privacidad">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<div class="polprivcont">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="loader hidden">
+			<div class="container">
+			  <div class="dot dot-1"></div>
+			  <div class="dot dot-2"></div>
+			  <div class="dot dot-3"></div>
+			</div>
+
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+			  <defs>
+				<filter id="goo">
+				  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+				  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 21 -7"/>
+				</filter>
+			  </defs>
+			</svg>
+		</div>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jq211_min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/circle-progress.min.js"></script>
+		<script type="text/javascript" src="js/roundslider.js"></script>
+		<script type="text/javascript" src="js/owl.carousel.js"></script>
+		<script type="text/javascript" src="js/mobiscroll.jquery.min.js"></script>
+		
+		<script src="js/jquery.scrollstop.js"></script>
+		<script src="js/jquery.easing.min.js"></script>
+		<script src="js/jquery.scrollsnap.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript">
+			window.onerror = function(message, url, lineNumber) {
+				log("Error: "+message+" in "+url+" at line "+lineNumber);
+				alert("Error: "+message+" in "+url+" at line "+lineNumber);
+			}
+			app.initialize();
+		</script>
+	</body>
 
 </html>

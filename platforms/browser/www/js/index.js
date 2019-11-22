@@ -1847,7 +1847,8 @@ var app = {
 			$('.categoriascur').append(podac);
 		}
 	},
-    ponerCursos: function(posc, catid, sinc=false) {
+    ponerCursos: function(posc, catid, sinc) {
+		sinc = (sinc==undefined)?0:sinc;
 		var datos = {};
 		datos.action = 'getCursos';
 		datos.catid = catid;
@@ -1876,6 +1877,7 @@ var app = {
 						$('#pantalla16b .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
 						$('#pantalla16c .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
 						$('#pantalla16d .contenidoGen').attr('style','background-image: url('+baseURL+categorias[posc].fondo_pantalla+')');
+						$('#pantalla16d .btnViole').attr('style', categorias[posc].codigo);
 					}
 					cursos = data.cursos;
 					var podac;
@@ -1941,6 +1943,11 @@ var app = {
 						'</div>';
 						$('.listclasesind').append(podac);
 					}
+					if(clases.length==0) {
+						$('#clasessueltit').hide();
+					} else {
+						$('#clasessueltit').show();
+					}
 					$('.listetapas').animate({scrollLeft: 37}, 500);
 					$('#pantalla13 .boxcatex .titCate').attr('style',categorias[posc].codigo);
 					$('#pantalla13 .listclasesind .boxcate').attr('style',categorias[posc].codigo);
@@ -1951,7 +1958,7 @@ var app = {
 					} else {
 						if(cursos[curpos].gratuito==1 || (suscrito || suscrito_cup)) {
 							// pos del curso, pos de la cate, id del curso
-							app.ponerCurso(curpos,posc,curoreco);
+							app.ponerCurso(curpos,posc,curoreco, undefined, sinc);
 						} else {
 							ponerPantalla('pantalla18');
 						}
@@ -1962,11 +1969,13 @@ var app = {
 			}
 		});
 	},
-    ponerCurso: function(posc, posci, curid, bloqueado=0) {
+    ponerCurso: function(posc, posci, curid, bloqueado, sinc) {
+		bloqueado = (bloqueado==undefined)?0:bloqueado;
 		if(!buscandoCont) {
 			if(bloqueado==0 || suscrito || suscrito_cup) {
 				var datos = {};
 				buscandoCont = true;
+				var sigclase = 0;
 				datos.action = 'getCurso';
 				datos.curid = curid;
 				console.log("pos del curso: "+posc);
@@ -1982,7 +1991,9 @@ var app = {
 						buscandoCont = false;
 						sacarLoading();
 						if(data.res) {
-							ponerPantalla('pantalla14');
+							if(!sinc) {
+								ponerPantalla('pantalla14');
+							}
 							etapas = data.etapas;
 							var podac;
 							$('.listetapas .contesli').html('');
@@ -1995,6 +2006,12 @@ var app = {
 								'			<div class="listclases">';
 								for(var j=0;j<etapas[i].clases.length;j++) {
 									var claseTom = (inArray(etapas[i].clases[j].ID, estadisticas.clases_c))?'':' activo';
+									if(!inArray(etapas[i].clases[j].ID, estadisticas.clases_c)) {
+										if(sigclase==0 && sinc) {
+											sigclase = 1;
+											app.ponerClase(j,i,etapas[i].clases[j].ID, posci);
+										}
+									}
 									podac += ''+
 									'			<div class="curItemComp'+claseTom+'" onclick="app.ponerClase('+j+','+i+','+etapas[i].clases[j].ID+', '+posci+');" data-clase="'+j+'">'+
 									'				<div class="circItemA">'+
@@ -2061,6 +2078,9 @@ var app = {
 									//~ }
 								//~ }
 							//~ });
+							if(sigclase==0 && sinc) {
+								ponerPantalla('pantalla14');
+							}
 						} else {
 							alerta(data.message);
 						}
@@ -2339,6 +2359,7 @@ var app = {
 		$('#mensajeInimedFin').html(getTexto('meditacion_inicial_fin'));
 		$('#sub_boton_config').html(getTexto('sub_boton_config'));
 		$('.termcondcont').html(getTexto('terminos_condiciones'));
+		$('.polprivcont').html(getTexto('politicas_privacidad'));
 		$('.mensajesdesb').html(getTexto('texto_desbloquear_app'));
 		$('.text_mb_1').html(getTexto('programas_slide_1'));
 		$('.text_mb_2').html(getTexto('programas_slide_2'));
@@ -2457,7 +2478,6 @@ app.log = function(arg) {
     try {
         if (typeof arg !== 'string')
             arg = JSON.stringify(arg);
-        console.log(arg);
         document.getElementById('log').innerHTML += '<div>' + arg + '</div>';
     } catch (e) {}
 };
@@ -2518,7 +2538,6 @@ function ponerEstadisticas() {
 		$('#miscursoscont').append(item);
 	}
 	dateTimeParts = estadisticas.userInfo.fecha_registro.split(/[- :]/);
-	console.log(dateTimeParts);
 	var usercont = ''+
 	'<span class="campousert">Nombre: </span> '+estadisticas.userInfo.nombre+'<br>'+
 	'<span class="campousert">Apellido: </span> '+estadisticas.userInfo.apellido+'<br>'+
@@ -3111,8 +3130,6 @@ function saveConfig(tipo, valor) {
 }
 
 function guardarFileSto(tipo, valor) {
-	console.log(tipo);
-	console.log(valor);
 	if(tipo=='etapa'){
 		if(!inArray(valor, dataFilesStore.etapas)) {
 			dataFilesStore.etapas.push(valor);
@@ -3129,6 +3146,5 @@ function guardarFileSto(tipo, valor) {
 
 document.addEventListener('DOWNLOADER_downloadProgress', function(event){
   var data = event.data;
-  console.log(data.percentage);
 });
 $.fn.roundSlider.prototype._handleDragDistance = 90;
