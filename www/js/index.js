@@ -13,6 +13,7 @@ var timerac = '';
 var guiadaac = '';
 var dataFilesStore = {};
 var sinintrombsr = false;
+var codmbsr = '';
 var vinedeconf = false;
 var cambiandopantalla = false;
 var buscandoCont = false;
@@ -416,6 +417,11 @@ var app = {
 			ponerPantalla('pantalla3b');
 		});
 		
+		 $('#volver_prog').click(function(e) {
+			e.preventDefault();
+			ponerMBSRAct();
+		});
+		
 		 $('#pantalla2b .btnContinuar').click(function(e) {
 			e.preventDefault();
 			ponerPantalla('pantalla3b');
@@ -738,6 +744,7 @@ var app = {
 		$('.btnGetCupon').click(function(e) {
 			e.preventDefault();
 			var codval = $('#codigombsr').val();
+			codmbsr = codval;
 			if(codval!='') {
 				var datos = {};
 				datos.action = 'validateMBSRCode';
@@ -2663,7 +2670,7 @@ function cambiarFondoBody(cual) {
 		$('body').addClass('fondoMedini');
 	}
 	$('body').removeClass('fondoUser');
-	if(cual=='pantalla11' || cual=='pantalla11b' || cual=='pantalla11c' || cual=='pantalla20') {
+	if(cual=='pantalla11' || cual=='pantalla11b' || cual=='pantalla11c' || cual=='pantalla20' || cual=='pantalla21') {
 		$('body').addClass('fondoUser');
 	}
 	$('body').removeClass('fondoMeddia');
@@ -3141,6 +3148,28 @@ function guardarFileSto(tipo, valor) {
 		}
 	}
 	localStorage.setItem('dataFilesStore', JSON.stringify(dataFilesStore));
+}
+
+function ponerMBSRAct() {
+	var codval =codmbsr;
+	var datos = {};
+	datos.action = 'validateMBSRCode';
+	datos.code = codval;
+	$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url: apiURL,
+		data: datos,
+		success: function (data) {
+			if(data.res) {
+				mbsr_cont = data.mbsr;
+				app.doMBSR();
+				ponerPantalla('pantalla12c');
+			} else {
+				alerta("El código ingresado no es válido.");
+			}
+		}
+	});
 }
 
 
