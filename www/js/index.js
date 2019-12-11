@@ -1329,7 +1329,6 @@ var app = {
 					$('#audEsfera').html('<source src="'+baseURL+data.esfera.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 					//mensajes
 					mensajes_app = data.mensajes;
-					app.doMensajes();
 					
 					animres = data.a_respiracion;
 					
@@ -1523,19 +1522,40 @@ var app = {
     hacerloginGoog: function(datos) {
 		//~ log("VA: "+JSON.stringify(obj)); // do something useful instead of alerting
 		//~ $('.hola').html('<img src="'+datos.imageurl+'"> Hola '+datos.displayname+' <div class="emailjun">('+datos.email+')</div>');
-		$('.nombreuser').html('Hola '+datos.displayname);
-		$('#glyphicon glyphicon-user').html(datos.displayname);
-		if(primeraVez!='false') {
-			ponerPantalla('pantalla1');
-		} else {
-			ponerPantalla('pantalla5');
-		}
-		app.savePushToken();
-		app.iniciarCont();
-		isLogin = true;
-		loginData_nombre = datos.displayname;
-		localStorage.setItem('loginData_nombre', loginData_nombre);
-		localStorage.setItem('isLogin', isLogin);
+		
+		var datos = {};
+		datos.action = 'doGoogle';
+		datos.tipo = 'google';
+		var nombre = (datos.givenName!='')?datos.givenName:datos.displayName;
+		datos.nombre = datos.givenName;
+		datos.apellido = datos.familyName;
+		datos.email = datos.email;
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: apiURL,
+			data: datos,
+			success: function (data) {
+				if(data.res) {
+					$('.nombreuser').html('Hola '+datos.displayname);
+					$('#glyphicon glyphicon-user').html(datos.displayname);
+					if(primeraVez!='false') {
+						ponerPantalla('pantalla1');
+					} else {
+						ponerPantalla('pantalla5');
+					}
+					app.savePushToken();
+					app.iniciarCont();
+					isLogin = true;
+					loginData_nombre = datos.displayname;
+					localStorage.setItem('loginData_nombre', loginData_nombre);
+					localStorage.setItem('isLogin', isLogin);
+				} else {
+					alerta(data.message);
+				}
+			}
+		});
+		$('.videomin')[0].play();
 	},
     hacerloginFace: function(datos) {
 		
