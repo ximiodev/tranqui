@@ -195,19 +195,33 @@ span.campousert {
 }
 
 .listcursos {
-    background: #FFF;
 /*
+    background: #FFF;
 	margin-left: -15px;
     margin-right: -15px;
-*/
-    text-align: center;
     padding: 15px;
+*/
+	text-align: center;
+    padding-top: 15px;
+    margin-top: 55px;
+    position: relative;
+    margin-bottom: 40px;
+    width: 100%;
+    overflow: hidden;
+    padding: 50px 0;
 }
 
 .listcursos:after {
 	content: ' ';
 	clear: both;
 	display: block;
+}
+
+.listcursos button.owl-dot {
+    display: inline-block;
+    border: 0;
+    width: 12px;
+    height: 12px;
 }
 
 .inputfant {
@@ -251,30 +265,50 @@ span.campousert {
     font-family: 'MontserratMedium';
     text-align: center;
     color: #FFF;
+/*
 	box-shadow: 4px 4px 6px rgba(0,0,0,0.2);
-	padding: 10px;
-    border-radius: 10px;
     border-radius: 20px;
+	background: #ccc;
+*/
+	padding: 10px;
     font-size: 14px;
     margin-bottom: 10px;
-	background: #ccc;
+        border-bottom: 1px solid #FFF;
 }
 
 .listcursos .descCate {
     font-family: 'MontserratMedium';
     text-align: center;
     font-size: 12px;
+/*
 	color: #7740a2;
+*/
+    color: #FFF;
 }
 
 .listcursos .boxcatex {
+/*
     width: 48%;
     float: left;
     display: inline-block;
+*/
 }
 
 .listcursos .boxcatex:last-child {
     float: none;
+}
+
+.listcursos .owl-stage-outer {
+	height: max-content;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background: #FFF;
+}
+
+.listcursos .owl-stage {
+    height: -webkit-fill-available;
+    display: inline-block;
 }
 
 .boxcatex {
@@ -284,6 +318,10 @@ span.campousert {
     border: 0;
     margin-top: 5px;
     color: #FFF;
+	height: 200px;
+	border-radius: 25px;
+	box-shadow: 4px 4px 6px rgba(0,0,0,0.2);
+	margin-top: -50px;
 }
 
 .playbutton {
@@ -866,6 +904,19 @@ span.campousert {
 
 .owl-item {
     float: left;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+	padding: 0 5px 15px;
+}
+
+#pantalla13 .tituloCat::after {
+    content: ' ';
+    width: 80%;
+    border-bottom: 1px solid #FFF;
+    position: relative;
+    display: block;
+    margin: 0 auto;
 }
 
 .owl-nav.disabled {
@@ -2973,6 +3024,14 @@ button.owl-dot {
 .owl-dots {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.listcursos .owl-dots {
+    text-align: center;
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
 }
 
 .coreccmed {

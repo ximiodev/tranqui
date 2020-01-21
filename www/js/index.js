@@ -1909,12 +1909,13 @@ var app = {
 					cursos = data.cursos;
 					var podac;
 					$('.listcursos').show();
+					$('.listcursos').owlCarousel('destroy');
 					$('.listcursos').html('');
 					var curpos = 0;
 					for(var i=0;i<cursos.length;i++) {
 						
 						if((i%2)==0 && i>0) {
-							$('.listcursos').append('<div class="clear"></div>');
+							//~ $('.listcursos').append('<div class="clear"></div>');
 						}
 						var pago = '';
 						var bloqueado = '0';
@@ -1937,9 +1938,9 @@ var app = {
 						//~ }
 						
 						podac = ''+
-						'<div class="boxcatex" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+','+bloqueado+');" data-cur="'+i+'">'+
+						'<div class="boxcatex item" onclick="app.ponerCurso('+i+','+posc+','+cursos[i].ID+','+bloqueado+');" data-cur="'+i+'" style="'+categorias[posc].codigo+'">'+
 						'	<div class="titCate">'+cursos[i].nombre+pago+'</div>'+
-						'	<div class="descCate" style="color:#'+categorias[posc].color+'">'+cursos[i].descripcion+'</div>'+
+						'	<div class="descCate" >'+cursos[i].descripcion+'</div>'+
 						'</div>';
 						$('.listcursos').append(podac);
 						
@@ -1954,6 +1955,16 @@ var app = {
 					}
 					if(cursos.length==0) {
 						$('.listcursos').hide();
+					} else {
+						$('.listcursos').owlCarousel({
+							loop:false,
+							center:false,
+							margin:0,
+							nav:false,
+							dots:true,
+							stagePadding: 0,
+							items:2
+						})
 					}
 					clases = data.clases;
 					var podac;
@@ -1976,7 +1987,7 @@ var app = {
 						$('#clasessueltit').show();
 					}
 					$('.listetapas').animate({scrollLeft: 37}, 500);
-					$('#pantalla13 .boxcatex .titCate').attr('style',categorias[posc].codigo);
+					//~ $('#pantalla13 .boxcatex .titCate').attr('style',categorias[posc].codigo);
 					$('#pantalla13 .listclasesind .boxcate').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .boxcatex').attr('style',categorias[posc].codigo);
 					$('#pantalla14 .tituloCurso').attr('style',categorias[posc].codigo);
