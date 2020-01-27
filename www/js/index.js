@@ -1329,6 +1329,7 @@ var app = {
 					$('#audEsfera').html('<source src="'+baseURL+data.esfera.archivo+'" type="audio/mpeg">Su navegador no sorporta audio HTML5');
 					//mensajes
 					mensajes_app = data.mensajes;
+					app.doMensajes();
 					
 					animres = data.a_respiracion;
 					
@@ -1351,7 +1352,6 @@ var app = {
 					setTimeout(function() {
 						app.loadEstadisticas();
 					}, 900);
-					
 					
 		
 					
