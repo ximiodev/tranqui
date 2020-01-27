@@ -33,6 +33,7 @@ var cursoelegHome = 0;
 var poscate;
 var vibrar = true;
 var suscrito = false;
+var sinredes = false;
 var suscrito_cup = false;
 var cur_posc;
 var cur_curid;
@@ -41,7 +42,7 @@ var app = {
         this.bindEvents();
     },
     bindEvents: function() {
-        setTimeout(sacarSplash, 1000);
+        //~ setTimeout(sacarSplash, 1000);
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     logOff: function() {
@@ -56,7 +57,11 @@ var app = {
         localStorage.setItem('dataFilesStore', "");
         
         $('.ventana').addClass('hidden');
-        ponerPantalla('pantalla0');
+        if(sinredes) {
+			ponerPantalla('pantalla0a');
+		} else {
+			ponerPantalla('pantalla0');
+		}
     },
     onDeviceReady: function() {
 		var isapp = document.URL.indexOf( 'http://' ) === -1 && document.URL.indexOf( 'https://' ) === -1;
@@ -66,7 +71,6 @@ var app = {
 		if ( isapp ) {
 			app.initStore();
 		}
-        setTimeout(sacarSplash, 1000);
 		loginData_nombre = '';
         
         isLoginSave = localStorage.getItem('isLogin');
@@ -107,7 +111,43 @@ var app = {
 				$('#pantalla5').addClass('activa');
 				$('#pantalla5').css({'display':'block'});
 			}
+			var datos = {};
+			datos.action = 'ocultarRedes';
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					if(data.res) {
+						$('#btnVolverLogRedes').addClass('hidden');
+					}
+					sinredes = data.res;
+				}
+			});
 			app.setSession();
+		} else {
+			var datos = {};
+			datos.action = 'ocultarRedes';
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				url: apiURL,
+				data: datos,
+				success: function (data) {
+					if(data.res) {
+						$('#pantalla0').removeClass('activa');
+						$('#pantalla0').addClass('hidden');
+						$('#btnVolverLogRedes').addClass('hidden');
+						
+						$('#pantalla0a').removeClass('hidden');
+						$('#pantalla0a').addClass('activa');
+						$('#pantalla0a').css({'display':'block'});
+					}
+					sinredes = data.res;
+					setTimeout(sacarSplash, 1000);
+				}
+			});
 		}
         
         $('#facebooklogin').click(function(e) {
