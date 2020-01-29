@@ -123,6 +123,7 @@ var app = {
 						$('#btnVolverLogRedes').addClass('hidden');
 					}
 					sinredes = data.res;
+					setTimeout(sacarSplash, 1000);
 				}
 			});
 			app.setSession();
