@@ -121,6 +121,7 @@ var app = {
 				success: function (data) {
 					if(data.res) {
 						$('#btnVolverLogRedes').addClass('hidden');
+						$('.btnCargarCodigoG').addClass('hidden');
 					}
 					sinredes = data.res;
 					setTimeout(sacarSplash, 1000);
@@ -140,6 +141,7 @@ var app = {
 						$('#pantalla0').removeClass('activa');
 						$('#pantalla0').addClass('hidden');
 						$('#btnVolverLogRedes').addClass('hidden');
+						$('.btnCargarCodigoG').addClass('hidden');
 						
 						$('#pantalla0a').removeClass('hidden');
 						$('#pantalla0a').addClass('activa');
