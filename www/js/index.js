@@ -1421,31 +1421,40 @@ var app = {
 		document.getElementsByTagName('body')[0].className = app.platform;
 		// Enable maximum logging level
 		//store.verbosity = store.DEBUG;
+		if(app.platform=="Android") {
+			suscrip_1_mes = "subscription1";
+			suscrip_6_meses = "tranquisusc_6m";
+			suscrip_1_anio = "tranquisusc1";
+		} else {
+			suscrip_1_mes = "subscription2";
+			suscrip_6_meses = "tranquisusc_6m2";
+			suscrip_1_anio = "tranquisusc2";
+		}
 		
 		 store.validator = "https://api.fovea.cc:1982/check-purchase";
 
 		// Inform the store of your products
 		store.register({
-			id:    'tranquisusc1', // id without package name!
-			alias: 'tranquisusc1',
+			id:    suscrip_1_anio, // id without package name!
+			alias: suscrip_1_anio,
 			type:  store.PAID_SUBSCRIPTION
 		});
 			
 		store.when("product").updated(function (p) {
 			app.renderIAP(p);
 		});
-		store.when("tranquisusc1").approved(function(p) {
+		store.when(suscrip_1_anio).approved(function(p) {
 			//~ alerta("verify subscription");
 			p.verify();
 		});
-		store.when("tranquisusc1").verified(function(p) {
+		store.when(suscrip_1_anio).verified(function(p) {
 			//~ alerta("subscription verified");
 			p.finish();
 		});
-		store.when("tranquisusc1").unverified(function(p) {
+		store.when(suscrip_1_anio).unverified(function(p) {
 			//~ alerta("subscription unverified");
 		});
-		store.when("tranquisusc1").updated(function(p) {
+		store.when(suscrip_1_anio).updated(function(p) {
 			if (p.owned) {
 				suscrito = true;
 			}
@@ -1455,23 +1464,23 @@ var app = {
 		// otra subsc
 		
 		store.register({
-			id:    'subscription1', // id without package name!
-			alias: 'subscription1',
+			id:    suscrip_1_mes, // id without package name!
+			alias: suscrip_1_mes,
 			type:  store.PAID_SUBSCRIPTION
 		});
 		
-		store.when("subscription1").approved(function(p) {
+		store.when(suscrip_1_mes).approved(function(p) {
 			//~ alerta("verify subscription");
 			p.verify();
 		});
-		store.when("subscription1").verified(function(p) {
+		store.when(suscrip_1_mes).verified(function(p) {
 			//~ alerta("subscription verified");
 			p.finish();
 		});
-		store.when("subscription1").unverified(function(p) {
+		store.when(suscrip_1_mes).unverified(function(p) {
 			//~ alerta("subscription unverified");
 		});
-		store.when("subscription1").updated(function(p) {
+		store.when(suscrip_1_mes).updated(function(p) {
 			if (p.owned) {
 				suscrito = true;
 			}
@@ -1481,23 +1490,23 @@ var app = {
 		// otra subsc
 		
 		store.register({
-			id:    'tranquisusc_6m', // id without package name!
-			alias: 'tranquisusc_6m',
+			id:    suscrip_6_meses, // id without package name!
+			alias: suscrip_6_meses,
 			type:  store.PAID_SUBSCRIPTION
 		});
 		
-		store.when("tranquisusc_6m").approved(function(p) {
+		store.when(suscrip_6_meses).approved(function(p) {
 			//~ alerta("verify subscription");
 			p.verify();
 		});
-		store.when("tranquisusc_6m").verified(function(p) {
+		store.when(suscrip_6_meses).verified(function(p) {
 			//~ alerta("subscription verified");
 			p.finish();
 		});
-		store.when("tranquisusc_6m").unverified(function(p) {
+		store.when(suscrip_6_meses).unverified(function(p) {
 			//~ alerta("subscription unverified");
 		});
-		store.when("tranquisusc_6m").updated(function(p) {
+		store.when(suscrip_6_meses).updated(function(p) {
 			if (p.owned) {
 				suscrito = true;
 			}
